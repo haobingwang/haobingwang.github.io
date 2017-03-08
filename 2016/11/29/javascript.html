@@ -1,0 +1,717 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,ecmascript,dom,bom," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="JavaScript 是一门专为网页交互而设计的脚本语言，由下列三个不同的部分组成：
+
+核心（ECMAScript），提供核心语言功能；
+文档对象模型（DOM），提供访问和操作网页内容的方法和接口；
+浏览器对象模型（BOM），提供与浏览器交互的方法和接口；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript">
+<meta property="og:url" content="http://haobing.wang/2016/11/29/javascript.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="JavaScript 是一门专为网页交互而设计的脚本语言，由下列三个不同的部分组成：
+
+核心（ECMAScript），提供核心语言功能；
+文档对象模型（DOM），提供访问和操作网页内容的方法和接口；
+浏览器对象模型（BOM），提供与浏览器交互的方法和接口；">
+<meta property="og:image" content="http://haobing.wang/images/chrome.png">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.625Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript">
+<meta name="twitter:description" content="JavaScript 是一门专为网页交互而设计的脚本语言，由下列三个不同的部分组成：
+
+核心（ECMAScript），提供核心语言功能；
+文档对象模型（DOM），提供访问和操作网页内容的方法和接口；
+浏览器对象模型（BOM），提供与浏览器交互的方法和接口；">
+<meta name="twitter:image" content="http://haobing.wang/images/chrome.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/11/29/javascript.html"/>
+
+
+  <title> javascript | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-29T16:20:15+08:00" content="2016-11-29">
+              2016-11-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/29/javascript.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/29/javascript.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScript 是一门专为网页交互而设计的脚本语言，由下列三个不同的部分组成：</p>
+<ul>
+<li>核心（ECMAScript），提供核心语言功能；</li>
+<li>文档对象模型（DOM），提供访问和操作网页内容的方法和接口；</li>
+<li>浏览器对象模型（BOM），提供与浏览器交互的方法和接口；</li>
+</ul>
+<a id="more"></a>
+<h2 id="学习-JavaScript-的开发环境"><a href="#学习-JavaScript-的开发环境" class="headerlink" title="学习 JavaScript 的开发环境"></a>学习 JavaScript 的开发环境</h2><blockquote>
+<ol>
+<li>打开 Google Chrome；</li>
+<li>用快捷键 Option + Command + i 呼出 Developer’s Panel；</li>
+<li>选择 Source 标签；</li>
+<li>在左侧边栏选择 Snippets 标签；</li>
+<li>创建 .js 文件，比如，test.js；</li>
+<li>在中间的代码书写区域编写代码；</li>
+<li>使用 Command + Enter 执行代码……</li>
+</ol>
+</blockquote>
+<p><img src="/images/chrome.png" alt=""></p>
+<p>有了这样的运行环境，就可以开始学习了……</p>
+<p>学什么？怎么学？先从最经典的教材开始呗，</p>
+<blockquote>
+<ol>
+<li>硬着头皮一章一章地读完，</li>
+<li>每个代码示例都要自己动手敲，直到获得正确结果；</li>
+<li>读不懂的地方先放下，接着读下去；</li>
+<li>反复回头重新阅读读不懂的地方，实在搞不定再放在一边；</li>
+<li>把这本书反复阅读很多遍……</li>
+<li>不断整理其中的重要概念，以及重要概念之间的必要联系……</li>
+</ol>
+</blockquote>
+<p>教材的地址在这里：<a href="http://eloquentjavascript.net/" target="_blank" rel="external">http://eloquentjavascript.net/</a></p>
+<p>注意：<strong>“通读”是做工程师必须的能力</strong>。你不一定要全部能够理解（对任何人来说，最初都不可能做到），但你必须对整个文档有一个整体的认识。这就好像读书的时候，你能做到虽然不能完全读懂，但确实能够完整读完 —— 之后再多读几遍么！古人说的是对的：读书千遍其义自见。还有就是，若是从一开始就没有“通读”的意识，后面不知道会吃多大的亏，而且吃了多少亏自己都完全不知道…… 这很可怕。</p>
+<h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><ul>
+<li>语法</li>
+<li>类型</li>
+<li>控制语句</li>
+<li>关键字</li>
+<li>保留字</li>
+<li>操作符</li>
+<li>对象</li>
+</ul>
+<h2 id="Document-Object-Model"><a href="#Document-Object-Model" class="headerlink" title="Document Object Model"></a>Document Object Model</h2><p>借助 DOM 提供的 API ，开发人员可以退轻松自如地删除、添加、替换和修改任何节点。</p>
+<ul>
+<li>DOM Level 1，由两个模块组成：DOM Core 和 DOM HTML。主要目标是映射文档结构。</li>
+<li>DOM Level 2<ul>
+<li>DOM Views：</li>
+<li>DOM Events：定义了事件和事件处理的接口；</li>
+<li>DOM Style：定义了基于 CSS 为元素应用样式的接口；</li>
+<li>DOM Traversal and Range：</li>
+</ul>
+</li>
+<li>DOM Level 3<ul>
+<li>DOM Load and Save</li>
+<li>DOM Validation</li>
+</ul>
+</li>
+</ul>
+<h2 id="Browser-Object-Model"><a href="#Browser-Object-Model" class="headerlink" title="Browser Object Model"></a>Browser Object Model</h2><h2 id="常用代码片段及技巧"><a href="#常用代码片段及技巧" class="headerlink" title="常用代码片段及技巧"></a>常用代码片段及技巧</h2><h3 id="分号：加-还是-不加，这是个哲学问题"><a href="#分号：加-还是-不加，这是个哲学问题" class="headerlink" title="分号：加 还是 不加，这是个哲学问题"></a>分号：加 还是 不加，这是个哲学问题</h3><p>虽然语句结尾的分号不是必需的，但我们建议任何时候都不要省略它。因为</p>
+<ul>
+<li>加上分号可以避免很多错误（例如不完整的输入）；</li>
+<li>可以放心地通过删除多余空格来压缩 ECMAScript 代码（代码行结尾处没有分号会导致压缩错误）；</li>
+<li>在某些情况下增进代码的性能，因为解析器就不必花时间推测应该在哪里插入分号了；</li>
+</ul>
+<h3 id="undefined-和-null"><a href="#undefined-和-null" class="headerlink" title="undefined 和 null"></a>undefined 和 null</h3><p>undefined 和 null 都用来表示没有“值”。</p>
+<ul>
+<li>用来保存【字面量】的变量没有“值”时，其值 undefined，这通常是自动的。</li>
+<li>用来保存【对象】的变量没有“值”时，其值 null，这是人工设置的。</li>
+</ul>
+<ol>
+<li>Step1. 声明（定义），默认值为 undefined</li>
+<li>Step2. 初始化，更改变量的默认值</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">giveMeLife</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span>(obj === <span class="literal">null</span>)&#123;</div><div class="line">		<span class="keyword">var</span> random = <span class="built_in">Math</span>.random().toString();</div><div class="line">		<span class="keyword">var</span> age = random.substring(random.length<span class="number">-2</span>);</div><div class="line">		<span class="keyword">return</span> &#123;<span class="attr">age</span>: <span class="built_in">parseInt</span>(age, <span class="number">10</span>)&#125;;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		obj.age = <span class="string">'生命只有一次'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> name; <span class="comment">// a 的默认值为 undefined</span></div><div class="line"><span class="built_in">console</span>.log(name);</div><div class="line"></div><div class="line">name = <span class="string">'no name one'</span>;</div><div class="line"><span class="built_in">console</span>.log(name);</div><div class="line"></div><div class="line"><span class="keyword">var</span> baby = <span class="literal">null</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person = giveMeLife(baby);</div><div class="line"><span class="built_in">console</span>.log(person);</div><div class="line"></div><div class="line">giveMeLife(person);</div><div class="line"><span class="built_in">console</span>.log(person);</div></pre></td></tr></table></figure>
+<p>使用未声明的变量会报错 <code>Uncaught ReferenceError: c is not defined(…)</code></p>
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>for 比 while 更具有灵活性。例如将 for 循环转换成 while 循环：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(; i &lt; count; )&#123;</div><div class="line">	alert(i);</div><div class="line">	i++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>相比于 while 循环，for 循环只是把与循环有关的代码都集中在了一个位置而已。</p>
+<h3 id="判断-Object-或-Array-是否为空"><a href="#判断-Object-或-Array-是否为空" class="headerlink" title="判断 Object 或 Array 是否为空"></a>判断 Object 或 Array 是否为空</h3><ul>
+<li>数组: if(arrayValue.length)</li>
+<li>对象: if(Object.getOwnPropertyNames(objectValue).length)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(&#123;&#125;).length);<span class="comment">// 0</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames([]).length);<span class="comment">// 1 存在属性 length</span></div><div class="line">[]</div></pre></td></tr></table></figure>
+<h3 id="计算金额时的浮点精度解决方案"><a href="#计算金额时的浮点精度解决方案" class="headerlink" title="计算金额时的浮点精度解决方案"></a>计算金额时的浮点精度解决方案</h3><p>关于浮点数值计算会产生误差的问题。这是使用基于 IEEE754 数值的浮点计算通病，ECMAScript 并非独此一家，其他使用相同数值格式的语言也存在这个问题。</p>
+<p>精度损失只在小数点后。<br>因为：计算金额通常只要精确到分，即小数点后两位。<br>所以：只要先将计算的数字放大100倍，最后在缩小100倍。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">0.1</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">0.2</span>;</div><div class="line"><span class="keyword">var</span> c = a + b;</div><div class="line"><span class="keyword">var</span> d = (<span class="number">100</span> * a + <span class="number">100</span> * b)/<span class="number">100</span>;</div><div class="line"><span class="built_in">console</span>.log(c);<span class="comment">// 0.30000000000000004</span></div><div class="line"><span class="built_in">console</span>.log(d);<span class="comment">// 0.3</span></div><div class="line"></div><div class="line"><span class="comment">// 进一步对二元计算进行封装</span></div><div class="line"><span class="comment">// 加法 0.1 + 0.2 = 0.30000000000000004</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">// 放大 100 倍</span></div><div class="line">	a *= <span class="number">100</span>;</div><div class="line">	b *= <span class="number">100</span>;</div><div class="line">	<span class="keyword">return</span> (a + b)/<span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 减法 0.3 - 0.1 = 0.19999999999999998</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">// 放大 100 倍</span></div><div class="line">	a *= <span class="number">100</span>;</div><div class="line">	b *= <span class="number">100</span>;</div><div class="line">	<span class="keyword">return</span> (a - b)/<span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 乘法 0.1 * 0.2 = 0.020000000000000004</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mul</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">// 放大 10000 倍</span></div><div class="line">	a *= <span class="number">100</span>;</div><div class="line">	b *= <span class="number">100</span>;</div><div class="line">	<span class="keyword">return</span> (a * b)/<span class="number">10000</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 除法 0.3 / 3 = 0.09999999999999999</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">div</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//</span></div><div class="line">	a *= <span class="number">100</span>;</div><div class="line">	b *= <span class="number">100</span>;</div><div class="line">	<span class="keyword">return</span> (a / b);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(add(<span class="number">0.1</span>,<span class="number">0.2</span>));<span class="comment">// 0.3</span></div><div class="line"><span class="built_in">console</span>.log(sub(<span class="number">0.3</span>,<span class="number">0.1</span>));<span class="comment">// 0.2</span></div><div class="line"><span class="built_in">console</span>.log(mul(<span class="number">0.1</span>,<span class="number">0.2</span>));<span class="comment">// 0.02</span></div><div class="line"><span class="built_in">console</span>.log(div(<span class="number">0.3</span>,<span class="number">3</span>));<span class="comment">// 0.1</span></div><div class="line"></div><div class="line"><span class="comment">// 更进一步可以动态指定精确度</span></div></pre></td></tr></table></figure>
+<h3 id="限制随机"><a href="#限制随机" class="headerlink" title="限制随机"></a>限制随机</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>];</div><div class="line"><span class="keyword">var</span> b = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(a[b]);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>部分博客内容引用自<a href="http://xiaolai.li/2016/07/31/makecs-simplest-js-dev-environment/" target="_blank" rel="external">最简单直接的 Javascript 开发环境</a>。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/ecmascript/" rel="tag">#ecmascript</a>
+          
+            <a href="/tags/dom/" rel="tag">#dom</a>
+          
+            <a href="/tags/bom/" rel="tag">#bom</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/26/promise.html" rel="next" title="promise">
+                <i class="fa fa-chevron-left"></i> promise
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/30/moment.html" rel="prev" title="moment.js">
+                moment.js <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/29/javascript.html"
+           data-title="javascript" data-url="http://haobing.wang/2016/11/29/javascript.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习-JavaScript-的开发环境"><span class="nav-number">1.</span> <span class="nav-text">学习 JavaScript 的开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAScript"><span class="nav-number">2.</span> <span class="nav-text">ECMAScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Document-Object-Model"><span class="nav-number">3.</span> <span class="nav-text">Document Object Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Browser-Object-Model"><span class="nav-number">4.</span> <span class="nav-text">Browser Object Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用代码片段及技巧"><span class="nav-number">5.</span> <span class="nav-text">常用代码片段及技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分号：加-还是-不加，这是个哲学问题"><span class="nav-number">5.1.</span> <span class="nav-text">分号：加 还是 不加，这是个哲学问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined-和-null"><span class="nav-number">5.2.</span> <span class="nav-text">undefined 和 null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环语句"><span class="nav-number">5.3.</span> <span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断-Object-或-Array-是否为空"><span class="nav-number">5.4.</span> <span class="nav-text">判断 Object 或 Array 是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算金额时的浮点精度解决方案"><span class="nav-number">5.5.</span> <span class="nav-text">计算金额时的浮点精度解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#限制随机"><span class="nav-number">5.6.</span> <span class="nav-text">限制随机</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

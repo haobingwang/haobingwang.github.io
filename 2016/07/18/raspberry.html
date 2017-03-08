@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="raspberry," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="SSH 问题(疑似为劣质网卡问题)树莓派使用的无线网卡
+1234# 问题1：无法连接服务器pi@raspberrypi ~ $ packet_write_poll: Connection to 192.168.1.158: Host is down# 问题2：服务器连接上中断pi@raspberrypi ~ $ packet_write_wait: Connection to 192.168.1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="raspberry">
+<meta property="og:url" content="http://haobing.wang/2016/07/18/raspberry.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="SSH 问题(疑似为劣质网卡问题)树莓派使用的无线网卡
+1234# 问题1：无法连接服务器pi@raspberrypi ~ $ packet_write_poll: Connection to 192.168.1.158: Host is down# 问题2：服务器连接上中断pi@raspberrypi ~ $ packet_write_wait: Connection to 192.168.1.">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.633Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="raspberry">
+<meta name="twitter:description" content="SSH 问题(疑似为劣质网卡问题)树莓派使用的无线网卡
+1234# 问题1：无法连接服务器pi@raspberrypi ~ $ packet_write_poll: Connection to 192.168.1.158: Host is down# 问题2：服务器连接上中断pi@raspberrypi ~ $ packet_write_wait: Connection to 192.168.1.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/07/18/raspberry.html"/>
+
+
+  <title> raspberry | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                raspberry
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-18T11:58:22+08:00" content="2016-07-18">
+              2016-07-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/18/raspberry.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/18/raspberry.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="SSH-问题-疑似为劣质网卡问题"><a href="#SSH-问题-疑似为劣质网卡问题" class="headerlink" title="SSH 问题(疑似为劣质网卡问题)"></a>SSH 问题(疑似为劣质网卡问题)</h2><p>树莓派使用的无线网卡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 问题1：无法连接服务器</div><div class="line">pi@raspberrypi ~ $ packet_write_poll: Connection to 192.168.1.158: Host is down</div><div class="line"># 问题2：服务器连接上中断</div><div class="line">pi@raspberrypi ~ $ packet_write_wait: Connection to 192.168.1.158: Broken pipe</div></pre></td></tr></table></figure>
+<h3 id="For-the-client"><a href="#For-the-client" class="headerlink" title="For the client"></a>For the client</h3><p>Edit your <code>~/.ssh/config</code> (or <code>/etc/ssh/ssh_config</code>) file as follow:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Host *</div><div class="line">ServerAliveInterval 120</div></pre></td></tr></table></figure>
+<p>用户连接SSH时，每 120 秒会发一个KeepAlive请求。</p>
+<h3 id="客户端调试："><a href="#客户端调试：" class="headerlink" title="客户端调试："></a>客户端调试：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -vvv pi1</div></pre></td></tr></table></figure>
+<h3 id="服务端调试："><a href="#服务端调试：" class="headerlink" title="服务端调试："></a>服务端调试：</h3><p>在服务器上执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/sbin/sshd -d -p 2222</div></pre></td></tr></table></figure>
+<p>再在客户端上执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -vvv pi1</div></pre></td></tr></table></figure>
+<p>此时两边都有日志输出</p>
+<h2 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h2><p>备份已有的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /etc/apt/ &amp;&amp; sudo cp sources.list sources.list.bak</div></pre></td></tr></table></figure>
+<p>查看当前系统版本<code>lsb_release -a</code></p>
+<p><code>sources.list</code>内容替换为<a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="external">配置生成器</a>生成的配置</p>
+<p>移除部分体积大且不使用的软件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get purge wolfram-engine</div></pre></td></tr></table></figure></p>
+<p>执行更新软件源列表和软件包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+<h2 id="始化设置"><a href="#始化设置" class="headerlink" title="始化设置"></a>始化设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>这里需要打开几个选项:</p>
+<ul>
+<li>Expand Filesystem 执行该动作可以将根分区扩展到整张SD卡;</li>
+<li>Change User Password 可以在这里修改默认密码;</li>
+<li>Enable Boot to Desktop/Scratch 选择默认的启动模式，是图形界面还是文本模式;</li>
+<li>Internationalisation Options 配置当前的<ul>
+<li>Locale,选择<code>en_US.UTF-8</code>和<code>zh_CN.UTF-8</code>;</li>
+<li>Timezone,选择<code>Asia – Shanghai</code>;</li>
+<li>Keyboard Layout,选<code>English（US</code>）;</li>
+</ul>
+</li>
+<li>Enable Camera 是否启用树莓派摄像头功能;</li>
+<li>Add to Rastrack 是否要加入树莓派地图，一般不添加;</li>
+<li>Overclock 超频设置，自己按要求设置，稳定第一，一般800MHz，900MHz问题不大;</li>
+<li>Advanced Options<ul>
+<li>Overscan 可以扩充或者缩小屏幕的设置。</li>
+<li>Hostname 设置树莓派的主机名，方便网络访问时查看。</li>
+<li>Memory Split 设置分配多少内存给GPU使用。</li>
+<li>SSH 是否启用SSH远程访问功能,请务必启用该功能（默认开启）。</li>
+<li>Device Tree 是否启用设备树功能。<ul>
+<li>CPU的数量和类别</li>
+<li>内存基地址和大小</li>
+<li>总线和桥</li>
+<li>外设连接</li>
+<li>中断控制器和中断使用情况</li>
+<li>GPIO控制器和GPIO使用情况</li>
+<li>Clock控制器和Clock使用情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SPI 启用或者禁用自动加载SPI(串行外设接口)内核模块，需要其它的外设产品例如PiFace。</li>
+<li>I2C 是否自动加载I2C内核模块</li>
+<li>Serial 是否启用shell与串口通信功能，如果要使用GPIO，建议启用。</li>
+<li>Audio 强制音频通过HDMI或者3.5毫米接口输出。</li>
+<li>Update 将这个工具升级到最新版本。</li>
+</ul>
+<p>设置完成后，选择Finish，会提示是否重启，选择Yes，就会重启</p>
+<h2 id="更新固件"><a href="#更新固件" class="headerlink" title="更新固件"></a>更新固件</h2><p>rpi-update是一个升级树莓派 Raspbian 系统内核和固件的小程序</p>
+<p>树莓派固件：可以理解为树莓派的BIOS，引导程序之类的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install rpi-update ca-certificates</div><div class="line">sudo rpi-update</div><div class="line">sudo reboot</div></pre></td></tr></table></figure>
+<p>The time may be set incorrectly on your Raspberry Pi, which you can fix by setting the time using NTP.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ntpdate</div><div class="line">sudo ntpdate -u ntp.ubuntu.com</div></pre></td></tr></table></figure>
+<p>The other possible issue is that you might not have the ca-certificates package installed, and so GitHub’s SSL certificate isn’t trusted. If you are on Debian, you can resolve this by typing:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ca-certificates</div></pre></td></tr></table></figure>
+<h2 id="获取局域网内树莓派-ip"><a href="#获取局域网内树莓派-ip" class="headerlink" title="获取局域网内树莓派 ip"></a>获取局域网内树莓派 ip</h2><h3 id="From-Linux"><a href="#From-Linux" class="headerlink" title="From Linux:"></a>From Linux:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping raspberrypi</div></pre></td></tr></table></figure>
+<h3 id="From-Windows"><a href="#From-Windows" class="headerlink" title="From Windows:"></a>From Windows:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping raspberrypi</div></pre></td></tr></table></figure>
+<h3 id="From-OS-X"><a href="#From-OS-X" class="headerlink" title="From OS X:"></a>From OS X:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping raspberrypi.local</div></pre></td></tr></table></figure>
+<h2 id="配置备选无线网络"><a href="#配置备选无线网络" class="headerlink" title="配置备选无线网络"></a>配置备选无线网络</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ sudo wpa_cli</div><div class="line">&gt; add_network</div><div class="line">0</div><div class="line">&gt; set_network 0 ssid &quot;Your SSID&quot;</div><div class="line">ok</div><div class="line">&gt; set_network 0 key_mgmt WPA-PSK</div><div class="line">ok</div><div class="line">&gt; set_network 0 psk &quot;Your Password&quot;</div><div class="line">ok</div><div class="line">&gt; enable_network 0</div><div class="line">ok</div><div class="line">&gt; save_config</div><div class="line">ok</div></pre></td></tr></table></figure>
+<p>完成后 <code>Ctrl+D</code>退出</p>
+<p>确认配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo cat /etc/wpa_supplicant/wpa_supplicant.conf</div><div class="line">sudo cat /etc/network/interfaces</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">source-directory /etc/network/interfaces.d</div><div class="line"></div><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">iface eth0 inet manual</div><div class="line"></div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 inet manual</div><div class="line">    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</div><div class="line"></div><div class="line">allow-hotplug wlan1</div><div class="line">iface wlan1 inet manual</div><div class="line">    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</div></pre></td></tr></table></figure>
+<p>常用命令</p>
+<ul>
+<li><code>status</code> 列出目前联网状态</li>
+<li><code>list</code> 列出所有备选网络</li>
+</ul>
+<p><strong>可添加多个网络</strong>，可以将公司和家里的无线网络都加入到备选网络。</p>
+<h2 id="设置为静态-IP"><a href="#设置为静态-IP" class="headerlink" title="设置为静态 IP"></a>设置为静态 IP</h2><p>插入无线网卡后，查看无线网卡是否正常工作</p>
+<p><code>iwconfig</code></p>
+<p>编辑配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/network/interfaces</div></pre></td></tr></table></figure>
+<p>原配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iface wlan0 inet manual</div></pre></td></tr></table></figure>
+<p>更改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iface wlan0 inet static</div><div class="line">address 192.168.1.188</div><div class="line">netmask 255.255.255.0</div><div class="line">gateway 192.168.1.1</div></pre></td></tr></table></figure>
+<p>激活无线网卡：</p>
+<p><code>sudo ifdown wlan0 &amp;&amp; sudo ifup wlan0</code></p>
+<p>或者重启网络：</p>
+<p><code>sudo /etc/init.d/networking restart</code></p>
+<p>查看网卡状态</p>
+<p><code>ifconfig</code></p>
+<h2 id="修改时区为-CST-（China-Shanghai-Time）"><a href="#修改时区为-CST-（China-Shanghai-Time）" class="headerlink" title="修改时区为 CST （China Shanghai Time）"></a>修改时区为 CST （China Shanghai Time）</h2><p>默认时区和中国时间相差了八个小时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi:~ $ sudo dpkg-reconfigure tzdata</div><div class="line">Current default time zone: &apos;Asia/Shanghai&apos;</div><div class="line">Local time is now:      Sun Sep 18 16:49:53 CST 2016.</div><div class="line">Universal Time is now:  Sun Sep 18 08:49:53 UTC 2016.</div><div class="line">pi@raspberrypi:~ $ date</div><div class="line">Sun 18 Sep 16:58:37 CST 2016</div></pre></td></tr></table></figure>
+<h2 id="解决语系错误"><a href="#解决语系错误" class="headerlink" title="解决语系错误"></a>解决语系错误</h2><p>安装软件时遇到如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">perl: warning: Setting locale failed.</div><div class="line">perl: warning: Please check that your locale settings:</div><div class="line">    LANGUAGE = (unset),</div><div class="line">    LC_ALL = (unset),</div><div class="line">    LC_CTYPE = &quot;zh_CN.UTF-8&quot;,</div><div class="line">    LANG = &quot;en_US.UTF-8&quot;</div><div class="line">    are supported and installed on your system.</div><div class="line">perl: warning: Falling back to the standard locale (&quot;C&quot;).</div></pre></td></tr></table></figure>
+<p>原因是远端(树莓派)会读取本地(OSX)上的语系配置(<code>zh_CN.UTF-8</code>) 但远端(树莓派)支持语系里没有本地当前语系，所以出现上述错误。</p>
+<p>当前语系配置：<code>locale</code><br>当前支持语系：<code>locale -a</code></p>
+<p>结果中没有 <code>zh_CN.UTF-8</code>,所以需要下载</p>
+<p><code>sudo apt-get install language-pack-zh</code></p>
+<p>或者</p>
+<p><code>sudo locale-gen zh_CN.UTF-8</code></p>
+<p>现在问题就可以解决了。</p>
+<h2 id="OSX-下安装系统"><a href="#OSX-下安装系统" class="headerlink" title="OSX 下安装系统"></a>OSX 下安装系统</h2><h3 id="step1-格式化SD卡"><a href="#step1-格式化SD卡" class="headerlink" title="step1:格式化SD卡"></a>step1:格式化SD卡</h3><p>首先格式化磁盘。<a href="https://www.sdcard.org/downloads/formatter_4/" target="_blank" rel="external">sdcard-formatter</a>，这个只识别sd卡，不会出现格式错误的问题。支持 windows 和 mac 两个系统。</p>
+<ul>
+<li>覆盖格式化</li>
+<li>调整逻辑大小</li>
+</ul>
+<p>或者，使用 Mac 自带的磁盘工具，左侧选中对应的SD卡，点击“抹掉”</p>
+<ul>
+<li>格式选择“MS-DOS(FAT)”</li>
+</ul>
+<h3 id="step2-查看挂载的卷"><a href="#step2-查看挂载的卷" class="headerlink" title="step2:查看挂载的卷"></a>step2:查看挂载的卷</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diskutil list</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/dev/disk2 (internal, physical):</div><div class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</div><div class="line">   0:     FDisk_partition_scheme                        *15.9 GB    disk2</div><div class="line">   1:             Windows_FAT_32 NO NAME                 15.9 GB    disk2s1</div></pre></td></tr></table></figure>
+<p>Identify the disk (not partition) of your SD card e.g. <code>disk2</code>, not <code>disk2s1</code>.</p>
+<h3 id="step3-分区卸载"><a href="#step3-分区卸载" class="headerlink" title="step3:分区卸载"></a>step3:分区卸载</h3><p>Unmount the partition so that you will be allowed to overwrite the disk. 如果不卸载分区，直接 dd 就会提示 <code>dd: /dev/disk2: Resource busy</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diskutil unmountDisk /dev/disk2</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Unmount of all volumes on disk2 was successful</p>
+</blockquote>
+<h3 id="step4-写入系统镜像"><a href="#step4-写入系统镜像" class="headerlink" title="step4:写入系统镜像"></a>step4:写入系统镜像</h3><p>Copy the data to your SD card.</p>
+<p>Be sure to use <code>/dev/rdiskn</code> instead of just <code>/dev/diskn</code>. This way you are not writing to a buffered device and it will complete much faster.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo dd if=2016-03-18-raspbian-jessie-lite.img of=/dev/rdisk2 bs=1m</div><div class="line"># 或者自己定制修改后的版本</div><div class="line">sudo dd if=2016-03-18-raspbian-jessie-lite-diy.img of=/dev/rdisk2 bs=1m</div></pre></td></tr></table></figure>
+<p>(说明：/dev/disk1s1是分区，/dev/disk1是块设备，/dev/rdisk1是原始字符设备)</p>
+<p>This will take a few minutes, depending on the image file size. You can check the progress by sending a SIGINFO signal (press <code>Ctrl+T</code>).</p>
+<blockquote>
+<p>Password:<br>1308+1 records in<br>1308+1 records out<br>1371991835 bytes transferred in 615.399337 secs (2229433 bytes/sec)</p>
+</blockquote>
+<p>确认 SD 卡写入镜像成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diskutil list</div></pre></td></tr></table></figure>
+<p>正常可以使用的 SD 卡结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/dev/disk2 (internal, physical):</div><div class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</div><div class="line">   0:     FDisk_partition_scheme                        *15.9 GB    disk2</div><div class="line">   1:             Windows_FAT_32 boot                    66.1 MB    disk2s1</div><div class="line">   2:                      Linux                         1.3 GB     disk2s2</div></pre></td></tr></table></figure>
+<p>或者，在磁盘管理 SD 卡下能看到 boot ，就说明 SD 卡是 OK 的</p>
+<h3 id="step5-卸载设备"><a href="#step5-卸载设备" class="headerlink" title="step5:卸载设备"></a>step5:卸载设备</h3><p>After the dd command finishes, eject the card:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo diskutil eject /dev/rdisk2</div></pre></td></tr></table></figure>
+<p>现在可以将SD卡拔下来插到树莓派运行了</p>
+<p><strong>注意:</strong></p>
+<ul>
+<li>通过备份还原后，如果 Wifi 无法自动连接，可以重新插拔无线网卡</li>
+<li>如果插入SD卡通电源后，绿色灯一直亮，说明树莓派无法识别系统</li>
+</ul>
+<h2 id="设置自启动"><a href="#设置自启动" class="headerlink" title="设置自启动"></a>设置自启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/rc.local</div></pre></td></tr></table></figure>
+<p>在 <code>exit 0</code> 上方加入需要开机启动的命令添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup ssserver -c /etc/shadowsocks.json &amp;</div></pre></td></tr></table></figure>
+<h2 id="还原-amp-备份"><a href="#还原-amp-备份" class="headerlink" title="还原 &amp; 备份"></a>还原 &amp; 备份</h2><p><code>dd</code> 命令操作 <code>SD卡</code></p>
+<h3 id="Clone-Your-SD-Card"><a href="#Clone-Your-SD-Card" class="headerlink" title="Clone Your SD Card"></a>Clone Your SD Card</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo dd bs=1m if=/dev/rdisk2 of=pi.img</div><div class="line"># or</div><div class="line">sudo dd if=/dev/rdisk2 bs=1m | gzip &gt; pi.gz</div></pre></td></tr></table></figure>
+<p>prefix ‘disk’ with ‘r’ to point to the card’s raw storage space to speed up the process.</p>
+<h3 id="Restore-Your-SD-Card"><a href="#Restore-Your-SD-Card" class="headerlink" title="Restore Your SD Card"></a>Restore Your SD Card</h3><h4 id="Step-1-Format-SD-Card-to-be-Restored"><a href="#Step-1-Format-SD-Card-to-be-Restored" class="headerlink" title="Step 1. Format SD Card to be Restored"></a>Step 1. Format SD Card to be Restored</h4><p>首先格式化磁盘。<a href="https://www.sdcard.org/downloads/formatter_4/" target="_blank" rel="external">sdcard-formatter</a>，这个只识别sd卡，不会出现格式错误的问题。支持 windows 和 mac 两个系统。</p>
+<ul>
+<li>覆盖格式化</li>
+<li>调整逻辑大小</li>
+</ul>
+<p>或者，使用 Mac 自带的磁盘工具，左侧选中对应的SD卡，点击“抹掉”</p>
+<ul>
+<li>格式选择“MS-DOS(FAT)”</li>
+</ul>
+<h4 id="Step-2-Locate-the-SD-Card-to-be-Restored"><a href="#Step-2-Locate-the-SD-Card-to-be-Restored" class="headerlink" title="Step 2. Locate the SD Card to be Restored"></a>Step 2. Locate the SD Card to be Restored</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diskutil list</div></pre></td></tr></table></figure>
+<h4 id="Step-3-Unmount-the-SD-Card"><a href="#Step-3-Unmount-the-SD-Card" class="headerlink" title="Step 3. Unmount the SD Card"></a>Step 3. Unmount the SD Card</h4><p>Update Note that you’ll need to unmount – but not eject – your SD card before you can write to it. So enter:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diskutil unmountDisk /dev/disk2</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Unmount of all volumes on disk2 was successful</p>
+</blockquote>
+<h4 id="Step-4-Restore-from-a-Cloned-Disc-Image"><a href="#Step-4-Restore-from-a-Cloned-Disc-Image" class="headerlink" title="Step 4. Restore from a Cloned Disc Image"></a>Step 4. Restore from a Cloned Disc Image</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo dd if=pi.img of=/dev/rdisk2 bs=1m</div><div class="line"># or</div><div class="line">gzip -dc pi.gz | sudo dd of=/dev/rdisk2 bs=1m</div></pre></td></tr></table></figure>
+<p><strong>补充：</strong> Backing up the Pi SD card on a Linux machine is an almost identical process to the Mac one. The difference: the SD card will be listed as /dev/sdx-something.</p>
+<h3 id="rdisk-vs-disk"><a href="#rdisk-vs-disk" class="headerlink" title="rdisk vs disk"></a>rdisk vs disk</h3><p>To get the best speed out of your MacBook’s SD slot, you need to use a ‘raw disk’ device.</p>
+<p>This is a SanDisk Ultra Class 10 card:</p>
+<blockquote>
+<p>~/Desktop/rpi $ sudo dd if=2012-12-16-wheezy-raspbian.img of=/dev/disk1 bs=8m<br>231+1 records in<br>231+1 records out<br>1939865600 bytes transferred in 1076.078932 secs (1802717 bytes/sec)</p>
+</blockquote>
+<p>Compare this to using /dev/rdisk1 instead of /dev/disk1</p>
+<blockquote>
+<p>~/Desktop/rpi $ sudo dd if=2012-12-16-wheezy-raspbian.img of=/dev/rdisk1 bs=1m<br>1850+0 records in<br>1850+0 records out<br>1939865600 bytes transferred in 129.712100 secs (14955163 bytes/sec)</p>
+</blockquote>
+<p>1.8MB/s compared to 14.9MB/s - almost 10x the improvement!</p>
+<h2 id="定时检查-wifi"><a href="#定时检查-wifi" class="headerlink" title="定时检查 wifi"></a>定时检查 wifi</h2><p><code>/usr/local/bin/checkwifi.sh</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ping -c4 192.168.1.1 &gt; /dev/null</div><div class="line"></div><div class="line">if [ $? != 0 ]</div><div class="line">then</div><div class="line">  echo &quot;No network connection, restarting wlan0&quot;</div><div class="line">  /sbin/ifdown &apos;wlan0&apos;</div><div class="line">  sleep 5</div><div class="line">  /sbin/ifup --force &apos;wlan0&apos;</div><div class="line">fi</div></pre></td></tr></table></figure>
+<p>没 5 分钟检查一次：</p>
+<p><code>*/5 * * * * /usr/bin/sudo -H /usr/local/bin/checkwifi.sh &gt;&gt; /dev/null 2&gt;&amp;1</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/raspberry/" rel="tag">#raspberry</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/17/github.html" rel="next" title="github">
+                <i class="fa fa-chevron-left"></i> github
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/git.html" rel="prev" title="git">
+                git <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/18/raspberry.html"
+           data-title="raspberry" data-url="http://haobing.wang/2016/07/18/raspberry.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-问题-疑似为劣质网卡问题"><span class="nav-number">1.</span> <span class="nav-text">SSH 问题(疑似为劣质网卡问题)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#For-the-client"><span class="nav-number">1.1.</span> <span class="nav-text">For the client</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端调试："><span class="nav-number">1.2.</span> <span class="nav-text">客户端调试：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端调试："><span class="nav-number">1.3.</span> <span class="nav-text">服务端调试：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源"><span class="nav-number">2.</span> <span class="nav-text">更换软件源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#始化设置"><span class="nav-number">3.</span> <span class="nav-text">始化设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新固件"><span class="nav-number">4.</span> <span class="nav-text">更新固件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取局域网内树莓派-ip"><span class="nav-number">5.</span> <span class="nav-text">获取局域网内树莓派 ip</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#From-Linux"><span class="nav-number">5.1.</span> <span class="nav-text">From Linux:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#From-Windows"><span class="nav-number">5.2.</span> <span class="nav-text">From Windows:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#From-OS-X"><span class="nav-number">5.3.</span> <span class="nav-text">From OS X:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置备选无线网络"><span class="nav-number">6.</span> <span class="nav-text">配置备选无线网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置为静态-IP"><span class="nav-number">7.</span> <span class="nav-text">设置为静态 IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改时区为-CST-（China-Shanghai-Time）"><span class="nav-number">8.</span> <span class="nav-text">修改时区为 CST （China Shanghai Time）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决语系错误"><span class="nav-number">9.</span> <span class="nav-text">解决语系错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSX-下安装系统"><span class="nav-number">10.</span> <span class="nav-text">OSX 下安装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1-格式化SD卡"><span class="nav-number">10.1.</span> <span class="nav-text">step1:格式化SD卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2-查看挂载的卷"><span class="nav-number">10.2.</span> <span class="nav-text">step2:查看挂载的卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3-分区卸载"><span class="nav-number">10.3.</span> <span class="nav-text">step3:分区卸载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4-写入系统镜像"><span class="nav-number">10.4.</span> <span class="nav-text">step4:写入系统镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step5-卸载设备"><span class="nav-number">10.5.</span> <span class="nav-text">step5:卸载设备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置自启动"><span class="nav-number">11.</span> <span class="nav-text">设置自启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还原-amp-备份"><span class="nav-number">12.</span> <span class="nav-text">还原 & 备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clone-Your-SD-Card"><span class="nav-number">12.1.</span> <span class="nav-text">Clone Your SD Card</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restore-Your-SD-Card"><span class="nav-number">12.2.</span> <span class="nav-text">Restore Your SD Card</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-Format-SD-Card-to-be-Restored"><span class="nav-number">12.2.1.</span> <span class="nav-text">Step 1. Format SD Card to be Restored</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-Locate-the-SD-Card-to-be-Restored"><span class="nav-number">12.2.2.</span> <span class="nav-text">Step 2. Locate the SD Card to be Restored</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3-Unmount-the-SD-Card"><span class="nav-number">12.2.3.</span> <span class="nav-text">Step 3. Unmount the SD Card</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-4-Restore-from-a-Cloned-Disc-Image"><span class="nav-number">12.2.4.</span> <span class="nav-text">Step 4. Restore from a Cloned Disc Image</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdisk-vs-disk"><span class="nav-number">12.3.</span> <span class="nav-text">rdisk vs disk</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时检查-wifi"><span class="nav-number">13.</span> <span class="nav-text">定时检查 wifi</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

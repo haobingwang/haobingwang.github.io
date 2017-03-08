@@ -1,0 +1,704 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="https," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="HTTP:Your connection is not private.Attackers might be trying to steal your information from example.com (for example, passwords, messages, or credit cards).
+不使用 HTTPS 存在的风险
+
+窃听风险（eavesdropping）：第三方可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="https">
+<meta property="og:url" content="http://haobing.wang/2016/08/18/https.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="HTTP:Your connection is not private.Attackers might be trying to steal your information from example.com (for example, passwords, messages, or credit cards).
+不使用 HTTPS 存在的风险
+
+窃听风险（eavesdropping）：第三方可以">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="https">
+<meta name="twitter:description" content="HTTP:Your connection is not private.Attackers might be trying to steal your information from example.com (for example, passwords, messages, or credit cards).
+不使用 HTTPS 存在的风险
+
+窃听风险（eavesdropping）：第三方可以">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/08/18/https.html"/>
+
+
+  <title> https | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                https
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T16:09:46+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/https.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/18/https.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>HTTP:Your connection is not private.Attackers might be trying to steal your information from example.com (for example, passwords, messages, or credit cards).</p>
+<p>不使用 HTTPS 存在的风险</p>
+<ul>
+<li>窃听风险（eavesdropping）：第三方可以获知通信内容。</li>
+<li>篡改风险（tampering）：第三方可以修改通信内容。</li>
+<li>冒充风险（pretending）：第三方可以冒充他人身份参与通信。</li>
+</ul>
+<p>To enable HTTPS on your website, you need to get a certificate (a type of file) from a Certificate Authority (CA). Let’s Encrypt is a CA.</p>
+<p><strong>注意</strong> 网站一旦启用 https，则附加的 css、js、image 都要是 https 的。<strong>如果</strong> 网站使用第三方 CDN 则会产生额外的费用。</p>
+<h1 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h1><p>Let’s Encrypt 的 certificates（有效期90天），配合 certbot 自动续期。</p>
+<h2 id="下载安装-certbot"><a href="#下载安装-certbot" class="headerlink" title="下载安装 certbot"></a>下载安装 certbot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd /opt</div><div class="line">wget https://dl.eff.org/certbot-auto</div><div class="line">chmod a+x certbot-auto</div><div class="line">./certbot-auto --help</div></pre></td></tr></table></figure>
+<h2 id="命令行模式生成证书"><a href="#命令行模式生成证书" class="headerlink" title="命令行模式生成证书"></a>命令行模式生成证书</h2><h3 id="webroot"><a href="#webroot" class="headerlink" title="webroot"></a>webroot</h3><p>由于网站正在运行，并且不能够关闭服务来获取和安装证书，使用 webroot 模式来获取证书，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo /opt/certbot-auto certonly --webroot -w 网站根目录 -d 网站域名</div><div class="line">sudo /opt/certbot-auto certonly --webroot -w /var/www/example -d example.com -d www.example.com</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个命令会为 <a href="http://example.com" target="_blank" rel="external">http://example.com</a> 和 <a href="http://www.example.com" target="_blank" rel="external">http://www.example.com</a> 这两个域名生成一个证书，使用 –webroot 模式会在 /var/www/example 中创建 .well-known 文件夹，这个文件夹里面包含了一些验证文件，certbot 会通过访问 <a href="http://example.com/.well-known/acme-challenge" target="_blank" rel="external">http://example.com/.well-known/acme-challenge</a> 来验证你的域名是否绑定的这个服务器。这个命令在大多数情况下都可以满足需求。</p>
+</blockquote>
+<p>注意：如果获取证书过程中提示无法访问 <code>/.well-known</code>，需要修改 nginx 的配置，在 server 块里添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location ~ /.well-known &#123;</div><div class="line">  allow all;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>全部内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen  80;</div><div class="line">  server_name example.com www.example.com;</div><div class="line"></div><div class="line">  root /var/www/example; # 对应上面命令中的 “-w /var/www/example”</div><div class="line">  index index.html index.htm;</div><div class="line"></div><div class="line">  location ~ /.well-known &#123;</div><div class="line">    allow all;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="standalone（仅作了解）"><a href="#standalone（仅作了解）" class="headerlink" title="standalone（仅作了解）"></a>standalone（仅作了解）</h3><p>但是有些时候我们的一些服务并没有根目录，例如一些微服务，这时候使用 –webroot 就走不通了。certbot 还有另外一种模式 –standalone ， 这种模式不需要指定网站根目录，他会自动启用服务器的443端口，来验证域名的归属。我们有其他服务（例如nginx）占用了443端口，就必须先停止这些服务，在证书生成完毕后，再启用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo service nginx stop</div><div class="line">sudo /opt/certbot-auto certonly --standalone -d example.com -d www.example.com</div><div class="line">sudo service nginx start</div></pre></td></tr></table></figure>
+<p>而且以后更新的命令中也要使用特殊参数，启用和关闭 nginx。</p>
+<h2 id="认证过程"><a href="#认证过程" class="headerlink" title="认证过程"></a>认证过程</h2><ol>
+<li>邮箱使用国内邮箱（不建议使用 gmail），在证书快过期时,会发送通知邮件</li>
+<li>如果遇到 “installing Python packages” 停住不动时，请使用阿里云的pip 镜像。</li>
+</ol>
+<h2 id="生成证书成功"><a href="#生成证书成功" class="headerlink" title="生成证书成功"></a>生成证书成功</h2><blockquote>
+<ul>
+<li>Congratulations! Your certificate and chain have been saved at<br>/etc/letsencrypt/live/example.com/fullchain.pem<br>…</li>
+</ul>
+</blockquote>
+<p>注意这里，默认会自动生成 <code>/var/www/example/.well-known/acme-challenge</code>，然后 shell 脚本会对应的访问该文件，如果返回正常就确认了你对这个网站的所有权，就能顺利生成证书。</p>
+<p>查看生成的证书</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ls -l /etc/letsencrypt/live/example.com</div></pre></td></tr></table></figure>
+<p>生成的证书会存储在 <code>/etc/letsencrypt/live/example.com/</code> 对应的目录下。</p>
+<ul>
+<li>cert.pem   - Your domain’s certificate</li>
+<li>chain.pem  - The Let’s Encrypt chain certificate</li>
+<li>fullchain.pem  - <code>cert.pem</code> and <code>chain.pem</code> combined</li>
+<li>privkey.pem    - Your certificate’s private key</li>
+</ul>
+<p>我们使用的 Nginx 环境，需要用到 fullchain.pem 和 privkey.pem 两个证书文件</p>
+<blockquote>
+<p>ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;<br>ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</p>
+</blockquote>
+<h2 id="增强安全"><a href="#增强安全" class="headerlink" title="增强安全"></a>增强安全</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
+<p>This may take a few minutes but when it’s done you will have a strong DH group.</p>
+<p>在 ssl server block 中添加：</p>
+<blockquote>
+<p>ssl_dhparam /etc/ssl/certs/dhparam.pem;</p>
+</blockquote>
+<p>完成配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen  80;</div><div class="line">  server_name example.com www.example.com;</div><div class="line"></div><div class="line">  root /var/www/example;</div><div class="line">  index index.html index.htm;</div><div class="line"></div><div class="line">  location ~ /.well-known &#123;</div><div class="line">    allow all;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  # 将http的请求转发为https</div><div class="line">  return 301 https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 443;</div><div class="line">    server_name example.com, www.example.com;</div><div class="line"></div><div class="line">    ssl on;</div><div class="line">    ssl_certificate /path/to/chained.pem;</div><div class="line">    ssl_certificate_key /path/to/domain.key;</div><div class="line"></div><div class="line">    ssl_dhparam /path/to/server.dhparam;# 新加此行</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://127.0.0.1:3999;</div><div class="line">      proxy_http_version 1.1;</div><div class="line">      proxy_set_header X_FORWARDED_PROTO https;</div><div class="line">      proxy_set_header X-Real-IP $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">      proxy_set_header Host $host;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="nginx-重新加载配置"><a href="#nginx-重新加载配置" class="headerlink" title="nginx 重新加载配置"></a>nginx 重新加载配置</h2><p>要让修改后的配置生效，不需要 <code>restart</code> ，只需要 <code>reload</code> 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service nginx reload</div></pre></td></tr></table></figure>
+<h2 id="测试-SSL-安全性"><a href="#测试-SSL-安全性" class="headerlink" title="测试 SSL 安全性"></a>测试 SSL 安全性</h2><p><a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="external">立即前往测试</a>，输入域名，查看评测报告，应该有 <code>A+</code></p>
+<h2 id="自动续期-cron"><a href="#自动续期-cron" class="headerlink" title="自动续期 cron"></a>自动续期 cron</h2><p>You can test automatic renewal for your certificates by running this command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/certbot-auto renew --dry-run</div></pre></td></tr></table></figure>
+<p>If that appears to be working correctly, you can arrange for automatic renewal by adding a cron (or systemd) job which runs the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -e</div><div class="line">42 2,14 * * * /opt/certbot-auto renew --quiet --no-self-upgrade</div><div class="line"></div><div class="line">crontab -l</div></pre></td></tr></table></figure>
+<p>即每天的 02:42 和 14:42 运行一次脚本。如果到期没有更新证书，CA会向申请证书时提交的邮件地址发送提醒email。</p>
+<h2 id="HTTPS站点的SEO自检清单"><a href="#HTTPS站点的SEO自检清单" class="headerlink" title="HTTPS站点的SEO自检清单"></a>HTTPS站点的SEO自检清单</h2><ol>
+<li>确保网站的每个元素（包括插件、JS、CSS文件、图片、内容分发网站等）都采用HTTPS协议；</li>
+<li>使用301重定向将HTTP URL指向HTTPS版地址</li>
+</ol>
+<blockquote>
+<p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="external">Nginx 配置生成器 - Mozilla SSL Configuration Generator</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/https/" rel="tag">#https</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/17/restful.html" rel="next" title="restful">
+                <i class="fa fa-chevron-left"></i> restful
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/20/tar.html" rel="prev" title="tar">
+                tar <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/18/https.html"
+           data-title="https" data-url="http://haobing.wang/2016/08/18/https.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Let’s-Encrypt"><span class="nav-number">1.</span> <span class="nav-text">Let’s Encrypt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载安装-certbot"><span class="nav-number">1.1.</span> <span class="nav-text">下载安装 certbot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行模式生成证书"><span class="nav-number">1.2.</span> <span class="nav-text">命令行模式生成证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webroot"><span class="nav-number">1.2.1.</span> <span class="nav-text">webroot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#standalone（仅作了解）"><span class="nav-number">1.2.2.</span> <span class="nav-text">standalone（仅作了解）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#认证过程"><span class="nav-number">1.3.</span> <span class="nav-text">认证过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成证书成功"><span class="nav-number">1.4.</span> <span class="nav-text">生成证书成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增强安全"><span class="nav-number">1.5.</span> <span class="nav-text">增强安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-重新加载配置"><span class="nav-number">1.6.</span> <span class="nav-text">nginx 重新加载配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试-SSL-安全性"><span class="nav-number">1.7.</span> <span class="nav-text">测试 SSL 安全性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动续期-cron"><span class="nav-number">1.8.</span> <span class="nav-text">自动续期 cron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS站点的SEO自检清单"><span class="nav-number">1.9.</span> <span class="nav-text">HTTPS站点的SEO自检清单</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

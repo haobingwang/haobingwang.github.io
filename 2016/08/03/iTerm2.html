@@ -1,0 +1,658 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="locale,LC_CTYPE," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="manpath: can’t set the locale; make sure $LC_* and $LANG are correctWelcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-32-generic x86_64)
+
+Documentation:  https://help.ubuntu.com/
+
+Welcome to aliyun Elas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iTerm2">
+<meta property="og:url" content="http://haobing.wang/2016/08/03/iTerm2.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="manpath: can’t set the locale; make sure $LC_* and $LANG are correctWelcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-32-generic x86_64)
+
+Documentation:  https://help.ubuntu.com/
+
+Welcome to aliyun Elas">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iTerm2">
+<meta name="twitter:description" content="manpath: can’t set the locale; make sure $LC_* and $LANG are correctWelcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-32-generic x86_64)
+
+Documentation:  https://help.ubuntu.com/
+
+Welcome to aliyun Elas">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/08/03/iTerm2.html"/>
+
+
+  <title> iTerm2 | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iTerm2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T09:59:41+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/03/iTerm2.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/iTerm2.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="manpath-can’t-set-the-locale-make-sure-LC-and-LANG-are-correct"><a href="#manpath-can’t-set-the-locale-make-sure-LC-and-LANG-are-correct" class="headerlink" title="manpath: can’t set the locale; make sure $LC_* and $LANG are correct"></a>manpath: can’t set the locale; make sure $LC_* and $LANG are correct</h2><p>Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-32-generic x86_64)</p>
+<ul>
+<li>Documentation:  <a href="https://help.ubuntu.com/" target="_blank" rel="external">https://help.ubuntu.com/</a></li>
+</ul>
+<p>Welcome to aliyun Elastic Compute Service!</p>
+<p>Last login: Tue Jul  5 09:47:04 2016 from 101.81.225.194<br>manpath: can’t set the locale; make sure $LC_* and $LANG are correct</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">➜  ~ locale</div><div class="line">locale: Cannot set LC_CTYPE to default locale: No such file or directory</div><div class="line">locale: Cannot set LC_ALL to default locale: No such file or directory</div><div class="line">LANG=en_US.UTF-8</div><div class="line">LANGUAGE=en_US:en</div><div class="line">LC_CTYPE=UTF-8</div><div class="line">LC_NUMERIC=&quot;en_US.UTF-8&quot;</div><div class="line">LC_TIME=&quot;en_US.UTF-8&quot;</div><div class="line">LC_COLLATE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MONETARY=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MESSAGES=&quot;en_US.UTF-8&quot;</div><div class="line">LC_PAPER=&quot;en_US.UTF-8&quot;</div><div class="line">LC_NAME=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ADDRESS=&quot;en_US.UTF-8&quot;</div><div class="line">LC_TELEPHONE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MEASUREMENT=&quot;en_US.UTF-8&quot;</div><div class="line">LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ALL=</div></pre></td></tr></table></figure>
+<ul>
+<li>错误在于 <code>LC_CTYPE=UTF-8</code>，正确的应该是 <code>LC_CTYPE=en_US.UTF-8</code></li>
+<li><code>LC_ALL=</code> 是躺枪的</li>
+</ul>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Your local ssh client is sending your LC<em>* environment variables to remote sshd server. In other words, SSH will try to set every LC</em>* variable you have set on your local OSX system on the remove server too.</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="方法一：Preventing-OpenSSH-Client-from-sending-the-LC-variables-on-OS-X-Linux-Unix-desktop（推荐）"><a href="#方法一：Preventing-OpenSSH-Client-from-sending-the-LC-variables-on-OS-X-Linux-Unix-desktop（推荐）" class="headerlink" title="方法一：Preventing OpenSSH Client from sending the LC_* variables on OS X / Linux / Unix desktop（推荐）"></a>方法一：Preventing OpenSSH Client from sending the LC_* variables on OS X / Linux / Unix desktop（推荐）</h3><p>Edit <code>/etc/ssh/ssh_config</code> or <code>/etc/ssh_config</code> file, enter:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/ssh/ssh_config</div></pre></td></tr></table></figure>
+<p>将 <code>SendEnv LANG LC_*</code> 注释掉保存后，重新登录服务器就不会报错了。</p>
+<h2 id="方法二：If-you-are-using-the-Terminal-app-on-OS-X"><a href="#方法二：If-you-are-using-the-Terminal-app-on-OS-X" class="headerlink" title="方法二：If you are using the Terminal app on OS X"></a>方法二：If you are using the Terminal app on OS X</h2><p>iTerm2 默认启用了“Set locale environment variables on startup”<br>取消勾选可以解决服务器上的问题，但是本地就会有中文显示的问题。可以每次手动修改 iTerm2 的配置。</p>
+<h2 id="方法三：-Install-required-locale-on-the-remote-server"><a href="#方法三：-Install-required-locale-on-the-remote-server" class="headerlink" title="方法三： Install required locale on the remote server"></a>方法三： Install required locale on the remote server</h2><p>Finally, you can fix this problem either installing the desired locale using the localedef command, or consider choosing a different locale in locale/remote system:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localedef -i en_US -f UTF-8 en_US.UTF-8</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/locale/" rel="tag">#locale</a>
+          
+            <a href="/tags/LC-CTYPE/" rel="tag">#LC_CTYPE</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/02/git-rebase.html" rel="next" title="git-rebase">
+                <i class="fa fa-chevron-left"></i> git-rebase
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/03/env.html" rel="prev" title="环境变量">
+                环境变量 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/03/iTerm2.html"
+           data-title="iTerm2" data-url="http://haobing.wang/2016/08/03/iTerm2.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#manpath-can’t-set-the-locale-make-sure-LC-and-LANG-are-correct"><span class="nav-number">1.</span> <span class="nav-text">manpath: can’t set the locale; make sure $LC_* and $LANG are correct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：Preventing-OpenSSH-Client-from-sending-the-LC-variables-on-OS-X-Linux-Unix-desktop（推荐）"><span class="nav-number">3.1.</span> <span class="nav-text">方法一：Preventing OpenSSH Client from sending the LC_* variables on OS X / Linux / Unix desktop（推荐）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二：If-you-are-using-the-Terminal-app-on-OS-X"><span class="nav-number">4.</span> <span class="nav-text">方法二：If you are using the Terminal app on OS X</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三：-Install-required-locale-on-the-remote-server"><span class="nav-number">5.</span> <span class="nav-text">方法三： Install required locale on the remote server</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

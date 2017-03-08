@@ -1,0 +1,690 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="块级元素 &amp;amp;&amp;amp; 行内元素块级元素占据其父元素（容器）的整个空间。行内元素只占据它对应标签的边框所包含的空间。
+汉字占位符问题一个汉字使用一个全角汉字空格。搜狗输入法的默认是半角，所以需要手动更改下设置再输入空格即可。使用空白字符会被 htmlmin 等工具剔除掉。推荐使用汉字占位符 &amp;amp;#12288;
+如何在一个 html 页面中嵌入 另一个 html 页面？12345678">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html">
+<meta property="og:url" content="http://haobing.wang/2016/11/08/html.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="块级元素 &amp;amp;&amp;amp; 行内元素块级元素占据其父元素（容器）的整个空间。行内元素只占据它对应标签的边框所包含的空间。
+汉字占位符问题一个汉字使用一个全角汉字空格。搜狗输入法的默认是半角，所以需要手动更改下设置再输入空格即可。使用空白字符会被 htmlmin 等工具剔除掉。推荐使用汉字占位符 &amp;amp;#12288;
+如何在一个 html 页面中嵌入 另一个 html 页面？12345678">
+<meta property="og:image" content="http://haobing.wang/images/cookies.png">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.622Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html">
+<meta name="twitter:description" content="块级元素 &amp;amp;&amp;amp; 行内元素块级元素占据其父元素（容器）的整个空间。行内元素只占据它对应标签的边框所包含的空间。
+汉字占位符问题一个汉字使用一个全角汉字空格。搜狗输入法的默认是半角，所以需要手动更改下设置再输入空格即可。使用空白字符会被 htmlmin 等工具剔除掉。推荐使用汉字占位符 &amp;amp;#12288;
+如何在一个 html 页面中嵌入 另一个 html 页面？12345678">
+<meta name="twitter:image" content="http://haobing.wang/images/cookies.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/11/08/html.html"/>
+
+
+  <title> html | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                html
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-08T14:52:18+08:00" content="2016-11-08">
+              2016-11-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/08/html.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/html.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="块级元素-amp-amp-行内元素"><a href="#块级元素-amp-amp-行内元素" class="headerlink" title="块级元素 &amp;&amp; 行内元素"></a>块级元素 &amp;&amp; 行内元素</h2><p>块级元素占据其父元素（容器）的整个空间。<br>行内元素只占据它对应标签的边框所包含的空间。</p>
+<h2 id="汉字占位符问题"><a href="#汉字占位符问题" class="headerlink" title="汉字占位符问题"></a>汉字占位符问题</h2><p>一个汉字使用一个<code>全角</code>汉字空格。搜狗输入法的默认是<code>半角</code>，所以需要手动更改下设置再输入空格即可。使用空白字符会被 htmlmin 等工具剔除掉。推荐使用汉字占位符 <code>&amp;#12288;</code></p>
+<h2 id="如何在一个-html-页面中嵌入-另一个-html-页面？"><a href="#如何在一个-html-页面中嵌入-另一个-html-页面？" class="headerlink" title="如何在一个 html 页面中嵌入 另一个 html 页面？"></a>如何在一个 html 页面中嵌入 另一个 html 页面？</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"http://localhost:4000/archives/"</span></span></div><div class="line">  <span class="attr">width</span>=<span class="string">"400"</span></div><div class="line">  <span class="attr">height</span>=<span class="string">"300"</span></div><div class="line">  <span class="attr">frameborder</span>=<span class="string">"0"</span></div><div class="line">  <span class="attr">scrolling</span>=<span class="string">"no"</span></div><div class="line">  <span class="attr">marginheight</span>=<span class="string">"0"</span></div><div class="line">  <span class="attr">marginwidth</span>=<span class="string">"0"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Your browser does not support iframes.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="客户端存储"><a href="#客户端存储" class="headerlink" title="客户端存储"></a>客户端存储</h2><h3 id="远古时期"><a href="#远古时期" class="headerlink" title="远古时期"></a>远古时期</h3><ul>
+<li>cookies 的用法和缺陷</li>
+<li>userdata</li>
+</ul>
+<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p><img src="/images/cookies.png" alt=""></p>
+<ul>
+<li>每次 http 请求都会带上 cookie 跟服务器要东西（不安全、请求臃肿）</li>
+<li>最大存储 4K</li>
+<li>主域名污染，子域名会受主域名影响</li>
+</ul>
+<h4 id="userdata"><a href="#userdata" class="headerlink" title="userdata"></a>userdata</h4><ul>
+<li>只有 IE 支持</li>
+<li>XML 文件</li>
+</ul>
+<h3 id="HTML5-时代"><a href="#HTML5-时代" class="headerlink" title="HTML5 时代:"></a>HTML5 时代:</h3><p>H5 存储的主要目标是：</p>
+<ul>
+<li>解决 4K 限制问题</li>
+<li>解决请求头常带存储信息问题</li>
+<li>解决关系型存储的问题</li>
+<li>解决跨浏览器的问题</li>
+</ul>
+<ul>
+<li>LocalStorage<ul>
+<li>存储形式：键值对</li>
+<li>存储容量：每个域名 5M</li>
+<li>过期：永不过期，手动删除</li>
+</ul>
+</li>
+<li>SessionStorage<ul>
+<li>过期：关闭页面，或重新打开浏览器，或者重新打开新Tab，刷新不会过期</li>
+</ul>
+</li>
+<li>IndexedDB</li>
+<li>Web SQL（已不再维护）</li>
+<li>application cache</li>
+</ul>
+<h4 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">localStorage.setItem(<span class="string">'hello'</span>,<span class="string">'world'</span>)</div><div class="line">localStorage.getItem(<span class="string">'hello'</span>)</div><div class="line">localStorage.key(<span class="number">0</span>)</div><div class="line">localStorage.clear()</div></pre></td></tr></table></figure>
+<h4 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sessionStorage.setItem(<span class="string">'hello'</span>,<span class="string">'world'</span>)</div><div class="line">sessionStorage.getItem(<span class="string">'hello'</span>)</div><div class="line">sessionStorage.key(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h4 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h4><p>一种能在浏览器中持久地存储结构化数据的数据库，并且为 Web 应用提供了丰富的查询能力。</p>
+<p>每个域名都可以创建多个 db，每个 db 可以创建多个表</p>
+<ul>
+<li>增删改</li>
+<li>事务</li>
+<li>游标</li>
+<li>索引</li>
+</ul>
+<p>HTML5 存储</p>
+<p>如何实现把图片存储在客户端？<br>如何实现跨域共享客户端缓存？<br>如何做到真正的离线访问web应用？<br>如何实现一个客户端数据库？</p>
+<h3 id="关于存储"><a href="#关于存储" class="headerlink" title="关于存储"></a>关于存储</h3><ul>
+<li>内存存储 cache</li>
+<li>磁盘存储 文件</li>
+<li>磁盘存储 数据库</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html/" rel="tag">#html</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/07/reactvsvue.html" rel="next" title="React vs Vue">
+                <i class="fa fa-chevron-left"></i> React vs Vue
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/10/base64.html" rel="prev" title="base64">
+                base64 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/08/html.html"
+           data-title="html" data-url="http://haobing.wang/2016/11/08/html.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#块级元素-amp-amp-行内元素"><span class="nav-number">1.</span> <span class="nav-text">块级元素 && 行内元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汉字占位符问题"><span class="nav-number">2.</span> <span class="nav-text">汉字占位符问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在一个-html-页面中嵌入-另一个-html-页面？"><span class="nav-number">3.</span> <span class="nav-text">如何在一个 html 页面中嵌入 另一个 html 页面？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端存储"><span class="nav-number">4.</span> <span class="nav-text">客户端存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远古时期"><span class="nav-number">4.1.</span> <span class="nav-text">远古时期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-number">4.1.1.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#userdata"><span class="nav-number">4.1.2.</span> <span class="nav-text">userdata</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5-时代"><span class="nav-number">4.2.</span> <span class="nav-text">HTML5 时代:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LocalStorage"><span class="nav-number">4.2.1.</span> <span class="nav-text">LocalStorage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SessionStorage"><span class="nav-number">4.2.2.</span> <span class="nav-text">SessionStorage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IndexedDB"><span class="nav-number">4.2.3.</span> <span class="nav-text">IndexedDB</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于存储"><span class="nav-number">4.3.</span> <span class="nav-text">关于存储</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

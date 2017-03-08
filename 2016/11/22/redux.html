@@ -1,0 +1,619 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="redux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="#注意事项
+1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。1234567&amp;lt;div className=&quot;index&quot;&amp;gt;  &amp;lt;p&amp;gt;&amp;#123;this.props.text&amp;#125;&amp;lt;/p&amp;gt;  &amp;lt;input    defaultValue=&amp;#123;this.props.name&amp;#125;    on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redux">
+<meta property="og:url" content="http://haobing.wang/2016/11/22/redux.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="#注意事项
+1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。1234567&amp;lt;div className=&quot;index&quot;&amp;gt;  &amp;lt;p&amp;gt;&amp;#123;this.props.text&amp;#125;&amp;lt;/p&amp;gt;  &amp;lt;input    defaultValue=&amp;#123;this.props.name&amp;#125;    on">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redux">
+<meta name="twitter:description" content="#注意事项
+1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。1234567&amp;lt;div className=&quot;index&quot;&amp;gt;  &amp;lt;p&amp;gt;&amp;#123;this.props.text&amp;#125;&amp;lt;/p&amp;gt;  &amp;lt;input    defaultValue=&amp;#123;this.props.name&amp;#125;    on">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/11/22/redux.html"/>
+
+
+  <title> redux | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                redux
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-22T15:26:09+08:00" content="2016-11-22">
+              2016-11-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/22/redux.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/redux.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#注意事项</p>
+<h2 id="1-Redux-要求-UI-的渲染组件都是纯组件，即不包含任何状态（this-state）的组件。"><a href="#1-Redux-要求-UI-的渲染组件都是纯组件，即不包含任何状态（this-state）的组件。" class="headerlink" title="1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。"></a>1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div className=<span class="string">"index"</span>&gt;</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.props.text&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">  &lt;input</div><div class="line">    defaultValue=&#123;<span class="keyword">this</span>.props.name&#125;</div><div class="line">    onChange=&#123;<span class="keyword">this</span>.props.onChange&#125;</div><div class="line">  /&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<h2 id="2-进行数据处理、并包含状态的组件，称为”容器组件“。Redux-使用connect方法，自动生成-UI-组件对应的”容器组件“。"><a href="#2-进行数据处理、并包含状态的组件，称为”容器组件“。Redux-使用connect方法，自动生成-UI-组件对应的”容器组件“。" class="headerlink" title="2.进行数据处理、并包含状态的组件，称为”容器组件“。Redux 使用connect方法，自动生成 UI 组件对应的”容器组件“。"></a>2.进行数据处理、并包含状态的组件，称为”容器组件“。Redux 使用connect方法，自动生成 UI 组件对应的”容器组件“。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// MyComponent 是纯的 UI 组件</span></div><div class="line"><span class="keyword">const</span> App = connect(</div><div class="line">  mapStateToProps,</div><div class="line">  mapDispatchToProps</div><div class="line">)(MyComponent);</div></pre></td></tr></table></figure>
+<h2 id="3-mapStateToProps函数返回一个对象，表示一种映射关系，将-UI-组件的参数映射到state。"><a href="#3-mapStateToProps函数返回一个对象，表示一种映射关系，将-UI-组件的参数映射到state。" class="headerlink" title="3.mapStateToProps函数返回一个对象，表示一种映射关系，将 UI 组件的参数映射到state。"></a>3.mapStateToProps函数返回一个对象，表示一种映射关系，将 UI 组件的参数映射到state。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">text</span>: state.text,</div><div class="line">    <span class="attr">name</span>: state.name</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。"><a href="#4-mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。" class="headerlink" title="4.mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。"></a>4.mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapDispatchToProps</span>(<span class="params">dispatch</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">onChange</span>: <span class="function">(<span class="params">e</span>) =&gt;</span> dispatch(&#123;</div><div class="line">      <span class="attr">type</span>: <span class="string">'change'</span>,</div><div class="line">      <span class="attr">payload</span>: e.target.value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-reducer函数用来接收action，算出新的state。"><a href="#5-reducer函数用来接收action，算出新的state。" class="headerlink" title="5.reducer函数用来接收action，算出新的state。"></a>5.reducer函数用来接收action，算出新的state。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state = &#123;</span></span></div><div class="line">  text: <span class="string">'你好，访问者'</span>,</div><div class="line">  name: <span class="string">'访问者'</span></div><div class="line">&#125;, action) &#123;</div><div class="line">  <span class="keyword">switch</span> (action.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'change'</span>:</div><div class="line">      <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">name</span>: action.payload,</div><div class="line">        <span class="attr">text</span>: <span class="string">'你好，'</span> + action.payload</div><div class="line">      &#125;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Store由 Redux 提供的createStore方法生成，该方法接受reducer作为参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> store = createStore(reducer);</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">App</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span>,</div><div class="line">  <span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createElement(<span class="string">'div'</span>))</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redux/" rel="tag">#redux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/22/token.html" rel="next" title="token">
+                <i class="fa fa-chevron-left"></i> token
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/24/dva.html" rel="prev" title="dva">
+                dva <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/22/redux.html"
+           data-title="redux" data-url="http://haobing.wang/2016/11/22/redux.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Redux-要求-UI-的渲染组件都是纯组件，即不包含任何状态（this-state）的组件。"><span class="nav-number">1.</span> <span class="nav-text">1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-进行数据处理、并包含状态的组件，称为”容器组件“。Redux-使用connect方法，自动生成-UI-组件对应的”容器组件“。"><span class="nav-number">2.</span> <span class="nav-text">2.进行数据处理、并包含状态的组件，称为”容器组件“。Redux 使用connect方法，自动生成 UI 组件对应的”容器组件“。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-mapStateToProps函数返回一个对象，表示一种映射关系，将-UI-组件的参数映射到state。"><span class="nav-number">3.</span> <span class="nav-text">3.mapStateToProps函数返回一个对象，表示一种映射关系，将 UI 组件的参数映射到state。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。"><span class="nav-number">4.</span> <span class="nav-text">4.mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-reducer函数用来接收action，算出新的state。"><span class="nav-number">5.</span> <span class="nav-text">5.reducer函数用来接收action，算出新的state。</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

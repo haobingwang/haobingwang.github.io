@@ -1,0 +1,695 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="meteor," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="THE FASTEST WAY TO BUILD JAVASCRIPT APPS
+Meteor is an open source platform for web, mobile, and desktop.
+详情
+
+Meteor 1.4   -&amp;gt; Node 4.4.7+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="meteor">
+<meta property="og:url" content="http://haobing.wang/2016/07/09/meteor.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="THE FASTEST WAY TO BUILD JAVASCRIPT APPS
+Meteor is an open source platform for web, mobile, and desktop.
+详情
+
+Meteor 1.4   -&amp;gt; Node 4.4.7+">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.628Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="meteor">
+<meta name="twitter:description" content="THE FASTEST WAY TO BUILD JAVASCRIPT APPS
+Meteor is an open source platform for web, mobile, and desktop.
+详情
+
+Meteor 1.4   -&amp;gt; Node 4.4.7+">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/07/09/meteor.html"/>
+
+
+  <title> meteor | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                meteor
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-09T18:20:39+08:00" content="2016-07-09">
+              2016-07-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/09/meteor.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/09/meteor.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>THE FASTEST WAY TO BUILD JAVASCRIPT APPS</p>
+<p>Meteor is an open source platform for web, mobile, and desktop.</p>
+<p><a href="https://www.meteor.com/" target="_blank" rel="external">详情</a></p>
+<ul>
+<li>Meteor 1.4   -&gt; Node 4.4.7+</li>
+</ul>
+<a id="more"></a>
+<h2 id="meteor-下载问题"><a href="#meteor-下载问题" class="headerlink" title="meteor 下载问题"></a>meteor 下载问题</h2><p>问题：下载失败<br>原因：脚本中添加了下载失败后重试的次数限制，并且删除了下载中断的临时文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl https://install.meteor.com/ &gt; meteor.install.sh</div></pre></td></tr></table></figure>
+<p>修改下载脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cleanUp() &#123;</div><div class="line">  # rm -rf &quot;$TARBALL_FILE&quot;</div><div class="line">  rm -rf &quot;$INSTALL_TMPDIR&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod 755 meteor.install.sh</div><div class="line">./meteor.install.sh</div></pre></td></tr></table></figure>
+<p>在安装过程如果断了再次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./meteor.install.sh</div></pre></td></tr></table></figure>
+<p>下载安装完成后，手动删除临时文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm ~/.meteor-tarball-tmp</div></pre></td></tr></table></figure>
+<h2 id="Build-apps-for-any-device"><a href="#Build-apps-for-any-device" class="headerlink" title="Build apps for any device"></a>Build apps for any device</h2><p>Use the same code whether you’re developing for web, iOS, Android, or desktop. Hot push new features without app store approval or forcing users to download a new native app.</p>
+<h2 id="Data-over-the-wire"><a href="#Data-over-the-wire" class="headerlink" title="Data over the wire"></a>Data over the wire</h2><p><code>Meteor send data over the wire, rather than HTML</code></p>
+<p>意味着，你的初次请求会下载所有的HTML、CSS、JavaScript、图片。</p>
+<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meteor create app</div><div class="line">meteor create app --release 1.2.1</div></pre></td></tr></table></figure>
+<h2 id="meteor-npm-vs-npm"><a href="#meteor-npm-vs-npm" class="headerlink" title="meteor npm vs npm"></a><code>meteor npm</code> vs <code>npm</code></h2><p><code>meteor npm</code> 使用的是 meteor 自行下载的 <code>npm</code>。如果你的电脑上之前没有安装过 <code>node</code> 那以后就用这个。</p>
+<p><code>npm</code> 则是全局安装的 <code>npm</code>，以后就可以用 <code>npm</code> 直接操作包。</p>
+<h2 id="没有-Ajax-只有-发布-订阅"><a href="#没有-Ajax-只有-发布-订阅" class="headerlink" title="没有 Ajax 只有 发布/订阅"></a>没有 Ajax 只有 <code>发布/订阅</code></h2><p>Meteor 内部数据流是通过发布和订阅实现的，不是传统的 ajax。</p>
+<ul>
+<li>Server Publish</li>
+<li>Client Subscribe</li>
+</ul>
+<p>当然和第三方应用交流数据时，还是要使用 ajax。</p>
+<h2 id="Use-PostCSS-with-Meteor"><a href="#Use-PostCSS-with-Meteor" class="headerlink" title="Use PostCSS with Meteor"></a>Use PostCSS with Meteor</h2><p><a href="https://atmospherejs.com/juliancwirko/postcss" target="_blank" rel="external">详情</a></p>
+<p>问题是，Meteor 下如何对 React Inline Styles 应用 PostCSS plugins ？</p>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p><code>Publications</code> that <code>read</code> from collection and the <code>Methods</code> that <code>write</code> to collection.</p>
+<p><code>Publications</code> 向客户端发送数据。<br><code>Methods</code> 增删改。</p>
+<p><code>imports/api/tasks.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Mongo &#125; <span class="keyword">from</span> <span class="string">'meteor/mongo'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> Tasks = <span class="keyword">new</span> Mongo.Collection(<span class="string">'tasks'</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>增 <code>Tasks.insert({ text, createAt: new Date})</code></li>
+<li>删 <code>Tasks.remove(this.props.task._id)</code></li>
+<li>改 <code>Tasks.update(this.props.task._id,{ $set: { checked: !this.props.task.checked }})</code></li>
+<li>查 <code>Tasks.find({}, { sort: { createdAt: -1 } }).fetch()</code></li>
+</ul>
+<p>由于数据只能通过<code>发布/订阅</code>获取，订阅获取的数据是批量的，不能精确获取数据，获取精确数据需要对<br>已订阅的数据进行过滤</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">filteredTasks = <span class="keyword">this</span>.props.tasks.filter(<span class="function"><span class="params">task</span> =&gt;</span> !task.checked);</div></pre></td></tr></table></figure>
+<p>meteor 默认安装的包 <code>insecure</code> 允许客户端直接修改数据库中的数据。当我们在项目中创建了一个叫做<br>Messages 的 monogo collection，因为 <code>insecure</code> 包的存在，我们可以在客户端直接调用<br><code>Messages.insert()</code> 接口直接出入数据到数据库。所以在发布项目之前需要移除 <code>insecure</code> 包。</p>
+<p>移除 <code>insecure</code> 包后，所有客户端的修改都会被拒绝。</p>
+<p>清空 collection 使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meteor monogo</div><div class="line">db.messages.remove(&#123;&#125;)</div></pre></td></tr></table></figure>
+<p>其他命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">show collections</div><div class="line">db.messages.find()</div></pre></td></tr></table></figure>
+<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>升级 Meteor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor update</div></pre></td></tr></table></figure>
+<p>升级 Meteor 附属的包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor update tmeasday:check-npm-versions</div></pre></td></tr></table></figure></p>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Exception while simulating the effect of invoking &apos;username.test&apos;</div></pre></td></tr></table></figure>
+<p>文件写在 import 目录下，client 和 server 都要引入，client 侧是 simulat</p>
+<h2 id="常用软件包"><a href="#常用软件包" class="headerlink" title="常用软件包"></a>常用软件包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">meteor add accounts-password</div><div class="line">meteor add alanning:roles</div><div class="line">meteor add nimble:restivus</div><div class="line">meteor add simple:rest</div></pre></td></tr></table></figure>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a><a href="https://atmospherejs.com/meteor/less" target="_blank" rel="external">less</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor add less</div></pre></td></tr></table></figure>
+<p>创建 <code>.less</code> 文件，然后在 <code>client/main.less</code> 中导入。例如：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Components</span></div><div class="line"><span class="keyword">@import</span> <span class="string">"&#123;&#125;/imports/ui/components/Nav.less"</span>;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/meteor/" rel="tag">#meteor</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/08/photoshop-cs6-osx.html" rel="next" title="photoshop-cs6-osx">
+                <i class="fa fa-chevron-left"></i> photoshop-cs6-osx
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/10/font-awesome.html" rel="prev" title="font-awesome">
+                font-awesome <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/09/meteor.html"
+           data-title="meteor" data-url="http://haobing.wang/2016/07/09/meteor.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#meteor-下载问题"><span class="nav-number">1.</span> <span class="nav-text">meteor 下载问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-apps-for-any-device"><span class="nav-number">2.</span> <span class="nav-text">Build apps for any device</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-over-the-wire"><span class="nav-number">3.</span> <span class="nav-text">Data over the wire</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建应用"><span class="nav-number">4.</span> <span class="nav-text">创建应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meteor-npm-vs-npm"><span class="nav-number">5.</span> <span class="nav-text">meteor npm vs npm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有-Ajax-只有-发布-订阅"><span class="nav-number">6.</span> <span class="nav-text">没有 Ajax 只有 发布/订阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-PostCSS-with-Meteor"><span class="nav-number">7.</span> <span class="nav-text">Use PostCSS with Meteor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">8.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级"><span class="nav-number">9.</span> <span class="nav-text">升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">10.</span> <span class="nav-text">Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用软件包"><span class="nav-number">11.</span> <span class="nav-text">常用软件包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less"><span class="nav-number">12.</span> <span class="nav-text">less</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

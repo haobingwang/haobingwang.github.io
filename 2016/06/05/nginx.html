@@ -1,0 +1,684 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nginx," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Step 1: Install Nginx12sudo apt-get updatesudo apt-get install nginx
+Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our firewall software to allow access to the service. N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx">
+<meta property="og:url" content="http://haobing.wang/2016/06/05/nginx.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="Step 1: Install Nginx12sudo apt-get updatesudo apt-get install nginx
+Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our firewall software to allow access to the service. N">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx">
+<meta name="twitter:description" content="Step 1: Install Nginx12sudo apt-get updatesudo apt-get install nginx
+Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our firewall software to allow access to the service. N">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/06/05/nginx.html"/>
+
+
+  <title> nginx | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nginx
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-05T18:33:34+08:00" content="2016-06-05">
+              2016-06-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/05/nginx.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/nginx.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Step-1-Install-Nginx"><a href="#Step-1-Install-Nginx" class="headerlink" title="Step 1: Install Nginx"></a>Step 1: Install Nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install nginx</div></pre></td></tr></table></figure>
+<h2 id="Step-2-Adjust-the-Firewall"><a href="#Step-2-Adjust-the-Firewall" class="headerlink" title="Step 2: Adjust the Firewall"></a>Step 2: Adjust the Firewall</h2><p>Before we can test Nginx, we need to reconfigure our firewall software to allow access to the service. Nginx registers itself as a service with ufw, our firewall, upon installation. This makes it rather easy to allow Nginx access.</p>
+<p>We can list the applications configurations that ufw knows how to work with by typing:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ufw app list</div></pre></td></tr></table></figure>
+<p>You should get a listing of the application profiles:</p>
+<p>Output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Available applications:</div><div class="line">  Nginx Full</div><div class="line">  Nginx HTTP</div><div class="line">  Nginx HTTPS</div><div class="line">  SSH</div></pre></td></tr></table></figure>
+<p>As you can see, there are three profiles available for Nginx:</p>
+<ul>
+<li>Nginx Full: This profile opens both port 80 (normal, unencrypted web traffic) and port 443 (TLS/SSL encrypted traffic)</li>
+<li>Nginx HTTP: This profile opens only port 80 (normal, unencrypted web traffic)</li>
+<li>Nginx HTTPS: This profile opens only port 443 (TLS/SSL encrypted traffic)</li>
+</ul>
+<p>It is recommended that you enable the most restrictive profile that will still allow the traffic you’ve configured. Since we haven’t configured SSL for our server yet, in this guide, we will only need to allow traffic on port 80.</p>
+<p>You can enable this by typing:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ufw allow &apos;Nginx HTTP&apos;</div></pre></td></tr></table></figure>
+<p>You can verify the change by typing:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ufw status</div></pre></td></tr></table></figure>
+<p>You should see HTTP traffic allowed in the displayed output:</p>
+<p>Output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Status: active</div><div class="line"></div><div class="line">To                         Action      From</div><div class="line">--                         ------      ----</div><div class="line">OpenSSH                    ALLOW       Anywhere                  </div><div class="line">Nginx HTTP                 ALLOW       Anywhere                  </div><div class="line">OpenSSH (v6)               ALLOW       Anywhere (v6)             </div><div class="line">Nginx HTTP (v6)            ALLOW       Anywhere (v6)</div></pre></td></tr></table></figure>
+<h2 id="Server-Logs"><a href="#Server-Logs" class="headerlink" title="Server Logs"></a>Server Logs</h2><ul>
+<li><code>/var/log/nginx/access.log</code>: Every request to your web server is recorded in this log file unless Nginx is configured to do otherwise.</li>
+<li><code>/var/log/nginx/error.log</code>: Any Nginx errors will be recorded in this log.</li>
+</ul>
+<h2 id="默认路径"><a href="#默认路径" class="headerlink" title="默认路径"></a>默认路径</h2><p><code>/usr/share/nginx/html</code></p>
+<p>On Ubuntu, both the Nginx and Apache web servers run as the <code>www-data</code> user.</p>
+<p>/etc/nginx/nginx.conf 中 <code>user www-data;</code></p>
+<p>我们看到 nginx 服务器用户是 www-data 所以此时我们的做法是把网站根目录的权限改为 www-data：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chown -R www-data:www-data /usr/share/nginx/html/*</div><div class="line">sudo chmod -R 0755 /usr/share/nginx/html/*</div></pre></td></tr></table></figure>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># Disable the default vhost:</div><div class="line">sudo rm /etc/nginx/sites-enabled/default</div><div class="line"></div><div class="line"># Enable our example vhost:</div><div class="line">sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled/example</div><div class="line"></div><div class="line"># Test the vhost configuration</div><div class="line">sudo nginx -t</div><div class="line"></div><div class="line"># If everything is looking good we can apply the changes to Nginx:</div><div class="line">sudo nginx -s reload</div></pre></td></tr></table></figure>
+<h2 id="查找进程"><a href="#查找进程" class="headerlink" title="查找进程"></a>查找进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ax | grep nginx</div></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
+<li><code>/etc/nginx/sites-available</code> 配置文件实体位置。</li>
+<li><code>/etc/nginx/sites-enabled</code> 虚拟链接，指向 <code>available</code>目录中的某个实体文件。</li>
+</ul>
+<p><code>available</code> 目录下有个 <code>default</code> 文件，我们可以参考它，在 <code>available</code> 目录下新建配置文件，然后到 <code>enabled</code> 目录下做一个软连接。</p>
+<p>不要直接修改 <code>enabled</code> 目录下的配置文件。</p>
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx/sites-enabled</div><div class="line">vim mysite.conf</div></pre></td></tr></table></figure>
+<p>添加内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen 80 default;</div><div class="line">  server_name example.com www.example.com;</div><div class="line">  gzip on;</div><div class="line"></div><div class="line">  root /home/peter/mysite;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：上面有 default 字样，这个在一台服务器上只能出现一次，也就是只能有一个 server 是默认的，不然重启 nginx 的时候就会报错。需要 reload，上述配置才会生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service nginx reload</div></pre></td></tr></table></figure>
+<p>这样，到 example.com （或者直接输入 IP ）就可以看到 mysite/index.html 中的内容了。当然，前提是 DNS 设置已经做好了。</p>
+<p>另外的配置</p>
+<h2 id="hexo-配置"><a href="#hexo-配置" class="headerlink" title="hexo 配置"></a>hexo 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen 80;</div><div class="line">  server_name blog.example.com;</div><div class="line"></div><div class="line">  location / &#123;</div><div class="line">    proxy_pass              http://127.0.0.1:3500/;</div><div class="line">    proxy_redirect          off;</div><div class="line">    proxy_set_header        X-Real-IP       $remote_addr;</div><div class="line">    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="meteor-配置"><a href="#meteor-配置" class="headerlink" title="meteor 配置"></a>meteor 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen         80;</div><div class="line">    server_name example.com www.example.com;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://localhost:3000;</div><div class="line">      proxy_set_header X-Forwarded-Proto $scheme;</div><div class="line">      proxy_set_header Host $http_x_forwarded_host;</div><div class="line">      proxy_http_version 1.1;</div><div class="line">      proxy_set_header Upgrade $http_upgrade;</div><div class="line">      proxy_set_header Connection &quot;upgrade&quot;;</div><div class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">      proxy_read_timeout 3m;</div><div class="line">      proxy_send_timeout 3m;</div><div class="line">    &#125;</div><div class="line">    location /blog &#123;</div><div class="line">      # 对应文件夹 /home/peter/blog</div><div class="line">      root /home/peter;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>disable the default vhost:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm /etc/nginx/sites-enabled/default</div></pre></td></tr></table></figure>
+<p>enable our Meteor vhost:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s /etc/nginx/sites-available/todos /etc/nginx/sites-enabled/todos</div></pre></td></tr></table></figure>
+<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">      listen 80;</div><div class="line">      listen [::]:80;</div><div class="line"></div><div class="line">      root /var/www/example.com/html;</div><div class="line">      index index.html index.htm index.nginx-debian.html;</div><div class="line"></div><div class="line">      server_name example.com www.example.com;</div><div class="line"></div><div class="line">      location / &#123;</div><div class="line">            try_files $uri $uri/ =404;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       443 ssl http2;</div><div class="line">    server_name  example.com;</div><div class="line">    ssl_certificate /etc/nginx/ssl/example.com.crt;</div><div class="line">    ssl_certificate_key /etc/nginx/ssl/example.com.key;</div><div class="line">    location / &#123;</div><div class="line">        root   /usr/share/nginx/html;</div><div class="line">        index  index.html index.htm;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">     listen         80;</div><div class="line">     server_name    example.com;</div><div class="line">     return         301 https://$server_name$request_uri;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">upstream backend_hosts &#123;</div><div class="line">    server host1.example.com;</div><div class="line">    server host2.example.com;</div><div class="line">    server host3.example.com;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name example.com;</div><div class="line"></div><div class="line">    location /proxy-me &#123;</div><div class="line">        proxy_pass http://backend_hosts;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="secure-nginx"><a href="#secure-nginx" class="headerlink" title="secure nginx"></a>secure nginx</h2><h3 id="屏蔽-nginx-版本号"><a href="#屏蔽-nginx-版本号" class="headerlink" title="屏蔽 nginx 版本号"></a>屏蔽 nginx 版本号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">➜  ~ curl -I http://localhost</div><div class="line">HTTP/1.1 301 Moved Permanently</div><div class="line">Server: nginx/1.4.6 (Ubuntu)</div><div class="line">Date: Mon, 17 Oct 2016 08:56:53 GMT</div><div class="line">Content-Type: text/html</div><div class="line">Content-Length: 193</div><div class="line">Connection: keep-alive</div><div class="line">Location: https://localhost/</div><div class="line"></div><div class="line">➜  ~ sudo vi /etc/nginx/nginx.conf</div><div class="line"></div><div class="line">#uncomment the `server_tokens off;`</div><div class="line"></div><div class="line">➜  ~ sudo service nginx reload</div><div class="line">➜  ~ curl -I http://localhost</div><div class="line">HTTP/1.1 301 Moved Permanently</div><div class="line">Server: nginx</div><div class="line">Date: Mon, 17 Oct 2016 08:59:10 GMT</div><div class="line">Content-Type: text/html</div><div class="line">Content-Length: 178</div><div class="line">Connection: keep-alive</div><div class="line">Location: https://localhost/</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag">#nginx</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/04/hexo-hey.html" rel="next" title="hexo-hey">
+                <i class="fa fa-chevron-left"></i> hexo-hey
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/06/hexo.html" rel="prev" title="hexo">
+                hexo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/05/nginx.html"
+           data-title="nginx" data-url="http://haobing.wang/2016/06/05/nginx.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Install-Nginx"><span class="nav-number">1.</span> <span class="nav-text">Step 1: Install Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Adjust-the-Firewall"><span class="nav-number">2.</span> <span class="nav-text">Step 2: Adjust the Firewall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server-Logs"><span class="nav-number">3.</span> <span class="nav-text">Server Logs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认路径"><span class="nav-number">4.</span> <span class="nav-text">默认路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">5.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找进程"><span class="nav-number">6.</span> <span class="nav-text">查找进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">7.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本配置"><span class="nav-number">8.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-配置"><span class="nav-number">9.</span> <span class="nav-text">hexo 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meteor-配置"><span class="nav-number">10.</span> <span class="nav-text">meteor 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置示例"><span class="nav-number">11.</span> <span class="nav-text">配置示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#secure-nginx"><span class="nav-number">12.</span> <span class="nav-text">secure nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#屏蔽-nginx-版本号"><span class="nav-number">12.1.</span> <span class="nav-text">屏蔽 nginx 版本号</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

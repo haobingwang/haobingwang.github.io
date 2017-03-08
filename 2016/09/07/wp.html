@@ -1,0 +1,655 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="c#,WPF,.net," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Windows 程序开发，使用 .net c# WPF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 程序开发">
+<meta property="og:url" content="http://haobing.wang/2016/09/07/wp.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="Windows 程序开发，使用 .net c# WPF">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows 程序开发">
+<meta name="twitter:description" content="Windows 程序开发，使用 .net c# WPF">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/09/07/wp.html"/>
+
+
+  <title> Windows 程序开发 | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Windows 程序开发
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-07T10:07:24+08:00" content="2016-09-07">
+              2016-09-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/windows/" itemprop="url" rel="index">
+                    <span itemprop="name">windows</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/07/wp.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/07/wp.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Windows 程序开发，使用 .net c# WPF</p>
+<a id="more"></a>
+<h2 id="Windows-GUI-程序开发方案"><a href="#Windows-GUI-程序开发方案" class="headerlink" title="Windows GUI 程序开发方案"></a>Windows GUI 程序开发方案</h2><h3 id="方案一：-C-和-WPF-开发GUI程序（墙裂推荐）"><a href="#方案一：-C-和-WPF-开发GUI程序（墙裂推荐）" class="headerlink" title="方案一： C# 和 WPF 开发GUI程序（墙裂推荐）"></a>方案一： C# 和 WPF 开发GUI程序（墙裂推荐）</h3><ul>
+<li>开发工具：<a href="https://www.visualstudio.com/" target="_blank" rel="external">Visual Studio Community 2015</a></li>
+<li>参考书籍：《.NET开发经典名著·WPF编程宝典：使用C# 2012和.NET 4.5（第4版）》</li>
+<li>编程语言：C#</li>
+</ul>
+<h3 id="方案二：C-和-API-开发GUI程序（推荐）"><a href="#方案二：C-和-API-开发GUI程序（推荐）" class="headerlink" title="方案二：C 和 API 开发GUI程序（推荐）"></a>方案二：C 和 API 开发GUI程序（推荐）</h3><p>适合小程序。</p>
+<h2 id="Visual-Studio-Dev-Essentials"><a href="#Visual-Studio-Dev-Essentials" class="headerlink" title="Visual Studio Dev Essentials"></a><a href="https://my.visualstudio.com/Benefits?wt.mc_id=o~msft~vscom~devessentials-hero~dn872707&amp;campaign=o~msft~vscom~devessentials-hero~dn872707" target="_blank" rel="external">Visual Studio Dev Essentials</a></h2><h3 id="方案三：QT（不推荐）"><a href="#方案三：QT（不推荐）" class="headerlink" title="方案三：QT（不推荐）"></a>方案三：QT（不推荐）</h3><h3 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h3><p>现代轻巧编辑器</p>
+<h3 id="Visual-Studio-Community（依赖-IE-10）"><a href="#Visual-Studio-Community（依赖-IE-10）" class="headerlink" title="Visual Studio Community（依赖 IE 10）"></a>Visual Studio Community（依赖 IE 10）</h3><p>功能完备且可扩展的免费 IDE，可用于创建面向 Windows、Android 和 iOS 的新式应用程序<br>以及 Web 应用程序和云服务。</p>
+<p>Visual Studio 社区含有 Express 等的各种功能， 并且仍然免费提供给单个开发人员、<br>开放源代码项目、科研、教育以及小型专业团队。有些教程下载的是 expres，现在我们可以直接下载社区版就好了。</p>
+<h3 id="Visual-Studio-Team-Services"><a href="#Visual-Studio-Team-Services" class="headerlink" title="Visual Studio Team Services"></a>Visual Studio Team Services</h3><p>具有免费的 Git 存储库、灵活的规划工具以及托管生成服务，适用于任何语言，是对 IDE 的完美补充。<br>代码托管平台，5人以内免费使用。</p>
+<p>存储位置可以选 印度</p>
+<h3 id="Azure"><a href="#Azure" class="headerlink" title="Azure"></a>Azure</h3><p>个人专享开发/测试用沙盒！ VM、云服务等。信用额度不能应用于现有 Azure 订阅。需要信用卡。</p>
+<h2 id="方案二：-基础入门"><a href="#方案二：-基础入门" class="headerlink" title="方案二： 基础入门"></a>方案二： 基础入门</h2><ul>
+<li>参考书籍：《Windows程序设计 第5版 珍藏版》</li>
+<li>操作系统：Windows7 企业版</li>
+<li>开发工具：Visual Studio 2008</li>
+</ul>
+<p><a href="http://www.gaclib.net/#~/" target="_blank" rel="external">Gaclib</a> 试图用 C++ 山寨 WPF。C++ 推荐图书 《C++Primer 5th》</p>
+<h2 id="C-和-NET-Framework-是什么关系？"><a href="#C-和-NET-Framework-是什么关系？" class="headerlink" title="C# 和 .NET Framework 是什么关系？"></a>C# 和 .NET Framework 是什么关系？</h2><p>C# 是基于 .NET Framework的，C# 和 .NET Framework 交互，.NET Framework 再和操作系统交互。</p>
+<h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><ul>
+<li>动态库 dll 执行时加载</li>
+<li>静态库 lib 编译时加载</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag">#c#</a>
+          
+            <a href="/tags/WPF/" rel="tag">#WPF</a>
+          
+            <a href="/tags/net/" rel="tag">#.net</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/01/win7.html" rel="next" title="win7">
+                <i class="fa fa-chevron-left"></i> win7
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/07/cwRsync.html" rel="prev" title="cwRsync">
+                cwRsync <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/07/wp.html"
+           data-title="Windows 程序开发" data-url="http://haobing.wang/2016/09/07/wp.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-GUI-程序开发方案"><span class="nav-number">1.</span> <span class="nav-text">Windows GUI 程序开发方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案一：-C-和-WPF-开发GUI程序（墙裂推荐）"><span class="nav-number">1.1.</span> <span class="nav-text">方案一： C# 和 WPF 开发GUI程序（墙裂推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案二：C-和-API-开发GUI程序（推荐）"><span class="nav-number">1.2.</span> <span class="nav-text">方案二：C 和 API 开发GUI程序（推荐）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-Studio-Dev-Essentials"><span class="nav-number">2.</span> <span class="nav-text">Visual Studio Dev Essentials</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案三：QT（不推荐）"><span class="nav-number">2.1.</span> <span class="nav-text">方案三：QT（不推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-Code"><span class="nav-number">2.2.</span> <span class="nav-text">Visual Studio Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-Community（依赖-IE-10）"><span class="nav-number">2.3.</span> <span class="nav-text">Visual Studio Community（依赖 IE 10）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-Team-Services"><span class="nav-number">2.4.</span> <span class="nav-text">Visual Studio Team Services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure"><span class="nav-number">2.5.</span> <span class="nav-text">Azure</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案二：-基础入门"><span class="nav-number">3.</span> <span class="nav-text">方案二： 基础入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-和-NET-Framework-是什么关系？"><span class="nav-number">4.</span> <span class="nav-text">C# 和 .NET Framework 是什么关系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#库"><span class="nav-number">5.</span> <span class="nav-text">库</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

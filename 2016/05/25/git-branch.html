@@ -1,0 +1,734 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git,branch," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="git 使用基础查看 branch 帮助：
+1git --help branch
+分支逻辑
+master 部署分支；
+develop 开发分支，有 开发代码，例如禁用 cdn；
+feature 特性分支，当我们需要开发新功能；
+
+
+更新 develop 分支：将 master 上的合并到 develop；
+新建 feature 分支：从 develop 新建特性分支；
+移除 开发代码 ：从 fea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git branch">
+<meta property="og:url" content="http://haobing.wang/2016/05/25/git-branch.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="git 使用基础查看 branch 帮助：
+1git --help branch
+分支逻辑
+master 部署分支；
+develop 开发分支，有 开发代码，例如禁用 cdn；
+feature 特性分支，当我们需要开发新功能；
+
+
+更新 develop 分支：将 master 上的合并到 develop；
+新建 feature 分支：从 develop 新建特性分支；
+移除 开发代码 ：从 fea">
+<meta property="og:image" content="http://haobing.wang/images/gitflow.png">
+<meta property="og:image" content="http://7xv4gv.com1.z0.glb.clouddn.com/git02.png">
+<meta property="og:image" content="http://7xv4gv.com1.z0.glb.clouddn.com/git02.png">
+<meta property="og:image" content="http://7xv4gv.com1.z0.glb.clouddn.com/git03.png">
+<meta property="og:image" content="http://7xv4gv.com1.z0.glb.clouddn.com/git04.png">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git branch">
+<meta name="twitter:description" content="git 使用基础查看 branch 帮助：
+1git --help branch
+分支逻辑
+master 部署分支；
+develop 开发分支，有 开发代码，例如禁用 cdn；
+feature 特性分支，当我们需要开发新功能；
+
+
+更新 develop 分支：将 master 上的合并到 develop；
+新建 feature 分支：从 develop 新建特性分支；
+移除 开发代码 ：从 fea">
+<meta name="twitter:image" content="http://haobing.wang/images/gitflow.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/05/25/git-branch.html"/>
+
+
+  <title> git branch | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git branch
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-25T11:51:09+08:00" content="2016-05-25">
+              2016-05-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/25/git-branch.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/git-branch.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="git-使用基础"><a href="#git-使用基础" class="headerlink" title="git 使用基础"></a>git 使用基础</h2><p>查看 branch 帮助：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --help branch</div></pre></td></tr></table></figure>
+<h2 id="分支逻辑"><a href="#分支逻辑" class="headerlink" title="分支逻辑"></a>分支逻辑</h2><ul>
+<li>master 部署分支；</li>
+<li>develop 开发分支，有 <em>开发代码</em>，例如禁用 cdn；</li>
+<li>feature 特性分支，当我们需要开发新功能；</li>
+</ul>
+<ol>
+<li>更新 develop 分支：将 master 上的合并到 develop；</li>
+<li>新建 feature 分支：从 develop 新建特性分支；</li>
+<li>移除 <em>开发代码</em> ：从 feature 上移除对应的 commit；</li>
+<li>更新 master 分支：将 feature 合并到 master；</li>
+<li>移除 feature 分支；</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># macos</div><div class="line">brew install git-flow</div><div class="line"># debian</div><div class="line">apt-get install git-flow</div></pre></td></tr></table></figure>
+<h3 id="git-flow-init-d"><a href="#git-flow-init-d" class="headerlink" title="git flow init -d"></a>git flow init -d</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop master</div><div class="line">git push -u origin develop</div></pre></td></tr></table></figure>
+<h3 id="git-flow-feature-start-MYFEATURE"><a href="#git-flow-feature-start-MYFEATURE" class="headerlink" title="git flow feature start MYFEATURE"></a>git flow feature start MYFEATURE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b MYFEATURE develop</div></pre></td></tr></table></figure>
+<h3 id="git-flow-feature-finish-MYFEATURE"><a href="#git-flow-feature-finish-MYFEATURE" class="headerlink" title="git flow feature finish MYFEATURE"></a>git flow feature finish MYFEATURE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git pull origin develop</div><div class="line">git checkout develop</div><div class="line">git merge --no-ff MYFEATURE</div><div class="line">git push origin develop</div><div class="line"></div><div class="line">git branch -d MYFEATURE</div></pre></td></tr></table></figure>
+<h2 id="git-flow-release-start-release-0-1-0"><a href="#git-flow-release-start-release-0-1-0" class="headerlink" title="git flow release start release-0.1.0"></a>git flow release start release-0.1.0</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout -b release-0.1.0 develop</div><div class="line">git push -u origin release-0.1.0</div></pre></td></tr></table></figure>
+<h2 id="git-flow-release-finish-release-0-1-0"><a href="#git-flow-release-finish-release-0-1-0" class="headerlink" title="git flow release finish release-0.1.0"></a>git flow release finish release-0.1.0</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git merge --no-ff release-0.1.0</div><div class="line">git push</div><div class="line"></div><div class="line">git checkout develop</div><div class="line">git merge --no-ff release-0.1.0</div><div class="line">git push</div><div class="line"></div><div class="line">git branch -d release-0.1.0</div><div class="line"></div><div class="line">git tag -a v0.1.0 master</div><div class="line">git push --tags</div></pre></td></tr></table></figure>
+<h2 id="git-flow-hotfix-start-hotfix-0-1-1"><a href="#git-flow-hotfix-start-hotfix-0-1-1" class="headerlink" title="git flow hotfix start hotfix-0.1.1"></a>git flow hotfix start hotfix-0.1.1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b hotfix-0.1.1 master</div></pre></td></tr></table></figure>
+<h2 id="git-flow-hotfix-finish-hotfix-0-1-1"><a href="#git-flow-hotfix-finish-hotfix-0-1-1" class="headerlink" title="git flow hotfix finish hotfix-0.1.1"></a>git flow hotfix finish hotfix-0.1.1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git merge --no-ff hotfix-0.1.1</div><div class="line">git push</div><div class="line"></div><div class="line">git checkout develop</div><div class="line">git merge --no-ff hotfix-0.1.1</div><div class="line">git push</div><div class="line"></div><div class="line">git branch -d hotfix-0.1.1</div><div class="line"></div><div class="line">git tag -a v0.1.1 master</div><div class="line">git push --tags</div></pre></td></tr></table></figure>
+<h2 id="Git-Flow"><a href="#Git-Flow" class="headerlink" title="Git Flow"></a>Git Flow</h2><ol>
+<li>Fork the repository. Then, run:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/haobingwang/git-flow-demo.git</div><div class="line">cd git-flow-demo</div><div class="line">git branch master origin/master</div><div class="line"># -d 使用默认设置初始化</div><div class="line">git flow init -d</div></pre></td></tr></table></figure>
+<ol>
+<li><p>提交 <em>开发环境代码</em> …</p>
+</li>
+<li><p>新建特性分支</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># git flow feature start &lt;name&gt; [&lt;base&gt;]</div><div class="line"># 注意：For feature branches, the &lt;base&gt; arg must be a commit on develop.</div><div class="line">git flow feature start d1</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Switched to a new branch &apos;feature/d1&apos;</div><div class="line"></div><div class="line">Summary of actions:</div><div class="line">- A new branch &apos;feature/d1&apos; was created, based on &apos;develop&apos;</div><div class="line">- You are now on branch &apos;feature/d1&apos;</div><div class="line"></div><div class="line">Now, start committing on your feature. When done, use:</div><div class="line"></div><div class="line">     git flow feature finish d1</div></pre></td></tr></table></figure>
+<ol>
+<li><p>提交代码…</p>
+</li>
+<li><p>完成开发了</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow feature finish d1</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">git flow feature finish d1</div><div class="line">Switched to branch &apos;develop&apos;</div><div class="line">Updating 258d6f5..4263694</div><div class="line">Fast-forward</div><div class="line"> code-for-d1 | 0</div><div class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</div><div class="line"> create mode 100644 code-for-d1</div><div class="line">Deleted branch feature/d1 (was 4263694).</div><div class="line"></div><div class="line">Summary of actions:</div><div class="line">- The feature branch &apos;feature/d1&apos; was merged into &apos;develop&apos;</div><div class="line">- Feature branch &apos;feature/d1&apos; has been removed</div><div class="line">- You are now on branch &apos;develop&apos;</div></pre></td></tr></table></figure>
+<p>如图：</p>
+<p><img src="/images/gitflow.png" alt=""></p>
+<p>sourcetree 可以图形化操作 git flow。</p>
+<h2 id="Github-Flow"><a href="#Github-Flow" class="headerlink" title="Github Flow"></a>Github Flow</h2><p>Github，只有 master 分支</p>
+<p>功能分支合并进master分支，必须通过 Pull Request。</p>
+<p>master分支应该受到保护，不是每个人都可以修改这个分支，以及拥有审批 Pull Request 的权力。</p>
+<p>Github 提供”保护分支”（Protected branch）这个功能。</p>
+<p>Pull Request本质是一种对话机制，你可以在提交的时候，@相关人员或团队，引起他们的注意。</p>
+<h2 id="Gitlab-Flow"><a href="#Gitlab-Flow" class="headerlink" title="Gitlab Flow"></a>Gitlab Flow</h2><p>功能分支合并进master分支，必须通过 Merge Request。</p>
+<p>master分支应该受到保护，不是每个人都可以修改这个分支，以及拥有审批 Merge Request 的权力。</p>
+<p>Gitlab 提供”保护分支”（Protected branch）这个功能。</p>
+<p>Merge Request本质是一种对话机制，你可以在提交的时候，@相关人员或团队，引起他们的注意。</p>
+<h2 id="Merge节点"><a href="#Merge节点" class="headerlink" title="Merge节点"></a>Merge节点</h2><p>Git有两种合并：一种是”直进式合并”（fast forward），不生成单独的合并节点；另一种是”非直进式合并”（none fast-forword），会生成单独节点。</p>
+<p>前者不利于保持commit信息的清晰，也不利于以后的回滚，建议总是采用后者（即使用–no-ff参数）。只要发生合并，就要有一个单独的合并节点。</p>
+<h2 id="关于合并分支"><a href="#关于合并分支" class="headerlink" title="关于合并分支"></a>关于合并分支</h2><p><img src="http://7xv4gv.com1.z0.glb.clouddn.com/git02.png" alt=""></p>
+<p>最容易整合分支的命令是 <code>merge</code>，它会把两个分支最近的快照(<code>C3</code>,<code>C4</code>)以及二者最新的共同祖先(<code>C2</code>)进行三方合并，合并的结果是产生一个新的快照(<code>C5</code>)。</p>
+<p><img src="http://7xv4gv.com1.z0.glb.clouddn.com/git02.png" alt=""></p>
+<p>另外一种方法是：将<code>C3</code>的内容打在<code>C4</code>上，即 <code>rebase</code>。有了 <code>rebase</code> 将可以把一个分支上的提交迁移到另一个分支重放一遍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout experiment</div><div class="line">git rebase master</div></pre></td></tr></table></figure>
+<p>它的原理是回到两个分支最近的共同祖先，根据当前分支（也就是要进行衍合的分支<code>experiment</code>）后续的历次提交对象（这里只有一个<code>C3</code>），生成一系列文件补丁，然后以基底分支（也就是主干分支 <code>master</code>）最后一个提交对象（<code>C4</code>）为新的出发点，逐个应用之前准备好的补丁文件，最后会生成一个新的合并提交对象（<code>C3&#39;</code>），从而改写 experiment 的提交历史，使它成为<code>master</code>分支的直接下游</p>
+<p><img src="http://7xv4gv.com1.z0.glb.clouddn.com/git03.png" alt=""></p>
+<p>现在回到<code>master</code>分支进行一次快速合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git merge experiment</div></pre></td></tr></table></figure>
+<p><img src="http://7xv4gv.com1.z0.glb.clouddn.com/git04.png" alt=""></p>
+<p>现在的 <code>C3&#39;</code>其实和普通的三方合并(即上面的<code>C5</code>)的快照一模一样，但是得到的历史更为整洁。</p>
+<p>当你向项目提交补丁的时候，根据最新的<code>origin/master</code>进行一次<code>rebase</code>操作然后再提交，这样维护者就不需要再做任何整合工作（例如解决冲突）。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+            <a href="/tags/branch/" rel="tag">#branch</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/webpack-react.html" rel="next" title="webpack-react">
+                <i class="fa fa-chevron-left"></i> webpack-react
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/26/yoeman.html" rel="prev" title="webapp脚手架——Yoeman">
+                webapp脚手架——Yoeman <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/25/git-branch.html"
+           data-title="git branch" data-url="http://haobing.wang/2016/05/25/git-branch.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-使用基础"><span class="nav-number">1.</span> <span class="nav-text">git 使用基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支逻辑"><span class="nav-number">2.</span> <span class="nav-text">分支逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-flow-init-d"><span class="nav-number">2.1.</span> <span class="nav-text">git flow init -d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-flow-feature-start-MYFEATURE"><span class="nav-number">2.2.</span> <span class="nav-text">git flow feature start MYFEATURE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-flow-feature-finish-MYFEATURE"><span class="nav-number">2.3.</span> <span class="nav-text">git flow feature finish MYFEATURE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-flow-release-start-release-0-1-0"><span class="nav-number">3.</span> <span class="nav-text">git flow release start release-0.1.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-flow-release-finish-release-0-1-0"><span class="nav-number">4.</span> <span class="nav-text">git flow release finish release-0.1.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-flow-hotfix-start-hotfix-0-1-1"><span class="nav-number">5.</span> <span class="nav-text">git flow hotfix start hotfix-0.1.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-flow-hotfix-finish-hotfix-0-1-1"><span class="nav-number">6.</span> <span class="nav-text">git flow hotfix finish hotfix-0.1.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-Flow"><span class="nav-number">7.</span> <span class="nav-text">Git Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Flow"><span class="nav-number">8.</span> <span class="nav-text">Github Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitlab-Flow"><span class="nav-number">9.</span> <span class="nav-text">Gitlab Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merge节点"><span class="nav-number">10.</span> <span class="nav-text">Merge节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于合并分支"><span class="nav-number">11.</span> <span class="nav-text">关于合并分支</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

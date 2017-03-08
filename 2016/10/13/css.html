@@ -1,0 +1,660 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="css modules我们推荐使用 CSS Modules 的解决方案。配合 webpack 的 css-loader 进行打包，会为所有的 class name 和 animation name 加 local scope，避免潜在冲突。
+UserSearch组件：
+123456789101112131415161718192021222324// /components/Users/UserS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css">
+<meta property="og:url" content="http://haobing.wang/2016/10/13/css.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="css modules我们推荐使用 CSS Modules 的解决方案。配合 webpack 的 css-loader 进行打包，会为所有的 class name 和 animation name 加 local scope，避免潜在冲突。
+UserSearch组件：
+123456789101112131415161718192021222324// /components/Users/UserS">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.612Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css">
+<meta name="twitter:description" content="css modules我们推荐使用 CSS Modules 的解决方案。配合 webpack 的 css-loader 进行打包，会为所有的 class name 和 animation name 加 local scope，避免潜在冲突。
+UserSearch组件：
+123456789101112131415161718192021222324// /components/Users/UserS">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/10/13/css.html"/>
+
+
+  <title> css | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                css
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T10:42:28+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/13/css.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/css.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="css-modules"><a href="#css-modules" class="headerlink" title="css modules"></a>css modules</h2><p>我们推荐使用 <a href="https://github.com/css-modules/css-modules" target="_blank" rel="external">CSS Modules</a> 的解决方案。配合 webpack 的 css-loader 进行打包，会为所有的 class name 和 animation name 加 local scope，避免潜在冲突。</p>
+<p>UserSearch组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /components/Users/UserSearch.jsx</span></div><div class="line">...</div><div class="line">import styles <span class="keyword">from</span> <span class="string">'./UserSearch.less'</span>;</div><div class="line">...</div><div class="line"></div><div class="line">function UserSearch(&#123;</div><div class="line">  form, field, keyword,</div><div class="line">  onSearch,</div><div class="line">  onAdd</div><div class="line">  &#125;) &#123;</div><div class="line">  ...</div><div class="line">  return (</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.normal&#125;</span>&gt;</span></span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.search&#125;</span>&gt;</span></div><div class="line">        ...</div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.create&#125;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">type</span>=<span class="string">"ghost"</span> <span class="attr">onClick</span>=<span class="string">&#123;onAdd&#125;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<p>对应的UserSearch.less样式文件：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* /components/Users/UserSearch.less */</span></div><div class="line"><span class="selector-class">.normal</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.search</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.create</span> &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>CSS Modules 会给组件的 <code>className</code> 加上 hash 字符串，来保证 className 仅对引用了样式的组件有效，如 styles.normal 可能会输出为 <code>normal___39QwY</code>。</p>
+<p>className 的输出格式可以通过 webpack.config 进行修改。</p>
+<h2 id="html-结构异常会引起-css-异常"><a href="#html-结构异常会引起-css-异常" class="headerlink" title="html 结构异常会引起 css 异常"></a>html 结构异常会引起 css 异常</h2><p>当 css 代码格式一致，而 html 结构不一致，就可以考虑排查 html 语法</p>
+<h2 id="页面宽度异常"><a href="#页面宽度异常" class="headerlink" title="页面宽度异常"></a>页面宽度异常</h2><p>在调试手机端页面时，会发生 dom 超出设备尺寸的问题，原因是某 dom 宽度超出，需要添加 <code>overflow-x: hidden;</code></p>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><p>在栅格系统中，我们在 Less 文件中使用以下媒体查询（media query）来创建关键的分界点阈值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 超小屏幕（手机，小于 768px） */</div><div class="line">/* 没有任何媒体查询相关的代码，因为移动设备优先 */</div><div class="line">/* 小屏幕（平板，大于等于 768px） */</div><div class="line">/* @media (min-width: @screen-sm-min) &#123; ... &#125; */</div><div class="line">/* 中等屏幕（桌面显示器，大于等于 992px） */</div><div class="line">/* @media (min-width: @screen-md-min) &#123; ... &#125; */</div><div class="line">/* 大屏幕（大桌面显示器，大于等于 1200px） */</div><div class="line">/* @media (min-width: @screen-lg-min) &#123; ... &#125; */</div><div class="line"></div><div class="line">/* 我们偶尔也会在媒体查询代码中包含 max-width 从而将 CSS 的影响限制在更小范围的屏幕大小之内。 */</div><div class="line"></div><div class="line">/* @media (max-width: @screen-xs-max) &#123; ... &#125; */</div><div class="line">/* @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) &#123; ... &#125; */</div><div class="line">/* @media (min-width: @screen-md-min) and (max-width: @screen-md-max) &#123; ... &#125; */</div><div class="line">/* @media (min-width: @screen-lg-min) &#123; ... &#125; */</div></pre></td></tr></table></figure>
+<h2 id="navbar-fixed-top-css"><a href="#navbar-fixed-top-css" class="headerlink" title="navbar-fixed-top.css"></a>navbar-fixed-top.css</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">2000px</span>;</div><div class="line">  <span class="attribute">padding-top</span>: <span class="number">70px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="sass-三大功能"><a href="#sass-三大功能" class="headerlink" title="sass 三大功能"></a>sass 三大功能</h2><ul>
+<li>变量，<code>$primary-color: blue;</code></li>
+<li>嵌套</li>
+<li>导入其他 sass 文件，<code>@import &quot;colors&quot;;</code>，即导入 <code>_colors.scss</code> 文件</li>
+</ul>
+<p>sass 文件使用缩进，没有 {}</p>
+<p>scss 文件同 css 相同，使用 {}</p>
+<h2 id="固定位置的-navbar"><a href="#固定位置的-navbar" class="headerlink" title="固定位置的 navbar"></a>固定位置的 navbar</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">padding-top</span>: @navbar-height;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="演进"><a href="#演进" class="headerlink" title="演进"></a>演进</h2><p>css -&gt; less -&gt; sass -&gt; postcss -&gt; css in js</p>
+<h2 id="CSS-样式的优先级"><a href="#CSS-样式的优先级" class="headerlink" title="CSS 样式的优先级"></a>CSS 样式的优先级</h2><p>针对同一个元素的同一个属性有两个或以上的不同属性值（多个 class），在复用代码的基础上来讨论 CSS 样式的优先级问题</p>
+<ul>
+<li>选择符的精确度决定了优先级，指定的越精确，样式的优先级就越高。</li>
+<li>精确度相同时，后加载的会覆盖先加载的。且容易出 bug</li>
+<li>利用加载顺序来覆盖原有样式是个糟糕的主意</li>
+<li>!important 有妙用</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.welcome</span> <span class="selector-class">.header</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: green <span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="CSS-长度单位"><a href="#CSS-长度单位" class="headerlink" title="CSS 长度单位"></a>CSS 长度单位</h2><h3 id="px"><a href="#px" class="headerlink" title="px"></a>px</h3><h3 id="em"><a href="#em" class="headerlink" title="em"></a>em</h3><p>1em 是多长呢？标准答案是“当前字体大小”（ font-size ）。当前字体大小可以是用 font-size 来手工设置的，如果没有设置，那就是从父元素继承，父元素是 16px 那我的当前字体大小也是 16px 。但是如果父元素没设置呢，那就在往上推，如果推到顶级标签 html 都没有设置 font-size 呢，那么就是流量器默认值 16px 。所以，一般在没有明文的 font-size 设置的情况下，1em 就是 16px ，可以放心大胆的用。</p>
+<h3 id="rem-是针对-em-的一个弱点而生的"><a href="#rem-是针对-em-的一个弱点而生的" class="headerlink" title="rem 是针对 em 的一个弱点而生的"></a>rem 是针对 em 的一个弱点而生的</h3><p>em 不能说不强大，但也不能说没毛病。毛病就是当一个元素本身就是用 em 做单位的，那它的各级子元素字体设置如果还用 em 做单位，就会晕菜掉。</p>
+<p>1rem 永远等于页面基础字体大小。</p>
+<h3 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h3><p>如果给一个 div 设置 width: 50% ，那意思就是，它的宽度是它父元素宽度的 50% 。这个很好理解吧？但是什么时候用百分比宽度？一般就是在做响应式页面设计的时候。</p>
+<h2 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h2><p>transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。</p>
+<h2 id="css3-之-transition-过渡动画"><a href="#css3-之-transition-过渡动画" class="headerlink" title="css3 之 transition 过渡动画"></a>css3 之 transition 过渡动画</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.example &#123;</div><div class="line">  //过渡属性 持续时间 效果函数 过渡延时;</div><div class="line">  transition: background-color 2s ease 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>触发方式，过渡是从一种状态变到另一种状态，那么什么时候变，或者说为什么要变呢？总要有个触发事件吧。触发方式中最常见的就是鼠标滑过：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">transition</span>: background-color <span class="number">0.5s</span> ease;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: green;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="width"><a href="#width" class="headerlink" title="width"></a>width</h2><p>min-width &gt; max-width &gt; width</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">width: 300px        /* &lt;length&gt; values */</div><div class="line">width: 25em</div><div class="line">width: 75%          /* &lt;percentage&gt; values */</div><div class="line"></div><div class="line">width: border-box   /* Keyword values */</div><div class="line">width: content-box</div><div class="line">width: max-content</div><div class="line">width: min-content</div><div class="line">width: available</div><div class="line">width: fit-content</div><div class="line">width: auto</div><div class="line"></div><div class="line">width: inherit</div></pre></td></tr></table></figure>
+<h2 id="height"><a href="#height" class="headerlink" title="height"></a>height</h2><p>min-height  与  max-height 覆盖 height.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">height: auto     /* auto keyword */</div><div class="line"></div><div class="line">height: 120px    /* &lt;length&gt; values */</div><div class="line">height: 10em</div><div class="line"></div><div class="line">height: 75%      /* &lt;percentage&gt; values */</div><div class="line"></div><div class="line">height: inherit</div></pre></td></tr></table></figure>
+<p>问题：页面高度高于 viewport 高度时，出现在浏览器内的右侧滚动条，会让页面向左偏移。<br>解决办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">html &#123;</div><div class="line">  overflow-y: scroll;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="background"><a href="#background" class="headerlink" title="background"></a>background</h2><h3 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.frame &#123;</div><div class="line">    height: $carousel-height;</div><div class="line">    background: url(/images/frame.jpg) center 0 no-repeat;</div><div class="line">    background-size: cover;//缩放图片以完全装入背景，超出背景部分被裁剪。</div><div class="line">    .cover &#123;</div><div class="line">      height: $carousel-height;</div><div class="line">      margin: 0 auto;</div><div class="line">      background: url(/images/cover.jpg) center 0 no-repeat;</div><div class="line">      background-size: contain;//缩放图片以完全装入背景，不足部分用空白填充。</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="class-命名规范"><a href="#class-命名规范" class="headerlink" title="class 命名规范"></a>class 命名规范</h2><ul>
+<li>使用 <code>.js-*</code> class 来标识行为（与样式相对），并且不要将这些 class 包含到 CSS 文件中</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/07/writing-npm-packages.html" rel="next" title="writing-npm-packages">
+                <i class="fa fa-chevron-left"></i> writing-npm-packages
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/14/prerender.html" rel="prev" title="prerender">
+                prerender <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/13/css.html"
+           data-title="css" data-url="http://haobing.wang/2016/10/13/css.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#css-modules"><span class="nav-number">1.</span> <span class="nav-text">css modules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html-结构异常会引起-css-异常"><span class="nav-number">2.</span> <span class="nav-text">html 结构异常会引起 css 异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面宽度异常"><span class="nav-number">3.</span> <span class="nav-text">页面宽度异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询"><span class="nav-number">4.</span> <span class="nav-text">媒体查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navbar-fixed-top-css"><span class="nav-number">5.</span> <span class="nav-text">navbar-fixed-top.css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sass-三大功能"><span class="nav-number">6.</span> <span class="nav-text">sass 三大功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定位置的-navbar"><span class="nav-number">7.</span> <span class="nav-text">固定位置的 navbar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#演进"><span class="nav-number">8.</span> <span class="nav-text">演进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-样式的优先级"><span class="nav-number">9.</span> <span class="nav-text">CSS 样式的优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-长度单位"><span class="nav-number">10.</span> <span class="nav-text">CSS 长度单位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#px"><span class="nav-number">10.1.</span> <span class="nav-text">px</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#em"><span class="nav-number">10.2.</span> <span class="nav-text">em</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem-是针对-em-的一个弱点而生的"><span class="nav-number">10.3.</span> <span class="nav-text">rem 是针对 em 的一个弱点而生的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百分比"><span class="nav-number">10.4.</span> <span class="nav-text">百分比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transform"><span class="nav-number">11.</span> <span class="nav-text">transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3-之-transition-过渡动画"><span class="nav-number">12.</span> <span class="nav-text">css3 之 transition 过渡动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#width"><span class="nav-number">13.</span> <span class="nav-text">width</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#height"><span class="nav-number">14.</span> <span class="nav-text">height</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background"><span class="nav-number">15.</span> <span class="nav-text">background</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#background-size"><span class="nav-number">15.1.</span> <span class="nav-text">background-size</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class-命名规范"><span class="nav-number">16.</span> <span class="nav-text">class 命名规范</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

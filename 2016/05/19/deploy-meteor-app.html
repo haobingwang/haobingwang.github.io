@@ -1,0 +1,715 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="deploy,meteor," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="开始之前
+An existing Meteor app on a separate development computer
+A fresh Ubuntu 14.04 server; existing Meteor installations should work in most cases
+root access to the server to execute commands
+Replac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署meteor应用">
+<meta property="og:url" content="http://haobing.wang/2016/05/19/deploy-meteor-app.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="开始之前
+An existing Meteor app on a separate development computer
+A fresh Ubuntu 14.04 server; existing Meteor installations should work in most cases
+root access to the server to execute commands
+Replac">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="部署meteor应用">
+<meta name="twitter:description" content="开始之前
+An existing Meteor app on a separate development computer
+A fresh Ubuntu 14.04 server; existing Meteor installations should work in most cases
+root access to the server to execute commands
+Replac">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/05/19/deploy-meteor-app.html"/>
+
+
+  <title> 部署meteor应用 | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                部署meteor应用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-19T17:02:09+08:00" content="2016-05-19">
+              2016-05-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/19/deploy-meteor-app.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/deploy-meteor-app.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h1><ul>
+<li>An existing Meteor app on a separate development computer</li>
+<li>A fresh Ubuntu 14.04 server; existing Meteor installations should work in most cases</li>
+<li>root access to the server to execute commands</li>
+<li>Replace todos.net with the domain name you are actually using (or leave it if you don’t have a domain and will be using an IP address instead)</li>
+<li>Replace todos with the name of your application</li>
+</ul>
+<a id="more"></a>
+<h1 id="本地准备工作"><a href="#本地准备工作" class="headerlink" title="本地准备工作"></a>本地准备工作</h1><p>查看 Node.js 版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat .meteor/local/build/.node_version.txt</div></pre></td></tr></table></figure>
+<p>Output: <code>v0.10.45</code></p>
+<p>在build之前，<code>master</code> 分支需要移除 <code>insecure</code> 和 <code>autopublish</code>，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meteor remove insecure autopublish</div><div class="line">meteor build ../output</div></pre></td></tr></table></figure>
+<p><code>insecure</code> 包是 meteor 默认安装的，它的作用是允许客户端代码可以直接修改数据库中的数据。例如：在项目中我们创建了一个叫做 Messages 的 mongodb collection，因为 insecure 软件包的存在，其实我们可以在客户端代码中直接调用 Messages.insert() 接口把聊天内容插入到数据库中，在生产环境下会引发安全问题。</p>
+<p>命令执行完之后，会生成文件 todos.tar.gz。请参考 <a href="#">meteor build</a></p>
+<p>然后把 todos.tar.gz 软件包传送到服务器上 home 主目录下，运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ../output</div><div class="line">scp todos.tar.gz root@todos.net:~/</div></pre></td></tr></table></figure>
+<p>到目前为止，本地开发机上的工作就全部完成了，后续工作全部在服务器上完成。</p>
+<h1 id="服务器上的准备工作"><a href="#服务器上的准备工作" class="headerlink" title="服务器上的准备工作"></a>服务器上的准备工作</h1><p>首先要登录到远端服务器，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@todos.net</div></pre></td></tr></table></figure>
+<p>Updated package lists</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get update</div></pre></td></tr></table></figure>
+<h2 id="Step1-Setting-Up-an-Nginx-Web-Server"><a href="#Step1-Setting-Up-an-Nginx-Web-Server" class="headerlink" title="Step1 - Setting Up an Nginx Web Server"></a>Step1 - Setting Up an Nginx Web Server</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install nginx</div></pre></td></tr></table></figure>
+<p>创建配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/nginx/sites-available/todos</div></pre></td></tr></table></figure>
+<p>添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">server_tokens off; # for security-by-obscurity: stop displaying nginx version</div><div class="line"></div><div class="line"># this section is needed to proxy web-socket connections</div><div class="line">map $http_upgrade $connection_upgrade &#123;</div><div class="line">    default upgrade;</div><div class="line">    &apos;&apos;      close;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># HTTPS server</div><div class="line">server &#123;</div><div class="line">    listen 443 ssl spdy; # we enable SPDY here</div><div class="line">    server_name todos.net www.todos.net;</div><div class="line"></div><div class="line">    # ssl_certificate /etc/letsencrypt/live/todos.net/fullchain.pem;</div><div class="line">    # ssl_certificate_key /etc/letsencrypt/live/todos.net/privkey.pem;</div><div class="line"></div><div class="line">    ssl_stapling on;</div><div class="line">    ssl_session_cache shared:SSL:10m;</div><div class="line">    ssl_session_timeout 5m;</div><div class="line"></div><div class="line">    ssl_prefer_server_ciphers on;</div><div class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">    ssl_ciphers &apos;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK&apos;;</div><div class="line"></div><div class="line">    add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;</div><div class="line"></div><div class="line">    root /usr/share/nginx/html; # root is irrelevant</div><div class="line">    index index.html index.htm; # this is also irrelevant</div><div class="line"></div><div class="line">    # pass all requests to Meteor</div><div class="line">    location / &#123;</div><div class="line">        proxy_pass http://127.0.0.1:8080;</div><div class="line">        proxy_http_version 1.1;</div><div class="line">        proxy_set_header Upgrade $http_upgrade; # allow websockets</div><div class="line">        proxy_set_header Connection $connection_upgrade;</div><div class="line">        proxy_set_header X-Forwarded-For $remote_addr; # preserve client IP</div><div class="line"></div><div class="line">        # this setting allows the browser to cache the application in a way compatible with Meteor</div><div class="line">        # on every applicaiton update the name of CSS and JS file is different, so they can be cache infinitely (here: 30 days)</div><div class="line">        # the root path (/) MUST NOT be cached</div><div class="line">        if ($uri != &apos;/&apos;) &#123;</div><div class="line">            expires 30d;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"># HTTP</div><div class="line">server &#123;</div><div class="line">  listen 80;</div><div class="line">  server_name todos.net www.todos.net;</div><div class="line">  return 301 https://$host$request_uri;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Disable the default vhost:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm /etc/nginx/sites-enabled/default</div></pre></td></tr></table></figure>
+<p>And enable our Meteor vhost:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s /etc/nginx/sites-available/todos /etc/nginx/sites-enabled/todos</div></pre></td></tr></table></figure>
+<p>Test that the vhost configuration is error free:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -t</div></pre></td></tr></table></figure>
+<p>If everything is looking good we can apply the changes to Nginx:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -s reload</div></pre></td></tr></table></figure>
+<p>At this point, you can use your web browser to visit <a href="https://todos.net" target="_blank" rel="external">https://todos.net</a> (or your IP address). It will show us 502 Bad Gateway. That is OK, because we don’t have Meteor running yet!</p>
+<h2 id="Step2-Setting-Up-a-MongoDB-Database"><a href="#Step2-Setting-Up-a-MongoDB-Database" class="headerlink" title="Step2 - Setting Up a MongoDB Database"></a>Step2 - Setting Up a MongoDB Database</h2><p>安装步骤按照 mongodb 官方提供的文档，Ubuntu v14.04 中安装 mongodb 3.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10</div><div class="line">echo &quot;deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install -y mongodb-org</div></pre></td></tr></table></figure>
+<p>安装成功之后，执行命令 mongo，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">server@aliyun:~$ mongo</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>In order to have daily backups available in case something goes wrong, we can optionally install a simple command as a daily cron job. Create a file <code>/etc/cron.d/mongodb-backup</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@daily root mkdir -p /var/backups/mongodb; mongodump --db todos --out /var/backups/mongodb/$(date +&apos;\%Y-\%m-\%d&apos;)</div></pre></td></tr></table></figure>
+<h2 id="Step-3-—-Installing-the-Meteor-Application"><a href="#Step-3-—-Installing-the-Meteor-Application" class="headerlink" title="Step 3 — Installing the Meteor Application"></a>Step 3 — Installing the Meteor Application</h2><h3 id="安装-NVM"><a href="#安装-NVM" class="headerlink" title="安装 NVM"></a>安装 NVM</h3><p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">安装</a></p>
+<h3 id="首先，安装-NVM"><a href="#首先，安装-NVM" class="headerlink" title="首先，安装 NVM"></a>首先，安装 NVM</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nvm install v0.10.45</div><div class="line">nvm alias default 0.10.45</div></pre></td></tr></table></figure>
+<p>It’s a good practice to run our Meteor application as a regular user. Therefore, we will create a new system user specifically for that purpose:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adduser --disabled-login todos</div></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Adding user `todos&apos; ...</div><div class="line">Adding new group `todos&apos; (1001) ...</div><div class="line">Adding new user `todos&apos; (1001) with group `todos&apos; ...</div><div class="line">Creating home directory `/home/todos&apos; ...</div><div class="line">Copying files from `/etc/skel&apos; ...</div><div class="line">Changing the user information for todos</div><div class="line">Enter the new value, or press ENTER for the default</div><div class="line">        Full Name []:</div><div class="line">        Room Number []:</div><div class="line">        Work Phone []:</div><div class="line">        Home Phone []:</div><div class="line">        Other []:</div><div class="line">Is the information correct? [Y/n]</div></pre></td></tr></table></figure>
+<h2 id="Step-4-—-使用-PM2-管理应用"><a href="#Step-4-—-使用-PM2-管理应用" class="headerlink" title="Step 4 — 使用 PM2 管理应用"></a>Step 4 — 使用 PM2 管理应用</h2><p>内容参考 pm2 部分。之前用的是 /etc/init/app.conf 的方法，但不如 pm2 好用。</p>
+<h2 id="Step-5-—-Deploying-the-Meteor-Application"><a href="#Step-5-—-Deploying-the-Meteor-Application" class="headerlink" title="Step 5 — Deploying the Meteor Application"></a>Step 5 — Deploying the Meteor Application</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mv todos.tar.gz /home/todos</div><div class="line">cd /home/todos</div><div class="line">tar -zxf todos.tar.gz</div></pre></td></tr></table></figure>
+<p>Take a look at the project README:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /home/todos/bundle/README</div></pre></td></tr></table></figure>
+<p>The bundle includes a <code>README</code> file with contents:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">This is a Meteor application bundle. It has only one external dependency:</div><div class="line">Node.js 0.10.40 or newer. To run the application:</div><div class="line"></div><div class="line">  $ (cd programs/server &amp;&amp; npm install)</div><div class="line">  $ export MONGO_URL=&apos;mongodb://user:password@host:port/databasename&apos;</div><div class="line">  $ export ROOT_URL=&apos;http://example.com&apos;</div><div class="line">  $ export MAIL_URL=&apos;smtp://user:password@mailhost:port/&apos;</div><div class="line">  $ node main.js</div><div class="line"></div><div class="line">Use the PORT environment variable to set the port where the</div><div class="line">application will listen. The default is 80, but that will require</div><div class="line">root on most systems.</div><div class="line"></div><div class="line">Find out more about Meteor at meteor.com.</div></pre></td></tr></table></figure>
+<p>Now we need to install some required npm modules. To be able to build some of them, we also need to install g++ and make:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">apt-get install g++ make</div><div class="line"># apt-get install build-essential</div><div class="line">cd /home/todos/bundle/programs/server</div><div class="line">npm install</div></pre></td></tr></table></figure>
+<p>We are almost ready to run the application, but since we operated on files as root, and they should be owned by the todos user, we need to update the ownership of the project directory:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown todos:todos /home/todos -R</div></pre></td></tr></table></figure>
+<h2 id="Step-6-—-Showtime"><a href="#Step-6-—-Showtime" class="headerlink" title="Step 6 — Showtime"></a>Step 6 — Showtime</h2><p>At this point we have everything we need to run our Meteor application:</p>
+<p>Node.js environment installed<br>Application installed in its project directory<br>Upstart service configured to run the application<br>MongoDB database<br>Nginx proxy server in front of our Meteor application to provide SSL encryption<br>To start our application, let’s execute this command from the project directory:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">start todos</div></pre></td></tr></table></figure>
+<p>Now you should be able to view your application in the browser at <a href="https://todos.net" target="_blank" rel="external">https://todos.net</a>.</p>
+<h2 id="Re-deploying-the-Application"><a href="#Re-deploying-the-Application" class="headerlink" title="Re-deploying the Application"></a>Re-deploying the Application</h2><h3 id="Development-server"><a href="#Development-server" class="headerlink" title="Development server:"></a>Development server:</h3><p>Build:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor build /app/dir</div></pre></td></tr></table></figure>
+<p>Upload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp todos.tar.gz root@todos.net:/home/todos</div></pre></td></tr></table></figure>
+<h3 id="Production-server"><a href="#Production-server" class="headerlink" title="Production server:"></a>Production server:</h3><p>Expand:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxf /home/todos/todos.tar.gz</div></pre></td></tr></table></figure>
+<p>Move into the project folder:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /home/todos/bundle/programs/server</div></pre></td></tr></table></figure>
+<p>Update the npm modules (you may see a few warnings):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+<p>Restart the app:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo restart todos</div></pre></td></tr></table></figure>
+<h2 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h2><p><a href="https://guide.meteor.com/deployment.html#seo" target="_blank" rel="external">Enable SEO</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/deploy/" rel="tag">#deploy</a>
+          
+            <a href="/tags/meteor/" rel="tag">#meteor</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/18/nice-to-meet-you.html" rel="next" title="第一篇博客">
+                <i class="fa fa-chevron-left"></i> 第一篇博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/20/hexo-readmore.html" rel="prev" title="hexo 文章摘要">
+                hexo 文章摘要 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/19/deploy-meteor-app.html"
+           data-title="部署meteor应用" data-url="http://haobing.wang/2016/05/19/deploy-meteor-app.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始之前"><span class="nav-number">1.</span> <span class="nav-text">开始之前</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地准备工作"><span class="nav-number">2.</span> <span class="nav-text">本地准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器上的准备工作"><span class="nav-number">3.</span> <span class="nav-text">服务器上的准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-Setting-Up-an-Nginx-Web-Server"><span class="nav-number">3.1.</span> <span class="nav-text">Step1 - Setting Up an Nginx Web Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-Setting-Up-a-MongoDB-Database"><span class="nav-number">3.2.</span> <span class="nav-text">Step2 - Setting Up a MongoDB Database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-—-Installing-the-Meteor-Application"><span class="nav-number">3.3.</span> <span class="nav-text">Step 3 — Installing the Meteor Application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-NVM"><span class="nav-number">3.3.1.</span> <span class="nav-text">安装 NVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首先，安装-NVM"><span class="nav-number">3.3.2.</span> <span class="nav-text">首先，安装 NVM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-—-使用-PM2-管理应用"><span class="nav-number">3.4.</span> <span class="nav-text">Step 4 — 使用 PM2 管理应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-—-Deploying-the-Meteor-Application"><span class="nav-number">3.5.</span> <span class="nav-text">Step 5 — Deploying the Meteor Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-—-Showtime"><span class="nav-number">3.6.</span> <span class="nav-text">Step 6 — Showtime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Re-deploying-the-Application"><span class="nav-number">3.7.</span> <span class="nav-text">Re-deploying the Application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Development-server"><span class="nav-number">3.7.1.</span> <span class="nav-text">Development server:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Production-server"><span class="nav-number">3.7.2.</span> <span class="nav-text">Production server:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SEO"><span class="nav-number">3.8.</span> <span class="nav-text">SEO</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

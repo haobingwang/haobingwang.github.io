@@ -1,0 +1,653 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="是否兼容 IE8 ？2016年，浏览器市场份额：
+
+Chrome 38.02%
+IE 8   15.54%
+QQ      5.72%
+IE9     5.58%
+
+由此可见，IE8 必须支持！！！
+Internet Explorer 8 和 9Internet Explorer 8 和 9 是被支持的，然而，你要知道，很多 CSS3 属性和 HTML5 元素 – 例如，圆角矩形和投影 – 是肯定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器兼容">
+<meta property="og:url" content="http://haobing.wang/2016/10/18/浏览器兼容.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="是否兼容 IE8 ？2016年，浏览器市场份额：
+
+Chrome 38.02%
+IE 8   15.54%
+QQ      5.72%
+IE9     5.58%
+
+由此可见，IE8 必须支持！！！
+Internet Explorer 8 和 9Internet Explorer 8 和 9 是被支持的，然而，你要知道，很多 CSS3 属性和 HTML5 元素 – 例如，圆角矩形和投影 – 是肯定">
+<meta property="og:updated_time" content="2017-03-08T04:29:08.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器兼容">
+<meta name="twitter:description" content="是否兼容 IE8 ？2016年，浏览器市场份额：
+
+Chrome 38.02%
+IE 8   15.54%
+QQ      5.72%
+IE9     5.58%
+
+由此可见，IE8 必须支持！！！
+Internet Explorer 8 和 9Internet Explorer 8 和 9 是被支持的，然而，你要知道，很多 CSS3 属性和 HTML5 元素 – 例如，圆角矩形和投影 – 是肯定">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2016/10/18/浏览器兼容.html"/>
+
+
+  <title> 浏览器兼容 | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浏览器兼容
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-18T15:52:41+08:00" content="2016-10-18">
+              2016-10-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/18/浏览器兼容.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/18/浏览器兼容.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="是否兼容-IE8-？"><a href="#是否兼容-IE8-？" class="headerlink" title="是否兼容 IE8 ？"></a>是否兼容 IE8 ？</h2><p>2016年，浏览器市场份额：</p>
+<ul>
+<li>Chrome 38.02%</li>
+<li>IE 8   15.54%</li>
+<li>QQ      5.72%</li>
+<li>IE9     5.58%</li>
+</ul>
+<p>由此可见，IE8 必须支持！！！</p>
+<h2 id="Internet-Explorer-8-和-9"><a href="#Internet-Explorer-8-和-9" class="headerlink" title="Internet Explorer 8 和 9"></a>Internet Explorer 8 和 9</h2><p>Internet Explorer 8 和 9 是被支持的，然而，你要知道，很多 CSS3 属性和 HTML5 元素 – 例如，圆角矩形和投影 – 是肯定不被支持的。另外， Internet Explorer 8 需要 Respond.js 配合才能实现对媒体查询（media query）的支持。</p>
+<p>请参考 <a href="http://caniuse.com/" target="_blank" rel="external">Can I use…</a> 以获取详细的 CSS3 和 HTML5 特性在各个浏览器上的支持情况。</p>
+<h3 id="Step1-设置-IE-兼容模式"><a href="#Step1-设置-IE-兼容模式" class="headerlink" title="Step1.设置 IE 兼容模式"></a>Step1.设置 IE 兼容模式</h3><p>X-UA-Compatible 是从IE8开始新加的一个设置，对于IE8以下的浏览器是不识别的。</p>
+<p>为了让 IE 浏览器运行最新的渲染模式下，建议将此 <meta> 标签加入到你的页面中：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span><span class="attr">content</span>=<span class="string">"IE=Edge"</span> &gt;</span></div><div class="line"><span class="comment">&lt;!-- 或者 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span><span class="attr">content</span>=<span class="string">"IE=Edge,chrome=1"</span> &gt;</span></div></pre></td></tr></table></figure>
+<p>作用：</p>
+<ol>
+<li>如果支持Google Chrome Frame：GCF，则使用GCF渲染；</li>
+<li>如果系统安装ie8或以上版本，则使用最高版本ie渲染；</li>
+<li>否则，这个设定可以忽略。</li>
+</ol>
+<ul>
+<li>系统已安装 IE11</li>
+<li>对 IE8 无效，flexbox 完全无法解析；</li>
+<li>对 IE9 有奇效，flexbox 无压力；</li>
+</ul>
+<h4 id="Nginx服务器"><a href="#Nginx服务器" class="headerlink" title="Nginx服务器"></a>Nginx服务器</h4><p>只需要找到 nginx.conf并编辑，在server { } 内添加下列代码即可:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">add_header &quot;X-UA-Compatible&quot; &quot;IE=Edge, chrome=1&quot;;</div></pre></td></tr></table></figure>
+<h3 id="Step2-兼容-IE8"><a href="#Step2-兼容-IE8" class="headerlink" title="Step2.兼容 IE8"></a>Step2.兼容 IE8</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;</span></div><div class="line"><span class="comment">&lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;</span></div><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line">  &lt;script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;</div><div class="line">  &lt;script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
+<h3 id="Step3-谨慎使用-Flexbox"><a href="#Step3-谨慎使用-Flexbox" class="headerlink" title="Step3.谨慎使用 Flexbox"></a>Step3.谨慎使用 Flexbox</h3><p>IE8，IE9 均不支持。所以依然只能使用 float。</p>
+<p>移动端可以放心使用 Flexbox 布局。</p>
+<h2 id="浏览器升级提示"><a href="#浏览器升级提示" class="headerlink" title="浏览器升级提示"></a><a href="http://cdn.dmeng.net/kill-old-versions-of-ie.html" target="_blank" rel="external">浏览器升级提示</a></h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if lte IE 10]&gt;&lt;script&gt;window.location.href='http://cdn.dmeng.net/upgrade-your-browser.html?referrer='+location.href;&lt;/script&gt;&lt;![endif]--&gt;</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/17/找到事件.html" rel="next" title="找到事件">
+                <i class="fa fa-chevron-left"></i> 找到事件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/18/栅格系统.html" rel="prev" title="栅格系统">
+                栅格系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/18/浏览器兼容.html"
+           data-title="浏览器兼容" data-url="http://haobing.wang/2016/10/18/浏览器兼容.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#是否兼容-IE8-？"><span class="nav-number">1.</span> <span class="nav-text">是否兼容 IE8 ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Internet-Explorer-8-和-9"><span class="nav-number">2.</span> <span class="nav-text">Internet Explorer 8 和 9</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-设置-IE-兼容模式"><span class="nav-number">2.1.</span> <span class="nav-text">Step1.设置 IE 兼容模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx服务器"><span class="nav-number">2.1.1.</span> <span class="nav-text">Nginx服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-兼容-IE8"><span class="nav-number">2.2.</span> <span class="nav-text">Step2.兼容 IE8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-谨慎使用-Flexbox"><span class="nav-number">2.3.</span> <span class="nav-text">Step3.谨慎使用 Flexbox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器升级提示"><span class="nav-number">3.</span> <span class="nav-text">浏览器升级提示</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
