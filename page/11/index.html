@@ -258,6 +258,520 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/26/meteor-accounts.html" itemprop="url">
+                  meteor-accounts
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-26T16:05:06+08:00" content="2016-07-26">
+              2016-07-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/26/meteor-accounts.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/meteor-accounts.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Chrome-console-中运行"><a href="#Chrome-console-中运行" class="headerlink" title="Chrome console 中运行"></a>Chrome console 中运行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 查看已经注册过的用户</div><div class="line">Meteor.users.find().fetch()</div><div class="line"># 或者</div><div class="line">Meteor.user()</div><div class="line"></div><div class="line"># 注销登录</div><div class="line">Meteor.logout()</div></pre></td></tr></table></figure>
+<h2 id="Getting-information-about-the-logged-in-user"><a href="#Getting-information-about-the-logged-in-user" class="headerlink" title="Getting information about the logged-in user"></a>Getting information about the logged-in user</h2><p>In your data container, you can use <code>Meteor.user()</code> to check if a user is logged in and get information about them. For example, <code>Meteor.user().username</code> contains the logged in user’s username. You can also use <code>Meteor.userId()</code> to just get the current user’s <code>_id</code>.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/25/redirect.html" itemprop="url">
+                  重定向
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-25T16:04:24+08:00" content="2016-07-25">
+              2016-07-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/25/redirect.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/redirect.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>0 输入（标准输入）</li>
+<li>1 输出（标准输出）</li>
+<li>2 错误（标准错误信息输出）</li>
+</ul>
+<p>将错误信息输出到 log 文件 <code>./program 2&gt;log</code>，这样，标准输出显示在屏幕，但是错误信息会输出到log 文件中。</p>
+<p>另外，也可以实现 0 1 2 之间的重定向，例如 <code>2&gt;&amp;1</code> ，就可以错误信息重定向到标准输出。</p>
+<p>Linux 下还有个特殊文件 <code>/dev/null</code> ，它像一个无底洞，所有重定向到它的信息都会消失得无影无踪。这一点非常有用，当我们不需要显示程序的输出时，就可以将输出和错误都重定向到 <code>/dev/null</code>，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls &gt;/dev/null 2&gt;/dev/null</div></pre></td></tr></table></figure>
+<p>还有一种做法是先将输出重定向到 <code>/dev/null</code>，再将错误重定向到输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
+<p><code>&gt;</code>  清空原内容，写入新内容<br><code>&gt;&gt;</code> 保留原内容，追加新内容</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/24/linux-link.html" itemprop="url">
+                  linux 下的链接
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-24T16:03:59+08:00" content="2016-07-24">
+              2016-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/24/linux-link.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/linux-link.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>为 <code>public</code> 创建一个 <code>blog</code> 链接</p>
+<p><code>ln -s public blog</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/22/incron.html" itemprop="url">
+                  incron
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T16:01:04+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/22/incron.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/22/incron.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install incron vim</div></pre></td></tr></table></figure>
+<p>查看命令文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man 5 incrontab</div></pre></td></tr></table></figure>
+<p>加入用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo echo &apos;pi&apos; &gt; /etc/incron.allow</div></pre></td></tr></table></figure>
+<p>添加任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div></pre></td></tr></table></figure>
+<p>格式：<code>path&gt; &lt;mask&gt; &lt;command&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/pi/blog/source/_posts/ IN_MODIFY,IN_DELETE /home/pi/auto.sh</div></pre></td></tr></table></figure>
+<p><strong>注意</strong>：只能有一个空格，否则会报错：</p>
+<blockquote>
+<p>incrond[12119]: cannot exec process: No such file or directory</p>
+</blockquote>
+<p>查看任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -l</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi auto.sh</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line">export PATH=/home/pi/.nvm/versions/node/v4.4.7/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games</div><div class="line"></div><div class="line">cd /home/pi/blog</div><div class="line">hexo g &gt;/home/pi/incron.log</div><div class="line">hexo d &gt;&gt;/home/pi/incron.log</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x auto.sh</div></pre></td></tr></table></figure>
+<h2 id="查看系统日志"><a href="#查看系统日志" class="headerlink" title="查看系统日志"></a>查看系统日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail /var/log/syslog</div></pre></td></tr></table></figure>
+<h2 id="移除任务"><a href="#移除任务" class="headerlink" title="移除任务"></a>移除任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -r</div></pre></td></tr></table></figure>
+<h2 id="常用任务"><a href="#常用任务" class="headerlink" title="常用任务"></a>常用任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/apache2/apache2.conf IN_MODIFY /usr/sbin/service apache2 restart</div><div class="line">/etc/apache2/vhosts/ IN_MODIFY /usr/sbin/service apache2 restart</div></pre></td></tr></table></figure>
+<h2 id="问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？"><a href="#问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？" class="headerlink" title="问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？"></a>问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/21/hexo-auto.html" itemprop="url">
                   hexo 自动化
                 </a>
@@ -1047,582 +1561,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/14/git-hooks.html" itemprop="url">
-                  git 钩子
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-14T15:58:40+08:00" content="2016-07-14">
-              2016-07-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/14/git-hooks.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/git-hooks.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装一个钩子"><a href="#安装一个钩子" class="headerlink" title="安装一个钩子"></a>安装一个钩子</h2><ul>
-<li>把一个正确命名且可执行的文件放入 <code>.git/hooks</code> 目录中，即可激活该钩子脚本。</li>
-<li>脚本名称为钩子名称。</li>
-<li>脚本可以是 python php 或使用其它语言编写的。</li>
-</ul>
-<h2 id="客户端钩子"><a href="#客户端钩子" class="headerlink" title="客户端钩子"></a>客户端钩子</h2><ul>
-<li>提交工作流钩子<ul>
-<li>pre-commit</li>
-<li>prepare-commit-msg</li>
-<li>commit-msg</li>
-<li>post-commit</li>
-</ul>
-</li>
-<li>电子邮件工作流工资<ul>
-<li>applypatch-msg</li>
-<li>pre-applypatch</li>
-<li>post-applypath</li>
-</ul>
-</li>
-<li>其他客户端钩子<ul>
-<li>pre-rebase</li>
-<li>post-rewrite</li>
-<li>post-checkout</li>
-<li>post-merge</li>
-<li>pre-push</li>
-</ul>
-</li>
-</ul>
-<h2 id="服务器钩子"><a href="#服务器钩子" class="headerlink" title="服务器钩子"></a>服务器钩子</h2><ul>
-<li>pre-receive</li>
-<li>update</li>
-<li>post-receive</li>
-</ul>
-<h2 id="使用钩子"><a href="#使用钩子" class="headerlink" title="使用钩子"></a>使用钩子</h2><p>想项目目录下，新建文件 <code>.git/hooks/pre-commit</code></p>
-<p>添加内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div></pre></td></tr></table></figure>
-<p>添加执行权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod a+x pre-commit</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/13/git-history.html" itemprop="url">
-                  git 重写历史
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-13T16:08:33+08:00" content="2016-07-13">
-              2016-07-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/13/git-history.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/13/git-history.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="修改最后一次提交"><a href="#修改最后一次提交" class="headerlink" title="修改最后一次提交"></a>修改最后一次提交</h2><p>对于最近一次提交，我们往往想做两件事情：</p>
-<ul>
-<li>修改提交信息</li>
-<li>再添加文件、修改已经提交的文件、删除已经提交的文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 添加文件、修改已经提交的文件</div><div class="line">git add file_modified file_new</div><div class="line"># 删除已经提交的文件</div><div class="line">git rm file_to_delete</div><div class="line">修改提交的信息</div><div class="line">git commit --amend</div></pre></td></tr></table></figure>
-<h2 id="修改多个提交"><a href="#修改多个提交" class="headerlink" title="修改多个提交"></a>修改多个提交</h2><p>修改最后三次提交：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -i HEAD~3</div></pre></td></tr></table></figure>
-<p>可以进行的操作是</p>
-<ul>
-<li>重新排序提交</li>
-<li>压缩(合并)提交</li>
-<li>拆分提交</li>
-</ul>
-<h3 id="合并提交"><a href="#合并提交" class="headerlink" title="合并提交"></a>合并提交</h3><p>为了便于他人阅读你的提交，也便于cherry-pick或撤销代码变化，在发起Pull Request之前，<br>应该把多个commit合并成一个。（前提是，该分支只有你一个人开发，且没有跟master合并过。）</p>
-<p>当前我们有3个commit：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">third  commit 32b1c2c13e055f089cef2edd393110ca13056e63</div><div class="line">second commit 2b20ccfbf373a1210aadb75bcc310691b01bbcfd</div><div class="line">first  commit fc280daf831b0306ade5908f5743eadb23ee80b8</div></pre></td></tr></table></figure>
-<p>如果需要将<code>third commit</code> 和 <code>second commit</code>合并成一个，可以执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -i fc280da # first commit</div></pre></td></tr></table></figure>
-<p>其中 <code>-i</code> 的参数是操作范围的父commit（即<code>first commit</code>）的 hash 值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">pick 2b20ccf second commit</div><div class="line">pick 32b1c2c third commit</div><div class="line"></div><div class="line"># Rebase fc280da..32b1c2c onto fc280da (2 command(s))</div><div class="line">#</div><div class="line"># Commands:</div><div class="line"># p, pick = use commit</div><div class="line"># r, reword = use commit, but edit the commit message</div><div class="line"># e, edit = use commit, but stop for amending</div><div class="line"># s, squash = use commit, but meld into previous commit</div><div class="line"># f, fixup = like &quot;squash&quot;, but discard this commit&apos;s log message</div><div class="line"># x, exec = run command (the rest of the line) using shell</div><div class="line"># d, drop = remove commit</div><div class="line">#</div><div class="line"># These lines can be re-ordered; they are executed from top to bottom.</div><div class="line">#</div><div class="line"># If you remove a line here THAT COMMIT WILL BE LOST.</div><div class="line">#</div><div class="line"># However, if you remove everything, the rebase will be aborted.</div><div class="line">#</div><div class="line"># Note that empty commits are commented out</div></pre></td></tr></table></figure>
-<p>合并，操作需要将 <code>pick</code> 改为 <code>s</code> 即可。其它操作可以按照 <code>Commands</code> 说明操作。</p>
-<h2 id="修改第一次提交"><a href="#修改第一次提交" class="headerlink" title="修改第一次提交"></a>修改第一次提交</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -i --root</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/12/tradition-layout.html" itemprop="url">
-                  传统网页布局
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-12T14:13:59+08:00" content="2016-07-12">
-              2016-07-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/12/tradition-layout.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/tradition-layout.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="fixed-header-布局"><a href="#fixed-header-布局" class="headerlink" title="fixed-header 布局"></a>fixed-header 布局</h2><p>结构：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nav-main"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrap"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"nav-home"</span> <span class="attr">href</span>=<span class="string">"/index.html"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/img/logo.svg"</span> <span class="attr">alt</span>=<span class="string">"logo"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav-right"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    ...</div><div class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span>...<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>样式：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">padding-top</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">min-width</span>: <span class="number">960px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav-main</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50</span>;</div><div class="line">  <span class="attribute">z-index</span>: <span class="number">100</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="string">'#222'</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="string">'#fafafa'</span>；</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.wrap</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">960px</span>;</div><div class="line">  <span class="attribute">margin-left</span>: auto;</div><div class="line">  <span class="attribute">margin-right</span>: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/11/responsive.html" itemprop="url">
-                  响应式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-11T21:25:03+08:00" content="2016-07-11">
-              2016-07-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/11/responsive.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/11/responsive.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>浏览器的默认字体大小是 16 像素。</p>
-<p>通常，我们这样定义字体</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font</span>: normal <span class="number">100%</span> Helvetica, Arial, sans-serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>0.875em 就是 14像素 （14/16=0.875）</li>
-<li>1.5em 就是 24像素 （24/16=1.5）</li>
-</ul>
-<h3 id="viewport-设置是每个响应式页面必须的"><a href="#viewport-设置是每个响应式页面必须的" class="headerlink" title="viewport 设置是每个响应式页面必须的"></a>viewport 设置是每个响应式页面必须的</h3><p><strong>问题是什么？</strong></p>
-<p>浏览器默认按照 960 的宽度来显示网页，无论设备是PC还是手机，造成很多设备上字体变成了原来的 1/3 。</p>
-<p><strong>解决方案</strong></p>
-<p><a href="http://facebook.github.io/react/" target="_blank" rel="external">http://facebook.github.io/react/</a> 采用的解决方案是：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>viewport 就是浏览器窗口。这个设置翻译成大白话就是：浏览器呀，请你按照设备宽度显示网页，不要按照默认的960px显示了。</p>
-<p>这样就解决了上面所说的问题了。意思是把我的视窗 viewport 的宽度，设置为设备的实际宽度，比如说前面提到的 iphone5 ，本来默认视窗宽度是 960px ，那么有了这一行设置之后，视窗宽度就变成了设备实际宽度了 320px 。这样后面再来显示页面元素，当然就不会缩小了。</p>
-<p>但是更为常见的设置是：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>很多知名的网站都是用了上面的设置，例如 <a href="http://alistapart.com/" target="_blank" rel="external">http://alistapart.com/</a></p>
-<p>那么 <code>initial-scale=1</code> 的作用是什么呢？</p>
-<p>当你在手机上将手机横屏显示时，网页上的字体就会变得很大，不自然。</p>
-<h2 id="图片大小"><a href="#图片大小" class="headerlink" title="图片大小"></a>图片大小</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">img</span> &#123; <span class="attribute">max-width</span>: <span class="number">100%</span> &#125;</div></pre></td></tr></table></figure>
-<h2 id="媒体查询-min-width"><a href="#媒体查询-min-width" class="headerlink" title="媒体查询 min-width"></a>媒体查询 <code>min-width</code></h2><p><em>index.css</em></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.side-bar</span> &#123;</div><div class="line">  <span class="attribute">display</span>: none;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> (min-width: <span class="number">600px</span>) &#123;</div><div class="line">  <span class="selector-class">.item</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> (min-width: <span class="number">1000px</span>) &#123;</div><div class="line">  <span class="selector-class">.wrap</span> &#123;</div><div class="line">    <span class="attribute">display</span>: flex;</div><div class="line">    <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">  &#125;</div><div class="line">  <span class="selector-class">.item</span> &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="built_in">calc</span>(50% - 40px);</div><div class="line">  &#125;</div><div class="line">  <span class="selector-class">.side-bar</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> (min-width: <span class="number">1400px</span>) &#123;</div><div class="line">  <span class="selector-class">.item</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="built_in">calc</span>(33% - 40px);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>phone，每行1列</li>
-<li>pad，每行1列，宽度增加</li>
-<li>laptop,每行2列</li>
-<li>desktop,每行3列</li>
-</ul>
-<p><code>side-bar</code> 默认隐藏，大屏显示</p>
-<h2 id="流动布局"><a href="#流动布局" class="headerlink" title="流动布局"></a>流动布局</h2><p>区块全部添加 <code>float</code> 样式，宽度全都使用 <code>%</code> 定义。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1663,7 +1606,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-count">161</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1680,7 +1623,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-count">231</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -67,7 +67,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blog," />
+  <meta name="keywords" content="blog,ghost," />
 
 
 
@@ -83,16 +83,19 @@
 
 
 
-<meta name="description" content="在线使用 HEXO 写文章实在不方便，各种坑。Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
+<meta name="description" content="在线使用 HEXO 写文章实在不方便，各种坑。
+Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ghost">
 <meta property="og:url" content="http://haobing.wang/2016/08/23/ghost.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="在线使用 HEXO 写文章实在不方便，各种坑。Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.618Z">
+<meta property="og:description" content="在线使用 HEXO 写文章实在不方便，各种坑。
+Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
+<meta property="og:updated_time" content="2017-03-08T09:52:47.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ghost">
-<meta name="twitter:description" content="在线使用 HEXO 写文章实在不方便，各种坑。Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
+<meta name="twitter:description" content="在线使用 HEXO 写文章实在不方便，各种坑。
+Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
 
 
 
@@ -308,58 +311,28 @@
       
 
       
-        <p>在线使用 HEXO 写文章实在不方便，各种坑。Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。</p>
+        <p>在线使用 HEXO 写文章实在不方便，各种坑。</p>
+<p>Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。</p>
 <a id="more"></a>
-<h2 id="Install-Ghost"><a href="#Install-Ghost" class="headerlink" title="Install Ghost"></a>Install Ghost</h2><p>Ghost.org recommends to install Ghost in <code>var/www/ghost</code>, so that is where we will install it.</p>
-<p>First, we will create a directory <code>/var/www/</code> and then download the latest version of Ghost from Ghost’s GitHub repository:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo mkdir -p /var/www/</div><div class="line">cd /var/www/</div><div class="line">sudo wget https://ghost.org/zip/ghost-latest.zip</div></pre></td></tr></table></figure>
-<p>Now that we have obtained the latest version of Ghost, we have to unzip it. We’ll also change our directory to <code>/var/www/ghost/</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo unzip <span class="_">-d</span> ghost ghost-latest.zip</div><div class="line"><span class="built_in">cd</span> ghost/</div></pre></td></tr></table></figure>
-<p>Now we can install the Ghost dependencies and node modules(production dependencies only):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install --production</div></pre></td></tr></table></figure>
-<p>Ghost is installed when this completes. We need to set up Ghost before we can start it.</p>
-<h2 id="Setting-up-Ghost"><a href="#Setting-up-Ghost" class="headerlink" title="Setting up Ghost"></a>Setting up Ghost</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cp config.example.js config.js</div><div class="line">vi config.js</div><div class="line">npm start --production</div></pre></td></tr></table></figure>
-<h2 id="Setting-up-Nginx"><a href="#Setting-up-Nginx" class="headerlink" title="Setting up Nginx"></a>Setting up Nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/nginx/sites-available/ghost</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name your_domain.tld;</div><div class="line">    location / &#123;</div><div class="line">        proxy_set_header   X-Real-IP $remote_addr;</div><div class="line">        proxy_set_header   Host      $http_host;</div><div class="line">        proxy_pass         http://127.0.0.1:2368;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo ln <span class="_">-s</span> /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost</div><div class="line">sudo service nginx restart</div></pre></td></tr></table></figure>
-<p>Next we will create a new user. This user would be granted only the privileges to do stuff in the directory /var/www/ghost. This is a security measure. If Ghost gets compromised, your system would be safe. This can be done by running this command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo adduser --shell /bin/bash --gecos <span class="string">'Ghost application'</span> ghost</div></pre></td></tr></table></figure>
-<p>We will grant privileges:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R ghost:ghost /var/www/ghost/</div></pre></td></tr></table></figure>
-<p>You can now log in as the ghost user:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">su - ghost</div></pre></td></tr></table></figure>
-<p>Now we would need to start Ghost:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /var/www/ghost</div><div class="line">npm start --production</div></pre></td></tr></table></figure>
-<h2 id="Keep-Ghost-Running-with-forever"><a href="#Keep-Ghost-Running-with-forever" class="headerlink" title="Keep Ghost Running with forever"></a>Keep Ghost Running with forever</h2><p>The next step is to keep Ghost running in the background. <code>forever</code> is a node module which can be used to start Ghost in the background and monitor to make sure it stays up. If Ghost crashes, forever will automatically start another instance of Ghost.</p>
-<p>Install <code>forever</code> with the following command from within your Ghost directory, i.e. <code>/var/www/ghost</code>. But before running the command log out of the <code>ghost</code> user and login to your non-root user:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">exit</span></div><div class="line">sudo npm install -g forever</div></pre></td></tr></table></figure>
-<p>Start Ghost as the <code>ghost</code> user. It also must be run from the Ghost directory:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su - ghost</div><div class="line"><span class="built_in">cd</span> /var/www/ghost</div><div class="line">forever start index.js</div></pre></td></tr></table></figure>
-<p>The output should be similar to this:</p>
-<blockquote>
-<p>warn:    –minUptime not set. Defaulting to: 1000ms<br>warn:    –spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms<br>info:    Forever processing file: index.js</p>
-</blockquote>
-<p>By default, it loads in the development environment. This can be changed by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NODE_ENV=production forever start index.js</div></pre></td></tr></table></figure>
-<p><code>forever</code> can be stopped by running this from the Ghost directory:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forever stop index.js</div></pre></td></tr></table></figure>
-<h2 id="Possible-Errors"><a href="#Possible-Errors" class="headerlink" title="Possible Errors"></a>Possible Errors</h2><p>For the following error message:</p>
-<blockquote>
-<p>Error: SQLITE_READONLY: attempt to write a readonly database</p>
-</blockquote>
-<p>Start <code>forever</code> as a <code>root</code> user (type exit to logout the current user):</p>
-<blockquote>
-<p>sudo forever start index.js</p>
-</blockquote>
-<p>If the last command says it cannot find ‘forever’, use the full path to the command:</p>
-<blockquote>
-<p>sudo /usr/local/bin/forever start index.js</p>
-</blockquote>
-<p>If you see the following error:</p>
-<blockquote>
-<p>error:   Cannot start forever<br>error:   script /home/ghost/index.js does not exist.</p>
-</blockquote>
-<p>You are not in the <code>/var/www/ghost</code> directory. Change to this directory and execute the command again.</p>
+<h2 id="Windows-配置-Ghost"><a href="#Windows-配置-Ghost" class="headerlink" title="Windows 配置 Ghost"></a>Windows 配置 Ghost</h2><p>预制条件：</p>
+<ul>
+<li>python 2.7</li>
+<li>node.js 4.5</li>
+<li>git</li>
+</ul>
+<p>下载 ghost</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 下载工具随意</div><div class="line">wget https://ghost.org/zip/ghost-latest.zip</div></pre></td></tr></table></figure>
+<p>解压，并安装Ghost的生产模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ghost</div><div class="line">npm install --production</div></pre></td></tr></table></figure>
+<p>Ghost设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp config.example.js config.js</div></pre></td></tr></table></figure>
+<p>运行 Ghost：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 启动 development</div><div class="line">npm start</div><div class="line"></div><div class="line"># 启动 production</div><div class="line">npm start --production</div></pre></td></tr></table></figure>
+<p>登录后台：访问 <code>/ghost/signup/</code> 设置管理员用户</p>
+<h2 id="添加-robots-txt"><a href="#添加-robots-txt" class="headerlink" title="添加 robots.txt"></a>添加 robots.txt</h2><p>禁止爬虫抓取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">User-agent: *</div><div class="line">Disallow: /</div></pre></td></tr></table></figure>
+<p>生产 robots.txt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">User-agent: *</div><div class="line">Sitemap: /sitemap.xml</div><div class="line">Disallow: /ghost/</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -382,6 +355,8 @@
         <div class="post-tags">
           
             <a href="/tags/blog/" rel="tag">#blog</a>
+          
+            <a href="/tags/ghost/" rel="tag">#ghost</a>
           
         </div>
       
@@ -472,7 +447,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-count">161</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -489,7 +464,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-count">231</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -518,7 +493,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Ghost"><span class="nav-number">1.</span> <span class="nav-text">Install Ghost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setting-up-Ghost"><span class="nav-number">2.</span> <span class="nav-text">Setting up Ghost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setting-up-Nginx"><span class="nav-number">3.</span> <span class="nav-text">Setting up Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keep-Ghost-Running-with-forever"><span class="nav-number">4.</span> <span class="nav-text">Keep Ghost Running with forever</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Possible-Errors"><span class="nav-number">5.</span> <span class="nav-text">Possible Errors</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-配置-Ghost"><span class="nav-number">1.</span> <span class="nav-text">Windows 配置 Ghost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加-robots-txt"><span class="nav-number">2.</span> <span class="nav-text">添加 robots.txt</span></a></li></ol></div>
             
           </div>
         </section>

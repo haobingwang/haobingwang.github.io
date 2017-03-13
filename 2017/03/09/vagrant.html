@@ -1,0 +1,664 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vagrant," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="vagrant环境搭建文档
+Vagrant 环境配置安装相关软件
+virtualbox
+vagrant
+xshell（官网下载比较麻烦，找百度或360吧）
+
+安装完毕后重启电脑
+Windows 必须要做的事情注意，一定要开启 VT-x/AMD-V 硬件加速
+开机进入BIOS选项 ，依次选Config-&amp;gt;CPU-&amp;gt;Intel Virtualization Technology，里面有个I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vagrant">
+<meta property="og:url" content="http://haobing.wang/2017/03/09/vagrant.html">
+<meta property="og:site_name" content="王浩冰">
+<meta property="og:description" content="vagrant环境搭建文档
+Vagrant 环境配置安装相关软件
+virtualbox
+vagrant
+xshell（官网下载比较麻烦，找百度或360吧）
+
+安装完毕后重启电脑
+Windows 必须要做的事情注意，一定要开启 VT-x/AMD-V 硬件加速
+开机进入BIOS选项 ，依次选Config-&amp;gt;CPU-&amp;gt;Intel Virtualization Technology，里面有个I">
+<meta property="og:updated_time" content="2017-03-10T06:06:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vagrant">
+<meta name="twitter:description" content="vagrant环境搭建文档
+Vagrant 环境配置安装相关软件
+virtualbox
+vagrant
+xshell（官网下载比较麻烦，找百度或360吧）
+
+安装完毕后重启电脑
+Windows 必须要做的事情注意，一定要开启 VT-x/AMD-V 硬件加速
+开机进入BIOS选项 ，依次选Config-&amp;gt;CPU-&amp;gt;Intel Virtualization Technology，里面有个I">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://haobing.wang/2017/03/09/vagrant.html"/>
+
+
+  <title> vagrant | 王浩冰 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80189438-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abbbb302d25b6fcf3d2dad737df52139";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s6.cnzz.com/stat.php?id=1259577898&web_id=1259577898" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王浩冰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                vagrant
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-09T10:13:12+08:00" content="2017-03-09">
+              2017-03-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/09/vagrant.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/vagrant.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://github.com/apanly/mooc/tree/master/vagrant" target="_blank" rel="external">vagrant环境搭建文档</a></p>
+<h1 id="Vagrant-环境配置"><a href="#Vagrant-环境配置" class="headerlink" title="Vagrant 环境配置"></a>Vagrant 环境配置</h1><h2 id="安装相关软件"><a href="#安装相关软件" class="headerlink" title="安装相关软件"></a>安装相关软件</h2><ul>
+<li>virtualbox</li>
+<li>vagrant</li>
+<li>xshell（官网下载比较麻烦，找百度或360吧）</li>
+</ul>
+<p>安装完毕后重启电脑</p>
+<h2 id="Windows-必须要做的事情"><a href="#Windows-必须要做的事情" class="headerlink" title="Windows 必须要做的事情"></a>Windows 必须要做的事情</h2><p>注意，<strong>一定要开启 VT-x/AMD-V 硬件加速</strong></p>
+<p>开机进入BIOS选项 ，依次选Config-&gt;CPU-&gt;Intel Virtualization Technology，里面有个Intel VT-d Feature ，改成Enabled ，保存退出，关机，然后启动机器。</p>
+<h2 id="vagrant-常用命令"><a href="#vagrant-常用命令" class="headerlink" title="vagrant 常用命令"></a>vagrant 常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vagrant</div><div class="line">vagrant up -h</div></pre></td></tr></table></figure>
+<p>创建一个虚拟机的三步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vagrant box add &#123;title&#125; &#123;url&#125;</div><div class="line">vagrant init &#123;title&#125;</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
+<h2 id="为项目创建一个-vbox"><a href="#为项目创建一个-vbox" class="headerlink" title="为项目创建一个 vbox"></a>为项目创建一个 vbox</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">[D:\vagrant]$ mkdir myproject</div><div class="line"></div><div class="line">[D:\vagrant\myproject]$ cd myproject</div><div class="line"></div><div class="line">[D:\vagrant\myproject]$ vagrant init ubuntu/trusty64</div><div class="line">A `Vagrantfile` has been placed in this directory. You are now</div><div class="line">ready to `vagrant up` your first virtual environment! Please read</div><div class="line">the comments in the Vagrantfile as well as documentation on</div><div class="line">`vagrantup.com` for more information on using Vagrant.</div><div class="line"></div><div class="line"></div><div class="line"># 启动我们的虚拟机，由于系统当前没有下载过任何镜像，所以 vagrant 就会到 https://atlas.hashicorp.com 去下载 ubuntu/trusty64 对应的镜像。</div><div class="line">[D:\vagrant\myproject]$ vagrant up</div><div class="line">Bringing machine &apos;default&apos; up with &apos;virtualbox&apos; provider...</div><div class="line">==&gt; default: Box &apos;ubuntu/trusty64&apos; could not be found. Attempting to find and install...</div><div class="line">    default: Box Provider: virtualbox</div><div class="line">    default: Box Version: &gt;= 0</div><div class="line">==&gt; default: Loading metadata for box &apos;ubuntu/trusty64&apos;</div><div class="line">    default: URL: https://atlas.hashicorp.com/ubuntu/trusty64</div><div class="line">==&gt; default: Adding box &apos;ubuntu/trusty64&apos; (v20170302.0.0) for provider: virtualbox</div><div class="line">    default: Downloading: https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/20170302.0.0/providers/virtualbox.box</div><div class="line">==&gt; default: Box download is resuming from prior download progress</div><div class="line">    default: Progress: 100% (Rate: 417k/s, Estimated time remaining: --:--:--)</div><div class="line">==&gt; default: Successfully added box &apos;ubuntu/trusty64&apos; (v20170302.0.0) for &apos;virtualbox&apos;!</div><div class="line">==&gt; default: Importing base box &apos;ubuntu/trusty64&apos;...</div><div class="line">==&gt; default: Matching MAC address for NAT networking...</div><div class="line">==&gt; default: Checking if box &apos;ubuntu/trusty64&apos; is up to date...</div><div class="line">==&gt; default: There was a problem while downloading the metadata for your box</div><div class="line">==&gt; default: to check for updates. This is not an error, since it is usually due</div><div class="line">==&gt; default: to temporary network problems. This is just a warning. The problem</div><div class="line">==&gt; default: encountered was:</div><div class="line">==&gt; default:</div><div class="line">==&gt; default: Could not resolve host: atlas.hashicorp.com</div><div class="line">==&gt; default:</div><div class="line">==&gt; default: If you want to check for box updates, verify your network connection</div><div class="line">==&gt; default: is valid and try again.</div><div class="line">==&gt; default: Setting the name of the VM: myproject_default_1489037090594_44159</div><div class="line">==&gt; default: Clearing any previously set forwarded ports...</div><div class="line">==&gt; default: Clearing any previously set network interfaces...</div><div class="line">==&gt; default: Preparing network interfaces based on configuration...</div><div class="line">    default: Adapter 1: nat</div><div class="line">==&gt; default: Forwarding ports...</div><div class="line">    default: 22 (guest) =&gt; 2222 (host) (adapter 1)</div><div class="line">==&gt; default: Booting VM...</div><div class="line">==&gt; default: Waiting for machine to boot. This may take a few minutes...</div><div class="line">    default: SSH address: 127.0.0.1:2222</div><div class="line">    default: SSH username: vagrant</div><div class="line">    default: SSH auth method: private key</div><div class="line">    default: Warning: Remote connection disconnect. Retrying...</div><div class="line">    default:</div><div class="line">    default: Vagrant insecure key detected. Vagrant will automatically replace</div><div class="line">    default: this with a newly generated keypair for better security.</div><div class="line">    default:</div><div class="line">    default: Inserting generated public key within guest...</div><div class="line">    default: Removing insecure key from the guest if it&apos;s present...</div><div class="line">    default: Key inserted! Disconnecting and reconnecting using new SSH key...</div><div class="line">==&gt; default: Machine booted and ready!</div><div class="line">==&gt; default: Checking for guest additions in VM...</div><div class="line">    default: The guest additions on this VM do not match the installed version of</div><div class="line">    default: VirtualBox! In most cases this is fine, but in rare cases it can</div><div class="line">    default: prevent things such as shared folders from working properly. If you see</div><div class="line">    default: shared folder errors, please make sure the guest additions within the</div><div class="line">    default: virtual machine match the version of VirtualBox you have installed on</div><div class="line">    default: your host and reload your VM.</div><div class="line">    default:</div><div class="line">    default: Guest Additions Version: 4.3.36</div><div class="line">    default: VirtualBox Version: 5.1</div><div class="line">==&gt; default: Mounting shared folders...</div><div class="line">    default: /vagrant =&gt; D:/vagrant/myproject</div></pre></td></tr></table></figure>
+<h2 id="更改软件源"><a href="#更改软件源" class="headerlink" title="更改软件源"></a>更改软件源</h2><ol>
+<li>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak #备份</li>
+<li><p>sudo vim /etc/apt/sources.list #修改源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure>
+</li>
+<li><p>sudo apt-get update #更新列表</p>
+</li>
+</ol>
+<h2 id="安装常用软件"><a href="#安装常用软件" class="headerlink" title="安装常用软件"></a>安装常用软件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nginx</div><div class="line"># nginx</div><div class="line">curl -I &apos;http://127.0.0.1&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-server</div><div class="line"># 开发环境：不设置root密码，三次回车。</div><div class="line"># 生产环境：root 密码不低于 16 位</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-client </div><div class="line"># 测试连接库</div><div class="line">mysql -uroot -p #开发环境没有设置密码，这里直接enter进入，本机省略参数 -h127.0.0.1</div><div class="line">mysql -h10.10.8.8 -uroot -p #连接远程 mysql 服务器，按 enter 后输入密码</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select version()</div><div class="line">    -&gt; ;</div><div class="line">+-------------------------+</div><div class="line">| version()               |</div><div class="line">+-------------------------+</div><div class="line">| 5.5.54-0ubuntu0.14.04.1 |</div><div class="line">+-------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; exit</div><div class="line">Bye</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install php5-cli</div><div class="line">#同时安装了 php5-cli php5-common php5-json php5-readline</div><div class="line">php -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">## PHP扩展</div><div class="line">sudo apt-get install php5-mysql php5-mcrypt php5-gd</div><div class="line"># 同时安装了 libmcrypt4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># 支持nginx fastcgi</div><div class="line">sudo apt-get install php5-cgi php5-fpm</div><div class="line"># php5_invoke: Enable module readline for fpm SAPI</div><div class="line"># php5_invoke: Enable module pdo for fpm SAPI</div><div class="line"># php5_invoke: Enable module mysqli for fpm SAPI</div><div class="line"># php5_invoke: Enable module opcache for fpm SAPI</div><div class="line"># php5_invoke: Enable module gd for fpm SAPI</div><div class="line"># php5_invoke: Enable module mysql for fpm SAPI</div><div class="line"># php5_invoke: Enable module pdo_mysql for fpm SAPI</div><div class="line"># php5_invoke: Enable module json for fpm SAPI</div><div class="line"></div><div class="line"># 修改成9000端口 ，默认sock模式</div><div class="line">cd /etc/php5/fpm/pool.d</div><div class="line">sudo vim www.conf # 搜索 listen = 将值改为 127.0.0.1:9000</div><div class="line">sudo /etc/init.d/php5-fpm restart</div></pre></td></tr></table></figure>
+<p>设置端口转发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># 8080 端口转发 80 端口</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx/site-available</div><div class="line">sudo cp default app</div><div class="line">vi app</div><div class="line">cd ../site-enabled</div><div class="line">sudo ln -s ../sites-available/app app</div></pre></td></tr></table></figure>
+<h2 id="fix-npm-ERR-syscall-symlink-with-Virtualbox-shared-folders"><a href="#fix-npm-ERR-syscall-symlink-with-Virtualbox-shared-folders" class="headerlink" title="fix: npm ERR! syscall symlink with Virtualbox shared folders."></a>fix: npm ERR! syscall symlink with Virtualbox shared folders.</h2><p>修复：npm ERR! syscall symlink</p>
+<p>1.Windows用户，以管理员启动 cmd，运行 vagrant up 即可。<br>2.npm config set bin-links false</p>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant package --output xxx.box</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vagrant/" rel="tag">#vagrant</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/08/baidu.html" rel="next" title="baidu">
+                <i class="fa fa-chevron-left"></i> baidu
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/关于响应式.html" rel="prev" title="关于响应式">
+                关于响应式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/09/vagrant.html"
+           data-title="vagrant" data-url="http://haobing.wang/2017/03/09/vagrant.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="王浩冰" />
+          <p class="site-author-name" itemprop="name">王浩冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">161</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">231</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vagrant-环境配置"><span class="nav-number">1.</span> <span class="nav-text">Vagrant 环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装相关软件"><span class="nav-number">1.1.</span> <span class="nav-text">安装相关软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-必须要做的事情"><span class="nav-number">1.2.</span> <span class="nav-text">Windows 必须要做的事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vagrant-常用命令"><span class="nav-number">1.3.</span> <span class="nav-text">vagrant 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为项目创建一个-vbox"><span class="nav-number">1.4.</span> <span class="nav-text">为项目创建一个 vbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改软件源"><span class="nav-number">1.5.</span> <span class="nav-text">更改软件源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装常用软件"><span class="nav-number">1.6.</span> <span class="nav-text">安装常用软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fix-npm-ERR-syscall-symlink-with-Virtualbox-shared-folders"><span class="nav-number">1.7.</span> <span class="nav-text">fix: npm ERR! syscall symlink with Virtualbox shared folders.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包"><span class="nav-number">1.8.</span> <span class="nav-text">打包</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <a href="http://haobing.wang">王浩冰</a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haobing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

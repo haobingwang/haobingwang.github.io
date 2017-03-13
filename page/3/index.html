@@ -258,6 +258,441 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/26/promise.html" itemprop="url">
+                  promise
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-26T17:14:03+08:00" content="2016-11-26">
+              2016-11-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/26/promise.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/26/promise.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Promise 是一个具有状态的容器，当容器状态变更后，可以取得异步得到的数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'whatwg-fetch'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> promise = fetch(<span class="string">'/api'</span>);<span class="comment">//这里返回一个 promise 对象</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(promise);</div><div class="line"><span class="comment">// Promise &#123;[[PromiseStatus]]: "pending", [[PromiseValue]]: undefined&#125;</span></div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(promise);</div><div class="line">  <span class="comment">// Promise &#123;[[PromiseStatus]]: "resolved", [[PromiseValue]]: Object&#125;</span></div><div class="line">  <span class="comment">// 获取 promise 的存储的值</span></div><div class="line">   promise.then(<span class="function">(<span class="params">&#123;data&#125;</span>)=&gt;</span><span class="built_in">console</span>.log(data));</div><div class="line">&#125;,<span class="number">2000</span>);</div></pre></td></tr></table></figure>
+<p>标准说法是：Promise 提供 then 方法加载回调函数，catch方法捕捉执行过程中抛出的错误。</p>
+<p>可以看到，Promise 的写法只是回调函数的改进，使用then方法以后，异步任务的两段执行看得更清楚了，除此以外，并无新意。</p>
+<p>由于 Fetch 模块返回的是一个 Promise 对象，因此要用 then 方法调用下一个next 方法。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/26/抓包.html" itemprop="url">
+                  抓包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-26T11:52:00+08:00" content="2016-11-26">
+              2016-11-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/26/抓包.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/26/抓包.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Mac 一台</li>
+<li>iPhone 一台</li>
+</ul>
+<p>Mac 和 iPhone 连入同一个 Wifi</p>
+<p>Mac 安装 <a href="https://mitmproxy.org/" target="_blank" rel="external">mitmproxy</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># pip install mitmproxy</div><div class="line">sudo pip install mitmproxy --ignore-installed six</div></pre></td></tr></table></figure>
+<p>iPhone<br>HTTP 代理 - 手动<br>服务器 Mac IP<br>端口  8080</p>
+<p>Mac 终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmproxy -p 8080</div></pre></td></tr></table></figure>
+<p>iPhone 访问网站即可看到 http 请求</p>
+<p>iPhone 访问 <code>http://mitm.it</code> 安装证书，即可抓取 https</p>
+<p>键盘上下移动，Enter 键进入查看详情，按 Tab 键切换顶部导航栏(Request Response Detail)。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/24/mock.html" itemprop="url">
+                  mock
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-24T18:00:21+08:00" content="2016-11-24">
+              2016-11-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/24/mock.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/mock.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Mock.js 生成随机数据，拦截 Ajax 请求</p>
+<ul>
+<li>前后端分离,让前端攻城师独立于后端进行开发。</li>
+<li>增加单元测试的真实性,通过随机数据，模拟各种场景。</li>
+<li>开发无侵入,不需要修改既有代码，就可以拦截 Ajax 请求，返回模拟的响应数据。</li>
+<li>用法简单,符合直觉的接口。</li>
+<li>数据类型丰富,支持生成随机的文本、数字、布尔值、日期、邮箱、链接、图片、颜色等。</li>
+<li>方便扩展,支持支持扩展更多数据类型，支持自定义函数和正则。</li>
+</ul>
+<h2 id="全局安装体验"><a href="#全局安装体验" class="headerlink" title="全局安装体验"></a>全局安装体验</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; npm install mockjs -g</div><div class="line">...</div><div class="line"></div><div class="line">&gt; random</div><div class="line">显示帮助信息</div><div class="line"></div><div class="line">&gt; random email</div><div class="line">k.rqutodqbu@bhs.cy</div><div class="line">&gt; random name</div><div class="line">Scott Moore</div><div class="line">&gt; random cname</div><div class="line">宋杰</div></pre></td></tr></table></figure>
+<h2 id="项目集成"><a href="#项目集成" class="headerlink" title="项目集成"></a>项目集成</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev mockjs</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用 Mock</span></div><div class="line"><span class="keyword">var</span> Mock = <span class="built_in">require</span>(<span class="string">'mockjs'</span>)</div><div class="line"><span class="keyword">var</span> data = Mock.mock(&#123;</div><div class="line">    <span class="comment">// 属性 list 的值是一个数组，其中含有 1 到 10 个元素</span></div><div class="line">    <span class="string">'list|1-10'</span>: [&#123;</div><div class="line">        <span class="comment">// 属性 id 是一个自增数，起始值为 1，每次增 1</span></div><div class="line">        <span class="string">'id|+1'</span>: <span class="number">1</span></div><div class="line">    &#125;]</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 输出结果</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>))</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/24/model.html" itemprop="url">
+                  model
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-24T15:31:01+08:00" content="2016-11-24">
+              2016-11-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/24/model.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/model.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>用户信息的展示（查询）</li>
+<li>用户信息的操作（增加，删除，修改）</li>
+</ul>
+<p>有经验的同学不难发现，无论是多复杂的项目也基本上是围绕着数据的展示和操作，复杂一点的无非是组合了很多数据，有关联关系，只要分解开来，model 的结构层次依旧会很清晰，便于维护。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/24/dva.html" itemprop="url">
                   dva
                 </a>
@@ -875,418 +1310,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/20/propTypes.html" itemprop="url">
-                  propTypes
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-20T15:13:49+08:00" content="2016-11-20">
-              2016-11-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/20/propTypes.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/20/propTypes.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> propTypes = &#123;</div><div class="line">  <span class="comment">// You can declare that a prop is a specific JS primitive. By default, these</span></div><div class="line">  <span class="comment">// are all optional.</span></div><div class="line">  optionalArray: React.PropTypes.array,</div><div class="line">  <span class="attr">optionalBool</span>: React.PropTypes.bool,</div><div class="line">  <span class="attr">optionalFunc</span>: React.PropTypes.func,</div><div class="line">  <span class="attr">optionalNumber</span>: React.PropTypes.number,</div><div class="line">  <span class="attr">optionalObject</span>: React.PropTypes.object,</div><div class="line">  <span class="attr">optionalString</span>: React.PropTypes.string,</div><div class="line">  <span class="attr">optionalSymbol</span>: React.PropTypes.symbol,</div><div class="line"></div><div class="line">  <span class="comment">// Anything that can be rendered: numbers, strings, elements or an array</span></div><div class="line">  <span class="comment">// (or fragment) containing these types.</span></div><div class="line">  optionalNode: React.PropTypes.node,</div><div class="line"></div><div class="line">  <span class="comment">// A React element.</span></div><div class="line">  optionalElement: React.PropTypes.element,</div><div class="line"></div><div class="line">  <span class="comment">// You can also declare that a prop is an instance of a class. This uses</span></div><div class="line">  <span class="comment">// JS's instanceof operator.</span></div><div class="line">  optionalMessage: React.PropTypes.instanceOf(Message),</div><div class="line"></div><div class="line">  <span class="comment">// You can ensure that your prop is limited to specific values by treating</span></div><div class="line">  <span class="comment">// it as an enum.</span></div><div class="line">  optionalEnum: React.PropTypes.oneOf([<span class="string">'News'</span>, <span class="string">'Photos'</span>]),</div><div class="line"></div><div class="line">  <span class="comment">// An object that could be one of many types</span></div><div class="line">  optionalUnion: React.PropTypes.oneOfType([</div><div class="line">    React.PropTypes.string,</div><div class="line">    React.PropTypes.number,</div><div class="line">    React.PropTypes.instanceOf(Message)</div><div class="line">  ]),</div><div class="line"></div><div class="line">  <span class="comment">// An array of a certain type</span></div><div class="line">  optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),</div><div class="line"></div><div class="line">  <span class="comment">// An object with property values of a certain type</span></div><div class="line">  optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),</div><div class="line"></div><div class="line">  <span class="comment">// An object taking on a particular shape</span></div><div class="line">  optionalObjectWithShape: React.PropTypes.shape(&#123;</div><div class="line">    <span class="attr">color</span>: React.PropTypes.string,</div><div class="line">    <span class="attr">fontSize</span>: React.PropTypes.number</div><div class="line">  &#125;),</div><div class="line"></div><div class="line">  <span class="comment">// You can chain any of the above with `isRequired` to make sure a warning</span></div><div class="line">  <span class="comment">// is shown if the prop isn't provided.</span></div><div class="line">  requiredFunc: React.PropTypes.func.isRequired,</div><div class="line"></div><div class="line">  <span class="comment">// A value of any data type</span></div><div class="line">  requiredAny: React.PropTypes.any.isRequired,</div><div class="line"></div><div class="line">  <span class="comment">// You can also specify a custom validator. It should return an Error</span></div><div class="line">  <span class="comment">// object if the validation fails. Don't `console.warn` or throw, as this</span></div><div class="line">  <span class="comment">// won't work inside `oneOfType`.</span></div><div class="line">  customProp: <span class="function"><span class="keyword">function</span>(<span class="params">props, propName, componentName</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/matchme/</span>.test(props[propName])) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</div><div class="line">        <span class="string">'Invalid prop `'</span> + propName + <span class="string">'` supplied to'</span> +</div><div class="line">        <span class="string">' `'</span> + componentName + <span class="string">'`. Validation failed.'</span></div><div class="line">      );</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">// You can also supply a custom validator to `arrayOf` and `objectOf`.</span></div><div class="line">  <span class="comment">// It should return an Error object if the validation fails. The validator</span></div><div class="line">  <span class="comment">// will be called for each key in the array or object. The first two</span></div><div class="line">  <span class="comment">// arguments of the validator are the array or object itself, and the</span></div><div class="line">  <span class="comment">// current item's key.</span></div><div class="line">  customArrayProp: React.PropTypes.arrayOf(<span class="function"><span class="keyword">function</span>(<span class="params">propValue, key, componentName, location, propFullName</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/matchme/</span>.test(propValue[key])) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</div><div class="line">        <span class="string">'Invalid prop `'</span> + propFullName + <span class="string">'` supplied to'</span> +</div><div class="line">        <span class="string">' `'</span> + componentName + <span class="string">'`. Validation failed.'</span></div><div class="line">      );</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/19/collapse.html" itemprop="url">
-                  collapse
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-19T13:13:33+08:00" content="2016-11-19">
-              2016-11-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/19/collapse.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/19/collapse.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -save react-motion react-height react-collapse</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/18/classnames.html" itemprop="url">
-                  classnames
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-18T12:40:45+08:00" content="2016-11-18">
-              2016-11-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/18/classnames.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/18/classnames.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install classnames --save</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">'classnames'</span>;</div><div class="line"></div><div class="line"><span class="comment">// ...</span></div><div class="line">render () &#123;</div><div class="line">  <span class="keyword">var</span> btnClass = classnames(&#123;</div><div class="line">    <span class="keyword">this</span>.props.className,</div><div class="line">    <span class="string">'btn'</span>: <span class="literal">true</span>,</div><div class="line">    <span class="string">'btn-pressed'</span>: <span class="keyword">this</span>.state.isPressed,</div><div class="line">    <span class="string">'btn-over'</span>: !<span class="keyword">this</span>.state.isPressed &amp;&amp; <span class="keyword">this</span>.state.isHovered</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&#123;btnClass&#125;</span>&gt;</span>&#123;this.props.label&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/17/animation.html" itemprop="url">
-                  animation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-17T12:29:18+08:00" content="2016-11-17">
-              2016-11-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/17/animation.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/animation.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>css 动画</p>
-<h2 id="旋转动画"><a href="#旋转动画" class="headerlink" title="旋转动画"></a>旋转动画</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"https://facebook.github.io/react/img/logo.svg"</span> <span class="attr">class</span>=<span class="string">"App-logo"</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.App-logo</span> &#123;</div><div class="line">  <span class="attribute">animation</span>: App-logo-spin infinite <span class="number">20s</span> linear;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(360deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">keyframes</span> App-logo-spin &#123;</div><div class="line">  <span class="selector-tag">from</span> &#123; <span class="attribute">transform</span>: <span class="built_in">rotate</span>(0deg); &#125;</div><div class="line">  <span class="selector-tag">to</span> &#123; <span class="attribute">transform</span>: <span class="built_in">rotate</span>(360deg); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1327,7 +1355,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-count">161</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1344,7 +1372,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-count">231</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

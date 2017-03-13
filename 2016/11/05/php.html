@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="王浩冰">
 <meta property="og:description" content="1php -v
 安装 Composer123456789 Me@MBP &amp;gt; ~/Documents &amp;gt;php -r &amp;quot;copy(&amp;apos;https://getcomposer.org/installer&amp;apos;, &amp;apos;composer-setup.php&amp;apos;);&amp;quot;Warning: copy(): SSL operation failed wi">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.631Z">
+<meta property="og:updated_time" content="2017-03-10T03:40:07.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php">
 <meta name="twitter:description" content="1php -v
@@ -329,11 +329,25 @@
 <p>找到并进入 PHP 的安装目录（和你在命令行中执行的 php 指令应该是同一套 PHP）。<br>将 composer.phar 复制到 PHP 的安装目录下面，也就是和 php.exe 在同一级目录。<br>在 PHP 安装目录下新建一个 composer.bat 文件，并将下列代码保存到此文件中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@php &quot;%~dp0composer.phar&quot; %*</div></pre></td></tr></table></figure>
 <h3 id="使用国内镜像"><a href="#使用国内镜像" class="headerlink" title="使用国内镜像"></a>使用国内镜像</h3><p>修改 composer 的全局配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer selfupdate</div></pre></td></tr></table></figure>
 <blockquote>
 <p>提示：不要忘了经常执行 composer selfupdate 以保持 Composer 一直是最新版本哦！</p>
 </blockquote>
+<p>配置文件在 <code>/home/vagrant/.config/composer</code></p>
 <h2 id="安装-laravel"><a href="#安装-laravel" class="headerlink" title="安装 laravel"></a>安装 laravel</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel learnlaravel5</div></pre></td></tr></table></figure>
+<h2 id="Failed-to-decode-response-zlib-decode-data-error"><a href="#Failed-to-decode-response-zlib-decode-data-error" class="headerlink" title="Failed to decode response: zlib_decode(): data error"></a>Failed to decode response: zlib_decode(): data error</h2><p>在etc/php5目录下有三个文件夹：cgi  cli  fpm。我们这里修改 cli 目录下的配置文件</p>
+<ul>
+<li>cli 是命令行运行php命令的配置</li>
+<li>fpm（FastCGI 进程管理器）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 查看配置</div><div class="line">php -i</div></pre></td></tr></table></figure>
+<p>The <code>php.ini</code> used by your command-line PHP is: <code>/etc/php5/cli/php.ini</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zlib.output_compression = On</div><div class="line">zlib.output_compression_level = 5</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 如果全是 ok，就更新下</div><div class="line">composer diagnose</div><div class="line">composer selfupdate</div></pre></td></tr></table></figure>
+<h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><p>如果你没有添加 GitHub 密钥的话，composer update 会提示你登录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Could not fetch https://api.github.com/repos/jquery/jquery-dist, please create a GitHub OAuth token to go over the API rate limit</div><div class="line">Head to https://github.com/settings/tokens/new?scopes=repo&amp;description=Composer+on+vagrant-ubuntu-trusty-64+2017-03-09+0915</div><div class="line">to retrieve a token. It will be stored in &quot;/home/vagrant/.config/composer/auth.json&quot; for future use by Composer.</div><div class="line">Token (hidden): </div><div class="line">Token stored successfully.</div></pre></td></tr></table></figure>
+<p>解决办法就是：</p>
+<p>进入 <a href="https://github.com/settings/tokens" target="_blank" rel="external">https://github.com/settings/tokens</a> 点击 「Generate new token」 新建一个 Token，选择 gist Create gists，然后就会得到一个 Token，然后复制粘贴这个值就 OK 了。</p>
 
       
     </div>
@@ -446,7 +460,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">157</span>
+              <span class="site-state-item-count">161</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -463,7 +477,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">227</span>
+                <span class="site-state-item-count">231</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -492,7 +506,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Composer"><span class="nav-number">1.</span> <span class="nav-text">安装 Composer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局安装"><span class="nav-number">1.2.</span> <span class="nav-text">全局安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用国内镜像"><span class="nav-number">1.3.</span> <span class="nav-text">使用国内镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-laravel"><span class="nav-number">2.</span> <span class="nav-text">安装 laravel</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Composer"><span class="nav-number">1.</span> <span class="nav-text">安装 Composer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局安装"><span class="nav-number">1.2.</span> <span class="nav-text">全局安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用国内镜像"><span class="nav-number">1.3.</span> <span class="nav-text">使用国内镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-laravel"><span class="nav-number">2.</span> <span class="nav-text">安装 laravel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Failed-to-decode-response-zlib-decode-data-error"><span class="nav-number">3.</span> <span class="nav-text">Failed to decode response: zlib_decode(): data error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token"><span class="nav-number">4.</span> <span class="nav-text">token</span></a></li></ol></div>
             
           </div>
         </section>
