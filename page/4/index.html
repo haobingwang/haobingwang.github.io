@@ -258,6 +258,315 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/21/mongoose.html" itemprop="url">
+                  mongoose
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T10:42:29+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/21/mongoose.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/mongoose.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields</span></div><div class="line">Person.findOne(&#123; <span class="string">'name.last'</span>: <span class="string">'Ghost'</span> &#125;, <span class="string">'name occupation'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, person</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'%s %s is a %s.'</span>, person.name.first, person.name.last, person.occupation) <span class="comment">// Space Ghost is a talk show host.</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// With a JSON doc</span></div><div class="line">Person.</div><div class="line">  find(&#123;</div><div class="line">    <span class="attr">occupation</span>: <span class="regexp">/host/</span>,</div><div class="line">    <span class="string">'name.last'</span>: <span class="string">'Ghost'</span>,</div><div class="line">    <span class="attr">age</span>: &#123; <span class="attr">$gt</span>: <span class="number">17</span>, <span class="attr">$lt</span>: <span class="number">66</span> &#125;,</div><div class="line">    <span class="attr">likes</span>: &#123; <span class="attr">$in</span>: [<span class="string">'vaporizing'</span>, <span class="string">'talking'</span>] &#125;</div><div class="line">  &#125;).</div><div class="line">  limit(<span class="number">10</span>).</div><div class="line">  sort(&#123; <span class="attr">occupation</span>: <span class="number">-1</span> &#125;).</div><div class="line">  select(&#123; <span class="attr">name</span>: <span class="number">1</span>, <span class="attr">occupation</span>: <span class="number">1</span> &#125;).</div><div class="line">  exec(callback);<span class="comment">// exec 这是个要注意的地方</span></div><div class="line"></div><div class="line">Person.find(query, fields, &#123; <span class="attr">skip</span>: <span class="number">10</span>, <span class="attr">limit</span>: <span class="number">5</span> &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>) </span>&#123;</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="find-的对比："><a href="#find-的对比：" class="headerlink" title="find 的对比："></a>find 的对比：</h2><ul>
+<li>mongodb： db.collection.find(query, projection)</li>
+<li>Model.find(conditions, [projection], [options], [callback])</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/21/components.html" itemprop="url">
+                  components
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T09:59:27+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/21/components.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/components.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/21/paginate.html" itemprop="url">
+                  paginate
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T09:57:01+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/21/paginate.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/paginate.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一般做法"><a href="#一般做法" class="headerlink" title="一般做法"></a><a href="http://stackoverflow.com/questions/5539955/how-to-paginate-with-mongoose-in-node-js" target="_blank" rel="external">一般做法</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// With a JSON doc</div><div class="line">Person.</div><div class="line">  find(&#123;</div><div class="line">    occupation: /host/,</div><div class="line">    &apos;name.last&apos;: &apos;Ghost&apos;,</div><div class="line">    age: &#123; $gt: 17, $lt: 66 &#125;,</div><div class="line">    likes: &#123; $in: [&apos;vaporizing&apos;, &apos;talking&apos;] &#125;</div><div class="line">  &#125;).</div><div class="line">  limit(10).</div><div class="line">  sort(&#123; occupation: -1 &#125;).</div><div class="line">  select(&#123; name: 1, occupation: 1 &#125;).</div><div class="line">  exec(callback);</div></pre></td></tr></table></figure>
+<h2 id="使用第三方包-mongoose-paginate"><a href="#使用第三方包-mongoose-paginate" class="headerlink" title="使用第三方包 mongoose-paginate"></a>使用第三方包 mongoose-paginate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mongoose-paginate</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"><span class="keyword">var</span> mongoosePaginate = <span class="built_in">require</span>(<span class="string">'mongoose-paginate'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> mongoose.Schema(&#123; <span class="comment">/* schema definition */</span> &#125;);</div><div class="line">schema.plugin(mongoosePaginate);</div><div class="line"></div><div class="line"><span class="keyword">var</span> Model = mongoose.model(<span class="string">'Model'</span>,  schema); <span class="comment">// Model.paginate()</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/20/propTypes.html" itemprop="url">
                   propTypes
                 </a>
@@ -966,316 +1275,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/13/timer.html" itemprop="url">
-                  timer
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-13T15:05:59+08:00" content="2016-11-13">
-              2016-11-13
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/13/timer.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/13/timer.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>React 代码演示</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> element = (</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>It is &#123;new Date().toLocaleTimeString()&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  );</div><div class="line">  ReactDOM.render(</div><div class="line">    element,</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</div><div class="line">  );</div><div class="line">&#125;</div><div class="line"></div><div class="line">setInterval(tick, <span class="number">1000</span>);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/12/hexo-bugs.html" itemprop="url">
-                  hexo-bugs
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-12T14:39:58+08:00" content="2016-11-12">
-              2016-11-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/12/hexo-bugs.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/12/hexo-bugs.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天发布文章，发现文字不显示了，使用的 next 主题，console 下 vendor 目录内的文件 404，百度了下，将 vendor 目录改名，并同时将主题配置文件中的 vendor 改名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo d -g</div></pre></td></tr></table></figure>
-<p>恩，可以正常显示了。</p>
-<p>coding 也学 github 忽略 vendor 目录了，尿性。</p>
-<p>勤快点就把主题更新下吧，最新的主题也是将 vendor 改名为 lib。</p>
-<p>github 最近也被墙了，严重打击到了复制粘贴代码的积极性。。。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/11/fetch.html" itemprop="url">
-                  fetch
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T11:06:46+08:00" content="2016-11-11">
-              2016-11-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/11/fetch.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/fetch.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn add whatwg-fetch</div></pre></td></tr></table></figure>
-<h2 id="React-应用-fetch"><a href="#React-应用-fetch" class="headerlink" title="React 应用 fetch"></a>React 应用 fetch</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'whatwg-fetch'</span>;</div><div class="line"></div><div class="line">componentDidMount() &#123;</div><div class="line">  fetch(<span class="string">'/recent.json'</span>)</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> response.json();</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">json</span> =&gt;</span> &#123; <span class="comment">//使用箭头函数，自动绑定 this，确保 this.setState 可用</span></div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">        <span class="attr">posts</span>: json,</div><div class="line">      &#125;);</div><div class="line">    &#125;)</div><div class="line">    .catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(error);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1321,7 +1320,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">161</span>
+              <span class="site-state-item-count">164</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1338,7 +1337,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">231</span>
+                <span class="site-state-item-count">233</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

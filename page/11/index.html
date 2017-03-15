@@ -258,6 +258,438 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/29/daemon.html" itemprop="url">
+                  daemon
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-29T16:06:32+08:00" content="2016-07-29">
+              2016-07-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/29/daemon.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/29/daemon.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="启动前台任务"><a href="#启动前台任务" class="headerlink" title="启动前台任务"></a>启动前台任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node server.js</div></pre></td></tr></table></figure>
+<p>敲完回车后，我们就不能输入其他命令了，只能等待这个命令运行完了或者手动终止，才能执行其他命令。并且当我们关闭命令行终端后，这个进程就一起退出了。这种任务叫做“前台任务”。</p>
+<h2 id="amp-启动后台任务"><a href="#amp-启动后台任务" class="headerlink" title="&amp; 启动后台任务"></a>&amp; 启动后台任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node server.js &amp;</div></pre></td></tr></table></figure>
+<p>后台任务与前台任务的本质区别：是否继承 stdin。所以，执行后台任务后，我们依然可以接着输入其他命令。</p>
+<h2 id="SIGHUP-信号"><a href="#SIGHUP-信号" class="headerlink" title="SIGHUP 信号"></a>SIGHUP 信号</h2><ol>
+<li>用户准备退出 session</li>
+<li>系统向该 session 发出 SIGNUP 信号</li>
+<li>session 将 SIGNUP 信号发给所有子进程</li>
+<li>子进程收到 SIGNUP 信号后，自动退出</li>
+</ol>
+<p>前台任务会退出就是因为：收到了 SIGHUP 信号。<br>后台任务是否会退出则由 shell 的参数 <code>huponexit</code>（ hup on exit）决定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi ~ $ shopt | grep huponexit</div></pre></td></tr></table></figure>
+<p>output:</p>
+<blockquote>
+<p>huponexit          off</p>
+</blockquote>
+<p>所以说，“后台任务”不会随着 session 一起退出。</p>
+<h2 id="disown"><a href="#disown" class="headerlink" title="disown"></a>disown</h2><p>如何确保“后台任务”不会因为 <code>huponexit</code> 为 <code>on</code> 而退出呢？</p>
+<p>答案是使用<code>disown</code>将特定的“后台任务”从“后台任务”列表（<code>jobs</code>命令的返回结果）中移除。原因是 session 会向“后台”列表发送 <code>SIGHUP</code>信号。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node server.js &amp;</div><div class="line"><span class="built_in">disown</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 移出最近一个正在执行的后台任务</span></div><div class="line">$ <span class="built_in">disown</span></div><div class="line"></div><div class="line"><span class="comment"># 移出所有正在执行的后台任务</span></div><div class="line">$ <span class="built_in">disown</span> -r</div><div class="line"></div><div class="line"><span class="comment"># 移出所有后台任务</span></div><div class="line">$ <span class="built_in">disown</span> <span class="_">-a</span></div><div class="line"></div><div class="line"><span class="comment"># 不移出后台任务，但是让它们不会收到SIGHUP信号</span></div><div class="line">$ <span class="built_in">disown</span> -h</div><div class="line"></div><div class="line"><span class="comment"># 根据jobId，移出指定的后台任务</span></div><div class="line">$ <span class="built_in">disown</span> %2</div><div class="line">$ <span class="built_in">disown</span> -h %2</div></pre></td></tr></table></figure>
+<h2 id="标准-I-O"><a href="#标准-I-O" class="headerlink" title="标准 I/O"></a>标准 I/O</h2><ul>
+<li>0 输入（标准输入）</li>
+<li>1 输出（标准输出）</li>
+<li>2 错误（标准错误信息输出）</li>
+</ul>
+<p>使用 <code>disown</code> 命令之后，还有一个问题。那就是，退出 session 后，如果后台进程与 标准I/O 有交互，它还是会挂掉。这是因为”后台任务”的标准 I/O 继承自当前 session，disown命令并没有改变这一点。一旦”后台任务”读写标准 I/O，就会发现它已经不存在了，所以就报错终止执行。为了解决这个问题，需要对”后台任务”的标准 I/O 进行重定向。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node server.js &gt; stdout.txt 2&gt; stderr.txt &lt; /dev/null &amp;</div><div class="line"><span class="built_in">disown</span></div></pre></td></tr></table></figure>
+<h2 id="nohup-忽略所有挂断（SIGHUP）信号"><a href="#nohup-忽略所有挂断（SIGHUP）信号" class="headerlink" title="nohup 忽略所有挂断（SIGHUP）信号"></a>nohup 忽略所有挂断（SIGHUP）信号</h2><p>nohup 比 disown 更方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup node server.js &amp;</div></pre></td></tr></table></figure>
+<p>nohup 命令对 server.js 进程做了三件事：</p>
+<ul>
+<li>阻止 SIGHUP 信号发送到这个进程。</li>
+<li>关闭标准输入。该进程不再接受任何输入，即使运行在前台。</li>
+<li>重定向 标准输入 和 标准错误 到文件 nohup.out</li>
+</ul>
+<p>也就是说，nohup 命令将子进程与它所在的 session 分离了。</p>
+<p>注意： nohup 命令不会自动把进程变为“后台任务”，所以必须加上 &amp; 符号。</p>
+<blockquote>
+<p>nohup command &gt; log.file 2&gt;&amp;1 &amp;</p>
+</blockquote>
+<ul>
+<li><code>&gt; /dev/null</code> means: stdout goes to /dev/null</li>
+<li><code>2&gt;&amp;1</code> means: stderr also goes to the stdout</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 1. 先编辑一支会『睡著 500 秒』的程序：</div><div class="line">[root@www ~]# vim sleep500.sh</div><div class="line">#!/bin/bash</div><div class="line">/bin/sleep 500s</div><div class="line">/bin/echo &quot;I have slept 500 seconds.&quot;</div><div class="line"></div><div class="line"># 2. 丢到后台中去运行，并且立刻注销系统：</div><div class="line">[root@www ~]# chmod a+x sleep500.sh</div><div class="line">[root@www ~]# nohup ./sleep500.sh &amp;</div><div class="line">[1] 5074</div><div class="line">[root@www ~]# nohup: appending output to ‘nohup.out’ &lt;==会告知这个信息！</div><div class="line">[root@www ~]# exit</div></pre></td></tr></table></figure>
+<p>如果你再次登陆的话，再使用 pstree 去查阅你的程序，会发现 sleep500.sh 还在运行中喔！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pstree</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">pstree</div><div class="line">ps -ef | grep sleep500</div><div class="line"># pid 为 14807</div><div class="line"># 15 正常终止</div><div class="line">sudo kill -15 14807</div><div class="line"># 9 强制终止</div><div class="line">sudo kill -9 14807</div></pre></td></tr></table></figure>
+<h2 id="Screen-命令与-Tmux-命令"><a href="#Screen-命令与-Tmux-命令" class="headerlink" title="Screen 命令与 Tmux 命令"></a>Screen 命令与 Tmux 命令</h2><p>另一种思路是：在当前 session 里面，新建另一个 session。这样的话，当前 session 一旦结束，不影响其他 session。而且，以后重新登录，还可以再连上早先新建的 session。</p>
+<h3 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h3><p>Screen 的用法如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 新建一个 session</span></div><div class="line">$ screen</div><div class="line">$ node server.js</div></pre></td></tr></table></figure>
+<p>然后，按下ctrl + A和ctrl + D，回到原来的 session，从那里退出登录。下次登录时，再切回去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ screen -r</div></pre></td></tr></table></figure>
+<p>如果新建多个后台 session，就需要为它们指定名字。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ screen -S name</div><div class="line"></div><div class="line"><span class="comment"># 切回指定 session</span></div><div class="line">$ screen -r name</div><div class="line">$ screen -r pid_number</div><div class="line"></div><div class="line"><span class="comment"># 列出所有 session</span></div><div class="line">$ screen -ls</div></pre></td></tr></table></figure>
+<p>如果要停掉某个 session，可以先切回它，然后按下<code>ctrl + c</code>和<code>ctrl + d</code>。</p>
+<h3 id="Tmux"><a href="#Tmux" class="headerlink" title="Tmux"></a>Tmux</h3><p>Tmux 比 Screen 功能更多、更强大，它的基本用法如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ tmux</div><div class="line">$ node server.js</div><div class="line"></div><div class="line"><span class="comment"># 返回原来的session</span></div><div class="line">$ tmux detach</div></pre></td></tr></table></figure>
+<p>除了tmux detach，另一种方法是按下<code>Ctrl + B</code>和<code>d</code> ，也可以回到原来的 session。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 下次登录时，返回后台正在运行服务session</span></div><div class="line">$ tmux attach</div></pre></td></tr></table></figure>
+<p>如果新建多个 session，就需要为每个 session 指定名字。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 新建 session</span></div><div class="line">$ tmux new <span class="_">-s</span> session_name</div><div class="line"></div><div class="line"><span class="comment"># 切换到指定 session</span></div><div class="line">$ tmux attach -t session_name</div><div class="line"></div><div class="line"><span class="comment"># 列出所有 session</span></div><div class="line">$ tmux list-sessions</div><div class="line"></div><div class="line"><span class="comment"># 退出当前 session，返回前一个 session</span></div><div class="line">$ tmux detach</div><div class="line"></div><div class="line"><span class="comment"># 杀死指定 session</span></div><div class="line">$ tmux <span class="built_in">kill</span>-session -t session-name</div></pre></td></tr></table></figure>
+<h2 id="Node-工具"><a href="#Node-工具" class="headerlink" title="Node 工具"></a>Node 工具</h2><ul>
+<li>forever，功能很简单，就是保证进程退出时，应用会自动重启。</li>
+<li>nodemon，一般只在开发时使用，它最大的长处在于 watch 功能，一旦文件发生变化，就自动重启进程</li>
+<li>pm2，功能最强大，除了重启进程以外，还能实时收集日志和监控。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">npm install -g forever</div><div class="line"></div><div class="line"><span class="comment"># 作为前台任务启动</span></div><div class="line">$ forever server.js</div><div class="line"></div><div class="line"><span class="comment"># 作为服务进程启动</span></div><div class="line">$ forever start app.js</div><div class="line"></div><div class="line"><span class="comment"># 停止服务进程</span></div><div class="line">$ forever stop Id</div><div class="line"></div><div class="line"><span class="comment"># 重启服务进程</span></div><div class="line">$ forever restart Id</div><div class="line"></div><div class="line"><span class="comment"># 监视当前目录的文件变动，一有变动就重启</span></div><div class="line">$ forever -w server.js</div><div class="line"></div><div class="line"><span class="comment"># -m 参数指定最多重启次数</span></div><div class="line">$ forever -m 5 server.js</div><div class="line"></div><div class="line"><span class="comment"># 列出所有进程</span></div><div class="line">$ forever list</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 默认监视当前目录的文件变化</span></div><div class="line">$ nodemon server.js</div><div class="line"></div><div class="line">＃ 监视指定文件的变化   </div><div class="line">$ nodemon --watch app --watch libs server.js</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">npm install -g pm2</div><div class="line"></div><div class="line"><span class="comment"># 启动应用</span></div><div class="line">$ pm2 start app.js</div><div class="line"></div><div class="line"><span class="comment"># 指定同时起多少个进程（由CPU核心数决定），组成一个集群</span></div><div class="line">$ pm2 start app.js -i max</div><div class="line"></div><div class="line"><span class="comment"># 列出所有任务</span></div><div class="line">$ pm2 list</div><div class="line"></div><div class="line"><span class="comment"># 停止指定任务</span></div><div class="line">$ pm2 stop 0</div><div class="line"></div><div class="line">＃ 重启指定任务</div><div class="line">$ pm2 restart 0</div><div class="line"></div><div class="line"><span class="comment"># 删除指定任务</span></div><div class="line">$ pm2 delete 0</div><div class="line"></div><div class="line"><span class="comment"># 保存当前的所有任务，以后可以恢复</span></div><div class="line">$ pm2 save</div><div class="line"></div><div class="line"><span class="comment"># 列出每个进程的统计数据</span></div><div class="line">$ pm2 monit</div><div class="line"></div><div class="line"><span class="comment"># 查看所有日志</span></div><div class="line">$ pm2 logs</div><div class="line"></div><div class="line"><span class="comment"># 导出数据</span></div><div class="line">$ pm2 dump</div><div class="line"></div><div class="line"><span class="comment"># 重启所有进程</span></div><div class="line">$ pm2 <span class="built_in">kill</span></div><div class="line">$ pm2 resurect</div><div class="line"></div><div class="line"><span class="comment"># 启动web界面 http://localhost:9615</span></div><div class="line">$ pm2 web</div></pre></td></tr></table></figure>
+<h2 id="Systemd"><a href="#Systemd" class="headerlink" title="Systemd"></a>Systemd</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/28/git-ignore.html" itemprop="url">
+                  git-ignore
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-28T11:07:36+08:00" content="2016-07-28">
+              2016-07-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/28/git-ignore.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/git-ignore.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>创建一个新文件 <code>~/.gitignore</code> (或者 <code>.gitignore_global</code>)，并将以下内容添加进去，这样全部<br> git 仓库将会忽略以下内容所提及的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># Folder view configuration files</div><div class="line">.DS_Store</div><div class="line">Desktop.ini</div><div class="line"></div><div class="line"># Thumbnail cache files</div><div class="line">._*</div><div class="line">Thumbs.db</div><div class="line"></div><div class="line"># Files that might appear on external disks</div><div class="line">.Spotlight-V100</div><div class="line">.Trashes</div><div class="line"></div><div class="line"># Compiled Python files</div><div class="line">*.pyc</div><div class="line"></div><div class="line"># Compiled C++ files</div><div class="line">*.out</div><div class="line"></div><div class="line"># Application specific files</div><div class="line">venv</div><div class="line">node_modules</div><div class="line">.sass-cache</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/27/meteor-bootstrap.html" itemprop="url">
+                  meteor-bootstrap
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-27T16:06:08+08:00" content="2016-07-27">
+              2016-07-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/27/meteor-bootstrap.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/27/meteor-bootstrap.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor add twbs:bootstrap</div></pre></td></tr></table></figure>
+<p>页面刷新后样式随即生效，你不需要其他的事情。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/26/meteor-accounts.html" itemprop="url">
                   meteor-accounts
                 </a>
@@ -968,10 +1400,12 @@
       
         
           
-            <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div><div class="line">git config --global user.name &quot;your.name&quot;</div><div class="line">git config --global user.email &quot;your_email@gamil.com&quot;</div></pre></td></tr></table></figure>
+            <p>推荐使用 https 协议！<br>推荐使用 https 协议！<br>推荐使用 https 协议！</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div><div class="line">git config --global user.name &quot;your.name&quot;</div><div class="line">git config --global user.email &quot;your_email@gamil.com&quot;</div></pre></td></tr></table></figure>
 <p>这些配置信息将会添加进 <code>~/.gitconfig</code> 文件中</p>
-<p>我们将推荐使用 HTTPS 方法（另一个是 SSH），将你的代码推送到 Github 上的仓库。<br>如果你不想每次都输入用户名和密码的话，可以按照此 描述 说的那样，运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># osx</div><div class="line">git config --global credential.helper osxkeychain</div><div class="line"># windows</div><div class="line">git config --global credential.helper wincred</div></pre></td></tr></table></figure>
+<p>我们将推荐使用 HTTPS 方法（另一个是 SSH），将你的代码推送到 Github 上的仓库。</p>
+<p>如果你不想每次都输入用户名和密码的话，可以运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># osx</div><div class="line">git config --global credential.helper osxkeychain</div><div class="line"># windows 下让 Git 记住用户名密码(https) 仓库地址选用 https 协议</div><div class="line">git config --global credential.helper wincred</div></pre></td></tr></table></figure>
 <h2 id="create-a-new-repository-on-the-command-line"><a href="#create-a-new-repository-on-the-command-line" class="headerlink" title="create a new repository on the command line"></a>create a new repository on the command line</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">echo &quot;# test&quot; &gt;&gt; README.md</div><div class="line">git init</div><div class="line">git add README.md</div><div class="line">git commit -m &quot;first commit&quot;</div><div class="line">git remote add origin https://github.com/haobingwang/test.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
 <h2 id="push-an-existing-repository-from-the-command-line"><a href="#push-an-existing-repository-from-the-command-line" class="headerlink" title="push an existing repository from the command line"></a>push an existing repository from the command line</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/haobingwang/test.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
 <h2 id="git-使用建议"><a href="#git-使用建议" class="headerlink" title="git 使用建议"></a>git 使用建议</h2><ul>
@@ -981,19 +1415,20 @@
 </ul>
 <h2 id="https协议-和-git协议"><a href="#https协议-和-git协议" class="headerlink" title="https协议 和 git协议"></a>https协议 和 git协议</h2><p>以 gitlab 为例：在服务器上进行 <code>git fetch</code> 等操作时。</p>
 <ul>
-<li>以 <code>https</code> 协议的仓库 url 作为远程仓库时会要求手动输入用户名和密码。</li>
+<li>以 <code>https</code> 协议的仓库 url 作为远程仓库时会要求手动输入用户名和密码(只需输入一次)。</li>
 <li>而 <code>git</code>   协议的仓库 url 作为远程仓库却不需要输入用户名和密码，只要添加了 <code>ssh</code>公钥。</li>
 </ul>
 <h2 id="搭建-git-服务器"><a href="#搭建-git-服务器" class="headerlink" title="搭建 git 服务器"></a>搭建 git 服务器</h2><ul>
 <li>搭建 <code>gitlab</code>社区版</li>
 </ul>
-<h2 id="部署代码使用"><a href="#部署代码使用" class="headerlink" title="部署代码使用"></a>部署代码使用</h2><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 新建代码接受仓库</div><div class="line">mkdir test.git &amp;&amp; cd test.git</div><div class="line">git init --bare</div><div class="line"></div><div class="line"># 设置服务器端更新钩子</div><div class="line">vim hooks/post-receive</div></pre></td></tr></table></figure>
-<p>将如下内容复制到文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">GIT_WORK_TREE=/home/ubuntu/test git checkout -f</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x hooks/post-receive</div></pre></td></tr></table></figure>
-<p>这样，每次从客户端 push 代码到服务器，都会在 /home/ubuntu/test 下生成最先的代码</p>
-<h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add server git@192.168.1.110:repos/test.git</div><div class="line">git push server</div></pre></td></tr></table></figure>
-<p>其中，server 是自定的主机名，git是上文提到的专门用于提交代码的服务器用户，192.168.1.110是服务器IP，repos/test.git 就是服务器仓库目录。</p>
+<h2 id="git-配置-ssh-（不推荐使用，这里记录只是作为备用方案）"><a href="#git-配置-ssh-（不推荐使用，这里记录只是作为备用方案）" class="headerlink" title="git 配置 ssh （不推荐使用，这里记录只是作为备用方案）"></a>git 配置 ssh （不推荐使用，这里记录只是作为备用方案）</h2><h2 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 学习git的时候, 大家刚开始使用之前都配置了一个全局的用户名和邮箱</div><div class="line">git config --global user.name &quot;github&apos;s Name&quot;</div><div class="line">git config --global user.email &quot;github@xx.com&quot;</div><div class="line">git config --list</div><div class="line"></div><div class="line"># 如果你公司的项目是放在自建的gitlab上面, 如果你不进行配置用户名和邮箱的话, 则会使用全局的, 这个时候是错误的, 正确的做法是针对公司的项目, 在项目根目录下进行单独配置</div><div class="line"># 这里的配置是写到 .git/config 文件中的 user 块中</div><div class="line">git config user.name &quot;gitlab&apos;s Name&quot;</div><div class="line">git config user.email &quot;gitlab@xx.com&quot;</div><div class="line">git config --list</div></pre></td></tr></table></figure>
+<h2 id="配置-ssh"><a href="#配置-ssh" class="headerlink" title="配置 ssh"></a>配置 ssh</h2><p>生成 ssh 密钥：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;email@email.com&quot;</div></pre></td></tr></table></figure>
+<p>将公钥 id_rsa.pub 的内容添加到 coding,github,gitlab，然后测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Hi bill! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</div><div class="line"></div><div class="line">$ ssh -T git@gitlab.com</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Welcome to GitLab, bill!</div><div class="line"></div><div class="line">$ ssh -T git@git.coding.net</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Hello bill! You&apos;ve connected to Coding.net via SSH successfully!</div></pre></td></tr></table></figure>
+<p>Adding your SSH key to the ssh-agent(配置不用每次输入密钥的密码)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># git-shell</div><div class="line">$ eval $(ssh-agent -s)</div><div class="line">Agent pid 7108</div><div class="line"></div><div class="line">$ ssh-add id_rsa</div><div class="line">Enter passphrase for id_rsa:</div><div class="line">Identity added: id_rsa (id_rsa)</div></pre></td></tr></table></figure>
+<p>然后就可以对 git 开头的仓库地址进行 clone push 等操作了。</p>
 
           
         
@@ -1162,405 +1597,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/17/github.html" itemprop="url">
-                  github
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-17T15:58:58+08:00" content="2016-07-17">
-              2016-07-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/17/github.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/17/github.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Issue-——-Bug-追踪和需求管理"><a href="#Issue-——-Bug-追踪和需求管理" class="headerlink" title="Issue —— Bug 追踪和需求管理"></a>Issue —— Bug 追踪和需求管理</h2><p>建议先新建 Issue ，再新建对应的功能分支。功能分支应该是为了解决一个或多个 Issue 才建立的。</p>
-<h2 id="表情"><a href="#表情" class="headerlink" title="表情"></a>表情</h2><p>github 中的表情都以 <code>:</code>+<code>表情对应的单词</code>+<code>:</code> 开头，加入表情对应的英文。例如</p>
-<ul>
-<li>向上的箭头 <code>:arrow_up:</code></li>
-<li>100分 ‘:100:’</li>
-</ul>
-<p>输入后预览即可看见表情，如果在 github 网页上输入 <code>:</code> 会有自动补全的哟。</p>
-<p>将鼠标停放在图标上，也可以看到对应的表情值。</p>
-<h2 id="常用字母组合释义"><a href="#常用字母组合释义" class="headerlink" title="常用字母组合释义"></a>常用字母组合释义</h2><ul>
-<li><code>WIP</code> work in process，正在进行中</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/16/git-empty-folder.html" itemprop="url">
-                  git 添加空文件夹
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-16T15:58:18+08:00" content="2016-07-16">
-              2016-07-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/16/git-empty-folder.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/16/git-empty-folder.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在文件夹下添加空文件 <code>.gitkeep</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/15/atom.html" itemprop="url">
-                  atom 编辑器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-15T11:16:54+08:00" content="2016-07-15">
-              2016-07-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/15/atom.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/atom.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Atom 编辑器使用 Web技术（html、css、javascript）开发。</p>
-<p><a href="http://atom.io/" target="_blank" rel="external">详情</a></p>
-<p>默认支持 markdown 预览功能。</p>
-<h2 id="自动换行"><a href="#自动换行" class="headerlink" title="自动换行"></a>自动换行</h2><p>Atom默认会根据窗口宽度对文本进行自动软换行处理，如果没有的话请勾选：-</p>
-<ul>
-<li><code>Atom-&gt;Preferences-&gt;Settings-&gt;Soft Wrap</code></li>
-<li><code>Atom-&gt;Preferences-&gt;Settings-&gt;Soft Wrap At Preferred Line Length</code></li>
-</ul>
-<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><p><code>Cmd+,</code></p>
-<ul>
-<li>file-icons</li>
-<li>docblockr，注释，使用方法，<code>/**</code> + <code>Tab</code></li>
-<li>emmet</li>
-<li>react-es6-snippets,<ul>
-<li><code>rcc</code> +  <code>rbm</code></li>
-<li><code>rfunc</code></li>
-</ul>
-</li>
-<li><a href="https://atom.io/packages/advanced-open-file" target="_blank" rel="external">advanced-open-file</a></li>
-<li><a href="https://atom.io/packages/open-in-browsers" target="_blank" rel="external">open-in-browser</a></li>
-</ul>
-<h2 id="Enable-tab-completion-for-JSX-with-Emmet-in-Atom"><a href="#Enable-tab-completion-for-JSX-with-Emmet-in-Atom" class="headerlink" title="Enable tab completion for JSX with Emmet in Atom"></a>Enable tab completion for JSX with Emmet in Atom</h2><ol>
-<li>Open the keymap.cson file by clicking on <code>Atom -&gt; Keymap…</code> in the menu bar</li>
-<li>Add these lines of code to your keymap:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&apos;atom-text-editor[data-grammar~=&quot;jsx&quot;]:not([mini])&apos;:</div><div class="line">  &apos;tab&apos;: &apos;emmet:expand-abbreviation-with-tab&apos;</div></pre></td></tr></table></figure>
-<p>Now open a file with JSX code, type <code>div.myclass</code>, press tab and it should autocomplete to <div classname="myclass"></div>! (if it’s not properly syntax highlighted, select Babel ES6 JavaScript or JSX as the syntax, this won’t work otherwise)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir ~/emmet</div><div class="line">touch ~/emmet/syntaxProfiles.json</div></pre></td></tr></table></figure>
-<p>syntaxProfiles.json in ~/emmet folder</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;html&quot;: &#123;</div><div class="line">    &quot;tag_case&quot;: &quot;lower&quot;,</div><div class="line">    &quot;attr_quotes&quot;: &quot;single&quot;,</div><div class="line">    &quot;self_closing_tag&quot;: true</div><div class="line">  &#125;,</div><div class="line">  &quot;jsx&quot;: &#123;</div><div class="line">    &quot;tag_case&quot;: &quot;lower&quot;,</div><div class="line">    &quot;attr_quotes&quot;: &quot;single&quot;,</div><div class="line">    &quot;self_closing_tag&quot;: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1606,7 +1642,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">161</span>
+              <span class="site-state-item-count">164</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1623,7 +1659,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">231</span>
+                <span class="site-state-item-count">233</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

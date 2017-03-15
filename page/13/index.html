@@ -258,6 +258,447 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/06/mongodb.html" itemprop="url">
+                  mongodb
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-06T22:54:44+08:00" content="2016-07-06">
+              2016-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/06/mongodb.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/06/mongodb.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="新增字段并设置默认值"><a href="#新增字段并设置默认值" class="headerlink" title="新增字段并设置默认值"></a>新增字段并设置默认值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 例如新增 deleted 字段，默认值为 false</div><div class="line">db.staffs.update(&#123;&#125;,&#123;$set:&#123;deleted:false&#125;&#125;,false,true)</div><div class="line"># 将所有员工生日定义为同一天</div><div class="line">db.staffs.update(&#123;&#125;,&#123;$set:&#123;birthday:&apos;1991-11-26T02:17:23.000Z&apos;&#125;&#125;,false,true)</div></pre></td></tr></table></figure>
+<h3 id="查询-count"><a href="#查询-count" class="headerlink" title="查询 count"></a>查询 count</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.staffs.count(&#123;deleted: false&#125;)</div></pre></td></tr></table></figure>
+<h2 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h2><h3 id="Making-queries-with-find"><a href="#Making-queries-with-find" class="headerlink" title="Making queries with find()"></a>Making queries with find()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">collection.find(query[[[, fields], options], callback]);</div></pre></td></tr></table></figure>
+<ul>
+<li>collection.find(query, callback);</li>
+<li>collection.find(query, options, callback);</li>
+<li>collection.find(query, fields, options, callback);</li>
+</ul>
+<p>Where</p>
+<ul>
+<li>query - is a query object, defining the conditions the documents need to apply</li>
+<li>fields - indicates which fields should be included in the response (default is all)</li>
+<li>options - defines extra logic (sorting options, paging etc.)</li>
+<li>raw - driver returns documents as bson binary Buffer objects, default:false</li>
+<li>callback has two parameters - an error object (if an error occured) and a cursor object.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">collection.find(&#123;&#125;,&#123;<span class="attr">name</span>: <span class="literal">true</span>, <span class="attr">title</span>: <span class="literal">true</span>&#125;,)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">collection.find(&#123;<span class="string">"books.year"</span>:<span class="number">1714</span>&#125;)</div><div class="line"></div><div class="line">collection.findOne(&#123;<span class="attr">_id</span>: doc_id&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, document</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">document</span>.name);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h3><p>当 find() 中传入多个键值对时，MongoDB就会将其作为 AND 查询处理。用法：</p>
+<p>db.mycol.find({ key1: value1, key2: value2 }).pretty()</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; db.post.find(&#123;&quot;by&quot;:&quot;shiyanlou&quot;,&quot;title&quot;: &quot;MongoDB Overview&quot;&#125;).pretty()</div></pre></td></tr></table></figure>
+<h3 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h3><p>MongoDB中，OR 查询语句以 $or 作为关键词，用法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; db.post.find(</div><div class="line">   &#123;</div><div class="line">      $or: [</div><div class="line">         &#123;key1: value1&#125;, &#123;key2:value2&#125;</div><div class="line">      ]</div><div class="line">   &#125;</div><div class="line">).pretty()</div></pre></td></tr></table></figure>
+<h3 id="同时使用-AND-和-OR"><a href="#同时使用-AND-和-OR" class="headerlink" title="同时使用 AND 和 OR"></a>同时使用 AND 和 OR</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; db.post.find(&#123;</div><div class="line">    &quot;likes&quot;: &#123;$gt:10&#125;,</div><div class="line">    $or: [</div><div class="line">        &#123;&quot;by&quot;: &quot;shiyanlou&quot;&#125;,</div><div class="line">        &#123;&quot;title&quot;: &quot;MongoDB Overview&quot;&#125;</div><div class="line">    ]</div><div class="line">&#125;).pretty()</div></pre></td></tr></table></figure>
+<h2 id="Mac-OS-安装-mongodb"><a href="#Mac-OS-安装-mongodb" class="headerlink" title="Mac OS 安装 mongodb"></a>Mac OS 安装 mongodb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew update</div><div class="line">brew install mongodb</div></pre></td></tr></table></figure>
+<p>在启动 MongoDB 之前，需要创建一个用来存储 MongoDB 数据的目录。MongoDB 数据的默认存放位置是 <code>/data/db</code> （也需要手动创建）目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">To have launchd start mongodb now and restart at login:</div><div class="line">  brew services start mongodb</div><div class="line">Or, if you don&apos;t want/need a background service you can just run:</div><div class="line">  mongod --config /usr/local/etc/mongod.conf</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo mkdir -p /data/db</div><div class="line">mongod --dbpath /data/db</div><div class="line">mongod</div></pre></td></tr></table></figure>
+<p>也可以更改为其它地方，比如说当前用户目录下，新建一个 data/db 目录用来存放 MongoDB 的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">mkdir -p data/db</div><div class="line">mongod --dbpath ~/data/db</div></pre></td></tr></table></figure>
+<p>查看帮助文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod -h</div></pre></td></tr></table></figure>
+<p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="external">安装文档</a></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># 进入 mongo shell</div><div class="line">mongo</div><div class="line"></div><div class="line"># 辅助命令</div><div class="line">db.help();</div><div class="line">db.getName();</div><div class="line"></div><div class="line"># 切换/创建数据库</div><div class="line">use site # 对应 export MONGO_URL=mongodb://localhost:27017/site</div><div class="line"></div><div class="line">db.createCollection(&apos;users&apos;);</div><div class="line">db.users.insert(&#123; name: &apos;peter&apos; &#125;);</div><div class="line">db.users.find();</div><div class="line"></div><div class="line"># 退出 mongo</div><div class="line">exit</div></pre></td></tr></table></figure>
+<h2 id="清空集合"><a href="#清空集合" class="headerlink" title="清空集合"></a>清空集合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.rules.remove(&#123;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo service mongod start</div><div class="line">sudo service mongod stop</div><div class="line">sudo service mongod restart</div></pre></td></tr></table></figure>
+<h2 id="用户及密码"><a href="#用户及密码" class="headerlink" title="用户及密码"></a>用户及密码</h2><p>MongoDB协议</p>
+<h2 id="Adjusting-the-Firewall"><a href="#Adjusting-the-Firewall" class="headerlink" title="Adjusting the Firewall"></a>Adjusting the Firewall</h2><p>To allow access to MongoDB on its default port <code>27017</code> from everywhere, you could use <code>sudo ufw allow 27017</code>. However, enabling internet access to MongoDB server on a default installation gives unrestricted access to the whole database server.</p>
+<p>In most cases, MongoDB should be accessed only from certain trusted locations, such as another server hosting an application. To accomplish this task, you can allow access on MongoDB’s default port while specifying the IP address of another server that will be explicitly allowed to connect.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ufw allow from your_other_server_ip/32 to any port 27017</div></pre></td></tr></table></figure>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/cron.d/mongodb-backup</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@daily root mkdir -p /var/backups/mongodb; mongodump --db todos(db名称) --out /var/backups/mongodb/$(date +&apos;\%Y-\%m-\%d&apos;)</div></pre></td></tr></table></figure>
+<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><ul>
+<li>大于     - $gt</li>
+<li>小于     - $lt</li>
+<li>大于等于  - $gte</li>
+<li>小于等于  - $lte</li>
+</ul>
+<h2 id="实验课程"><a href="#实验课程" class="headerlink" title="实验课程"></a>实验课程</h2><p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo service mongodb start</div><div class="line">$ mongo</div></pre></td></tr></table></figure>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; use test            #连接到test数据库</div><div class="line">&gt; db.dropDatabase()   #删除数据库</div></pre></td></tr></table></figure>
+<ul>
+<li>一个mongoDB可以创建多个数据库</li>
+<li>使用show dbs可以查看所有数据库的列表（刚建立的空数据库不会显示）</li>
+<li>执行db命令则可以查看当前数据库对象或者集合</li>
+<li>运行use命令可以连接到指定的数据库</li>
+</ul>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><p>文档是mongoDB的核心，类似于SQLite数据库（关系数据库）中的每一行数据。多个键及其关联的值放在一起就是文档。在mongodb中使用一种类json的bson存储数据，bson数据可以理解为在json的基础上添加了一些json中没有的数据类型。例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"company"</span>:<span class="string">"Chenshi keji"</span>&#125;</div></pre></td></tr></table></figure>
+<p>文档的关系</p>
+<ul>
+<li>嵌入：将两个文档分开，通过引用文档的_id字段来建立关系</li>
+<li>引用：将两个文档分开，通过引用文档的_id字段来建立关系</li>
+</ul>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>集合就是一组文档的组合，就相当于是关系数据库中的表，在mongodb中可以存储不同的文档结构的文档 例:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"company"</span>:<span class="string">"Chenshi keji"</span>&#125; &#123;<span class="attr">"people"</span>:<span class="string">"man"</span>,<span class="attr">"name"</span>:<span class="string">"peter"</span>&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.createCollection(&quot;users&quot;) # 创建集合</div><div class="line">&gt; show collections</div><div class="line">&gt; db.users.drop() # 删除 users 集合</div></pre></td></tr></table></figure>
+<p>上面两个文档就可以存储在同一个集合中</p>
+<h3 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h3><p>数据库的信息存储在集合中，他们统一使用系统的命名空间：DBNAME.system.* DBNAME可用db或数据库名替代</p>
+<p>DBNAME.system.namespaces ：列出所有名字空间<br>DBNAME.system.indexs ：列出所有索引<br>DBNAME.system.profile ：列出数据库概要信息<br>DBNAME.system.users ：列出访问数据库的用户<br>DBNAME.system.sources ：列出服务器信息</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/05/zsh.html" itemprop="url">
+                  zsh
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-05T11:40:30+08:00" content="2016-07-05">
+              2016-07-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/05/zsh.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/05/zsh.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="iTerm2-zsh-oh-my-zsh-agnoster"><a href="#iTerm2-zsh-oh-my-zsh-agnoster" class="headerlink" title="iTerm2 + zsh + oh-my-zsh + agnoster"></a>iTerm2 + zsh + oh-my-zsh + agnoster</h1><h2 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 查看当前 shell</div><div class="line">echo $SHELL</div><div class="line"># 查看可用 shell</div><div class="line">cat /etc/shells</div><div class="line"># Make it your default shell</div><div class="line">chsh -s $(which zsh)</div><div class="line"># Log out and login back again to use your new default shell.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">echo $SHELL</div><div class="line"># Expected result: /bin/zsh</div></pre></td></tr></table></figure>
+<h2 id="brew"><a href="#brew" class="headerlink" title="brew"></a><a href="http://brew.sh/" target="_blank" rel="external">brew</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># brew install 安装命令行程序</div><div class="line">brew install zsh</div></pre></td></tr></table></figure>
+<h2 id="brew-cask"><a href="#brew-cask" class="headerlink" title="brew cask"></a><a href="https://caskroom.github.io/" target="_blank" rel="external">brew cask</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># brew cask install 安装GUI程序</div><div class="line">brew cask install iterm2</div></pre></td></tr></table></figure>
+<h2 id="Install-oh-my-zsh"><a href="#Install-oh-my-zsh" class="headerlink" title="Install oh-my-zsh"></a><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">Install oh-my-zsh</a></h2><h2 id="调整主题"><a href="#调整主题" class="headerlink" title="调整主题"></a>调整主题</h2><p><code>~/.zshrc</code> 主题设置为 <code>agnoster</code></p>
+<h2 id="安装Meslo-Powerline字体"><a href="#安装Meslo-Powerline字体" class="headerlink" title="安装Meslo-Powerline字体"></a>安装Meslo-Powerline字体</h2><ul>
+<li><a href="https://github.com/powerline/fonts/blob/master/Meslo/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.otf" target="_blank" rel="external">Downloads</a></li>
+<li>点击安装</li>
+<li>iTerm2 中调整字体为 Meslo-Powerline</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/04/You-Dont-Need-jQuery.html" itemprop="url">
+                  You-Dont-Need-jQuery
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-04T17:22:31+08:00" content="2016-07-04">
+              2016-07-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/04/You-Dont-Need-jQuery.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/You-Dont-Need-jQuery.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>你可能不需要 jQuery (You Might Not Need jQuery)</p>
+<p><a href="https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.zh-CN.md" target="_blank" rel="external">详情点击</a></p>
+<p>如何使用原生 JavaScript 实现通用事件，元素，ajax 等用法。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/30/palette.html" itemprop="url">
                   色盘
                 </a>
@@ -1182,410 +1623,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/22/nodejs.html" itemprop="url">
-                  Node.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-22T16:16:25+08:00" content="2016-06-22">
-              2016-06-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/22/nodejs.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/22/nodejs.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Step1-安装-Node-js"><a href="#Step1-安装-Node-js" class="headerlink" title="Step1. 安装 Node.js"></a>Step1. 安装 Node.js</h2><h3 id="Windows-安装-nvm-windows"><a href="#Windows-安装-nvm-windows" class="headerlink" title="Windows 安装 nvm-windows"></a><a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="external">Windows 安装 nvm-windows</a></h3><p><code>nvm node_mirror</code> 和 <code>nvm npm_mirror</code> 这两条命令暂时在 Windows7 无法正常使用。所以需要我们手动修改文件，来设置镜像源：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 修改文件 `~\AppData\Roaming\nvm\settings.txt` </div><div class="line">node_mirror: http://npm.taobao.org/mirrors/node/</div><div class="line">npm_mirror: http://npm.taobao.org/mirrors/npm/</div></pre></td></tr></table></figure>
-<p>安装 node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">PS C:\Users\me&gt; nvm install latest</div><div class="line">Downloading node.js version 7.7.1 (64-bit)... Complete</div><div class="line">Creating C:\Users\me\AppData\Roaming\nvm\temp</div><div class="line"></div><div class="line">Downloading npm version 4.1.2... Complete</div><div class="line">Installing npm v4.1.2...</div><div class="line"></div><div class="line">Installation complete. If you want to use this version, type</div><div class="line"></div><div class="line">nvm use 7.7.1</div></pre></td></tr></table></figure>
-<p>启用 node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PS C:\Users\me&gt; nvm use 7.7.1</div><div class="line">Now using node v7.7.1 (64-bit)</div></pre></td></tr></table></figure>
-<p>确认镜像地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PS C:\Users\me&gt; npm config get registry</div><div class="line">https://registry.npm.taobao.org/</div></pre></td></tr></table></figure>
-<h3 id="MacOS-安装-nvm"><a href="#MacOS-安装-nvm" class="headerlink" title="MacOS 安装 nvm"></a><a href="https://github.com/creationix/nvm" target="_blank" rel="external">MacOS 安装 nvm</a></h3><p>配置 Node.js 镜像源：nvm 默认 NVM_NODEJS_ORG_MIRROR 默认值为 <a href="https://nodejs.org/dist，天高路远。我们使用淘宝镜像源。" target="_blank" rel="external">https://nodejs.org/dist，天高路远。我们使用淘宝镜像源。</a></p>
-<p>追加以下内容到 <code>.zshrc</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</div></pre></td></tr></table></figure>
-<p>安装 Node.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 更新环境变量</div><div class="line">source ~/.profile</div><div class="line"></div><div class="line"># 安装最新的 Node.js</div><div class="line">nvm install latest</div></pre></td></tr></table></figure>
-<h2 id="Step2-使用-nrm-切换-npm-镜像源"><a href="#Step2-使用-nrm-切换-npm-镜像源" class="headerlink" title="Step2.使用 nrm 切换 npm 镜像源"></a>Step2.使用 nrm 切换 npm 镜像源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm config get registry</div><div class="line">npm install -g nrm --registry=https://registry.npm.taobao.org</div><div class="line">nrm ls</div><div class="line">nrm use taobao</div><div class="line">npm config get registry</div></pre></td></tr></table></figure>
-<h2 id="Step3-备用的-cnpm"><a href="#Step3-备用的-cnpm" class="headerlink" title="Step3.备用的 cnpm"></a>Step3.备用的 cnpm</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm</div></pre></td></tr></table></figure>
-<p>实际使用中，发现npm + 淘宝镜像，安装 gulp-sass 失败，node-sass 从 github 下载会中断。</p>
-<p>使用 cnpm 安装 gulp-sass，很流畅，node-sass 好像不是从 github 下载</p>
-<p>cnmp 并不等于 npm+淘宝镜像 ！！！<br>cnmp 并不等于 npm+淘宝镜像 ！！！<br>cnmp 并不等于 npm+淘宝镜像 ！！！</p>
-<p>一般情况使用 cnpm 比较省心。</p>
-<h2 id="更新自身"><a href="#更新自身" class="headerlink" title="更新自身"></a>更新自身</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm -v</div><div class="line">npm install npm -g</div></pre></td></tr></table></figure>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install</div><div class="line">npm install --save &lt;package_name&gt;</div><div class="line">npm install --save-dev &lt;package_name&gt;</div><div class="line">[sudo] npm install -g &lt;package_name&gt;</div></pre></td></tr></table></figure>
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm remove --save &lt;package_name&gt;</div><div class="line">npm remove --save-dev &lt;package_name&gt;</div><div class="line">npm remove -g &lt;package_name&gt;</div></pre></td></tr></table></figure>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">npm outdated</div><div class="line">npm update</div><div class="line">npm update &lt;package_name&gt;</div><div class="line"></div><div class="line">npm outdated -g --depth=0</div><div class="line">npm install -g &lt;package_name&gt;</div></pre></td></tr></table></figure>
-<h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><ul>
-<li>小波浪（~）,保留主版本（第一个数字）,比如 ^1.2.3 会匹配所有的1.x.x版本，不会升级到2.0.0。</li>
-<li>小尖尖（^）,保留子版本（中间的数字）,比如 ~1.2.3 会匹配所有的1.2.x版本，不会升级到1.3.0。</li>
-</ul>
-<h2 id="process-env-NODE-ENV-‘production’"><a href="#process-env-NODE-ENV-‘production’" class="headerlink" title="process.env.NODE_ENV !== ‘production’"></a>process.env.NODE_ENV !== ‘production’</h2><h2 id="NVM-使用补充"><a href="#NVM-使用补充" class="headerlink" title="NVM 使用补充"></a>NVM 使用补充</h2><h3 id="临时指定-Node-js-版本"><a href="#临时指定-Node-js-版本" class="headerlink" title="临时指定 Node.js 版本"></a>临时指定 Node.js 版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use 0.12.0</div></pre></td></tr></table></figure>
-<h3 id="设置默认-Node-js-版本"><a href="#设置默认-Node-js-版本" class="headerlink" title="设置默认 Node.js 版本"></a>设置默认 Node.js 版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm alias default 0.12.0</div></pre></td></tr></table></figure>
-<h3 id="直接运行特定版本的-Node"><a href="#直接运行特定版本的-Node" class="headerlink" title="直接运行特定版本的 Node"></a>直接运行特定版本的 Node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nvm run 5.1 --version</div><div class="line">nvm run 5.1 server.js</div></pre></td></tr></table></figure>
-<p>或者，在当前终端的子进程中运行特定版本的Node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm exec 4.2.2 node --version</div></pre></td></tr></table></figure>
-<h3 id="查看安装路径"><a href="#查看安装路径" class="headerlink" title="查看安装路径"></a>查看安装路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm which 5.1</div></pre></td></tr></table></figure>
-<h3 id="问题：服务器上如何同时运行多个基于不同版本Node-js的应用？"><a href="#问题：服务器上如何同时运行多个基于不同版本Node-js的应用？" class="headerlink" title="问题：服务器上如何同时运行多个基于不同版本Node.js的应用？"></a>问题：服务器上如何同时运行多个基于不同版本Node.js的应用？</h3><p>当我们需要在一台服务器上运行多个 Node.js 应用，并且每个应用使用不同版本的 Node.js 时，问题就产生了</p>
-<h4 id="方案一：使用-Node-js-的绝对路径"><a href="#方案一：使用-Node-js-的绝对路径" class="headerlink" title="方案一：使用 Node.js 的绝对路径"></a>方案一：使用 Node.js 的绝对路径</h4><h4 id="方案二：nvm-use-xxx-node-server-js"><a href="#方案二：nvm-use-xxx-node-server-js" class="headerlink" title="方案二：nvm use xxx;node server.js"></a>方案二：nvm use xxx;node server.js</h4><h3 id="从其他全局-Node-JS-Tools-启动"><a href="#从其他全局-Node-JS-Tools-启动" class="headerlink" title="从其他全局 Node.JS Tools 启动"></a>从其他全局 Node.JS Tools 启动</h3><p>有时，我们的服务是从其他全局 Node.JS 工具启动的，例如 forever 或 pm2 。那么可以首先找出 forever 的绝对路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">which forever</div><div class="line">/usr/local/bin/forever</div></pre></td></tr></table></figure>
-<p>然后执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/bin/n use 0.10.41 /usr/local/bin/forever index.js</div></pre></td></tr></table></figure>
-<h2 id="Daemon"><a href="#Daemon" class="headerlink" title="Daemon"></a>Daemon</h2><p>既然是服务，就要运行在后台(Crontab 或者 Service)。那么 n 的使用就必须使用完整路径，例如：</p>
-<p><code>/usr/local/bin/n use 0.10.41 index.js</code></p>
-<h2 id="assert-模块"><a href="#assert-模块" class="headerlink" title="assert 模块"></a>assert 模块</h2><p>assert模块是Node的内置模块，主要用于断言。如果表达式不符合预期，就抛出一个错误。该模块提供11个方法，但只有少数几个是常用的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/font-style-bug.html" itemprop="url">
-                  字体bug
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T15:17:52+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/font-style-bug.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/font-style-bug.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Bug描述：网页所有字体都变成了斜体，修改任何地方的 <code>font-style: normal</code> 都无效。<br>Bug原因：误删除了 <code>&lt;i&gt;</code> 的另一半 <code>&lt;/i&gt;</code><br>Bug规避：使用 lint 来检测 html 语法问题</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/20/zip.html" itemprop="url">
-                  zip
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T16:24:17+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/zip.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/zip.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用 zip 命令配合参数 -e 制作加密压缩文件：</p>
-<p><code>zip -e test.zip test.txt</code></p>
-<p>回车后输入两次密码。</p>
-<p>如果要压缩文件夹则追加参数 r</p>
-<p><code>zip -er testDir.zip testDir</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1631,7 +1668,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">161</span>
+              <span class="site-state-item-count">164</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1648,7 +1685,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">231</span>
+                <span class="site-state-item-count">233</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

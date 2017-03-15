@@ -83,22 +83,22 @@
 
 
 
-<meta name="description" content="初始化123sudo apt-get install gitgit config --global user.name &amp;quot;your.name&amp;quot;git config --global user.email &amp;quot;your_email@gamil.com&amp;quot;
-这些配置信息将会添加进 ~/.gitconfig 文件中
-我们将推荐使用 HTTPS 方法（另一个是 SSH）">
+<meta name="description" content="推荐使用 https 协议！推荐使用 https 协议！推荐使用 https 协议！
+初始化123sudo apt-get install gitgit config --global user.name &amp;quot;your.name&amp;quot;git config --global user.email &amp;quot;your_email@gamil.com&amp;quot;
+这些配置信息将会添加进">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git">
 <meta property="og:url" content="http://haobing.wang/2016/07/20/git.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="初始化123sudo apt-get install gitgit config --global user.name &amp;quot;your.name&amp;quot;git config --global user.email &amp;quot;your_email@gamil.com&amp;quot;
-这些配置信息将会添加进 ~/.gitconfig 文件中
-我们将推荐使用 HTTPS 方法（另一个是 SSH）">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.620Z">
+<meta property="og:description" content="推荐使用 https 协议！推荐使用 https 协议！推荐使用 https 协议！
+初始化123sudo apt-get install gitgit config --global user.name &amp;quot;your.name&amp;quot;git config --global user.email &amp;quot;your_email@gamil.com&amp;quot;
+这些配置信息将会添加进">
+<meta property="og:updated_time" content="2017-03-13T07:23:21.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
-<meta name="twitter:description" content="初始化123sudo apt-get install gitgit config --global user.name &amp;quot;your.name&amp;quot;git config --global user.email &amp;quot;your_email@gamil.com&amp;quot;
-这些配置信息将会添加进 ~/.gitconfig 文件中
-我们将推荐使用 HTTPS 方法（另一个是 SSH）">
+<meta name="twitter:description" content="推荐使用 https 协议！推荐使用 https 协议！推荐使用 https 协议！
+初始化123sudo apt-get install gitgit config --global user.name &amp;quot;your.name&amp;quot;git config --global user.email &amp;quot;your_email@gamil.com&amp;quot;
+这些配置信息将会添加进">
 
 
 
@@ -333,10 +333,12 @@
       
 
       
-        <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div><div class="line">git config --global user.name &quot;your.name&quot;</div><div class="line">git config --global user.email &quot;your_email@gamil.com&quot;</div></pre></td></tr></table></figure>
+        <p>推荐使用 https 协议！<br>推荐使用 https 协议！<br>推荐使用 https 协议！</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div><div class="line">git config --global user.name &quot;your.name&quot;</div><div class="line">git config --global user.email &quot;your_email@gamil.com&quot;</div></pre></td></tr></table></figure>
 <p>这些配置信息将会添加进 <code>~/.gitconfig</code> 文件中</p>
-<p>我们将推荐使用 HTTPS 方法（另一个是 SSH），将你的代码推送到 Github 上的仓库。<br>如果你不想每次都输入用户名和密码的话，可以按照此 描述 说的那样，运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># osx</div><div class="line">git config --global credential.helper osxkeychain</div><div class="line"># windows</div><div class="line">git config --global credential.helper wincred</div></pre></td></tr></table></figure>
+<p>我们将推荐使用 HTTPS 方法（另一个是 SSH），将你的代码推送到 Github 上的仓库。</p>
+<p>如果你不想每次都输入用户名和密码的话，可以运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># osx</div><div class="line">git config --global credential.helper osxkeychain</div><div class="line"># windows 下让 Git 记住用户名密码(https) 仓库地址选用 https 协议</div><div class="line">git config --global credential.helper wincred</div></pre></td></tr></table></figure>
 <h2 id="create-a-new-repository-on-the-command-line"><a href="#create-a-new-repository-on-the-command-line" class="headerlink" title="create a new repository on the command line"></a>create a new repository on the command line</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">echo &quot;# test&quot; &gt;&gt; README.md</div><div class="line">git init</div><div class="line">git add README.md</div><div class="line">git commit -m &quot;first commit&quot;</div><div class="line">git remote add origin https://github.com/haobingwang/test.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
 <h2 id="push-an-existing-repository-from-the-command-line"><a href="#push-an-existing-repository-from-the-command-line" class="headerlink" title="push an existing repository from the command line"></a>push an existing repository from the command line</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/haobingwang/test.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
 <h2 id="git-使用建议"><a href="#git-使用建议" class="headerlink" title="git 使用建议"></a>git 使用建议</h2><ul>
@@ -346,19 +348,20 @@
 </ul>
 <h2 id="https协议-和-git协议"><a href="#https协议-和-git协议" class="headerlink" title="https协议 和 git协议"></a>https协议 和 git协议</h2><p>以 gitlab 为例：在服务器上进行 <code>git fetch</code> 等操作时。</p>
 <ul>
-<li>以 <code>https</code> 协议的仓库 url 作为远程仓库时会要求手动输入用户名和密码。</li>
+<li>以 <code>https</code> 协议的仓库 url 作为远程仓库时会要求手动输入用户名和密码(只需输入一次)。</li>
 <li>而 <code>git</code>   协议的仓库 url 作为远程仓库却不需要输入用户名和密码，只要添加了 <code>ssh</code>公钥。</li>
 </ul>
 <h2 id="搭建-git-服务器"><a href="#搭建-git-服务器" class="headerlink" title="搭建 git 服务器"></a>搭建 git 服务器</h2><ul>
 <li>搭建 <code>gitlab</code>社区版</li>
 </ul>
-<h2 id="部署代码使用"><a href="#部署代码使用" class="headerlink" title="部署代码使用"></a>部署代码使用</h2><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 新建代码接受仓库</div><div class="line">mkdir test.git &amp;&amp; cd test.git</div><div class="line">git init --bare</div><div class="line"></div><div class="line"># 设置服务器端更新钩子</div><div class="line">vim hooks/post-receive</div></pre></td></tr></table></figure>
-<p>将如下内容复制到文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">GIT_WORK_TREE=/home/ubuntu/test git checkout -f</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x hooks/post-receive</div></pre></td></tr></table></figure>
-<p>这样，每次从客户端 push 代码到服务器，都会在 /home/ubuntu/test 下生成最先的代码</p>
-<h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add server git@192.168.1.110:repos/test.git</div><div class="line">git push server</div></pre></td></tr></table></figure>
-<p>其中，server 是自定的主机名，git是上文提到的专门用于提交代码的服务器用户，192.168.1.110是服务器IP，repos/test.git 就是服务器仓库目录。</p>
+<h2 id="git-配置-ssh-（不推荐使用，这里记录只是作为备用方案）"><a href="#git-配置-ssh-（不推荐使用，这里记录只是作为备用方案）" class="headerlink" title="git 配置 ssh （不推荐使用，这里记录只是作为备用方案）"></a>git 配置 ssh （不推荐使用，这里记录只是作为备用方案）</h2><h2 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 学习git的时候, 大家刚开始使用之前都配置了一个全局的用户名和邮箱</div><div class="line">git config --global user.name &quot;github&apos;s Name&quot;</div><div class="line">git config --global user.email &quot;github@xx.com&quot;</div><div class="line">git config --list</div><div class="line"></div><div class="line"># 如果你公司的项目是放在自建的gitlab上面, 如果你不进行配置用户名和邮箱的话, 则会使用全局的, 这个时候是错误的, 正确的做法是针对公司的项目, 在项目根目录下进行单独配置</div><div class="line"># 这里的配置是写到 .git/config 文件中的 user 块中</div><div class="line">git config user.name &quot;gitlab&apos;s Name&quot;</div><div class="line">git config user.email &quot;gitlab@xx.com&quot;</div><div class="line">git config --list</div></pre></td></tr></table></figure>
+<h2 id="配置-ssh"><a href="#配置-ssh" class="headerlink" title="配置 ssh"></a>配置 ssh</h2><p>生成 ssh 密钥：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;email@email.com&quot;</div></pre></td></tr></table></figure>
+<p>将公钥 id_rsa.pub 的内容添加到 coding,github,gitlab，然后测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Hi bill! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</div><div class="line"></div><div class="line">$ ssh -T git@gitlab.com</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Welcome to GitLab, bill!</div><div class="line"></div><div class="line">$ ssh -T git@git.coding.net</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Hello bill! You&apos;ve connected to Coding.net via SSH successfully!</div></pre></td></tr></table></figure>
+<p>Adding your SSH key to the ssh-agent(配置不用每次输入密钥的密码)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># git-shell</div><div class="line">$ eval $(ssh-agent -s)</div><div class="line">Agent pid 7108</div><div class="line"></div><div class="line">$ ssh-add id_rsa</div><div class="line">Enter passphrase for id_rsa:</div><div class="line">Identity added: id_rsa (id_rsa)</div></pre></td></tr></table></figure>
+<p>然后就可以对 git 开头的仓库地址进行 clone push 等操作了。</p>
 
       
     </div>
@@ -471,7 +474,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">161</span>
+              <span class="site-state-item-count">164</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -488,7 +491,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">231</span>
+                <span class="site-state-item-count">233</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -517,7 +520,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-a-new-repository-on-the-command-line"><span class="nav-number">2.</span> <span class="nav-text">create a new repository on the command line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push-an-existing-repository-from-the-command-line"><span class="nav-number">3.</span> <span class="nav-text">push an existing repository from the command line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-使用建议"><span class="nav-number">4.</span> <span class="nav-text">git 使用建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#https协议-和-git协议"><span class="nav-number">5.</span> <span class="nav-text">https协议 和 git协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建-git-服务器"><span class="nav-number">6.</span> <span class="nav-text">搭建 git 服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署代码使用"><span class="nav-number">7.</span> <span class="nav-text">部署代码使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#server"><span class="nav-number">7.1.</span> <span class="nav-text">server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client"><span class="nav-number">7.2.</span> <span class="nav-text">client</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-a-new-repository-on-the-command-line"><span class="nav-number">2.</span> <span class="nav-text">create a new repository on the command line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push-an-existing-repository-from-the-command-line"><span class="nav-number">3.</span> <span class="nav-text">push an existing repository from the command line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-使用建议"><span class="nav-number">4.</span> <span class="nav-text">git 使用建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#https协议-和-git协议"><span class="nav-number">5.</span> <span class="nav-text">https协议 和 git协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建-git-服务器"><span class="nav-number">6.</span> <span class="nav-text">搭建 git 服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-配置-ssh-（不推荐使用，这里记录只是作为备用方案）"><span class="nav-number">7.</span> <span class="nav-text">git 配置 ssh （不推荐使用，这里记录只是作为备用方案）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-git"><span class="nav-number">8.</span> <span class="nav-text">安装 git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-ssh"><span class="nav-number">9.</span> <span class="nav-text">配置 ssh</span></a></li></ol></div>
             
           </div>
         </section>
