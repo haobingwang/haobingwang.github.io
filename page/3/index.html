@@ -258,6 +258,843 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/10/javascript-note.html" itemprop="url">
+                  javascript-note
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-10T11:15:47+08:00" content="2016-12-10">
+              2016-12-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/10/javascript-note.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/10/javascript-note.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ES6-2015-amp-amp-ES5"><a href="#ES6-2015-amp-amp-ES5" class="headerlink" title="ES6(2015) &amp;&amp; ES5"></a>ES6(2015) &amp;&amp; ES5</h2><p>ES6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span></div></pre></td></tr></table></figure>
+<p>ES5 (CommonJS)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> createStore = <span class="built_in">require</span>(<span class="string">'redux'</span>).createStore</div></pre></td></tr></table></figure>
+<h2 id="常用库"><a href="#常用库" class="headerlink" title="常用库"></a>常用库</h2><ul>
+<li>jQuery 新项目最好不用引入。</li>
+<li>Lodash 是一个具有一致接口、模块化、高性能等特性的 JavaScript 工具库。比相同功能的 Underscore.js 使用更广泛。</li>
+<li>Underscore.js是一个 JavaScript 工具库，它提供了一整套函数式编程的实用功能，弥补了 jQuery 没有实现的功能，同时又是 Backbone 必不可少的部分。</li>
+<li>Moment 处理时间的库。</li>
+</ul>
+<h2 id="Lodash-VS-Underscore"><a href="#Lodash-VS-Underscore" class="headerlink" title="Lodash VS Underscore"></a>Lodash VS Underscore</h2><p>等合并了，就不用纠结了。</p>
+<h2 id="浅复制-VS-深复制"><a href="#浅复制-VS-深复制" class="headerlink" title="浅复制 VS 深复制"></a>浅复制 VS 深复制</h2><p>对于对象来说，浅复制是复制对象地址的，并没有开辟新的栈，修改其中一个对象的属性，则另一个对象的属性也会改变。</p>
+<p>而深复制则是开辟新的栈，两个对象对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性。</p>
+<p>深复制的办法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newObject = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(oldObject));</div></pre></td></tr></table></figure>
+<h2 id="data-关联-js-事件"><a href="#data-关联-js-事件" class="headerlink" title="data- 关联 js 事件"></a>data- 关联 js 事件</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"button"</span> <span class="attr">data-locale</span>=<span class="string">"zh-cn"</span>&gt;</span></div><div class="line">	Chinese (China)</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="string">'[data-locale]'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> dom = $(<span class="keyword">this</span>);</div><div class="line">    currentLang = dom.data(<span class="string">'locale'</span>);</div><div class="line">    $(<span class="string">'[data-locale]'</span>).removeClass(<span class="string">'active'</span>);</div><div class="line">    dom.addClass(<span class="string">'active'</span>);</div><div class="line">    updateSnippets();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="浮点数运算的误差"><a href="#浮点数运算的误差" class="headerlink" title="浮点数运算的误差"></a>浮点数运算的误差</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">0.3 - 0.1</div><div class="line">0.19999999999999998</div><div class="line">0.1 * 0.2</div><div class="line">0.020000000000000004</div><div class="line">0.02 / 0.1</div><div class="line">0.19999999999999998</div></pre></td></tr></table></figure>
+<p>其实对于浮点数的四则运算，几乎所有的编程语言都会有类似精度误差的问题，只不过在 C++/C#/Java 这些语言中已经封装好了方法来避免精度的问题，而 JavaScript 是一门弱类型的语言，从设计思想上就没有对浮点数有个严格的数据类型，所以精度误差的问题就显得格外突出。</p>
+<h2 id="一切皆对象"><a href="#一切皆对象" class="headerlink" title="一切皆对象"></a>一切皆对象</h2><p>在JavaScript的世界里，一切都是对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="number">123</span>; <span class="comment">// 'number'</span></div><div class="line"><span class="keyword">typeof</span> <span class="literal">NaN</span>; <span class="comment">// 'number'</span></div><div class="line"><span class="keyword">typeof</span> <span class="string">'str'</span>; <span class="comment">// 'string'</span></div><div class="line"><span class="keyword">typeof</span> <span class="literal">true</span>; <span class="comment">// 'boolean'</span></div><div class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span>; <span class="comment">// 'undefined'</span></div><div class="line"><span class="keyword">typeof</span> <span class="built_in">Math</span>.abs; <span class="comment">// 'function'</span></div><div class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// 'object'</span></div><div class="line"><span class="keyword">typeof</span> []; <span class="comment">// 'object'</span></div><div class="line"><span class="keyword">typeof</span> &#123;&#125;; <span class="comment">// 'object'</span></div></pre></td></tr></table></figure>
+<p>有这么几条规则需要遵守：</p>
+<ul>
+<li>不要使用new Number()、new Boolean()、new String()创建包装对象；</li>
+<li>用 parseInt() 或parseFloat() 来转换任意类型到 number；</li>
+<li>用 String() 来转换任意类型到 string，或者直接调用某个对象的 toString() 方法；</li>
+<li>通常不必把任意类型转换为 boolean 再判断，因为可以直接写 if (myVar) {…}；</li>
+<li>typeof 操作符可以判断出 number、boolean、string、function 和 undefined；</li>
+<li>判断 Array 要使用 Array.isArray(arr)；</li>
+<li>判断 null 请使用 myVar === null；</li>
+<li>判断某个全局变量是否存在用 typeof window.myVar === ‘undefined’；</li>
+<li>函数内部判断某个变量是否存在用 typeof myVar === ‘undefined’。</li>
+</ul>
+<p>最后有细心的同学指出，任何对象都有<code>toString()</code>方法吗？<code>null</code>和<code>undefined</code>就没有！确实如此，这两个特殊值要除外，虽然<code>null</code>还伪装成了<code>object</code>类型。</p>
+<p>更细心的同学指出，<code>number</code>对象调用<code>toString()</code>报<code>SyntaxError：</code></p>
+<p><code>123.toString(); // SyntaxError</code></p>
+<p>遇到这种情况，要特殊处理一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">123.</span>.toString(); <span class="comment">// '123', 注意是两个点！</span></div><div class="line">(<span class="number">123</span>).toString(); <span class="comment">// '123'</span></div></pre></td></tr></table></figure>
+<p>不要问为什么，这就是JavaScript代码的乐趣！</p>
+<h2 id="不区分整数和浮点数，统一用Number表示"><a href="#不区分整数和浮点数，统一用Number表示" class="headerlink" title="不区分整数和浮点数，统一用Number表示"></a>不区分整数和浮点数，统一用Number表示</h2><h2 id="数据类型比较"><a href="#数据类型比较" class="headerlink" title="数据类型比较"></a>数据类型比较</h2><ul>
+<li><code>==</code> 会自动转换数据类型再比较</li>
+<li><code>===</code> 不会转换数据类型</li>
+</ul>
+<p><strong>不要</strong> 使用 <code>==</code>比较，始终坚持使用<code>===</code>比较才是正确地做法。</p>
+<h2 id="浮点数在运算过程中或产生误差"><a href="#浮点数在运算过程中或产生误差" class="headerlink" title="浮点数在运算过程中或产生误差"></a>浮点数在运算过程中或产生误差</h2><p>这是计算机的限制，所以要比较两个浮点数是否相等，只能通过计算它们之差的绝对值，看是否小于某个阈值。</p>
+<h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>大多数情况下，我们都应该用 <code>null</code>。</p>
+<p><code>undefined</code> 仅仅在判断函数参数是否传递的情况下有用。</p>
+<h2 id="strict-模式"><a href="#strict-模式" class="headerlink" title="strict 模式"></a>strict 模式</h2><p>不用<code>var</code>声明的变量会自动被声明为全局变量。</p>
+<p>使用<code>var</code>声明的变量则不是全局变量，它的范围被限制在该变量被声明的函数体内，同名变量在不同的函数体内互不冲突。</p>
+<p><code>strict</code> 模式，强制通过<code>var</code>声明变量，否则将导致运行错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line">...</div></pre></td></tr></table></figure>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p><code>String</code><em>不</em> 可以通过索引把对应的元素修改为新的值。</p>
+<p><code>Array</code>可以通过索引把对应的元素修改为新的值。</p>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p><code>Array</code> 提供了一种顺序存储一组元素的功能，并可以按索引来读写。</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>JavaScript 的对象是一种无序的结合数据类型，它由若干键值对组成。</p>
+<p>对象，是用于描述现实世界中的某个对象。</p>
+<p>由于 JavaScript 的对象是动态类型，你可以自动地对一个对象的属性进行添加或删除。</p>
+<h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><p><code>for</code>循环最常用的地方是利用索引来遍历数组。<code>for(let i=0; i&lt;arr.length; i++){}...</code></p>
+<p><code>for</code>循环的一个变体是<code>for(let key in object){...}</code>，它可以把一个对象的所有属性依次循环出来。</p>
+<h2 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h2><p><code>for</code>循环在已知循环的初始和结束条件时非常有用。</p>
+<p><code>while</code>循环只有一个判断条件，在循环开始前判断，如果满足条件就不断循环。</p>
+<p><code>do {...} while</code> 和 <code>while</code> 循环的唯一区别在于：在每次循环完成的时候判断条件。所以 <code>do {...} while</code>循环至少执行一次。</p>
+<h2 id="map-和-set-（ES6标准新增的数据类型）"><a href="#map-和-set-（ES6标准新增的数据类型）" class="headerlink" title="map 和 set （ES6标准新增的数据类型）"></a>map 和 set （ES6标准新增的数据类型）</h2><p>JavaScript的对象有个小问题，就是键必须是字符串。但实际上Number或者其他数据类型作为键也是非常合理的。</p>
+<p>为了解决这个问题，最新的ES6规范引入了新的数据类型<code>Map</code></p>
+<p><code>Set</code>和<code>Map</code>类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在<code>Set</code>中，没有重复的key。</p>
+<h2 id="iterable"><a href="#iterable" class="headerlink" title="iterable"></a>iterable</h2><p>遍历<code>Array</code>可以采用下标循环，遍历<code>Map</code>和<code>Set</code>就无法使用下标。为了统一集合类型，<code>ES6</code>标准引入了新的<code>iterable</code>类型，<code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。</p>
+<p>具有iterable类型的集合可以通过新的for … of循环来遍历。</p>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><p>函数末尾如果没有<code>return</code>，就是隐含的<code>return undefined</code>;</p>
+<h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><ul>
+<li>函数中的变量提升。函数定义有个特点，它会先扫描整个函数体的语句，把所有声明的变量“提升”到函数顶部；</li>
+<li>全局作用域。不在任何函数内定义的变量就具有全局作用域。实际上，JavaScript 默认有一个全局对象<code>window</code>，全局作用域的变量实际上绑定到<code>window</code>的一个属性。</li>
+<li>局部作用域。变量作用域实际上是函数内部，在<code>for</code>循环等<code>语句块</code>中是无法定义具有局部作用域的变量。为了解决块级作用域，ES6引入了新的关键字<code>let</code>，用<code>let</code>替代<code>var</code>可以声明一个块级作用域的变量。</li>
+<li>常量。由于<code>var</code>和<code>let</code>声明的是变量，如果要声明一个常量，在ES6之前是不行的，通常用全部大写的变量来表示“这是一个常量，不要修改它的值”。ES6标准引入了新的关键字<code>const</code>来定义常量，<code>const</code>与<code>let</code>都具有块级作用域；</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>绑定到对象上的函数称为方法，和普通函数也没啥区别，但是它在内部使用了一个<code>this</code>关键字，它始终指向当天对象。</p>
+<p>要保证<code>this</code>指向正确，必须用<code>obj.xxx()</code>的形式调用！</p>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>JavaScript的函数其实都指向某个变量。既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
+<h3 id="map-reduce-针对数组的高阶函数"><a href="#map-reduce-针对数组的高阶函数" class="headerlink" title="map/reduce 针对数组的高阶函数"></a>map/reduce 针对数组的高阶函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pow</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x * x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</div><div class="line">arr.map(pow); <span class="comment">// [1, 4, 9, 16, 25, 36, 49, 64, 81]</span></div></pre></td></tr></table></figure>
+<p>“把pow(x)作用在Array的每一个元素并把结果生成一个新的Array”</p>
+<p><code>Array</code>的<code>reduce()</code>把一个函数作用在这个<code>Array</code>的<code>[x1, x2, x3...]</code>上，这个函数必须接收两个参数，<code>reduce()</code>把结果继续和序列的下一个元素做累积计算</p>
+<p>比方说对一个<code>Array</code>求和，就可以用<code>reduce</code>实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>];</div><div class="line">arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x + y;</div><div class="line">&#125;); <span class="comment">// 25</span></div></pre></td></tr></table></figure>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包就是携带状态的函数，并且它的状态可以完全对外隐藏起来。</p>
+<p>闭包不是为了返回一个函数（延迟执行）。</p>
+<p>在没有class机制，只有函数的语言里，借助闭包，同样可以封装一个私有变量。</p>
+<p>闭包还可以把多参数的函数变成单参数的函数。</p>
+<h2 id="generator"><a href="#generator" class="headerlink" title="generator"></a>generator</h2><p>generator就是能够返回多次的“函数”</p>
+<p>generator和函数不同的是，generator由<code>function*</code>定义（注意多出的<code>*</code>号），并且，除了return语句，还可以用yield返回多次。</p>
+<p>因为generator可以在执行过程中多次返回，所以它看上去就像一个可以记住执行状态的函数，利用这一点，写一个generator就可以实现需要用面向对象才能实现的功能。例如，用一个对象来保存状态。</p>
+<h2 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h2><p>字符串是编程时涉及到的最多的一种数据结构，对字符串进行操作的需求几乎无处不在。</p>
+<p>正则表达式是一种用来匹配字符串的强有力的武器。</p>
+<ul>
+<li><code>^</code> 表示行的开头</li>
+<li><code>$</code> 表示行的结束</li>
+<li><code>\d</code>可以匹配一个数字</li>
+<li><code>\w</code>可以匹配一个字母或数字</li>
+<li><code>*</code>表示任意个字符（包括0个）</li>
+<li><code>+</code>表示至少一个字符</li>
+<li><code>?</code>表示0个或1个字符</li>
+<li><code>{n}</code>表示n个字符</li>
+<li><code>{n,m}</code>表示n-m个字符</li>
+<li><code>\s</code>可以匹配一个空格（也包括Tab等空白符），所以<code>\s+</code>表示至少有一个空格，例如匹配<code>&#39; &#39;</code>，<code>&#39;\t\t&#39;</code>等</li>
+</ul>
+<p>如果要匹配<code>&#39;010-12345&#39;</code>这样的号码呢？由于<code>&#39;-&#39;</code>是特殊字符，在正则表达式中，要用<code>&#39;\&#39;</code>转义，所以，上面的正则是<code>\d{3}\-\d{3,8}</code>。</p>
+<p>要做更精确地匹配，可以用<code>[]</code>表示范围</p>
+<p>分组可以用 <code>()</code></p>
+<p>贪婪匹配<code>\d+</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/^(\d+)(0*)$/</span>;</div><div class="line">re.exec(<span class="string">'102300'</span>);<span class="comment">//["102300", "102300", ""]</span></div></pre></td></tr></table></figure>
+<p>加个 <code>?</code> 就可以让<code>\d+</code>采用非贪婪匹配，即<code>\d+?</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/^(\d+?)(0*)$/</span>;</div><div class="line">re.exec(<span class="string">'102300'</span>); <span class="comment">// ["102300", "1023", "00"]</span></div></pre></td></tr></table></figure>
+<p>全局匹配，全局匹配类似搜索，因此不能使用<code>/^...$/</code>，那样只会最多匹配一次。</p>
+<p>正则表达式还可以指定<code>i</code>标志，表示忽略大小写，<code>m</code>标志，表示执行多行匹配。</p>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><ul>
+<li>对象序列化成JSON格式的字符串 JSON.stringify(obj);</li>
+<li>JSON格式的字符串反序列化成对象 JSON.parse(jsonStr)</li>
+</ul>
+<p>JSON是JavaScript Object Notation的缩写，它是一种数据交换格式。</p>
+<p>在JSON中，一共就这么几种数据类型：</p>
+<ul>
+<li>number：和JavaScript的number完全一致；</li>
+<li>boolean：就是JavaScript的true或false；</li>
+<li>string：就是JavaScript的string；</li>
+<li>null：就是JavaScript的null；</li>
+<li>array：就是JavaScript的Array表示方式——[]；</li>
+<li>object：就是JavaScript的{ … }表示方式。</li>
+</ul>
+<p>以及上面的任意组合。</p>
+<p>并且，JSON还定死了字符集必须是UTF-8，表示多语言就没有问题了。为了统一解析，JSON的字符串规定必须用双引号<code>&quot;&quot;</code>，Object的键也必须用双引号<code>&quot;&quot;</code>。</p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>类和实例是大多数面向对象编程语言的基本概念。</p>
+<p>不过，在JavaScript中，这个概念需要改一改。JavaScript不区分类和实例的概念，而是通过原型（prototype）来实现面向对象编程。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Student = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'Robot'</span>,</div><div class="line">    <span class="attr">height</span>: <span class="number">1.2</span>,</div><div class="line">    <span class="attr">run</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is running...'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> xiaoming = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">xiaoming.__proto__ = Student;</div></pre></td></tr></table></figure>
+<p>注意最后一行代码把xiaoming的原型指向了对象Student，看上去xiaoming仿佛是从Student继承下来的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xiaoming.name; <span class="comment">// '小明'</span></div><div class="line">xiaoming.run(); <span class="comment">// 小明 is running...</span></div></pre></td></tr></table></figure>
+<p>JavaScript的原型链和Java的Class区别就在，它没有“Class”的概念，所有对象都是实例，所谓继承关系不过是把一个对象的原型指向另一个对象而已。</p>
+<p><em>请注意</em>，上述代码仅用于演示目的。在编写JavaScript代码时，不要直接用obj.<strong>proto</strong>去改变一个对象的原型，并且，低版本的IE也无法使用<strong>proto</strong>。Object.create()方法可以传入一个原型对象，并创建一个基于该原型的新对象，但是新对象什么属性都没有，因此，我们可以编写一个函数来创建xiaoming：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 原型对象:</span></div><div class="line"><span class="keyword">var</span> Student = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'Robot'</span>,</div><div class="line">    <span class="attr">height</span>: <span class="number">1.2</span>,</div><div class="line">    <span class="attr">run</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is running...'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createStudent</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="comment">// 基于Student原型创建一个新对象:</span></div><div class="line">    <span class="keyword">var</span> s = <span class="built_in">Object</span>.create(Student);</div><div class="line">    <span class="comment">// 初始化新对象:</span></div><div class="line">    s.name = name;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> xiaoming = createStudent(<span class="string">'小明'</span>);</div><div class="line">xiaoming.run(); <span class="comment">// 小明 is running...</span></div><div class="line">xiaoming.__proto__ === Student; <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>这是创建原型继承的一种方法，JavaScript还有其他方法来创建对象</p>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>JavaScript对每个创建的对象都会设置一个原型，指向它的原型对象。</p>
+<p>当我们用<code>obj.xxx</code>访问一个对象的属性时，JavaScript引擎先在当前对象上查找该属性，如果没有找到，就到其原型对象上找，如果还没有找到，就一直上溯到<code>Object.prototype</code>对象，最后，如果还没有找到，就只能返回<code>undefined</code>。</p>
+<h2 id="浏览器对象"><a href="#浏览器对象" class="headerlink" title="浏览器对象"></a>浏览器对象</h2><h3 id="document-cookie"><a href="#document-cookie" class="headerlink" title="document.cookie"></a>document.cookie</h3><p><code>document</code>对象还有一个<code>cookie</code>属性，可以获取当前页面的Cookie。</p>
+<p>Cookie是由服务器发送的<code>key-value</code>标示符。因为HTTP协议是无状态的，但是服务器要区分到底是哪个用户发过来的请求，就可以用Cookie来区分。当一个用户成功登录后，服务器发送一个Cookie给浏览器，例如<code>user=ABC123XYZ(加密的字符串)...</code>，此后，浏览器访问该网站时，会在请求头附上这个Cookie，服务器根据Cookie即可区分出用户。</p>
+<p>Cookie还可以存储网站的一些设置，例如，页面显示的语言等等。</p>
+<p>JavaScript可以通过<code>document.cookie</code>读取到当前页面的Cookie：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.cookie; <span class="comment">// 'v=123; remember=true; prefer=zh'</span></div></pre></td></tr></table></figure>
+<p>由于JavaScript能读取到页面的Cookie，而用户的登录信息通常也存在Cookie中，这就造成了巨大的安全隐患，这是因为在HTML页面中引入第三方的JavaScript代码是允许的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 当前页面在www.example.com --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.foo.com/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果引入的第三方的JavaScript中存在恶意代码，则<code>www.foo.com</code>网站将直接获取到<code>www.example.com</code>网站的用户登录信息。</p>
+<p>为了解决这个问题，服务器在设置Cookie时可以使用<code>httpOnly</code>，设定了<code>httpOnly</code>的Cookie将不能被JavaScript读取。这个行为由浏览器实现，主流浏览器均支持<code>httpOnly</code>选项，IE从IE6 SP1开始支持。</p>
+<p>为了确保安全，服务器端在设置Cookie时，应该始终坚持使用<code>httpOnly</code></p>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p><code>history</code>对象保存了浏览器的历史记录，JavaScript可以调用<code>history</code>对象的<code>back()</code>或<code>forward ()</code>，相当于用户点击了浏览器的“后退”或“前进”按钮。</p>
+<p>这个对象属于历史遗留对象，对于现代Web页面来说，由于大量使用AJAX和页面交互，简单粗暴地调用<code>history.back()</code>可能会让用户感到非常愤怒。</p>
+<p>新手开始设计Web页面时喜欢在登录页登录成功时调用<code>history.back()</code>，试图回到登录前的页面。这是一种错误的方法。</p>
+<p><em>任何情况</em>，你都不应该使用history这个对象了。</p>
+<h3 id="操作-DOM"><a href="#操作-DOM" class="headerlink" title="操作 DOM"></a>操作 DOM</h3><h4 id="更新-DOM"><a href="#更新-DOM" class="headerlink" title="更新 DOM"></a>更新 DOM</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取&lt;p&gt;javascript&lt;/p&gt;节点:</span></div><div class="line"><span class="keyword">var</span> js = <span class="built_in">document</span>.getElementById(<span class="string">'test-js'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 修改文本为JavaScript:</span></div><div class="line">js.innerText = <span class="string">'JavaScript'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 修改CSS为: color: #ff0000, font-weight: bold</span></div><div class="line">js.style.color = <span class="string">'#ff0000'</span>;</div><div class="line">js.style.fontWeight = <span class="string">'bold'</span>;</div></pre></td></tr></table></figure>
+<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>AJAX请求是异步执行的，也就是说，要通过回调函数获得响应。</p>
+<p>在现代浏览器上写AJAX主要依靠<code>XMLHttpRequest</code>对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">success</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'test-response-text'</span>);</div><div class="line">    textarea.value = text;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params">code</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'test-response-text'</span>);</div><div class="line">    textarea.value = <span class="string">'Error code: '</span> + code;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">// 新建XMLHttpRequest对象</span></div><div class="line"></div><div class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 状态发生变化时，函数被回调</span></div><div class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123; <span class="comment">// 成功完成</span></div><div class="line">        <span class="comment">// 判断响应结果:</span></div><div class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</div><div class="line">            <span class="comment">// 成功，通过responseText拿到响应的文本:</span></div><div class="line">            <span class="keyword">return</span> success(request.responseText);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 失败，根据响应码判断失败原因:</span></div><div class="line">            <span class="keyword">return</span> fail(request.status);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// HTTP请求还在继续...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 发送请求:</span></div><div class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/api/categories'</span>);</div><div class="line">request.send();</div><div class="line"></div><div class="line">alert(<span class="string">'请求已发送，请等待响应...'</span>);</div></pre></td></tr></table></figure>
+<p>当创建了<code>XMLHttpRequest</code>对象后，要先设置<code>onreadystatechange</code>的回调函数。在回调函数中，通常我们只需通过<code>readyState === 4</code>判断请求是否完成，如果已完成，再根据<code>status === 200</code>判断是否是一个成功的响应。</p>
+<p><code>XMLHttpRequest</code>对象的<code>open()</code>方法有3个参数，第一个参数指定是<code>GET</code>还是<code>POST</code>，第二个参数指定<code>URL</code>地址，第三个参数指定是否使用异步，默认是<code>true</code>，所以不用写。</p>
+<h3 id="安全限制"><a href="#安全限制" class="headerlink" title="安全限制"></a>安全限制</h3><p>上面代码的URL使用的是相对路径。如果你把它改为<code>&#39;http://www.sina.com.cn/&#39;</code>，再运行，肯定报错。在Chrome的控制台里，还可以看到错误信息。</p>
+<p>这是因为浏览器的同源策略导致的。默认情况下，JavaScript在发送AJAX请求时，URL的域名必须和当前页面完全一致。</p>
+<p>完全一致的意思是，域名要相同（<code>www.example.com</code>和<code>example.com</code>不同），协议要相同（<code>http</code>和<code>https</code>不同），端口号要相同（默认是:80端口，它和:8080就不同）。有的浏览器口子松一点，允许端口不同，大多数浏览器都会严格遵守这个限制。</p>
+<p>Origin表示本域，也就是浏览器当前页面的域。当JavaScript向外域（如sina.com）发起请求后，浏览器收到响应后，首先检查Access-Control-Allow-Origin是否包含本域，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。</p>
+<p>那是不是用JavaScript无法请求外域（就是其他网站）的URL了呢？方法还是有的，如果浏览器支持HTML5，那么就可以一劳永逸地使用新的跨域策略：CORS了。CORS全称Cross-Origin Resource Sharing，是HTML5规范定义的如何跨域访问资源。</p>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>在JavaScript的世界中，所有代码都是单线程执行的。</p>
+<p>由于这个“缺陷”，导致JavaScript的所有网络操作，浏览器事件，都必须是异步执行。异步执行可以用回调函数实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Done'</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'before setTimeout()'</span>);</div><div class="line">setTimeout(callback, <span class="number">1000</span>); <span class="comment">// 1秒钟后调用callback函数</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'after setTimeout()'</span>);</div></pre></td></tr></table></figure>
+<p>观察上述代码执行，在Chrome的控制台输出可以看到：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">before setTimeout()</div><div class="line">after setTimeout()</div><div class="line">(等待<span class="number">1</span>秒后)</div><div class="line">Done</div></pre></td></tr></table></figure>
+<p>可见，异步操作会在将来的某个时间点触发一个函数调用。</p>
+<p>我们先看一个最简单的Promise例子：生成一个0-2之间的随机数，如果小于1，则等待一段时间后返回成功，否则返回失败：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> timeOut = <span class="built_in">Math</span>.random() * <span class="number">2</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'set timeout to: '</span> + timeOut + <span class="string">' seconds.'</span>);</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (timeOut &lt; <span class="number">1</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'call resolve()...'</span>);</div><div class="line">            resolve(<span class="string">'200 OK'</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'call reject()...'</span>);</div><div class="line">            reject(<span class="string">'timeout in '</span> + timeOut + <span class="string">' seconds.'</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;, timeOut * <span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(test).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'成功：'</span> + result);</div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">reason</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'失败：'</span> + reason);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Promise还可以做更多的事情，比如，有若干个异步任务，需要先做任务1，如果成功后再做任务2，任何任务失败则不再继续并执行错误处理函数。</p>
+<p>要串行执行这样的异步任务，不用Promise需要写一层一层的嵌套代码。有了Promise，我们只需要简单地写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">job1.then(job2).then(job3).catch(handleError);</div></pre></td></tr></table></figure>
+<p>其中，job1、job2和job3都是Promise对象。</p>
+<p>现在，我们把上一节的AJAX异步执行函数转换为Promise对象，看看用Promise如何简化异步处理：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="comment">// ajax函数将返回Promise对象:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method, url, data</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">        request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</div><div class="line">                    resolve(request.responseText);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    reject(request.status);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        request.open(method, url);</div><div class="line">        request.send(data);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> log = <span class="built_in">document</span>.getElementById(<span class="string">'test-promise-ajax-result'</span>);</div><div class="line"><span class="keyword">var</span> p = ajax(<span class="string">'GET'</span>, <span class="string">'/api/categories'</span>);</div><div class="line">p.then(<span class="function"><span class="keyword">function</span> (<span class="params">text</span>) </span>&#123; <span class="comment">// 如果AJAX成功，获得响应内容</span></div><div class="line">    log.innerText = text;</div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">status</span>) </span>&#123; <span class="comment">// 如果AJAX失败，获得响应代码</span></div><div class="line">    log.innerText = <span class="string">'ERROR: '</span> + status;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><h3 id="符号"><a href="#符号" class="headerlink" title="$符号"></a><code>$</code>符号</h3><p><code>$</code>是著名的jQuery符号。实际上，jQuery把所有功能全部封装在一个全局变量jQuery中，而<code>$</code>也是一个合法的变量名，它是变量jQuery的别名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.jQuery; <span class="comment">// jQuery(selector, context)</span></div><div class="line"><span class="built_in">window</span>.$; <span class="comment">// jQuery(selector, context)</span></div><div class="line">$ === jQuery; <span class="comment">// true</span></div><div class="line"><span class="keyword">typeof</span>($); <span class="comment">// 'function'</span></div></pre></td></tr></table></figure>
+<p><code>$</code>本质上就是一个函数，但是函数也是对象，于是<code>$</code>除了可以直接调用外，也可以有很多其他属性。</p>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>选择器是jQuery的核心。一个选择器写出来类似<code>$(&#39;#dom-id&#39;)</code>。</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>因为JavaScript在浏览器中以单线程模式运行，页面加载后，一旦页面上所有的JavaScript代码被执行完后，就只能依赖触发事件来执行JavaScript代码。</p>
+<p>浏览器在接收到用户的鼠标或键盘输入后，会自动在对应的DOM节点上触发相应的事件。如果该节点已经绑定了对应的JavaScript处理函数，该函数就会自动调用。</p>
+<p>由于不同的浏览器绑定事件的代码都不太一样，所以用jQuery来写代码，就屏蔽了不同浏览器的差异，我们总是编写相同的代码。</p>
+<p>举个例子，假设要在用户点击了超链接时弹出提示框，我们用jQuery这样绑定一个click事件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* HTML:</span></div><div class="line"> *</div><div class="line"> * &lt;a id="test-link" href="#0"&gt;点我试试&lt;/a&gt;</div><div class="line"> *</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// 获取超链接的jQuery对象:</span></div><div class="line"><span class="keyword">var</span> a = $(<span class="string">'#test-link'</span>);</div><div class="line">a.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'Hello!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>on方法用来绑定一个事件，我们需要传入事件名称和对应的处理函数。</p>
+<p>另一种更简化的写法是直接调用click()方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a.click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'Hello!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>两者完全等价。我们通常用后面的写法。</p>
+<p>jQuery能够绑定的事件主要包括：</p>
+<h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3><ul>
+<li>click: 鼠标单击时触发；</li>
+<li>dblclick：鼠标双击时触发；</li>
+<li>mouseenter：鼠标进入时触发；</li>
+<li>mouseleave：鼠标移出时触发；</li>
+<li>mousemove：鼠标在DOM内部移动时触发；</li>
+<li>hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。</li>
+</ul>
+<p>###键盘事件<br>键盘事件仅作用在当前焦点的DOM上，通常是<code>&lt;input&gt;</code>和<code>&lt;textarea&gt;</code>。</p>
+<ul>
+<li>keydown：键盘按下时触发；</li>
+<li>keyup：键盘松开时触发；</li>
+<li>keypress：按一次键后触发。</li>
+</ul>
+<p>###其他事件</p>
+<ul>
+<li>focus：当DOM获得焦点时触发；</li>
+<li>blur：当DOM失去焦点时触发；</li>
+<li>change：当<code>&lt;input&gt;</code>、<code>&lt;select&gt;</code>或<code>&lt;textarea&gt;</code>的内容改变时触发；</li>
+<li>submit：当<code>&lt;form&gt;</code>提交时触发；</li>
+<li>ready：当页面被载入并且DOM树完成初始化后触发。</li>
+</ul>
+<p>其中，ready仅作用于document对象。由于ready事件在DOM完成初始化后触发，且只触发一次，所以非常适合用来写其他的初始化代码</p>
+<h3 id="事件参数"><a href="#事件参数" class="headerlink" title="事件参数"></a>事件参数</h3><p>有些事件，如mousemove和keypress，我们需要获取鼠标位置和按键的值，否则监听这些事件就没什么意义了。所有事件都会传入Event对象作为参数，可以从Event对象上获取到更多的信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'#testMouseMoveDiv'</span>).mousemove(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">        $(<span class="string">'#testMouseMoveSpan'</span>).text(<span class="string">'pageX = '</span> + e.pageX + <span class="string">', pageY = '</span> + e.pageY);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="underscore"><a href="#underscore" class="headerlink" title="underscore"></a>underscore</h2><p>前面我们已经讲过了，JavaScript是函数式编程语言，支持高阶函数和闭包。函数式编程非常强大，可以写出非常简洁的代码。例如Array的map()和filter()方法。</p>
+<p>现在问题来了，Array有map()和filter()方法，可是Object没有这些方法。此外，低版本的浏览器例如IE6～8也没有这些方法，怎么办？</p>
+<p>方法一，自己把这些方法添加到Array.prototype中，然后给Object.prototype也加上mapObject()等类似的方法。</p>
+<p>方法二，直接找一个成熟可靠的第三方开源库，使用统一的函数来实现map()、filter()这些操作。</p>
+<p>我们采用方法二，选择的第三方库就是underscore。</p>
+<p>正如jQuery统一了不同浏览器之间的DOM操作的差异，让我们可以简单地对DOM进行操作，underscore则提供了一套完善的函数式编程的接口，让我们更方便地在JavaScript中实现函数式编程。</p>
+<p>jQuery在加载时，会把自身绑定到唯一的全局变量<code>$</code>上，underscore与其类似，会把自身绑定到唯一的全局变量<code>_</code>上，这也是为啥它的名字叫underscore的原因。</p>
+<p>用underscore实现<code>map()</code>操作如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line">_.map([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], (x) =&gt; x * x); <span class="comment">// [1, 4, 9]</span></div><div class="line">咋一看比直接用<span class="built_in">Array</span>.map()要麻烦一点，可是underscore的map()还可以作用于<span class="built_in">Object</span>：</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line">_.map(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;, (v, k) =&gt; k + <span class="string">'='</span> + v); <span class="comment">// ['a=1', 'b=2', 'c=3']</span></div></pre></td></tr></table></figure>
+<p>后面我们会详细介绍underscore提供了一系列函数式接口。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/05/id.html" itemprop="url">
+                  从身份证号码提取数据
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-05T18:11:55+08:00" content="2016-12-05">
+              2016-12-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/05/id.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/05/id.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/haobingwang/id-resolver" target="_blank" rel="external">身份证解析器</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -S id-resolver</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> idResolver = <span class="built_in">require</span>(<span class="string">'id-resolver'</span>);</div><div class="line"></div><div class="line"><span class="comment">//只处理 18位字符串</span></div><div class="line"><span class="built_in">console</span>.log(idResolver.get(<span class="string">'430421197710177894'</span>));</div><div class="line"><span class="comment">// &#123; locale: '湖南省 衡阳市 衡阳县', birthday: '19771017', sex: '男' &#125;</span></div><div class="line"><span class="built_in">console</span>.log(idResolver.get(<span class="string">'45222319950814004X'</span>));</div><div class="line"><span class="comment">// &#123; locale: '无对应数据', birthday: '19950814', sex: '女' &#125;</span></div></pre></td></tr></table></figure>
+<p>从身份证号码提取</p>
+<ul>
+<li>户籍地</li>
+<li>出生年月，进一步提取年龄（使用 moment.js 做进一步处理）</li>
+<li>性别</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/login.html" itemprop="url">
+                  登录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-03T12:38:42+08:00" content="2016-12-03">
+              2016-12-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/03/login.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/03/login.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="普通登录"><a href="#普通登录" class="headerlink" title="普通登录"></a>普通登录</h2><p>这个是极其普通的登录需求，要的就是一个登录页面，输入账号密码，提交Form表单，后端查询数据库对应用户名的密码，匹配正确则把用户记录到Session，不正确则返回错误。<br>这种登录，在上学的时候，也许敬爱的老师就已经教过你了。<br>但可能他没有教你的是，密码需要hash加密，session为什么可以记录登录用户的原理。</p>
+<h3 id="密码Hash"><a href="#密码Hash" class="headerlink" title="密码Hash"></a>密码Hash</h3><p>密码hash，就是存进数据库的密码是一串密文，密文是明文密码通过不可逆算法得出的。在 Node.js 中，你可以使用 bcryptjs，它提供了 hash 以及对应的 compare 方法，非常适合用于密码的加密和对比。</p>
+<h3 id="Session原理"><a href="#Session原理" class="headerlink" title="Session原理"></a>Session原理</h3><p>Session 的原理其实还是依赖了 Cookie，所以 Cookie 才是记录用户凭证的真理。它的原理大概是酱紫的：服务器端维护一个 session 的表，这个表的每一条记录存的就是与某一个客户端的会话，会话会有过期时间，过期的会话会被清理。然后这个会话，会有一个对应的id，一般是一串长长的看不懂的字符串，然后这个字符串会被存储在客户端的 cookie 中，每一次请求服务器端都会带上这个 cookie，服务器端就知道访问的就是哪个客户端了。</p>
+<h2 id="使用独立登录系统"><a href="#使用独立登录系统" class="headerlink" title="使用独立登录系统"></a>使用独立登录系统</h2><p>应项目需要，登录逻辑需要独立出来做成一个系统，就是另外一个项目，与原来的主站不是在同一个项目中了。一个域名是 www.site.com，一个则是 passport.site.com 了。要在不同的域名下进行登录，一般的方法是 www.site.com/login 跳转到 passport.site.com/login，passport 这边是一个登录页面，用户输入账号密码登录成功之后，passport 会通过带着一个可逆加密的包含用户信息的 token，重定向到 www.site.com 提供的回调处理地址，然后进行解密，匹配正确，则登录用户。</p>
+<p>要注意的是，这里的加密的信息需要包含一个时间戳，接收方需要认证这个时间戳，过期登录失败。避免 token 被窃取，被无限登录 site 系统。</p>
+<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>单点登录需要实现的需求，说白了就是在站点 A 的登录了，那么用户就自动在站点 B、站点 C、站点 E、F、G 登录。</p>
+<p>这又分两种情况，A站点和B站点是否在同一个二级域名下：</p>
+<ul>
+<li>假如是在同一个域名下，例如 siteA.site.com 与 siteB.site.com，因为 cookie 允许设置到二级域名下 .site.com，所以 siteA 和 siteB 是可以共享 cookie 的，用户的信息可以通过可逆加密放在二级域名下的 cookie，并且设置 http only，就可以一站登录，站站登录。</li>
+<li>而如果 A 站点和 B 站点不在同一二级域名下，例如 www.siteA.com 与 www.siteB.com，他们就无法通过共享 cookie 的方式共享用户信息，所以需要用到 jsonp 的方式，用户在 siteA 登录之后，提供一个 jsonp 接口获取加密的用户信息，siteB 访问这个 jsonp 获取加密信息。达到共享用户状态的效果。</li>
+</ul>
+<h2 id="OAuth2-0登录"><a href="#OAuth2-0登录" class="headerlink" title="OAuth2.0登录"></a>OAuth2.0登录</h2><p>这就比较普遍了，现在随随便便做个网站，都接入「微信登录」、「微博登录」、「豆瓣登录」、「QQ登录」、「Github登录」。。。这些统一叫做：「第三方登录」。</p>
+<p>第三方登录都是实现了OAuth2.0协议的，流程大概是酱紫的：</p>
+<p>第三方提供一个登录入口，也就是第三方域名下的登录页面。主站需要登录的时候，引导用户重定向到第三方的登录页面，用户输入账号密码之后，登录第三方系统，第三方系统匹配帐号成功之后，带上一个 code 到主站的回调地址，主站接收到 code，短时间内拿着 code 请求第三方提供获取长期凭证的接口(因为 code 有一个比较短的过期时间)，这个长期凭证叫 access_token，获取之后就把这个 access_token 存到数据库中，请求一些第三方提供的 API，需要用到这个 access_token，因为这个token就是记录用户在第三方系统的一个身份凭证。<br>一些系统，在获取 access_token 的时候，还会返回一个副参数 refresh_token，因为 access_token 是有过期时间的，一旦过期了，主站可以使用 refresh_token 请求第三方提供的接口获取新的 access_token 以及新的 refresh_token。</p>
+<p>在 Node.js 中，你可以使用 passport 来给第三方登录提供一个统一解决方案，而如果你是开发「微信公众号」授权，除了 passport，也可以使用 wechat-oauth</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实登录问题，理解了 Session 原理是很重要的，这个也不难理解。然后站点之间的用户信息交流，就是通过各种跨域限制，各种加密解密而已。在做这个的时候，需要充分考虑到加密的 token 是否会被窃取的可能性，还要考虑让这个 token 加上时间的验证，在一些可能会被窃取，安全需求比较高的情况，就需要把 token 的时间设置的更短。还有就是加密的方式需要依照需求不同而选择可逆或者不可逆，hash sha1还是JWT(Json Web Token)。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/auth.html" itemprop="url">
+                  auth
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-03T11:47:23+08:00" content="2016-12-03">
+              2016-12-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/03/auth.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/03/auth.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>设置以下 cookie 选项来增强安全性：</p>
+<ul>
+<li>secure - 确保浏览器只通过 HTTPS 发送 cookie。</li>
+<li>httpOnly - 确保 cookie 只通过 HTTP(S)（而不是客户机 JavaScript）发送，这有助于防御跨站点脚本编制攻击。</li>
+<li>domain - 表示 cookie 的域；用于和请求 URL 的服务器的域进行比较。如果匹配，那么接下来检查路径属性。</li>
+<li>path - 表示 cookie 的路径；用于和请求路径进行比较。如果路径和域都匹配，那么在请求中发送 cookie。</li>
+<li>expires - 用于为持久性 cookie 设置到期日期。</li>
+</ul>
+<h2 id="jjj"><a href="#jjj" class="headerlink" title="jjj"></a>jjj</h2><p>在传统的web应用中，服务端成功的返回一个响应（response）依赖于两件事。一是，他通过一种存储机制保存了会话信息（Session）。每一个会话都有它独特的信息（id），常常是一个长的，随机化的字符串，它被用来让未来的请求（Request）检索信息。其次，包含在响应头（Header）里面的信息使客户端保存了一个Cookie。服务器自动的在每个子请求里面加上了会话ID，这使得服务器可以通过检索Session中的信息来辨别用户。这就是传统的web应用逃避HTTP面向无连接的方法（This is how traditional web applications get around the fact that HTTP is stateless）。</p>
+<p>API应该被设计成无状态的（Stateless）。这意味着没有登陆，注销的方法，也没有 sessions，API的设计者同样也不能依赖 Cookie，因为不能保证这些 request 是由浏览器所发出的。自然，我们需要一个新的机制。这篇文章关注于 JSON Web Tokens ，简写为 JWTs，一个可能的解决这个问题的机制。这篇文章利用Node的Express框架作为后端，以及Backbone作为前端。</p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
+<li>第一个是使用在HTTP规范中所制定的Basic Auth， 它需要在在响应中设定一个验证身份的Header。客户端必须在每个子响应是附加它们的凭证（credenbtial），包括它的密码。如果这些凭证通过了，那么用户的信息就会被传递到服务端应用。</li>
+<li>第二个方面有点类似，但是使用应用自己的验证机制。通常包括将发送的凭证与存储的凭证进行检查。和Basic Auth相比，这种需要在每次请求（call）中发送凭证。</li>
+<li>第三种是OAuth（或者OAuth2）。为第三方的认证所设计，但是更难配置。至少在服务器端更难。</li>
+</ul>
+<p>在使用中，并不会每次都让用户提交用户名和密码，通常的情况是客户端通过一些可靠信息和服务器交换取 token，这个 token 作为客服端再次请求的权限钥匙。Token 通常比密码更加长而且复杂。比如说，JWTs 通常会长达150个字符。一旦获得了 token，在每次调用 API 的时候都要附加上它。然后，这仍然比直接发送账户和密码更加安全，哪怕是HTTPS。</p>
+<p>把 token 想象成一个安全的护照。你在一个安全的前台验证你的身份（通过你的用户名和密码），如果你成功验证了自己，你就可以取得这个。当你走进大楼的时候（试图从调用 API 获取资源），你会被要求验证你的护照，而不是在前台重新验证。</p>
+<h2 id="JWTs"><a href="#JWTs" class="headerlink" title="JWTs"></a>JWTs</h2><p>JWT的第一部分是对一个简单js对象的编码后的字符串，这个js对象是用来描述这个token类型以及使用的hash算法。下面的例子展示的是一个使用了HMAC SHA-256算法的JWT token。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"typ"</span> : <span class="string">"JWT"</span>,</div><div class="line">  <span class="attr">"alg"</span> : <span class="string">"HS256"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在加密之后，这个对象变成了一个字符串：<code>eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9</code></p>
+<p>JWT的第二部分是token的核心，这部分同样是对一个js对象的编码，包含了一些摘要信息。有一些是必须的，有一些是选择性的。实例如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"iss"</span>: <span class="string">"joe"</span>,</div><div class="line">  <span class="attr">"exp"</span>: <span class="number">1300819380</span>,</div><div class="line">  <span class="attr">"http://example.com/is_root"</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个结构被称为JWT Claims Set。这个iss是issuer的简写，表明请求的实体，可以是发出请求的用户的信息。exp是expires的简写，是用来指定token的生命周期。（相关参数参看：the document）加密编码之后如下：<code>eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ</code></p>
+<p>JWT的第三个部分，是JWT根据第一部分和第二部分的签名（Signature）。像这个样子：<code>dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk</code></p>
+<p>最后将上面的合并起来，JWT token如下：</p>
+<p><code>eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkz</code></p>
+<h2 id="获取-token"><a href="#获取-token" class="headerlink" title="获取 token"></a>获取 token</h2><p>我们需要做的第一件事就是让客户端通过他们的账号密码交换token。这里有2种可能的方法在RESTful API里面。第一种是使用POST请求来通过验证，使服务端发送带有token的响应。除此之外，你可以使用GET请求，这需要他们使用参数提供凭证（指URL），或者更好的使用请求头。<br>这篇文章的目的是为了解释token验证的方法而不是基本的用户名/密码验证机制。所以我们假设我们已经通过请求得到了用户名和密码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">User.findOne(&#123; <span class="attr">username</span>: username &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="comment">// user not found</span></div><div class="line">    <span class="keyword">return</span> res.send(<span class="number">401</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (!user) &#123;</div><div class="line">    <span class="comment">// incorrect username</span></div><div class="line">    <span class="keyword">return</span> res.send(<span class="number">401</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (!user.validPassword(password)) &#123;</div><div class="line">    <span class="comment">// incorrect password</span></div><div class="line">    <span class="keyword">return</span> res.send(<span class="number">401</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// User has authenticated OK</span></div><div class="line">  res.send(<span class="number">200</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>如果用户成功验证账号和密码，然后我们生成一个token，返回给用户。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> expires = moment().add(<span class="string">'days'</span>, <span class="number">7</span>).valueOf();</div><div class="line"><span class="keyword">var</span> token = jwt.encode(&#123;</div><div class="line">  <span class="attr">iss</span>: user.id,</div><div class="line">  <span class="attr">exp</span>: expires</div><div class="line">&#125;, app.get(<span class="string">'jwtTokenSecret'</span>));</div><div class="line"></div><div class="line">res.json(&#123;</div><div class="line">  <span class="attr">token</span> : token,</div><div class="line">  <span class="attr">expires</span>: expires,</div><div class="line">  <span class="attr">user</span>: user.toJSON()</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>注意到jwt.encode()函数有2个参数。第一个就是一个需要加密的对象，第二个是一个加密的密钥。这个token是由我们之前提到的iss和exp组成的。注意到Moment.js被用来设置token将在7天之后失效。而res.json()方法用来传递这个JSON对象给客户端。</p>
+<h2 id="Where-to-Store-Your-JWTs"><a href="#Where-to-Store-Your-JWTs" class="headerlink" title="Where to Store Your JWTs"></a>Where to Store Your JWTs</h2><p>So now that you have a good understanding of what a JWT is, the next step is to figure out how to store these tokens. If you are building a web application, you have a couple of options:</p>
+<ul>
+<li>HTML5 Web Storage (localStorage or sessionStorage)</li>
+<li>Cookies</li>
+</ul>
+<h2 id="验证Token"><a href="#验证Token" class="headerlink" title="验证Token"></a>验证Token</h2><p>检索token：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> token = (req.body &amp;&amp; req.body.access_token) || (req.query &amp;&amp; req.query.access_token) || req.headers[<span class="string">'x-access-token'</span>];</div></pre></td></tr></table></figure>
+<h2 id="cookie-保存在客户端"><a href="#cookie-保存在客户端" class="headerlink" title="cookie 保存在客户端"></a>cookie 保存在客户端</h2><p>cookie是保存在本地终端的数据。cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie是存在客户端上的，所以浏览器加入了一些限制确保cookie不会被恶意使用，同时不会占据太多磁盘空间，所以每个域的cookie数量是有限的。</p>
+<p>cookie的组成有：名称(key)、值(value)、有效域(domain)、路径(域的路径，一般设置为全局:”\”)、失效时间、安全标志(指定后，cookie只有在使用SSL连接时才发送到服务器(https))。下面是一个简单的js使用cookie的例子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用户登录时产生cookie:</span></div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"id="</span>+result.data[<span class="string">'id'</span>]+<span class="string">"; path=/"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"name="</span>+result.data[<span class="string">'name'</span>]+<span class="string">"; path=/"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"avatar="</span>+result.data[<span class="string">'avatar'</span>]+<span class="string">"; path=/"</span>;</div><div class="line"></div><div class="line"><span class="comment">// 使用到cookie时做如下解析：</span></div><div class="line"><span class="keyword">var</span> cookie = <span class="built_in">document</span>.cookie;</div><div class="line"><span class="keyword">var</span> cookieArr = cookie.split(<span class="string">";"</span>);</div><div class="line"><span class="keyword">var</span> user_info = &#123;&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cookieArr.length; i++) &#123;</div><div class="line">    user_info[cookieArr[i].split(<span class="string">"="</span>)[<span class="number">0</span>]] = cookieArr[i].split(<span class="string">"="</span>)[<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line">$(<span class="string">'#user_name'</span>).text(user_info[<span class="string">' name'</span>]);</div><div class="line">$(<span class="string">'#user_avatar'</span>).attr(<span class="string">"src"</span>, user_info[<span class="string">' avatar'</span>]);</div><div class="line">$(<span class="string">'#user_id'</span>).val(user_info[<span class="string">' id'</span>]);</div></pre></td></tr></table></figure>
+<p>无论使用何种服务端技术，只要发送回的HTTP响应中包含如下形式的头，则视为服务器要求设置一个cookie：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Set-cookie:name=name;expires=date;path=path;domain=domain</div></pre></td></tr></table></figure>
+<p>支持cookie的浏览器都会对此作出反应，即创建cookie文件并保存（也可能是内存cookie），用户以后在每次发出请求时，浏览器都要判断当前所有的cookie中有没有没失效（根据expires属性判断）并且匹配了path属性的cookie信息，如果有的话，会以下面的形式加入到请求头中发回服务端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cookie: name=&quot;zj&quot;; Path=&quot;/linkage&quot;</div></pre></td></tr></table></figure>
+<p>需要注意的是，出于安全性的考虑，cookie可以被浏览器禁用。</p>
+<h2 id="session-保存在服务端"><a href="#session-保存在服务端" class="headerlink" title="session 保存在服务端"></a>session 保存在服务端</h2><p>它的基本原理是服务端为每一个session维护一份会话信息数据，而客户端和服务端依靠一个全局唯一的标识来访问会话信息数据。用户访问web应用时，服务端程序决定何时创建session，创建session可以概括为三个步骤：</p>
+<ol>
+<li>生成全局唯一标识符（sessionid）；</li>
+<li>开辟数据存储空间。一般会在内存中创建相应的数据结构，但这种情况下，系统一旦掉电，所有的会话数据就会丢失，如果是电子商务网站，这种事故会造成严重的后果。不过也可以写到文件里甚至存储在数据库中，这样虽然会增加I/O开销，但session可以实现某种程度的持久化，而且更有利于session的共享；</li>
+<li>将session的全局唯一标示符发送给客户端。问题的关键就在服务端如何发送这个session的唯一标识上。联系到HTTP协议，数据无非可以放到请求行、头域或Body里，基于此，一般来说会有两种常用的方式：cookie 和 URL 重写。</li>
+</ol>
+<ul>
+<li>cookie，服务端只要设置<code>Set-cookie</code>头就可以将 session 的标识符传送到客户端，而客户端此后的每一次请求都会带上这个标识符，由于 cookie 可以设置失效时间，所以一般包含 session 信息的 cookie 会设置失效时间为 0 ，即浏览器进程有效时间。至于浏览器怎么处理这个0，每个浏览器都有自己的方案，但差别都不会太大（一般体现在新建浏览器窗口的时候）；<img src="/images/session-cookie1.png" alt=""> <img src="/images/session-cookie2.png" alt=""></li>
+<li>URL 重写，试想，在返回用户请求的页面之前，将页面内所有的URL后面全部以get参数的方式加上session标识符（或者加在path info部分等等），这样用户在收到响应之后，无论点击哪个链接或提交表单，都会在再带上session的标识符，从而就实现了会话的保持。读者可能会觉得这种做法比较麻烦，确实是这样，但是，如果客户端禁用了cookie的话，URL重写将会是首选。</li>
+</ul>
+<p>session的中文翻译是“会话”，当用户打开某个web应用时，便与web服务器产生一次session。服务器使用session把用户的信息临时保存在了服务器上，用户离开网站后session会被销毁。这种用户信息存储方式相对cookie来说更安全，可是session有一个缺陷：如果web服务器做了负载均衡，那么下一个操作请求到了另一台服务器的时候session会丢失。</p>
+<p>下面是php(phalcon框架)的例子</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;session-&gt;set(<span class="string">'userInfo'</span>, <span class="keyword">array</span>(</div><div class="line">    <span class="string">'id'</span>     =&gt; $admin-&gt;id,</div><div class="line">    <span class="string">'name'</span>   =&gt; $admin-&gt;name,</div><div class="line">    <span class="string">'avatar'</span> =&gt; $admin-&gt;avatar</div><div class="line">));</div><div class="line"></div><div class="line"><span class="comment">// session是全局的，在一个地方保存了，其他地方就可以用</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;session-&gt;has(<span class="string">"userInfo"</span>)) &#123;</div><div class="line">    $userInfo = <span class="keyword">$this</span>-&gt;session-&gt;get(<span class="string">'userInfo'</span>);</div><div class="line">    <span class="keyword">return</span> $userInfo;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><p>Token解码后就包含所有登陆信息</p>
+<p>token的意思是“令牌”，是用户身份的验证方式，最简单的token组成:uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign(签名，由token的前几位+盐以哈希算法压缩成一定长的十六进制字符串，可以防止恶意第三方拼接token请求服务器)。还可以把不变的参数也放进token，避免多次查库</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>简单来说，如果你的用户数据可能需要和第三方共享，或者允许第三方调用 API 接口，用 token 。</p>
+<p>如果永远只是自己的网站，自己的 App ，用什么就无所谓了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/01/api-server.html" itemprop="url">
+                  api-server
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-01T16:58:37+08:00" content="2016-12-01">
+              2016-12-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/01/api-server.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/api-server.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用 Node.js 写个 api server，需求</p>
+<ul>
+<li>使用 ES2015 and beyond, babel-preset-latest</li>
+<li>使用展开运算符 …, babel-plugin-transform-object-rest-spread</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir apiServer &amp;&amp; cd apiServer</div><div class="line">npm init -y</div></pre></td></tr></table></figure>
+<p>Install the CLI ,this preset and plugin:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-cli babel-preset-latest babel-plugin-transform-object-rest-spread</div></pre></td></tr></table></figure>
+<p>Make a .babelrc config file with the preset and plugin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &apos;&#123; &quot;presets&quot;: [&quot;latest&quot;],&quot;plugins&quot;: [&quot;transform-object-rest-spread&quot;] &#125;&apos; &gt; .babelrc</div></pre></td></tr></table></figure>
+<p>Install nodemon</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev nodemon</div></pre></td></tr></table></figure>
+<p> 向 package.json 添加 npm script</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"> "script": &#123;</div><div class="line">    "dev": "nodemon --exec babel-node src/index.js",</div><div class="line">    "prestart": "babel src --out-dir dist",</div><div class="line">    "start": "node dist/index.js"</div><div class="line">  &#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+<p> 项目目录结构如下</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-- apiServer</div><div class="line"> |-build</div><div class="line"> |-src</div><div class="line"> |-.babelrc</div><div class="line"> |-package.json</div></pre></td></tr></table></figure>
+<p> 其他需要的包</p>
+<ul>
+<li>express</li>
+<li>body-parser</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/30/qs.html" itemprop="url">
                   qs
                 </a>
@@ -420,7 +1257,7 @@
 <h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> now = moment();</div><div class="line"><span class="built_in">console</span>.log(now.add(<span class="number">3</span>,<span class="string">'months'</span>).format(<span class="string">'LL'</span>),now.format(<span class="string">'LL'</span>));</div><div class="line"><span class="comment">// 2017年2月28日 2017年2月28日</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> now2 = moment();</div><div class="line"><span class="keyword">const</span> anotherNow2 = moment(now2);</div><div class="line"><span class="built_in">console</span>.log(anotherNow2.add(<span class="number">3</span>,<span class="string">'months'</span>).format(<span class="string">'LL'</span>),now2.format(<span class="string">'LL'</span>));</div><div class="line"><span class="comment">// 2017年2月28日 2016年11月30日</span></div></pre></td></tr></table></figure>
 <p>因为异步，所以需要克隆。因为 react 中多个事件中的 setState 会合并，另一个方法无法通过 state 获取数据，只能传入数据到方法中。</p>
 <h2 id="计算年龄"><a href="#计算年龄" class="headerlink" title="计算年龄"></a>计算年龄</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moment = <span class="built_in">require</span>(<span class="string">'moment'</span>);</div><div class="line">moment.locale(<span class="string">'zh-cn'</span>,&#123;</div><div class="line">    <span class="attr">relativeTime</span> : &#123;</div><div class="line">        <span class="attr">yy</span>: <span class="string">"%d 岁"</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// var text = '1991-11-26T02:17:23.000Z'</span></div><div class="line">moment(text).fromNow(<span class="literal">true</span>)</div><div class="line"><span class="comment">// 25岁</span></div></pre></td></tr></table></figure>
-
+<h2 id="是今天么？"><a href="#是今天么？" class="headerlink" title="是今天么？"></a>是今天么？</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(moment(<span class="string">"2017-03-15 12:00:00"</span>).isSame(moment(), <span class="string">'day'</span>))&#123;</div><div class="line">    <span class="comment">// 是今天</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
           
         
       
@@ -774,552 +1611,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/24/mock.html" itemprop="url">
-                  mock
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-24T18:00:21+08:00" content="2016-11-24">
-              2016-11-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/24/mock.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/mock.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Mock.js 生成随机数据，拦截 Ajax 请求</p>
-<ul>
-<li>前后端分离,让前端攻城师独立于后端进行开发。</li>
-<li>增加单元测试的真实性,通过随机数据，模拟各种场景。</li>
-<li>开发无侵入,不需要修改既有代码，就可以拦截 Ajax 请求，返回模拟的响应数据。</li>
-<li>用法简单,符合直觉的接口。</li>
-<li>数据类型丰富,支持生成随机的文本、数字、布尔值、日期、邮箱、链接、图片、颜色等。</li>
-<li>方便扩展,支持支持扩展更多数据类型，支持自定义函数和正则。</li>
-</ul>
-<h2 id="全局安装体验"><a href="#全局安装体验" class="headerlink" title="全局安装体验"></a>全局安装体验</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; npm install mockjs -g</div><div class="line">...</div><div class="line"></div><div class="line">&gt; random</div><div class="line">显示帮助信息</div><div class="line"></div><div class="line">&gt; random email</div><div class="line">k.rqutodqbu@bhs.cy</div><div class="line">&gt; random name</div><div class="line">Scott Moore</div><div class="line">&gt; random cname</div><div class="line">宋杰</div></pre></td></tr></table></figure>
-<h2 id="项目集成"><a href="#项目集成" class="headerlink" title="项目集成"></a>项目集成</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev mockjs</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用 Mock</span></div><div class="line"><span class="keyword">var</span> Mock = <span class="built_in">require</span>(<span class="string">'mockjs'</span>)</div><div class="line"><span class="keyword">var</span> data = Mock.mock(&#123;</div><div class="line">    <span class="comment">// 属性 list 的值是一个数组，其中含有 1 到 10 个元素</span></div><div class="line">    <span class="string">'list|1-10'</span>: [&#123;</div><div class="line">        <span class="comment">// 属性 id 是一个自增数，起始值为 1，每次增 1</span></div><div class="line">        <span class="string">'id|+1'</span>: <span class="number">1</span></div><div class="line">    &#125;]</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 输出结果</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>))</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/24/model.html" itemprop="url">
-                  model
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-24T15:31:01+08:00" content="2016-11-24">
-              2016-11-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/24/model.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/model.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>用户信息的展示（查询）</li>
-<li>用户信息的操作（增加，删除，修改）</li>
-</ul>
-<p>有经验的同学不难发现，无论是多复杂的项目也基本上是围绕着数据的展示和操作，复杂一点的无非是组合了很多数据，有关联关系，只要分解开来，model 的结构层次依旧会很清晰，便于维护。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/24/dva.html" itemprop="url">
-                  dva
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-24T15:28:52+08:00" content="2016-11-24">
-              2016-11-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/24/dva.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/dva.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Which packages was dva built on?</p>
-<ul>
-<li>views: react</li>
-<li>models: redux, react-redux, redux-saga</li>
-<li>router: react-router</li>
-<li>http: whatwg-fetch</li>
-</ul>
-<h2 id="创建新应用"><a href="#创建新应用" class="headerlink" title="创建新应用"></a>创建新应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install dva-cli -g</div><div class="line">dva new dva-app</div><div class="line">cd dva-app</div><div class="line">npm start</div></pre></td></tr></table></figure>
-<h2 id="使用-antd"><a href="#使用-antd" class="headerlink" title="使用 antd"></a>使用 antd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install antd babel-plugin-import --save</div></pre></td></tr></table></figure>
-<p>编辑 webpack.config.js，添加如下配置，使 babel-plugin-import 插件生效。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">webpackConfig.babel.plugins.push([&apos;import&apos;, &#123;</div><div class="line">  libraryName: &apos;antd&apos;,</div><div class="line">  style: &apos;css&apos;,</div><div class="line">&#125;]);</div></pre></td></tr></table></figure>
-<h2 id="如何处理请求"><a href="#如何处理请求" class="headerlink" title="如何处理请求"></a>如何处理请求</h2><p>请求的处理直接写在了代码里面，接下来我们需要把它拆分到 /services/ 里面统一处理</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'../utils/request'</span>;</div><div class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span>;</div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> request(<span class="string">`/api/users?<span class="subst">$&#123;qs.stringify(params)&#125;</span>`</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将请求相关（与后台系统的交互）抽离出来，单独放到 /services/ 中，进行统一维护管理，所以我们只需要将之前定义在 Effects 的以下代码，移动到 /services/users.js 中即可：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /services/users.js</span></div><div class="line"><span class="comment">// request 是我们封装的一个网络请求库</span></div><div class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'../utils/request'</span>;</div><div class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> request(<span class="string">`/api/users?<span class="subst">$&#123;qs.stringify(params)&#125;</span>`</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ./src/utils/request.js</span></div><div class="line"><span class="keyword">import</span> fetch <span class="keyword">from</span> <span class="string">'dva/fetch'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseJSON</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> response.json();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkStatus</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (response.status &gt;= <span class="number">200</span> &amp;&amp; response.status &lt; <span class="number">300</span>) &#123;</div><div class="line">    <span class="keyword">return</span> response;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">const</span> error = <span class="keyword">new</span> <span class="built_in">Error</span>(response.statusText);</div><div class="line">  error.response = response;</div><div class="line">  <span class="keyword">throw</span> error;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Requests a URL, returning a promise.</div><div class="line"> *</div><div class="line"> * @param  &#123;string&#125; url       The URL we want to request</div><div class="line"> * @param  &#123;object&#125; [options] The options we want to pass to "fetch"</div><div class="line"> * @return &#123;object&#125;           An object containing either "data" or "err"</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url, options</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> fetch(url, options)</div><div class="line">    .then(checkStatus)</div><div class="line">    .then(parseJSON)</div><div class="line">    .then(<span class="function">(<span class="params">data</span>) =&gt;</span> (&#123; data &#125;))</div><div class="line">    .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> (&#123; err &#125;));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后在 users model 中引入：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; query &#125; <span class="keyword">from</span> <span class="string">'../services/users'</span>;</div></pre></td></tr></table></figure>
-<p>之后无论是更新，删除、添加等操作，跟用户相关的都可以统一放置在 /services/users.js 中。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/22/redux.html" itemprop="url">
-                  redux
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-22T15:26:09+08:00" content="2016-11-22">
-              2016-11-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/22/redux.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/redux.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#注意事项</p>
-<h2 id="1-Redux-要求-UI-的渲染组件都是纯组件，即不包含任何状态（this-state）的组件。"><a href="#1-Redux-要求-UI-的渲染组件都是纯组件，即不包含任何状态（this-state）的组件。" class="headerlink" title="1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。"></a>1.Redux 要求 UI 的渲染组件都是纯组件，即不包含任何状态（this.state）的组件。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div className=<span class="string">"index"</span>&gt;</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.props.text&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">  &lt;input</div><div class="line">    defaultValue=&#123;<span class="keyword">this</span>.props.name&#125;</div><div class="line">    onChange=&#123;<span class="keyword">this</span>.props.onChange&#125;</div><div class="line">  /&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<h2 id="2-进行数据处理、并包含状态的组件，称为”容器组件“。Redux-使用connect方法，自动生成-UI-组件对应的”容器组件“。"><a href="#2-进行数据处理、并包含状态的组件，称为”容器组件“。Redux-使用connect方法，自动生成-UI-组件对应的”容器组件“。" class="headerlink" title="2.进行数据处理、并包含状态的组件，称为”容器组件“。Redux 使用connect方法，自动生成 UI 组件对应的”容器组件“。"></a>2.进行数据处理、并包含状态的组件，称为”容器组件“。Redux 使用connect方法，自动生成 UI 组件对应的”容器组件“。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// MyComponent 是纯的 UI 组件</span></div><div class="line"><span class="keyword">const</span> App = connect(</div><div class="line">  mapStateToProps,</div><div class="line">  mapDispatchToProps</div><div class="line">)(MyComponent);</div></pre></td></tr></table></figure>
-<h2 id="3-mapStateToProps函数返回一个对象，表示一种映射关系，将-UI-组件的参数映射到state。"><a href="#3-mapStateToProps函数返回一个对象，表示一种映射关系，将-UI-组件的参数映射到state。" class="headerlink" title="3.mapStateToProps函数返回一个对象，表示一种映射关系，将 UI 组件的参数映射到state。"></a>3.mapStateToProps函数返回一个对象，表示一种映射关系，将 UI 组件的参数映射到state。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">text</span>: state.text,</div><div class="line">    <span class="attr">name</span>: state.name</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="4-mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。"><a href="#4-mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。" class="headerlink" title="4.mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。"></a>4.mapDispatchToProps函数也是返回一个对象，表示一种映射关系，但定义的是哪些用户的操作应该当作Action，传给Store。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapDispatchToProps</span>(<span class="params">dispatch</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">onChange</span>: <span class="function">(<span class="params">e</span>) =&gt;</span> dispatch(&#123;</div><div class="line">      <span class="attr">type</span>: <span class="string">'change'</span>,</div><div class="line">      <span class="attr">payload</span>: e.target.value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="5-reducer函数用来接收action，算出新的state。"><a href="#5-reducer函数用来接收action，算出新的state。" class="headerlink" title="5.reducer函数用来接收action，算出新的state。"></a>5.reducer函数用来接收action，算出新的state。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state = &#123;</span></span></div><div class="line">  text: <span class="string">'你好，访问者'</span>,</div><div class="line">  name: <span class="string">'访问者'</span></div><div class="line">&#125;, action) &#123;</div><div class="line">  <span class="keyword">switch</span> (action.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'change'</span>:</div><div class="line">      <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">name</span>: action.payload,</div><div class="line">        <span class="attr">text</span>: <span class="string">'你好，'</span> + action.payload</div><div class="line">      &#125;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Store由 Redux 提供的createStore方法生成，该方法接受reducer作为参数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> store = createStore(reducer);</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">App</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span>,</div><div class="line">  <span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createElement(<span class="string">'div'</span>))</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/22/token.html" itemprop="url">
-                  token
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-22T10:07:26+08:00" content="2016-11-22">
-              2016-11-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/22/token.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/token.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$.post(<span class="string">'/authenticate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// store token on local/session storage or cookie</span></div><div class="line">  <span class="comment">//  ....</span></div><div class="line"></div><div class="line">  <span class="comment">// create a cookie signaling that user is logged in</span></div><div class="line">  $.cookie(<span class="string">'loggedin'</span>, profile.name, <span class="string">'.yourdomain.com'</span>);</div><div class="line"></div><div class="line">  <span class="comment">// 我们不会这个用 cookie 作为验证方法，只是作为一个存储机制去支持存储信息在不同的域名中</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1365,7 +1656,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">164</span>
+              <span class="site-state-item-count">169</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1382,7 +1673,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">233</span>
+                <span class="site-state-item-count">238</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
