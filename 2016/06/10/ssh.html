@@ -89,7 +89,7 @@
 <meta property="og:url" content="http://haobing.wang/2016/06/10/ssh.html">
 <meta property="og:site_name" content="王浩冰">
 <meta property="og:description" content="ssh 是一种网络协议，用于加密登录。ssh 的实现有多种，通常我们使用的是 ssh 的开源实现 openssh">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.637Z">
+<meta property="og:updated_time" content="2017-03-25T07:30:38.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh">
 <meta name="twitter:description" content="ssh 是一种网络协议，用于加密登录。ssh 的实现有多种，通常我们使用的是 ssh 的开源实现 openssh">
@@ -333,9 +333,10 @@
 <li>OpenSSH (Linux and Mac OS X): 终端中使用 ssh 命令即可。</li>
 <li>PuTTY (Windows): <code>putty.exe</code> is the SSH client, and <code>puttygen.exe</code> should also be downloaded if you want to use SSH keys.</li>
 </ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh -p 22 username@ip</div><div class="line"></div><div class="line">cat ~/.ssh/id_rsa.pub | ssh -p 22 bill@128.199.209.242 &apos;mkdir -p .ssh &amp;&amp; cat - &gt;&gt; ~/.ssh/authorized_keys&apos;</div></pre></td></tr></table></figure>
 <h2 id="Step1-使用密钥登录-Add-Public-Key-Authentication-Recommended"><a href="#Step1-使用密钥登录-Add-Public-Key-Authentication-Recommended" class="headerlink" title="Step1: 使用密钥登录 - Add Public Key Authentication (Recommended)"></a>Step1: 使用密钥登录 - Add Public Key Authentication (Recommended)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 本地计算机</div><div class="line"># 生成私钥和公钥</div><div class="line">ssh-keygen</div><div class="line"></div><div class="line"># 将key写到远程机器的 ~/.ssh/authorized_key 文件中</div><div class="line"># macos 下：brew install ssh-copy-id</div><div class="line"># ubuntu</div><div class="line">sudo apt-get install ssh-copy-id</div><div class="line">ssh-copy-id -i pi@192.168.1.158</div><div class="line"></div><div class="line"># 完成后直接连接</div><div class="line">ssh pi@192.168.1.158</div></pre></td></tr></table></figure>
 <p>如果登录失败，检查服务器端 <code>/etc/ssh/sshd_config</code> 的 <code>PubkeyAuthentication yes</code></p>
-<h2 id="Step2-Disable-Password-Authentication-Recommended"><a href="#Step2-Disable-Password-Authentication-Recommended" class="headerlink" title="Step2: Disable Password Authentication (Recommended)"></a>Step2: Disable Password Authentication (Recommended)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 远程服务器</div><div class="line">sudo vi /etc/ssh/sshd_config</div><div class="line"></div><div class="line"># 修改 `#PasswordAuthentication yes` 为 `PasswordAuthentication no`</div><div class="line"># 确保 ChallengeResponseAuthentication no</div><div class="line"></div><div class="line">sudo service ssh restart</div></pre></td></tr></table></figure>
+<h2 id="Step2-Disable-Password-Authentication-Recommended"><a href="#Step2-Disable-Password-Authentication-Recommended" class="headerlink" title="Step2: Disable Password Authentication (Recommended)"></a>Step2: Disable Password Authentication (Recommended)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 远程服务器</div><div class="line">sudo vi /etc/ssh/sshd_config</div><div class="line"></div><div class="line"># 修改 `#PasswordAuthentication yes` 为 `PasswordAuthentication no`</div><div class="line"># 确保 ChallengeResponseAuthentication no</div><div class="line"># 将 Port 22 改为 25000</div><div class="line"></div><div class="line">sudo service ssh restart</div></pre></td></tr></table></figure>
 <p>关闭密码登录后，再用 putty 连接服务器就会提示</p>
 <blockquote>
 <p>Disconnected: No supported authentication methods available (server sent:public key)</p>
@@ -470,7 +471,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">169</span>
+              <span class="site-state-item-count">175</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -487,7 +488,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">238</span>
+                <span class="site-state-item-count">248</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -516,7 +517,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-Client-Software"><span class="nav-number">1.</span> <span class="nav-text">SSH Client Software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-使用密钥登录-Add-Public-Key-Authentication-Recommended"><span class="nav-number">2.</span> <span class="nav-text">Step1: 使用密钥登录 - Add Public Key Authentication (Recommended)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-Disable-Password-Authentication-Recommended"><span class="nav-number">3.</span> <span class="nav-text">Step2: Disable Password Authentication (Recommended)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑本地-ssh-配置"><span class="nav-number">4.</span> <span class="nav-text">编辑本地 ssh 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#putty-登录设置"><span class="nav-number">5.</span> <span class="nav-text">putty 登录设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-Client-Software"><span class="nav-number">1.</span> <span class="nav-text">SSH Client Software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">2.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-使用密钥登录-Add-Public-Key-Authentication-Recommended"><span class="nav-number">3.</span> <span class="nav-text">Step1: 使用密钥登录 - Add Public Key Authentication (Recommended)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-Disable-Password-Authentication-Recommended"><span class="nav-number">4.</span> <span class="nav-text">Step2: Disable Password Authentication (Recommended)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑本地-ssh-配置"><span class="nav-number">5.</span> <span class="nav-text">编辑本地 ssh 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#putty-登录设置"><span class="nav-number">6.</span> <span class="nav-text">putty 登录设置</span></a></li></ol></div>
             
           </div>
         </section>

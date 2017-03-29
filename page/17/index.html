@@ -258,6 +258,769 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/01/react-media-query.html" itemprop="url">
+                  react 实现 media-query
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T13:33:18+08:00" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/01/react-media-query.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/react-media-query.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  componentWillMount() &#123;</div><div class="line">    <span class="keyword">let</span> setNavBarState = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.setState(&#123;<span class="attr">renderNavBar</span>: <span class="built_in">document</span>.body.clientWidth &gt; <span class="number">700</span>&#125;);</div><div class="line">    &#125;.bind(<span class="keyword">this</span>);</div><div class="line">    setNavBarState();</div><div class="line">    <span class="built_in">window</span>.onresize = setNavBarState();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="keyword">this</span>.state.renderNavBar?<span class="xml"><span class="tag">&lt;<span class="name">NavBar</span>/&gt;</span></span>:<span class="xml"><span class="tag">&lt;<span class="name">SideBar</span>/&gt;</span></span>&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/31/react.html" itemprop="url">
+                  react
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-31T18:20:39+08:00" content="2016-05-31">
+              2016-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/31/react.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/31/react.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>React doesn’t support IE8 anyway</p>
+<p>React 的特点</p>
+<ul>
+<li>组件化，js 逻辑和 html 都写在 jsx 文件内</li>
+<li>单向数据流，数据一旦更新，就直接渲染整个app</li>
+<li>虚拟 DOM 树，即时渲染整个 app 也十分特别地快快快</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component, PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/31/react.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/30/meteor-delay.html" itemprop="url">
+                  meteor 数据传输延迟
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-30T18:11:39+08:00" content="2016-05-30">
+              2016-05-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/30/meteor-delay.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/30/meteor-delay.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>发布订阅的数据是有延迟的</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Post = React.createClass(&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.props.posts);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.props.params.id);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> createContainer( <span class="function"><span class="params">()</span>=&gt;</span> &#123;</div><div class="line">  Meteor.subscribe(<span class="string">'posts'</span>);</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">posts</span>: Posts.find().fetch(),</div><div class="line">  &#125;;</div><div class="line">&#125;,Post);</div></pre></td></tr></table></figure>
+<p>实际运行时，由于 props 数据延迟，<code>render</code>会被再次刷新，观察到的截图如下：</p>
+<p><img src="/images/delay.png" alt=""></p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Posts.find().fetch() 返回的是数组</p>
+<p>改为返回游标</p>
+<p>Posts.find()</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/29/read-source-code.html" itemprop="url">
+                  阅读开源软件源代码的正确姿势
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-29T13:18:43+08:00" content="2016-05-29">
+              2016-05-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/29/read-source-code.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/29/read-source-code.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>以 <code>react-router</code> 项目为例</p>
+<p>一、先Clone它</p>
+<p>二、从Release页面找到它的早期版本</p>
+<p><img src="/images/react-router.png" alt=""></p>
+<p>三、 从上面拿到它的提交号 <code>6bf6d96</code>，然后checkout到这次提交</p>
+<p>或者在 sourcetree 中跳转</p>
+<p><img src="/images/redirect.png" alt=""></p>
+<p>四、当前 release 为 v0.0,每个release 都是多个 commit 积累而成的。我们接着 checkout 到整个项目的第一个 commit 开始阅读代码</p>
+<p><img src="/images/first-commit.png" alt=""></p>
+<p>五、接着，再回过头去阅读</p>
+<ul>
+<li>0.1版本</li>
+<li>…</li>
+<li>最新的2.4.0版本</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/28/preface.html" itemprop="url">
+                  书的序言
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-28T14:24:39+08:00" content="2016-05-28">
+              2016-05-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/28/preface.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/28/preface.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>国人的书与国外的书的第一个区别就在于序言。</p>
+<p>国人写的序言多是一些不疼不痒，推卸责任的话，例如<code>由于时间仓促作者水平有限，如有不足之处请读者多多谅解</code>的屁话。<br>时间不够就不要急着出版，能力不足就不要出版，读者是花钱买书的，凭什么要谅解你的敷衍。</p>
+<p>当然有一部分原因是国人的谦虚，但总体上是让人恶心的。</p>
+<p>相反，国外的作者写的序言多是承担责任，例如<code>本书某部分由谁谁负责审阅，感谢某某的付出，如有问题责任完全由我本人承担。</code></p>
+<p>另外就是感谢家人朋友的，部分国人出书也开始感谢谁谁了，区别就在于国外作者连家里的猫狗都一并感谢了。。。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/27/react-router.html" itemprop="url">
+                  react-router
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-27T16:24:38+08:00" content="2016-05-27">
+              2016-05-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/27/react-router.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/27/react-router.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><h3 id="第一课"><a href="#第一课" class="headerlink" title="第一课"></a>第一课</h3><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Router</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">&#123;App&#125;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">IndexRoute</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"about"</span> <span class="attr">component</span>=<span class="string">&#123;About&#125;</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"inbox"</span> <span class="attr">component</span>=<span class="string">&#123;Inbox&#125;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"messages/:id"</span> <span class="attr">component</span>=<span class="string">&#123;Message&#125;</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">Route</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Route</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Router</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>用户访问 <code>/about</code> 时，会先加载 <code>App</code> 组件，然后在它的内部再加载 <code>About</code> 组件。<code>App</code> 组件要写成如下的样子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.createClass(&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">      &#123;this.props.children&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><code>this.props.children</code> 代表子组件 <code>Home</code>、<code>About</code>、<code>Inbox</code>。</p>
+<p><code>Message</code> 组件内部获取参数 id：<code>this.props.params.id</code></p>
+<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/"</span> <span class="attr">onlyActiveOnIndex</span>=<span class="string">&#123;true&#125;</span> <span class="attr">activeStyle</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">yellow800</span> &#125;&#125;&gt;</span>Home<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/about"</span> <span class="attr">activeStyle</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">yellow800</span> &#125;&#125;&gt;</span>About<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/inbox"</span> <span class="attr">activeStyle</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">yellow800</span> &#125;&#125;&gt;</span>Message<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Router-Hook"><a href="#Router-Hook" class="headerlink" title="Router Hook"></a>Router Hook</h2><p>当用户离开 <code>/about</code> 进入 <code>/inbox</code> 会依次触发一下钩子：</p>
+<ul>
+<li>/about 的 onLeave</li>
+<li>/inbox 的 onEnter</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/26/yoeman.html" itemprop="url">
                   webapp脚手架——Yoeman
                 </a>
@@ -790,633 +1553,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/22/Electron.html" itemprop="url">
-                  electron
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-22T14:47:04+08:00" content="2016-05-22">
-              2016-05-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/22/Electron.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/22/Electron.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Build cross platform desktop apps with JavaScript, HTML, and CSS.</p>
-<p>Electron + Node.js + JavaScript 做桌面应用</p>
-<p>如果你会写网站，就可以用 html css js 做一个客户端应用</p>
-<p><a href="http://electron.atom.io/">详情点击</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/22/Electron.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/21/how-to-make-favicon.html" itemprop="url">
-                  how-to-make-favicon
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-21T17:46:07+08:00" content="2016-05-21">
-              2016-05-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/21/how-to-make-favicon.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/21/how-to-make-favicon.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>google <code>dog carton png</code></li>
-<li>图像-图像大小-像素大小-更改宽度为64（高度会成比例自动调整）</li>
-<li><code>command</code>+<code>+</code>放大，<code>command</code>+<code>A</code>选中图层，<code>command</code>+<code>C</code>拷贝图层</li>
-<li>新建文件，宽高64，<code>command</code>+<code>V</code>，另存为 png 格式</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/20/hexo-readmore.html" itemprop="url">
-                  hexo 文章摘要
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T17:59:57+08:00" content="2016-05-20">
-              2016-05-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/20/hexo-readmore.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/hexo-readmore.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>输入 <code>more</code> + <code>⌘</code>+<code>/</code><br>即 <code>&lt;!-- more --&gt;</code></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/20/hexo-readmore.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/19/deploy-meteor-app.html" itemprop="url">
-                  部署meteor应用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-19T17:02:09+08:00" content="2016-05-19">
-              2016-05-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/19/deploy-meteor-app.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/deploy-meteor-app.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h1><ul>
-<li>An existing Meteor app on a separate development computer</li>
-<li>A fresh Ubuntu 14.04 server; existing Meteor installations should work in most cases</li>
-<li>root access to the server to execute commands</li>
-<li>Replace todos.net with the domain name you are actually using (or leave it if you don’t have a domain and will be using an IP address instead)</li>
-<li>Replace todos with the name of your application</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/19/deploy-meteor-app.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/18/nice-to-meet-you.html" itemprop="url">
-                  第一篇博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-18T13:16:51+08:00" content="2016-05-18">
-              2016-05-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/18/nice-to-meet-you.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/nice-to-meet-you.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>虎虎虎！！！<br><img src="/images/tiger.jpg" alt=""></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/18/nice-to-meet-you.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1457,7 +1598,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">169</span>
+              <span class="site-state-item-count">175</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1474,7 +1615,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">238</span>
+                <span class="site-state-item-count">248</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
