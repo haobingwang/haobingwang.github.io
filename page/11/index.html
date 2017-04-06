@@ -258,6 +258,152 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/15/locale.html" itemprop="url">
+                  区域设置 locale
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-15T09:28:12+08:00" content="2016-08-15">
+              2016-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/15/locale.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/15/locale.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>国际化 (internationalization，即缩写为 i18n，单词的头尾之间包含了 18 个字母 )</li>
+<li>本地化 (localization，缩写为 l10n)</li>
+</ul>
+<h2 id="常用值"><a href="#常用值" class="headerlink" title="常用值"></a>常用值</h2><ul>
+<li>en_US.UTF-8</li>
+<li>zh_CN.UTF-8</li>
+</ul>
+<h2 id="locale-相关变量优先级"><a href="#locale-相关变量优先级" class="headerlink" title="locale 相关变量优先级"></a>locale 相关变量优先级</h2><p>1.LANGUAGE  Most programs use this for the language of its interface<br>2.LC_ALL    默认为空。可覆盖所有其他的 locale 设定<br>3.LC_xxx    可设定 locale 各方面的值，可以覆盖 LANG 值。<br>4.LANG      Specifies the default locale for all unset locale variables</p>
+<p>可以把上述环境变量写在 <code>/etc/profile</code> 或 <code>/etc/environment</code> 等系统初始文件中。值得注意的是，若 <code>LANG</code> 或 <code>LC_ALL</code> 被设定为 <code>C</code>，那么 <code>LANGUAGE</code> 的值将被忽略。</p>
+<h2 id="查看当前系统语言环境"><a href="#查看当前系统语言环境" class="headerlink" title="查看当前系统语言环境"></a>查看当前系统语言环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locale</div></pre></td></tr></table></figure>
+<h2 id="将系统改为英文系统"><a href="#将系统改为英文系统" class="headerlink" title="将系统改为英文系统"></a>将系统改为英文系统</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/default/locale</div></pre></td></tr></table></figure>
+<blockquote>
+<p>LANG=”en_US.UTF-8”<br>LANGUAGE=”en_US:en”</p>
+</blockquote>
+<h2 id="查看系统内安装的locale"><a href="#查看系统内安装的locale" class="headerlink" title="查看系统内安装的locale"></a>查看系统内安装的locale</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locale -a</div></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>locale: Cannot set LC_CTYPE to default locale: No such file or directory<br>locale: Cannot set LC_MESSAGES to default locale: No such file or directory<br>locale: Cannot set LC_COLLATE to default locale: No such file or directory<br>C<br>POSIX<br>zh_CN.utf8<br>zh_SG.utf8</p>
+</blockquote>
+<p>看吧，没装en_US.UTF-8，需要安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo locale-gen en_US.UTF-8</div></pre></td></tr></table></figure>
+<p>再次查看，应该一切正常了。</p>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg-reconfigure locales</div></pre></td></tr></table></figure>
+<h2 id="修复-LC-CTYPE-UTF-8"><a href="#修复-LC-CTYPE-UTF-8" class="headerlink" title="修复 LC_CTYPE=UTF-8"></a>修复 LC_CTYPE=UTF-8</h2><p><code>LC_CTYPE=UTF-8</code></p>
+<p>OSX iTerm 中将 <code>Profiles</code>-&gt;<code>Terminal</code>-&gt;<code>Environment</code>-&gt;<code>Set locale variables automatically</code> 取消勾选状态，关闭 shell 后，重新登录即可。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>1.<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-linuxglb/" target="_blank" rel="external">浅析 Linux 的国际化与本地化机制</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/12/monitor.html" itemprop="url">
                   monitor
                 </a>
@@ -1618,158 +1764,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/02/git-rebase.html" itemprop="url">
-                  git-rebase
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-02T12:11:22+08:00" content="2016-08-02">
-              2016-08-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/02/git-rebase.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/02/git-rebase.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。"><a href="#注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。" class="headerlink" title="注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。"></a><em>注意</em>：一旦分支的快照发布到origin，就千万不要对该分支进行<code>rebase</code>操作。</h3><p>开发完成后，会有一堆 <code>commit</code>，我们希望合并到主干的时候，只显示一个（或最多两三个）<code>commit</code>，这样不仅清晰，也容易管理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase [主分支] [特性分支]</div></pre></td></tr></table></figure>
-<ol>
-<li>首先用git fetch返回服务器上的代码</li>
-<li>首先用git rebase origin/master 合并</li>
-<li>如果发生冲突了会提示，然后可以使用git diff查看冲突，在手工改掉冲突，在用 git add 添加修改后文件，最后用 git rebase –continue 继续没完成的合并</li>
-<li>最后就可以用git push 更新到服务器上去</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git fetch origin</div><div class="line">git rebase -i origin/master</div></pre></td></tr></table></figure>
-<p>跳入互动界面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">pick ddf212f 添加 git-branch</div><div class="line">pick eb9fcaf 添加内容</div><div class="line">pick 08f56ff 追加内容</div><div class="line">pick 6c5c859 第三次追加内容</div><div class="line"></div><div class="line"># Rebase 5ac13f3..08f56ff onto 5ac13f3 (3 command(s))</div><div class="line">#</div><div class="line"># Commands:</div><div class="line"># p, pick = use commit</div><div class="line"># r, reword = use commit, but edit the commit message</div><div class="line"># e, edit = use commit, but stop for amending</div><div class="line"># s, squash = use commit, but meld into previous commit</div><div class="line"># f, fixup = like &quot;squash&quot;, but discard this commit&apos;s log message</div><div class="line"># x, exec = run command (the rest of the line) using shell</div><div class="line"># d, drop = remove commit</div><div class="line">#</div><div class="line"># These lines can be re-ordered; they are executed from top to bottom.</div><div class="line">#</div><div class="line"># If you remove a line here THAT COMMIT WILL BE LOST.</div><div class="line">#</div><div class="line"># However, if you remove everything, the rebase will be aborted.</div><div class="line">#</div><div class="line"># Note that empty commits are commented out</div><div class="line">~</div></pre></td></tr></table></figure>
-<p>显示的是 <em>尚未提交</em> 到<code>远程主干分支</code>的本地 <code>commit</code>，顺序排列出本地提交记录。</p>
-<p>每个 <code>commit</code> 前面都有一个 <code>操作命令</code>，默认是 <code>pick</code>，表示该 <code>commit</code> 被选中，要进行 <code>rebase</code> 操作。</p>
-<p>如果要撤销<code>rebase</code>，只需要：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase --abort</div></pre></td></tr></table></figure>
-<p>完成后推送到远端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure>
-<h2 id="git-rebase-和-git-merge-的区别"><a href="#git-rebase-和-git-merge-的区别" class="headerlink" title="git rebase 和 git merge 的区别"></a>git rebase 和 git merge 的区别</h2><p><img src="/images/rebase-merge.png" alt=""></p>
-<p>假设:</p>
-<ul>
-<li>C3提交于9:00AM;</li>
-<li>C5提交于10:00AM;</li>
-<li>C4提交于11:00AM;</li>
-<li>C6提交于12:00AM;</li>
-</ul>
-<p>无论是 rebase 还是 merge 后的commit 都按 <em>时间排序</em>。</p>
-<p>对于使用 git rebase 来合并所看到的commit的顺序是：C7 ,C6‘,C5’,C4,C3,C2,C1，因为C6’提交只是C6提交的克隆，C5’提交只是C5提交的克隆，所以 C5’ 生成时间在 C6 之后，C6’ 也在 C5’ 之后。</p>
-<p>对于使用 git merge 来合并所看到的commit的顺序是：C7 ,C6,C4,C5,C3,C2,C1。</p>
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><ul>
-<li>直进式合并（fast forward），不会生成单独的合并节点 <code>git merge hotfix-0.1.1</code></li>
-<li>非直进式合并（none fast-forword），会生成单独节点 <code>git merge --no-ff hotfix-0.1.1</code></li>
-</ul>
-<p>前者不利于保持commit信息的清晰，也不利于以后的回滚，建议总是采用后者（即使用–no-ff参数）。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1815,7 +1809,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">178</span>
+              <span class="site-state-item-count">179</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1832,7 +1826,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">252</span>
+                <span class="site-state-item-count">253</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
