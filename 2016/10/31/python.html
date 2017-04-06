@@ -97,7 +97,7 @@ pip 镜像">
 mac 安装 pip1sudo easy_install pip
 1sudo pip install beautifulsoup4
 pip 镜像">
-<meta property="og:updated_time" content="2017-03-08T06:29:37.807Z">
+<meta property="og:updated_time" content="2017-03-31T06:12:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python">
 <meta name="twitter:description" content="Windows 安装 Python下载安装 Anaconda ，选择 Python 2.7 version 的下载。
@@ -330,6 +330,9 @@ pip 镜像">
 <h2 id="Windows-配置"><a href="#Windows-配置" class="headerlink" title="Windows 配置"></a>Windows 配置</h2><p>在用户目录下,新建 pip/pip.ini</p>
 <h2 id="python-基本知识"><a href="#python-基本知识" class="headerlink" title="python 基本知识"></a>python 基本知识</h2><p>如果需要添加注释，需要在文件头部添加</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div></pre></td></tr></table></figure>
+<h2 id="UnicodeEncodeError-‘ascii’-codec-can’t-encode-characters-in-position"><a href="#UnicodeEncodeError-‘ascii’-codec-can’t-encode-characters-in-position" class="headerlink" title="UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position"></a>UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position</h2><p>在python的Lib\site-packages文件夹下新建一个sitecustomize.py，内容为：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding=utf8  </span></div><div class="line"><span class="keyword">import</span> sys  </div><div class="line">  </div><div class="line">reload(sys)  </div><div class="line">sys.setdefaultencoding(<span class="string">'utf8'</span>)</div></pre></td></tr></table></figure>
+<p>Anaconda2 的 Python 路径：C:\Users\bill\Anaconda2\Lib</p>
 
       
     </div>
@@ -444,7 +447,7 @@ pip 镜像">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">175</span>
+              <span class="site-state-item-count">178</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +464,7 @@ pip 镜像">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">248</span>
+                <span class="site-state-item-count">252</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -490,7 +493,7 @@ pip 镜像">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-安装-Python"><span class="nav-number">1.</span> <span class="nav-text">Windows 安装 Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-安装-pip"><span class="nav-number">2.</span> <span class="nav-text">mac 安装 pip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip-镜像"><span class="nav-number">3.</span> <span class="nav-text">pip 镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-配置"><span class="nav-number">4.</span> <span class="nav-text">Windows 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-基本知识"><span class="nav-number">5.</span> <span class="nav-text">python 基本知识</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-安装-Python"><span class="nav-number">1.</span> <span class="nav-text">Windows 安装 Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-安装-pip"><span class="nav-number">2.</span> <span class="nav-text">mac 安装 pip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip-镜像"><span class="nav-number">3.</span> <span class="nav-text">pip 镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-配置"><span class="nav-number">4.</span> <span class="nav-text">Windows 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-基本知识"><span class="nav-number">5.</span> <span class="nav-text">python 基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UnicodeEncodeError-‘ascii’-codec-can’t-encode-characters-in-position"><span class="nav-number">6.</span> <span class="nav-text">UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position</span></a></li></ol></div>
             
           </div>
         </section>
