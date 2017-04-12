@@ -67,7 +67,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git-server," />
+  <meta name="keywords" content="git,git-server," />
 
 
 
@@ -83,22 +83,19 @@
 
 
 
-<meta name="description" content="部署代码使用server12345678sudo apt-get install git# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 设置服务器端更新钩子vim hooks/post-receive
-将如下内容复制到文件中
-123#!/bin/shGIT_WORK_TREE=/home/bill/test git c">
+<meta name="description" content="这里使用 ssh 需要，需要添加 public key 到服务器。
+部署代码使用server1234567891011sudo apt-get install git# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 让仓库接收代码提交git config receive.denyCurrentBranch ignore#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git-server">
 <meta property="og:url" content="http://haobing.wang/2017/03/02/git-server.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="部署代码使用server12345678sudo apt-get install git# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 设置服务器端更新钩子vim hooks/post-receive
-将如下内容复制到文件中
-123#!/bin/shGIT_WORK_TREE=/home/bill/test git c">
-<meta property="og:updated_time" content="2017-03-25T07:30:38.051Z">
+<meta property="og:description" content="这里使用 ssh 需要，需要添加 public key 到服务器。
+部署代码使用server1234567891011sudo apt-get install git# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 让仓库接收代码提交git config receive.denyCurrentBranch ignore#">
+<meta property="og:updated_time" content="2017-04-10T08:12:18.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git-server">
-<meta name="twitter:description" content="部署代码使用server12345678sudo apt-get install git# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 设置服务器端更新钩子vim hooks/post-receive
-将如下内容复制到文件中
-123#!/bin/shGIT_WORK_TREE=/home/bill/test git c">
+<meta name="twitter:description" content="这里使用 ssh 需要，需要添加 public key 到服务器。
+部署代码使用server1234567891011sudo apt-get install git# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 让仓库接收代码提交git config receive.denyCurrentBranch ignore#">
 
 
 
@@ -314,17 +311,18 @@
       
 
       
-        <h2 id="部署代码使用"><a href="#部署代码使用" class="headerlink" title="部署代码使用"></a>部署代码使用</h2><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div><div class="line"></div><div class="line"># 新建代码接受仓库</div><div class="line">mkdir test.git &amp;&amp; cd test.git</div><div class="line">git init --bare</div><div class="line"></div><div class="line"># 设置服务器端更新钩子</div><div class="line">vim hooks/post-receive</div></pre></td></tr></table></figure>
+        <p>这里使用 ssh 需要，需要添加 public key 到服务器。</p>
+<h2 id="部署代码使用"><a href="#部署代码使用" class="headerlink" title="部署代码使用"></a>部署代码使用</h2><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div><div class="line"></div><div class="line"># 新建代码接受仓库</div><div class="line">mkdir test.git &amp;&amp; cd test.git</div><div class="line">git init --bare</div><div class="line"></div><div class="line"># 让仓库接收代码提交</div><div class="line">git config receive.denyCurrentBranch ignore</div><div class="line"></div><div class="line"># 设置服务器端更新钩子</div><div class="line">vim hooks/post-receive</div></pre></td></tr></table></figure>
 <p>将如下内容复制到文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">GIT_WORK_TREE=/home/bill/test git checkout -f</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">GIT_WORK_TREE=/home/bill/project/test git checkout -f</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x hooks/post-receive</div></pre></td></tr></table></figure>
-<p>这样，每次从客户端 push 代码到服务器，都会在 /home/bill/test 下生成最先的代码</p>
-<h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add server git@192.168.1.110:repos/test.git</div><div class="line">git push server</div></pre></td></tr></table></figure>
-<p>其中，server 是自定的主机名，git是上文提到的专门用于提交代码的服务器用户，192.168.1.110是服务器IP，repos/test.git 就是服务器仓库目录。</p>
+<p>这样，每次从客户端 push 代码到服务器，都会在 /home/bill/project/test 下生成最先的代码</p>
+<h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add server git@192.168.1.110:/home/bill/repos/test.git</div><div class="line">git push server</div></pre></td></tr></table></figure>
+<p>其中，server 是自定的主机名，bill 是可以 ssh 连接到服务器用户，192.168.1.110 是服务器IP，repos/test.git 就是服务器仓库目录。</p>
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果服务器的 sshd 更改了默认端口 22，架设为 25000，那么，上述命令就要变更为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add server ssh://git@192.168.1.110:25000~repos/test.git</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add server ssh://bill@192.168.1.110:25000/home/bill/repos/test.git</div></pre></td></tr></table></figure>
 <p>更改了三个地方：</p>
-<p>1.添加了 ssh://<br>2.添加了端口号 25000<br>3.端口后添加了 ~</p>
+<p>1.添加了 ssh://<br>2.添加了端口号 25000</p>
 
       
     </div>
@@ -345,6 +343,8 @@
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
           
             <a href="/tags/git-server/" rel="tag">#git-server</a>
           
@@ -437,7 +437,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-count">184</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -454,7 +454,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">253</span>
+                <span class="site-state-item-count">260</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

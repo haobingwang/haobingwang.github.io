@@ -95,7 +95,7 @@
 不使用 HTTPS 存在的风险
 
 窃听风险（eavesdropping）：第三方可以">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.623Z">
+<meta property="og:updated_time" content="2017-04-12T04:51:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https">
 <meta name="twitter:description" content="HTTP:Your connection is not private.Attackers might be trying to steal your information from example.com (for example, passwords, messages, or credit cards).
@@ -379,9 +379,7 @@
 <li>privkey.pem    - Your certificate’s private key</li>
 </ul>
 <p>我们使用的 Nginx 环境，需要用到 fullchain.pem 和 privkey.pem 两个证书文件</p>
-<blockquote>
 <p>ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;<br>ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</p>
-</blockquote>
 <h2 id="增强安全"><a href="#增强安全" class="headerlink" title="增强安全"></a>增强安全</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
 <p>This may take a few minutes but when it’s done you will have a strong DH group.</p>
 <p>在 ssl server block 中添加：</p>
@@ -389,15 +387,19 @@
 <p>ssl_dhparam /etc/ssl/certs/dhparam.pem;</p>
 </blockquote>
 <p>完成配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen  80;</div><div class="line">  server_name example.com www.example.com;</div><div class="line"></div><div class="line">  root /var/www/example;</div><div class="line">  index index.html index.htm;</div><div class="line"></div><div class="line">  location ~ /.well-known &#123;</div><div class="line">    allow all;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  # 将http的请求转发为https</div><div class="line">  return 301 https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 443;</div><div class="line">    server_name example.com, www.example.com;</div><div class="line"></div><div class="line">    ssl on;</div><div class="line">    ssl_certificate /path/to/chained.pem;</div><div class="line">    ssl_certificate_key /path/to/domain.key;</div><div class="line"></div><div class="line">    ssl_dhparam /path/to/server.dhparam;# 新加此行</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://127.0.0.1:3999;</div><div class="line">      proxy_http_version 1.1;</div><div class="line">      proxy_set_header X_FORWARDED_PROTO https;</div><div class="line">      proxy_set_header X-Real-IP $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">      proxy_set_header Host $host;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen  80;</div><div class="line">  server_name example.com www.example.com;</div><div class="line"></div><div class="line">  root /var/www/example;</div><div class="line">  index index.html index.htm;</div><div class="line"></div><div class="line">  location ~ /.well-known &#123;</div><div class="line">    allow all;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  # 将http的请求转发为https</div><div class="line">  return 301 https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 443;</div><div class="line">    server_name example.com, www.example.com;</div><div class="line"></div><div class="line">    ssl on;</div><div class="line">    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;</div><div class="line">    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</div><div class="line"></div><div class="line">    ssl_dhparam /path/to/server.dhparam;# 新加此行</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://127.0.0.1:3999;</div><div class="line">      proxy_http_version 1.1;</div><div class="line">      proxy_set_header X_FORWARDED_PROTO https;</div><div class="line">      proxy_set_header X-Real-IP $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">      proxy_set_header Host $host;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="nginx-重新加载配置"><a href="#nginx-重新加载配置" class="headerlink" title="nginx 重新加载配置"></a>nginx 重新加载配置</h2><p>要让修改后的配置生效，不需要 <code>restart</code> ，只需要 <code>reload</code> 即可：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service nginx reload</div></pre></td></tr></table></figure>
 <h2 id="测试-SSL-安全性"><a href="#测试-SSL-安全性" class="headerlink" title="测试 SSL 安全性"></a>测试 SSL 安全性</h2><p><a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="external">立即前往测试</a>，输入域名，查看评测报告，应该有 <code>A+</code></p>
 <h2 id="自动续期-cron"><a href="#自动续期-cron" class="headerlink" title="自动续期 cron"></a>自动续期 cron</h2><p>You can test automatic renewal for your certificates by running this command:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/certbot-auto renew --dry-run</div></pre></td></tr></table></figure>
 <p>If that appears to be working correctly, you can arrange for automatic renewal by adding a cron (or systemd) job which runs the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -e</div><div class="line">42 2,14 * * * /opt/certbot-auto renew --quiet --no-self-upgrade</div><div class="line"></div><div class="line">crontab -l</div></pre></td></tr></table></figure>
-<p>即每天的 02:42 和 14:42 运行一次脚本。如果到期没有更新证书，CA会向申请证书时提交的邮件地址发送提醒email。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure>
+<p>Add the following lines:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">30 2 * * 1 /opt/certbot-auto renew &gt;&gt; /var/log/le-renew.log</div><div class="line">35 2 * * 1 /etc/init.d/nginx reload</div></pre></td></tr></table></figure>
+<p>确认下任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -l</div></pre></td></tr></table></figure>
+<p>即每周一的 02:30 更新证书，02:35 重启 nginx (so the renewed certificate will be used)。<br>更新证书的日志会放在 /var/log/le-renewal.log<br>如果到期没有更新证书，CA会向申请证书时提交的邮件地址发送提醒email。</p>
 <h2 id="HTTPS站点的SEO自检清单"><a href="#HTTPS站点的SEO自检清单" class="headerlink" title="HTTPS站点的SEO自检清单"></a>HTTPS站点的SEO自检清单</h2><ol>
 <li>确保网站的每个元素（包括插件、JS、CSS文件、图片、内容分发网站等）都采用HTTPS协议；</li>
 <li>使用301重定向将HTTP URL指向HTTPS版地址</li>
@@ -517,7 +519,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-count">184</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -534,7 +536,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">253</span>
+                <span class="site-state-item-count">260</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

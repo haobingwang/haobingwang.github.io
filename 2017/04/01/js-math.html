@@ -83,16 +83,28 @@
 
 
 
-<meta name="description" content="四舍五入 Math.round">
+<meta name="description" content="金融计算
+Math.round(x) 返回四舍五入后的整数
+Math.floor(x) 返回小于x的最大整数
+
+123456789101112131415161718192021// 保留 n 位小数，并四舍五入 roundDecimal(5.150000001,1) 返回 5.2function roundDecimal(x,n) &amp;#123;    var f = parseFloat(x);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js-math">
 <meta property="og:url" content="http://haobing.wang/2017/04/01/js-math.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="四舍五入 Math.round">
-<meta property="og:updated_time" content="2017-04-05T10:02:54.000Z">
+<meta property="og:description" content="金融计算
+Math.round(x) 返回四舍五入后的整数
+Math.floor(x) 返回小于x的最大整数
+
+123456789101112131415161718192021// 保留 n 位小数，并四舍五入 roundDecimal(5.150000001,1) 返回 5.2function roundDecimal(x,n) &amp;#123;    var f = parseFloat(x);">
+<meta property="og:updated_time" content="2017-04-07T07:39:12.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js-math">
-<meta name="twitter:description" content="四舍五入 Math.round">
+<meta name="twitter:description" content="金融计算
+Math.round(x) 返回四舍五入后的整数
+Math.floor(x) 返回小于x的最大整数
+
+123456789101112131415161718192021// 保留 n 位小数，并四舍五入 roundDecimal(5.150000001,1) 返回 5.2function roundDecimal(x,n) &amp;#123;    var f = parseFloat(x);">
 
 
 
@@ -308,8 +320,13 @@
       
 
       
-        <ul>
-<li>四舍五入 Math.round</li>
+        <h2 id="金融计算"><a href="#金融计算" class="headerlink" title="金融计算"></a>金融计算</h2><ul>
+<li>Math.round(x) 返回四舍五入后的整数</li>
+<li>Math.floor(x) 返回小于x的最大整数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 保留 n 位小数，并四舍五入 roundDecimal(5.150000001,1) 返回 5.2</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">roundDecimal</span>(<span class="params">x,n</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> f = <span class="built_in">parseFloat</span>(x);</div><div class="line">    <span class="keyword">var</span> d = <span class="built_in">parseInt</span>(n);</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(f) || <span class="built_in">isNaN</span>(d)) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> bit = <span class="built_in">Math</span>.pow(<span class="number">10</span>,d);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.round(x * bit) / bit;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 保留 n 位小数，并抹掉尾数  floorDecimal(5.190000001,1) 返回 5.1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">floorDecimal</span>(<span class="params">x,n</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> f = <span class="built_in">parseFloat</span>(x);</div><div class="line">    <span class="keyword">var</span> d = <span class="built_in">parseInt</span>(n);</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(f) || <span class="built_in">isNaN</span>(d)) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> bit = <span class="built_in">Math</span>.pow(<span class="number">10</span>,d);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(x * bit) / bit;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Math.ceil(x)  返回x向上取整后的值</li>
 </ul>
 
       
@@ -351,8 +368,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/06/bootstrap.html" rel="prev" title="bootstrap">
-                bootstrap <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/03/mariadb.html" rel="prev" title="mariadb">
+                mariadb <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -425,7 +442,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-count">184</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -442,7 +459,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">253</span>
+                <span class="site-state-item-count">260</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -471,7 +488,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#金融计算"><span class="nav-number">1.</span> <span class="nav-text">金融计算</span></a></li></ol></div>
             
           </div>
         </section>
