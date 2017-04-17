@@ -89,10 +89,13 @@
 <meta property="og:url" content="http://haobing.wang/2017/03/15/mysql.html">
 <meta property="og:site_name" content="王浩冰">
 <meta property="og:description" content="安装123456789sudo apt-get install mysql-server# 开发环境：不设置root密码，三次回车。# 生产环境：root 密码不低于 16 位sudo apt-get install mysql-client # 测试连接库mysql -u root -p#开发环境没有设置密码，这里直接enter进入，本机省略参数 -h127.0.0.1mysql -h10.10">
-<meta property="og:updated_time" content="2017-04-11T04:33:09.899Z">
+<meta property="og:image" content="http://omhwo9lj5.bkt.clouddn.com/144506_SkMf_54100.png">
+<meta property="og:image" content="http://omhwo9lj5.bkt.clouddn.com/144554_Vt40_54100.png">
+<meta property="og:updated_time" content="2017-04-17T06:08:12.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql">
 <meta name="twitter:description" content="安装123456789sudo apt-get install mysql-server# 开发环境：不设置root密码，三次回车。# 生产环境：root 密码不低于 16 位sudo apt-get install mysql-client # 测试连接库mysql -u root -p#开发环境没有设置密码，这里直接enter进入，本机省略参数 -h127.0.0.1mysql -h10.10">
+<meta name="twitter:image" content="http://omhwo9lj5.bkt.clouddn.com/144506_SkMf_54100.png">
 
 
 
@@ -321,6 +324,14 @@
 <li>character_set_results</li>
 </ul>
 <h2 id="清空数据表"><a href="#清空数据表" class="headerlink" title="清空数据表"></a>清空数据表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># 先清空关联表</div><div class="line">DELETE FROM posts_tags;</div><div class="line"># 再删除数据表</div><div class="line">DELETE FROM posts;</div><div class="line">DELETE FROM tags;</div><div class="line"># 再重置 自增 id</div><div class="line">ALTER TABLE posts_tags AUTO_INCREMENT = 1;</div><div class="line">ALTER TABLE posts AUTO_INCREMENT = 1;</div><div class="line">ALTER TABLE tags AUTO_INCREMENT = 1;</div></pre></td></tr></table></figure>
+<h2 id="Navicat-使用-SSH-隧道连接-MySQL-数据库"><a href="#Navicat-使用-SSH-隧道连接-MySQL-数据库" class="headerlink" title="Navicat 使用 SSH 隧道连接 MySQL 数据库"></a>Navicat 使用 SSH 隧道连接 MySQL 数据库</h2><p>Linux 上的 MySQL 服务器，如果不想开数据库端口(默认3306) 但又希望可以远程访问，这时候可以利用 Navicat 的 SSH 隧道设置，使用方法：</p>
+<p>新建数据库连接，输入常规信息，如下图所示：</p>
+<p><img src="http://omhwo9lj5.bkt.clouddn.com/144506_SkMf_54100.png" alt=""></p>
+<p>其中主机名可以直接填写 localhost 或者 127.0.0.1</p>
+<p>然后切换 Tab 到 SSH ，如下图所示：</p>
+<p><img src="http://omhwo9lj5.bkt.clouddn.com/144554_Vt40_54100.png" alt=""></p>
+<p>这里改用 ssh 的私钥文件: id_rsa 和密钥的密码登录.</p>
+
       
     </div>
 
@@ -432,7 +443,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-count">188</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -449,7 +460,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">260</span>
+                <span class="site-state-item-count">269</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -478,7 +489,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载-mysql"><span class="nav-number">2.</span> <span class="nav-text">卸载 mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置编码为-utf8"><span class="nav-number">3.</span> <span class="nav-text">设置编码为 utf8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空数据表"><span class="nav-number">5.</span> <span class="nav-text">清空数据表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载-mysql"><span class="nav-number">2.</span> <span class="nav-text">卸载 mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置编码为-utf8"><span class="nav-number">3.</span> <span class="nav-text">设置编码为 utf8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空数据表"><span class="nav-number">5.</span> <span class="nav-text">清空数据表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navicat-使用-SSH-隧道连接-MySQL-数据库"><span class="nav-number">6.</span> <span class="nav-text">Navicat 使用 SSH 隧道连接 MySQL 数据库</span></a></li></ol></div>
             
           </div>
         </section>

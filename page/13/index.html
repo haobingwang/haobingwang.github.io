@@ -258,6 +258,549 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/01/chart-js.html" itemprop="url">
+                  chart.js
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-01T18:28:19+08:00" content="2016-08-01">
+              2016-08-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/01/chart-js.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/chart-js.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>版本 v2.1.6</p>
+<ul>
+<li>DOM节点 <code>ctx</code></li>
+<li>图标类型 <code>type</code></li>
+<li>数据结构(Data Structure) <code>data</code></li>
+<li>图表参数(Chart Options) <code>options</code></li>
+</ul>
+<p>html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>js：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import Chart from 'src/chart.js';</div><div class="line">var ctx = document.getElementById("myChart");</div><div class="line"></div><div class="line"># 曲线图（Line chart）</div><div class="line">var myLineChart = new Chart(ctx, &#123;</div><div class="line">    type: 'line',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 柱状图（Bar chart）</div><div class="line">var myBarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'bar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 雷达图或蛛网图（Radar chart）</div><div class="line">var myRadarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'radar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 极地区域图（Polar area chart）</div><div class="line">new Chart(ctx, &#123;</div><div class="line">    data: data,</div><div class="line">    type: 'polarArea',</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 饼图（Pie chart）</div><div class="line">var myPieChart = new Chart(ctx,&#123;</div><div class="line">    type: 'pie',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 环形图（Doughnut chart）</div><div class="line">var myDoughnutChart = new Chart(ctx, &#123;</div><div class="line">    type: 'doughnut',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/31/git-flow.html" itemprop="url">
+                  git-flow
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-31T13:58:55+08:00" content="2016-07-31">
+              2016-07-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/31/git-flow.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/git-flow.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="功能驱动式开发"><a href="#功能驱动式开发" class="headerlink" title="功能驱动式开发"></a>功能驱动式开发</h2><p>Feature-driven development，简称 FDD。</p>
+<p>需求是开发的起点，先有需求再有功能分支(feature branch)或者补丁分支（hotfix branch）。完成<br>开发后，该分支就合并的主分支并删除。</p>
+<h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><ul>
+<li>git flow<ul>
+<li>长期分支<ul>
+<li>主分支 master</li>
+<li>开发分支 develop</li>
+</ul>
+</li>
+<li>短期分支（一旦完成后就会被合并进 develop 或 master，然后被删除）<ul>
+<li>功能分支 feature branch</li>
+<li>补丁分支 hostfix branch</li>
+<li>预发分支 release branch</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>github flow<ul>
+<li>只有一个长期分支 master</li>
+<li>第一步：根据需求，从 master 拉出新分支，不区分功能分支或补丁分支</li>
+<li>第二步：新分支开发完成后，或者需要讨论的时候，向 master 发起 <code>pull request</code></li>
+<li>第三步：评审和讨论代码，不断修改并提交完善后的代码。</li>
+<li>第四步：<code>pull request</code> 被接受，合并进 <code>master</code>，分支被删除</li>
+</ul>
+</li>
+<li>gitlab flow<ul>
+<li>使用 <code>Merge Request</code> 合并分支</li>
+</ul>
+</li>
+</ul>
+<p>其中 git flow 是通过命令行来合并分支。</p>
+<p>github 和 gitlab 是通过发起请求，在 web 端进行合并操作。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/30/react-qq-login.html" itemprop="url">
+                  react-qq-login
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-30T16:03:40+08:00" content="2016-07-30">
+              2016-07-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/30/react-qq-login.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/react-qq-login.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://stackoverflow.com/questions/34424845/adding-script-tag-to-react-jsx" target="_blank" rel="external">链接</a></p>
+<p>QQ登录报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Failed to execute &apos;write&apos; on &apos;Document&apos;:  It isn&apos;t possible to write into a</div><div class="line">document from an asynchronously-loaded external script unless it is explicitly opened.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">componentWillMount() &#123;</div><div class="line">  const script = document.createElement(&quot;script&quot;);</div><div class="line"></div><div class="line">  script.src = &apos;http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js&apos;;</div><div class="line">  script.async = true;</div><div class="line"></div><div class="line">  document.body.appendChild(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>改为在 <code>componentDidMount</code> 中挂载</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/30/automation.html" itemprop="url">
+                  自动化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-30T11:38:13+08:00" content="2016-07-30">
+              2016-07-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/30/automation.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/automation.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用 <code>cron</code> 或者 <code>systemd</code> 自动化运行任务。</p>
+<h2 id="cron"><a href="#cron" class="headerlink" title="cron"></a>cron</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 启动Cron服务</div><div class="line">root@ubuntu-14:~# apt-get install cron</div><div class="line">root@ubuntu-14:~# service cron start</div><div class="line">root@ubuntu-14:~# service cron status</div><div class="line"># 使用Cron帮助</div><div class="line">root@ubuntu-14:~# man crontab</div><div class="line">root@ubuntu-14:~# man 5 crontab</div><div class="line"># 列出当前用户计划的cron作业</div><div class="line">root@ubuntu-14:~# crontab –l</div><div class="line"># 列出指定用户计划的cron作业</div><div class="line">root@ubuntu-14:~# crontab –l –u `username`</div><div class="line"># 添加/编辑Cron作业</div><div class="line">root@ubuntu-14:~# crontab -e</div><div class="line"># 移除Cron作业</div><div class="line">root@ubuntu-14:~# crontab –r</div><div class="line"># 移除所有已计划的cron作业</div><div class="line">root@ubuntu-14:~# crontab –ir</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">* * * * * command to be executed</div><div class="line">- - - - -</div><div class="line">| | | | |</div><div class="line">| | | | ----- Day of week (0 - 7) (Sunday=0 or 7)</div><div class="line">| | | ------- Month (1 - 12)</div><div class="line">| | --------- Day of month (1 - 31)</div><div class="line">| ----------- Hour (0 - 23)</div><div class="line">------------- Minute (0 - 59)</div></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root@ubuntu-14:~# crontab -e</div></pre></td></tr></table></figure>
+<p>添加如下内容后并保存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">SHELL=/bin/bash</div><div class="line">HOME=/</div><div class="line">MAILTO=”user@vexxhost.com”</div><div class="line"># 每分钟打印一句话，并发送一封邮件到 `user@vexxhost.com`</div><div class="line">* * * * * echo &apos;test cron job to execute every minute&apos;</div><div class="line"></div><div class="line"># 每天执行两次（11点，16点执行）</div><div class="line">00 11,16 * * * /home/ramesh/bin/incremental-backup</div><div class="line"></div><div class="line"># 每10分钟执行一次</div><div class="line">*/10 * * * * /home/ramesh/check-disk-space</div><div class="line"></div><div class="line"># 每天执行定时任务（@daily）</div><div class="line">@daily /home/ramesh/arch-linux/bin/cleanup-logs &quot;day started&quot;</div><div class="line"></div><div class="line"># 每天 6 点重启 ss 服务</div><div class="line"># 创建restart-ss.sh文件</div><div class="line"># 赋予执行权限：chmod +x restart-ss.sh</div><div class="line"># 文件内容为：/usr/local/bin/ssserver -c /etc/shadowsocks.json -d restart</div><div class="line">0 6 * * * /root/restart-ss.sh &gt;&gt; /root/cron.log</div><div class="line"></div><div class="line"># 每月执行定时任务（@mothly）</div><div class="line">@monthly /home/ramesh/suse/bin/tape-backup</div><div class="line"></div><div class="line"># 每一年的第一分钟执行定时任务（@yearly）</div><div class="line">@yearly /home/ramesh/red-hat/bin/annual-maintenance</div><div class="line"></div><div class="line"># 每次重启时执行定时任务（@reboot）</div><div class="line">@reboot CMD</div></pre></td></tr></table></figure>
+<p>保存后输出如下内容表明任务添加成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab: installing new crontab</div></pre></td></tr></table></figure>
+<p><strong>需要注意的是，crontab 中执行的脚步中，程序的路径需要写绝对路径！</strong>。例如 <code>tcpdump</code> 需要写成 <code>/usr/bin/tcpdump</code></p>
+<p>默认情况下，crontab 将向布置定时任务的管理员发送邮件，如果想重定向此用户，添加并更新 MAIL。如果不想任何人接收，则直接将 MAIL 置空</p>
+<p>/etc/cron.day<br>/etc/cron.month</p>
+<h2 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/systemd/system/letsencrypt.service</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=Let&apos;s Encrypt renewal</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=oneshot  </div><div class="line">ExecStart=/usr/bin/letsencrypt renew  </div><div class="line">ExecStartPost=/bin/systemctl reload nginx.service</div></pre></td></tr></table></figure>
+<p>然后增加一个 systemd timer 来触发这个服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo vim /etc/systemd/system/letsencrypt.timer</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=Monthly renewal of Let&apos;s Encrypt&apos;s certificates</div><div class="line"></div><div class="line">[Timer]</div><div class="line">OnCalendar=daily  </div><div class="line">Persistent=true</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=timers.target</div></pre></td></tr></table></figure>
+<p>启用服务，开启 timer：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable letsencrypt.service</div><div class="line">sudo systemctl start letsencrypt.timer</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/29/daemon.html" itemprop="url">
                   daemon
                 </a>
@@ -1042,561 +1585,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/22/incron.html" itemprop="url">
-                  incron
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-22T16:01:04+08:00" content="2016-07-22">
-              2016-07-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/22/incron.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/22/incron.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install incron vim</div></pre></td></tr></table></figure>
-<p>查看命令文档</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man 5 incrontab</div></pre></td></tr></table></figure>
-<p>加入用户名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo echo &apos;pi&apos; &gt; /etc/incron.allow</div></pre></td></tr></table></figure>
-<p>添加任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div></pre></td></tr></table></figure>
-<p>格式：<code>path&gt; &lt;mask&gt; &lt;command&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/pi/blog/source/_posts/ IN_MODIFY,IN_DELETE /home/pi/auto.sh</div></pre></td></tr></table></figure>
-<p><strong>注意</strong>：只能有一个空格，否则会报错：</p>
-<blockquote>
-<p>incrond[12119]: cannot exec process: No such file or directory</p>
-</blockquote>
-<p>查看任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -l</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi auto.sh</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line">export PATH=/home/pi/.nvm/versions/node/v4.4.7/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games</div><div class="line"></div><div class="line">cd /home/pi/blog</div><div class="line">hexo g &gt;/home/pi/incron.log</div><div class="line">hexo d &gt;&gt;/home/pi/incron.log</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x auto.sh</div></pre></td></tr></table></figure>
-<h2 id="查看系统日志"><a href="#查看系统日志" class="headerlink" title="查看系统日志"></a>查看系统日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail /var/log/syslog</div></pre></td></tr></table></figure>
-<h2 id="移除任务"><a href="#移除任务" class="headerlink" title="移除任务"></a>移除任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -r</div></pre></td></tr></table></figure>
-<h2 id="常用任务"><a href="#常用任务" class="headerlink" title="常用任务"></a>常用任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/apache2/apache2.conf IN_MODIFY /usr/sbin/service apache2 restart</div><div class="line">/etc/apache2/vhosts/ IN_MODIFY /usr/sbin/service apache2 restart</div></pre></td></tr></table></figure>
-<h2 id="问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？"><a href="#问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？" class="headerlink" title="问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？"></a>问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/21/hexo-auto.html" itemprop="url">
-                  hexo 自动化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T15:59:24+08:00" content="2016-07-21">
-              2016-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/21/hexo-auto.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/hexo-auto.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="自动-generate"><a href="#自动-generate" class="headerlink" title="自动 generate"></a>自动 generate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">apt-get install incron</div><div class="line"></div><div class="line"># 查看命令文档</div><div class="line">man 5 incrontab</div><div class="line"></div><div class="line"># 使用</div><div class="line">incrontab -e</div></pre></td></tr></table></figure>
-<p>添加如下内容作为任务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/hexo/blog/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE  /root/runhexo.bash</div></pre></td></tr></table></figure>
-<p>runhexo.bash</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line"> exec 200&lt;$0</div><div class="line"> flock -n 200 || exit 1</div><div class="line"> sleep 10</div><div class="line"> cd /home/hexo/blog &amp;&amp; hexo generate</div></pre></td></tr></table></figure>
-<p>默认情况下不考虑删除文章（因为可以修改掉），如果确实需要修改文章，可以将命令改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /home/hexo/blog &amp;&amp; hexo clean &amp;&amp; hexo generate</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/git.html" itemprop="url">
-                  git
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T12:23:16+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/develop/" itemprop="url" rel="index">
-                    <span itemprop="name">develop</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/20/git.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/git.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>推荐使用 https 协议！<br>推荐使用 https 协议！<br>推荐使用 https 协议！</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div><div class="line">git config --global user.name &quot;your.name&quot;</div><div class="line">git config --global user.email &quot;your_email@gamil.com&quot;</div></pre></td></tr></table></figure>
-<p>这些配置信息将会添加进 <code>~/.gitconfig</code> 文件中</p>
-<p>我们将推荐使用 HTTPS 方法（另一个是 SSH），将你的代码推送到 Github 上的仓库。</p>
-<p>如果你不想每次都输入用户名和密码的话，可以运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># osx</div><div class="line">git config --global credential.helper osxkeychain</div><div class="line"># windows 下让 Git 记住用户名密码(https) 仓库地址选用 https 协议</div><div class="line">git config --global credential.helper wincred</div></pre></td></tr></table></figure>
-<h2 id="create-a-new-repository-on-the-command-line"><a href="#create-a-new-repository-on-the-command-line" class="headerlink" title="create a new repository on the command line"></a>create a new repository on the command line</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">echo &quot;# test&quot; &gt;&gt; README.md</div><div class="line">git init</div><div class="line">git add README.md</div><div class="line">git commit -m &quot;first commit&quot;</div><div class="line">git remote add origin https://github.com/haobingwang/test.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
-<h2 id="push-an-existing-repository-from-the-command-line"><a href="#push-an-existing-repository-from-the-command-line" class="headerlink" title="push an existing repository from the command line"></a>push an existing repository from the command line</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/haobingwang/test.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
-<h2 id="git-使用建议"><a href="#git-使用建议" class="headerlink" title="git 使用建议"></a>git 使用建议</h2><ul>
-<li>多建分支</li>
-<li>多提交</li>
-<li>少推送</li>
-</ul>
-<h2 id="https协议-和-git协议"><a href="#https协议-和-git协议" class="headerlink" title="https协议 和 git协议"></a>https协议 和 git协议</h2><p>以 gitlab 为例：在服务器上进行 <code>git fetch</code> 等操作时。</p>
-<ul>
-<li>以 <code>https</code> 协议的仓库 url 作为远程仓库时会要求手动输入用户名和密码(只需输入一次)。</li>
-<li>而 <code>git</code>   协议的仓库 url 作为远程仓库却不需要输入用户名和密码，只要添加了 <code>ssh</code>公钥。</li>
-</ul>
-<h2 id="搭建-git-服务器"><a href="#搭建-git-服务器" class="headerlink" title="搭建 git 服务器"></a>搭建 git 服务器</h2><ul>
-<li>搭建 <code>gitlab</code>社区版</li>
-</ul>
-<h2 id="git-配置-ssh-（不推荐使用，这里记录只是作为备用方案）"><a href="#git-配置-ssh-（不推荐使用，这里记录只是作为备用方案）" class="headerlink" title="git 配置 ssh （不推荐使用，这里记录只是作为备用方案）"></a>git 配置 ssh （不推荐使用，这里记录只是作为备用方案）</h2><h2 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 学习git的时候, 大家刚开始使用之前都配置了一个全局的用户名和邮箱</div><div class="line">git config --global user.name &quot;github&apos;s Name&quot;</div><div class="line">git config --global user.email &quot;github@xx.com&quot;</div><div class="line">git config --list</div><div class="line"></div><div class="line"># 如果你公司的项目是放在自建的gitlab上面, 如果你不进行配置用户名和邮箱的话, 则会使用全局的, 这个时候是错误的, 正确的做法是针对公司的项目, 在项目根目录下进行单独配置</div><div class="line"># 这里的配置是写到 .git/config 文件中的 user 块中</div><div class="line">git config user.name &quot;gitlab&apos;s Name&quot;</div><div class="line">git config user.email &quot;gitlab@xx.com&quot;</div><div class="line">git config --list</div></pre></td></tr></table></figure>
-<h2 id="配置-ssh"><a href="#配置-ssh" class="headerlink" title="配置 ssh"></a>配置 ssh</h2><p>生成 ssh 密钥：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;email@email.com&quot;</div></pre></td></tr></table></figure>
-<p>将公钥 id_rsa.pub 的内容添加到 coding,github,gitlab，然后测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Hi bill! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</div><div class="line"></div><div class="line">$ ssh -T git@gitlab.com</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Welcome to GitLab, bill!</div><div class="line"></div><div class="line">$ ssh -T git@git.coding.net</div><div class="line">Enter passphrase for key &apos;/c/Users/bill/.ssh/id_rsa&apos;:</div><div class="line">Hello bill! You&apos;ve connected to Coding.net via SSH successfully!</div></pre></td></tr></table></figure>
-<p>Adding your SSH key to the ssh-agent(配置不用每次输入密钥的密码)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># git-shell</div><div class="line">$ eval $(ssh-agent -s)</div><div class="line">Agent pid 7108</div><div class="line"></div><div class="line">$ ssh-add id_rsa</div><div class="line">Enter passphrase for id_rsa:</div><div class="line">Identity added: id_rsa (id_rsa)</div></pre></td></tr></table></figure>
-<p>然后就可以对 git 开头的仓库地址进行 clone push 等操作了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/18/raspberry.html" itemprop="url">
-                  raspberry
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-18T11:58:22+08:00" content="2016-07-18">
-              2016-07-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/18/raspberry.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/18/raspberry.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="SSH-问题-疑似为劣质网卡问题"><a href="#SSH-问题-疑似为劣质网卡问题" class="headerlink" title="SSH 问题(疑似为劣质网卡问题)"></a>SSH 问题(疑似为劣质网卡问题)</h2><p>树莓派使用的无线网卡</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 问题1：无法连接服务器</div><div class="line">pi@raspberrypi ~ $ packet_write_poll: Connection to 192.168.1.158: Host is down</div><div class="line"># 问题2：服务器连接上中断</div><div class="line">pi@raspberrypi ~ $ packet_write_wait: Connection to 192.168.1.158: Broken pipe</div></pre></td></tr></table></figure>
-<h3 id="For-the-client"><a href="#For-the-client" class="headerlink" title="For the client"></a>For the client</h3><p>Edit your <code>~/.ssh/config</code> (or <code>/etc/ssh/ssh_config</code>) file as follow:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Host *</div><div class="line">ServerAliveInterval 120</div></pre></td></tr></table></figure>
-<p>用户连接SSH时，每 120 秒会发一个KeepAlive请求。</p>
-<h3 id="客户端调试："><a href="#客户端调试：" class="headerlink" title="客户端调试："></a>客户端调试：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -vvv pi1</div></pre></td></tr></table></figure>
-<h3 id="服务端调试："><a href="#服务端调试：" class="headerlink" title="服务端调试："></a>服务端调试：</h3><p>在服务器上执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/sbin/sshd -d -p 2222</div></pre></td></tr></table></figure>
-<p>再在客户端上执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -vvv pi1</div></pre></td></tr></table></figure>
-<p>此时两边都有日志输出</p>
-<h2 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h2><p>备份已有的配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /etc/apt/ &amp;&amp; sudo cp sources.list sources.list.bak</div></pre></td></tr></table></figure>
-<p>查看当前系统版本<code>lsb_release -a</code></p>
-<p><code>sources.list</code>内容替换为<a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">配置生成器</a>生成的配置</p>
-<p>移除部分体积大且不使用的软件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get purge wolfram-engine</div></pre></td></tr></table></figure></p>
-<p>执行更新软件源列表和软件包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
-<h2 id="始化设置"><a href="#始化设置" class="headerlink" title="始化设置"></a>始化设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/18/raspberry.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1642,7 +1630,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-count">188</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1659,7 +1647,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">260</span>
+                <span class="site-state-item-count">269</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
