@@ -258,6 +258,454 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/21/visual-studio.html" itemprop="url">
+                  visual-studio
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-21T16:19:22+08:00" content="2017-04-21">
+              2017-04-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/21/visual-studio.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/21/visual-studio.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Nuget"><a href="#Nuget" class="headerlink" title="Nuget"></a><a href="http://www.nuget.org/" target="_blank" rel="external">Nuget</a></h2><p><a href="https://dist.nuget.org/index.html" target="_blank" rel="external">下载安装</a></p>
+<p>从VS2010的主菜单-&gt;工具-&gt;扩展管理器，打开如下界面，点击左侧的“联机库”-&gt;右上角搜索框输入 NuGet-&gt; 往下拉，选中 NuGet Package Manager</p>
+<p>安装完后 NuGet 暂时不能用，需要重新启动下VS才行</p>
+<p><img src="http://omhwo9lj5.bkt.clouddn.com/image/Nuget%E8%AE%BE%E7%BD%AE%E6%BA%90.png" alt=""></p>
+<p>通过 NuGet 安装的包,都会保存到项目的 packages 下:</p>
+<p>packages\Newtonsoft.Json.9.0.1\lib 下有多个 .NET 版本的 dll</p>
+<ul>
+<li>net20</li>
+<li>net35</li>
+<li>net40</li>
+<li>net45</li>
+</ul>
+<p>如果需要,可以手动更改</p>
+<h2 id="Vs2013以管理员身份运行"><a href="#Vs2013以管理员身份运行" class="headerlink" title="Vs2013以管理员身份运行"></a>Vs2013以管理员身份运行</h2><p>VS快捷方式目录下的devenv.exe 右键-&gt;兼容性疑难解答-&gt;疑难解答程序-&gt;勾选该程序需要附加权限即可</p>
+<p>以后每次打开VS时都会以管理员身份运行了！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/20/net-core.html" itemprop="url">
+                  net-core
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-20T12:14:27+08:00" content="2017-04-20">
+              2017-04-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/20/net-core.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/net-core.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><a href="https://github.com/dotnet/core" target="_blank" rel="external">https://github.com/dotnet/core</a> 进入 dotnet/cli  下载安装包并安装</li>
+<li><a href="https://code.visualstudio.com/" target="_blank" rel="external">https://code.visualstudio.com/</a> 下载安装，安装时，勾选全部选项。打开，安装 C# 扩展</li>
+</ul>
+<p>vs code 的 C# 扩展是连接 dot core 和 vs code 的纽带</p>
+<p>在 cmd 执行 dotnet –version</p>
+<ol>
+<li>创建一个 console 应用：dotnet new console</li>
+<li>安装相应的包：dotnet restore</li>
+<li>编译项目：dotnet build</li>
+<li>运行项目：dotnet run</li>
+<li>用 vs code 打开项目：code .</li>
+</ol>
+<p>之后 vs code 会安装相应的 C# 依赖：</p>
+<p>Updating C# dependencies…<br>Platform: win32, x86_64 (win7-x64)</p>
+<p>Downloading package ‘OmniSharp (.NET 4.6 / x64)’ (19343 KB) ……………….. Done!<br>Downloading package ‘.NET Core Debugger (Windows / x64)’ (39827 KB) ……………….. Done!</p>
+<p>Installing package ‘OmniSharp (.NET 4.6 / x64)’<br>Installing package ‘.NET Core Debugger (Windows / x64)’</p>
+<p>Finished</p>
+<p>安装完成后，注意 vs code 会提示需要加载最新配置片段，点同意，然后进入 debug ，点击 运行。<br>然后程序就会运行，输出 Hello，world</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/18/webhooks.html" itemprop="url">
+                  webhooks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-18T12:04:36+08:00" content="2017-04-18">
+              2017-04-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/18/webhooks.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/18/webhooks.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Webhooks 的作用就是在特定的事件执行的时候触发自定义的动作。</p>
+<h2 id="自动部署脚本"><a href="#自动部署脚本" class="headerlink" title="自动部署脚本"></a>自动部署脚本</h2><p>本质上，Github的Webhooks触发后，会给相应的URL(自行设置，后面会讲解)发送POST请求，请求头中含有event等相应的信息。</p>
+<p>而正确响应后的事件，比如push完之后，触发自动部署脚本，现在我们来写一个简单的脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">PROJECT_DIR = &apos;path-to-your-project&apos;</div><div class="line"></div><div class="line">echo &apos;start&apos;</div><div class="line">cd $PROJECT_DIR</div><div class="line"></div><div class="line">echo &apos;pull code&apos;</div><div class="line">git reset --hard origin/master &amp;&amp; git clean -f</div><div class="line">git pull &amp;&amp; git checkout master</div><div class="line"></div><div class="line">echo &apos;run npm script&apos;</div><div class="line">npm run build</div><div class="line"></div><div class="line">echo &apos;finished&apos;</div></pre></td></tr></table></figure>
+<p>脚本大概的作用就是cd到项目目录，拉取最新的代码，build代码(该步骤不一定需要，如果你的代码直接可以上测试/生产环境)。你必须保证，脚本中涉及的环境变量是可用的，比如git，npm等等。</p>
+<p>我们把这个脚本命名为deploy.sh，暂时放在一边，等需要的时候再用。</p>
+<h2 id="设置Webhooks"><a href="#设置Webhooks" class="headerlink" title="设置Webhooks"></a>设置Webhooks</h2><p>Github或者Gitlab,在你的项目中，通过 Settings -&gt; Webhooks -&gt; Add webhook 进入 webhook 设置页面。我们以下都以 push 事件为例。</p>
+<p><img src="https://static.excaliburhan.com/blog/20170122/Yqhvg8aNP-edKP-2WLADJWRz.jpeg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/18/qiniu.html" itemprop="url">
+                  qiniu
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-18T11:12:58+08:00" content="2017-04-18">
+              2017-04-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/18/qiniu.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/18/qiniu.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="七牛-https-域名"><a href="#七牛-https-域名" class="headerlink" title="七牛 https 域名"></a>七牛 https 域名</h2><ul>
+<li>qbox.me 的域名已经下线了，不支持申请qbox域名了</li>
+<li>qnssl.com  的域名已经下线了，不支持申请qnssl域名了</li>
+</ul>
+<p>建议您申请自定义域名部署https</p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>不支持重命名</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/13/企业系统.html" itemprop="url">
                   管理软件
                 </a>
@@ -865,420 +1313,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/08/最佳实践.html" itemprop="url">
-                  最佳实践
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-08T11:08:43+08:00" content="2017-04-08">
-              2017-04-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/08/最佳实践.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/08/最佳实践.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>达到一个目的有千百种，赏心悦目的总是那几种。</p>
-<p>通常会选用最 “优雅” 方式，也成为最佳实践。</p>
-<p>这会同艺术关联起来。 </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/07/html-data-toggle.html" itemprop="url">
-                  html-data-toggle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-07T18:03:45+08:00" content="2017-04-07">
-              2017-04-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/07/html-data-toggle.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/07/html-data-toggle.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>data-toggle 是 Bootstrap 的一个自定义属性。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"login.html"</span> <span class="attr">data-toggle</span>=<span class="string">"modal"</span> <span class="attr">data-target</span>=<span class="string">"#signin-signup-tab"</span> <span class="attr">id</span>=<span class="string">"signin-button"</span> <span class="attr">class</span>=<span class="string">"pull-right"</span>&gt;</span>Sign In<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>data-toggle 指以什么事件触发，常用的如 modal,popover,tooltips等，data-target 指事件的目标,你这段代码的意思就是指将 #signin-signup-tab 这个 Dom 元素的内容以模态框的形式展示。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/06/bootstrap.html" itemprop="url">
-                  bootstrap
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-06T16:17:30+08:00" content="2017-04-06">
-              2017-04-06
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/06/bootstrap.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/06/bootstrap.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="定制使用-bootstrap-的方式"><a href="#定制使用-bootstrap-的方式" class="headerlink" title="定制使用 bootstrap 的方式"></a>定制使用 bootstrap 的方式</h2><h3 id="css-覆盖"><a href="#css-覆盖" class="headerlink" title="css 覆盖"></a>css 覆盖</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- bootstrap --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"/css/bootstrap/bootstrap.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"/css/bootstrap/bootstrap-overrides.css"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="从-less-或-sass-源码定制"><a href="#从-less-或-sass-源码定制" class="headerlink" title="从 less 或 sass 源码定制"></a>从 less 或 sass 源码定制</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/03/mariadb.html" itemprop="url">
-                  mariadb
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-03T13:54:30+08:00" content="2017-04-03">
-              2017-04-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/03/mariadb.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/03/mariadb.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Step-1-Download-Install-MariaDB"><a href="#Step-1-Download-Install-MariaDB" class="headerlink" title="Step 1: Download/Install MariaDB"></a>Step 1: Download/Install MariaDB</h2><h3 id="Install-from-repository"><a href="#Install-from-repository" class="headerlink" title="Install from repository"></a>Install from repository</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update -y</div><div class="line">sudo apt-get install mariadb-server</div></pre></td></tr></table></figure>
-<h3 id="Manual-install-from-MariaDB-mirror-latest-version"><a href="#Manual-install-from-MariaDB-mirror-latest-version" class="headerlink" title="Manual install from MariaDB mirror (latest version)"></a>Manual install from MariaDB mirror (latest version)</h3><p>略过</p>
-<h2 id="Step-2-Verify-that-MariaDB-is-operational"><a href="#Step-2-Verify-that-MariaDB-is-operational" class="headerlink" title="Step 2: Verify that MariaDB is operational"></a>Step 2: Verify that MariaDB is operational</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1319,7 +1358,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">188</span>
+              <span class="site-state-item-count">192</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1336,7 +1375,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">274</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

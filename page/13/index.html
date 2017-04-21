@@ -258,6 +258,562 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/04/seo.html" itemprop="url">
+                  seo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-04T10:26:19+08:00" content="2016-08-04">
+              2016-08-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/04/seo.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/04/seo.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="确认网站是否被收录"><a href="#确认网站是否被收录" class="headerlink" title="确认网站是否被收录"></a>确认网站是否被收录</h2><p><code>site:example.com</code></p>
+<h2 id="链接提交"><a href="#链接提交" class="headerlink" title="链接提交"></a>链接提交</h2><p><code>主动推送（实时）</code> &gt; <code>自动推送</code> &gt; <code>sitemap</code></p>
+<ul>
+<li>主动推送，最为快速的提交方式，推荐您将站点当天新产出链接立即通过此方式推送给百度，以保证新链接可以及时被百度收录。</li>
+<li>自动推送，最为便捷的提交方式，请将自动推送的JS代码部署在站点的每一个页面源代码中，部署代码的页面在每次被浏览时，链接会被自动推送给百度。可以与主动推送配合使用。</li>
+<li>sitemap，您可以定期将网站链接放到sitemap中，然后将sitemap提交给百度。百度会周期性的抓取检查您提交的sitemap，对其中的链接进行处理，但收录速度慢于主动推送。</li>
+</ul>
+<p>主动推送和自动推送代码配合使用，二者互不影响。强烈建议并让三者协同工作，将抓取和收录价值最大化。</p>
+<h3 id="主动推送（实时）"><a href="#主动推送（实时）" class="headerlink" title="主动推送（实时）"></a>主动推送（实时）</h3><p>主动推送有数量限制，建议只推送新 url，已提交过的 url 不要推送。</p>
+<p>Q：在什么时机使用主动推送提交功能效果最明显？<br>A：页面链接产生或发布时立即提交，这样效果是最好的</p>
+<p>Q：重复提交已经发布的链接会有什么问题？<br>A：如果您经常重复提交旧链接，我们会下调您的配额，您可能会失去主动推送功能的权限。主动推送配额 <code>{&quot;remain&quot;:1,&quot;success&quot;:1}</code> ，百度不再限制主动推送 url 的数量，<code>remain</code> 字段保留，并且总是返回1。需要注意的是，不能因为百度不限制主动推送 url 的数据就随意推送。新版主动推送功能会对站长提交的内容进行识别，恶意提交垃圾页面或者重复页面的站点将会被惩罚限制提交，直至关闭提交权限。</p>
+<p>Q：主动推送可以推多少条链接？<br>A：主动推送可提交的链接数量上限是根据您提交的新产生有价值链接数量而决定的，百度会根据您提交数量的情况不定期对上限额进行调整，提交的新产生有价值链接数量越多，可提交链接的上限越高。</p>
+<h3 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h3><p>安装 js 脚本即可，用户访问页面时就会自动推送到百度了。</p>
+<p>实际使用中有遇到过 <code>net::ERR_BLOCKED_BY_CLIENT</code>，原因是 AdBlock 阻止了js脚本，将域名加入入 AdBlock 的白名单即可。</p>
+<h2 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h2><p>Q：Sitemap提交后，多久能被百度处理？<br>A：Sitemap数据提交后，一般在1小时内百度会开始处理。在以后的调度抓取中，如果您的sitemap支持etag，我们会更频繁抓取sitemap文件，从而及时发现内容更新；否则抓取的周期会比较长。</p>
+<p>Q：提交的Sitemap都会被百度抓取并收录吗？<br>A：百度对已提交的数据，不保证一定会抓取及收录所有网址。是否收录与页面质量相关。</p>
+<p>Q：Sitemap中提交的url能否包含中文？<br>A：因为转码问题建议最好不要包含中文。</p>
+<h2 id="删除死链"><a href="#删除死链" class="headerlink" title="删除死链"></a>删除死链</h2><ol>
+<li>在网站根目录中添加 <code>silian.txt</code> ，然后到 “死链提交” 提交 <code>http://example.com/silian.txt</code></li>
+<li>调整 <code>nginx</code> 配置，确保死链状态为 404</li>
+<li>在百度投诉平台提交快照删除</li>
+</ol>
+<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><ul>
+<li>a, <a rel="nofollow" href="#">其他网站</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/03/env.html" itemprop="url">
+                  环境变量
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T10:59:40+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/03/env.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/env.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="新增、修改环境变量"><a href="#新增、修改环境变量" class="headerlink" title="新增、修改环境变量"></a>新增、修改环境变量</h2><p>如果是新增环境变量、修改环境变量或删除环境变量的值，都需要 <code>source</code> 一下才能立即生效。</p>
+<p><code>.</code> 同 <code>source</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">. ~/.zshrc</div><div class="line"># 或者</div><div class="line">source ~/.zshrc</div></pre></td></tr></table></figure>
+<h2 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 查看所有环境变量</div><div class="line">env</div><div class="line"># 查看某个环境变量</div><div class="line">echo $NVM_NODEJS_ORG_MIRROR</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/03/iTerm2.html" itemprop="url">
+                  iTerm2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T09:59:41+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/03/iTerm2.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/iTerm2.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="manpath-can’t-set-the-locale-make-sure-LC-and-LANG-are-correct"><a href="#manpath-can’t-set-the-locale-make-sure-LC-and-LANG-are-correct" class="headerlink" title="manpath: can’t set the locale; make sure $LC_* and $LANG are correct"></a>manpath: can’t set the locale; make sure $LC_* and $LANG are correct</h2><p>Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-32-generic x86_64)</p>
+<ul>
+<li>Documentation:  <a href="https://help.ubuntu.com/" target="_blank" rel="external">https://help.ubuntu.com/</a></li>
+</ul>
+<p>Welcome to aliyun Elastic Compute Service!</p>
+<p>Last login: Tue Jul  5 09:47:04 2016 from 101.81.225.194<br>manpath: can’t set the locale; make sure $LC_* and $LANG are correct</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">➜  ~ locale</div><div class="line">locale: Cannot set LC_CTYPE to default locale: No such file or directory</div><div class="line">locale: Cannot set LC_ALL to default locale: No such file or directory</div><div class="line">LANG=en_US.UTF-8</div><div class="line">LANGUAGE=en_US:en</div><div class="line">LC_CTYPE=UTF-8</div><div class="line">LC_NUMERIC=&quot;en_US.UTF-8&quot;</div><div class="line">LC_TIME=&quot;en_US.UTF-8&quot;</div><div class="line">LC_COLLATE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MONETARY=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MESSAGES=&quot;en_US.UTF-8&quot;</div><div class="line">LC_PAPER=&quot;en_US.UTF-8&quot;</div><div class="line">LC_NAME=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ADDRESS=&quot;en_US.UTF-8&quot;</div><div class="line">LC_TELEPHONE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MEASUREMENT=&quot;en_US.UTF-8&quot;</div><div class="line">LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ALL=</div></pre></td></tr></table></figure>
+<ul>
+<li>错误在于 <code>LC_CTYPE=UTF-8</code>，正确的应该是 <code>LC_CTYPE=en_US.UTF-8</code></li>
+<li><code>LC_ALL=</code> 是躺枪的</li>
+</ul>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Your local ssh client is sending your LC<em>* environment variables to remote sshd server. In other words, SSH will try to set every LC</em>* variable you have set on your local OSX system on the remove server too.</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="方法一：Preventing-OpenSSH-Client-from-sending-the-LC-variables-on-OS-X-Linux-Unix-desktop（推荐）"><a href="#方法一：Preventing-OpenSSH-Client-from-sending-the-LC-variables-on-OS-X-Linux-Unix-desktop（推荐）" class="headerlink" title="方法一：Preventing OpenSSH Client from sending the LC_* variables on OS X / Linux / Unix desktop（推荐）"></a>方法一：Preventing OpenSSH Client from sending the LC_* variables on OS X / Linux / Unix desktop（推荐）</h3><p>Edit <code>/etc/ssh/ssh_config</code> or <code>/etc/ssh_config</code> file, enter:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/ssh/ssh_config</div></pre></td></tr></table></figure>
+<p>将 <code>SendEnv LANG LC_*</code> 注释掉保存后，重新登录服务器就不会报错了。</p>
+<h2 id="方法二：If-you-are-using-the-Terminal-app-on-OS-X"><a href="#方法二：If-you-are-using-the-Terminal-app-on-OS-X" class="headerlink" title="方法二：If you are using the Terminal app on OS X"></a>方法二：If you are using the Terminal app on OS X</h2><p>iTerm2 默认启用了“Set locale environment variables on startup”<br>取消勾选可以解决服务器上的问题，但是本地就会有中文显示的问题。可以每次手动修改 iTerm2 的配置。</p>
+<h2 id="方法三：-Install-required-locale-on-the-remote-server"><a href="#方法三：-Install-required-locale-on-the-remote-server" class="headerlink" title="方法三： Install required locale on the remote server"></a>方法三： Install required locale on the remote server</h2><p>Finally, you can fix this problem either installing the desired locale using the localedef command, or consider choosing a different locale in locale/remote system:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localedef -i en_US -f UTF-8 en_US.UTF-8</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/02/git-rebase.html" itemprop="url">
+                  git-rebase
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-02T12:11:22+08:00" content="2016-08-02">
+              2016-08-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/02/git-rebase.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/02/git-rebase.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。"><a href="#注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。" class="headerlink" title="注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。"></a><em>注意</em>：一旦分支的快照发布到origin，就千万不要对该分支进行<code>rebase</code>操作。</h3><p>开发完成后，会有一堆 <code>commit</code>，我们希望合并到主干的时候，只显示一个（或最多两三个）<code>commit</code>，这样不仅清晰，也容易管理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase [主分支] [特性分支]</div></pre></td></tr></table></figure>
+<ol>
+<li>首先用git fetch返回服务器上的代码</li>
+<li>首先用git rebase origin/master 合并</li>
+<li>如果发生冲突了会提示，然后可以使用git diff查看冲突，在手工改掉冲突，在用 git add 添加修改后文件，最后用 git rebase –continue 继续没完成的合并</li>
+<li>最后就可以用git push 更新到服务器上去</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git fetch origin</div><div class="line">git rebase -i origin/master</div></pre></td></tr></table></figure>
+<p>跳入互动界面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">pick ddf212f 添加 git-branch</div><div class="line">pick eb9fcaf 添加内容</div><div class="line">pick 08f56ff 追加内容</div><div class="line">pick 6c5c859 第三次追加内容</div><div class="line"></div><div class="line"># Rebase 5ac13f3..08f56ff onto 5ac13f3 (3 command(s))</div><div class="line">#</div><div class="line"># Commands:</div><div class="line"># p, pick = use commit</div><div class="line"># r, reword = use commit, but edit the commit message</div><div class="line"># e, edit = use commit, but stop for amending</div><div class="line"># s, squash = use commit, but meld into previous commit</div><div class="line"># f, fixup = like &quot;squash&quot;, but discard this commit&apos;s log message</div><div class="line"># x, exec = run command (the rest of the line) using shell</div><div class="line"># d, drop = remove commit</div><div class="line">#</div><div class="line"># These lines can be re-ordered; they are executed from top to bottom.</div><div class="line">#</div><div class="line"># If you remove a line here THAT COMMIT WILL BE LOST.</div><div class="line">#</div><div class="line"># However, if you remove everything, the rebase will be aborted.</div><div class="line">#</div><div class="line"># Note that empty commits are commented out</div><div class="line">~</div></pre></td></tr></table></figure>
+<p>显示的是 <em>尚未提交</em> 到<code>远程主干分支</code>的本地 <code>commit</code>，顺序排列出本地提交记录。</p>
+<p>每个 <code>commit</code> 前面都有一个 <code>操作命令</code>，默认是 <code>pick</code>，表示该 <code>commit</code> 被选中，要进行 <code>rebase</code> 操作。</p>
+<p>如果要撤销<code>rebase</code>，只需要：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase --abort</div></pre></td></tr></table></figure>
+<p>完成后推送到远端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure>
+<h2 id="git-rebase-和-git-merge-的区别"><a href="#git-rebase-和-git-merge-的区别" class="headerlink" title="git rebase 和 git merge 的区别"></a>git rebase 和 git merge 的区别</h2><p><img src="/images/rebase-merge.png" alt=""></p>
+<p>假设:</p>
+<ul>
+<li>C3提交于9:00AM;</li>
+<li>C5提交于10:00AM;</li>
+<li>C4提交于11:00AM;</li>
+<li>C6提交于12:00AM;</li>
+</ul>
+<p>无论是 rebase 还是 merge 后的commit 都按 <em>时间排序</em>。</p>
+<p>对于使用 git rebase 来合并所看到的commit的顺序是：C7 ,C6‘,C5’,C4,C3,C2,C1，因为C6’提交只是C6提交的克隆，C5’提交只是C5提交的克隆，所以 C5’ 生成时间在 C6 之后，C6’ 也在 C5’ 之后。</p>
+<p>对于使用 git merge 来合并所看到的commit的顺序是：C7 ,C6,C4,C5,C3,C2,C1。</p>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><ul>
+<li>直进式合并（fast forward），不会生成单独的合并节点 <code>git merge hotfix-0.1.1</code></li>
+<li>非直进式合并（none fast-forword），会生成单独节点 <code>git merge --no-ff hotfix-0.1.1</code></li>
+</ul>
+<p>前者不利于保持commit信息的清晰，也不利于以后的回滚，建议总是采用后者（即使用–no-ff参数）。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/01/chart-js.html" itemprop="url">
                   chart.js
                 </a>
@@ -1091,505 +1647,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/27/meteor-bootstrap.html" itemprop="url">
-                  meteor-bootstrap
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-27T16:06:08+08:00" content="2016-07-27">
-              2016-07-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/27/meteor-bootstrap.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/27/meteor-bootstrap.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor add twbs:bootstrap</div></pre></td></tr></table></figure>
-<p>页面刷新后样式随即生效，你不需要其他的事情。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/26/meteor-accounts.html" itemprop="url">
-                  meteor-accounts
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-26T16:05:06+08:00" content="2016-07-26">
-              2016-07-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/26/meteor-accounts.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/meteor-accounts.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Chrome-console-中运行"><a href="#Chrome-console-中运行" class="headerlink" title="Chrome console 中运行"></a>Chrome console 中运行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 查看已经注册过的用户</div><div class="line">Meteor.users.find().fetch()</div><div class="line"># 或者</div><div class="line">Meteor.user()</div><div class="line"></div><div class="line"># 注销登录</div><div class="line">Meteor.logout()</div></pre></td></tr></table></figure>
-<h2 id="Getting-information-about-the-logged-in-user"><a href="#Getting-information-about-the-logged-in-user" class="headerlink" title="Getting information about the logged-in user"></a>Getting information about the logged-in user</h2><p>In your data container, you can use <code>Meteor.user()</code> to check if a user is logged in and get information about them. For example, <code>Meteor.user().username</code> contains the logged in user’s username. You can also use <code>Meteor.userId()</code> to just get the current user’s <code>_id</code>.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/25/redirect.html" itemprop="url">
-                  重定向
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-25T16:04:24+08:00" content="2016-07-25">
-              2016-07-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/25/redirect.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/redirect.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>0 输入（标准输入）</li>
-<li>1 输出（标准输出）</li>
-<li>2 错误（标准错误信息输出）</li>
-</ul>
-<p>将错误信息输出到 log 文件 <code>./program 2&gt;log</code>，这样，标准输出显示在屏幕，但是错误信息会输出到log 文件中。</p>
-<p>另外，也可以实现 0 1 2 之间的重定向，例如 <code>2&gt;&amp;1</code> ，就可以错误信息重定向到标准输出。</p>
-<p>Linux 下还有个特殊文件 <code>/dev/null</code> ，它像一个无底洞，所有重定向到它的信息都会消失得无影无踪。这一点非常有用，当我们不需要显示程序的输出时，就可以将输出和错误都重定向到 <code>/dev/null</code>，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls &gt;/dev/null 2&gt;/dev/null</div></pre></td></tr></table></figure>
-<p>还有一种做法是先将输出重定向到 <code>/dev/null</code>，再将错误重定向到输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
-<p><code>&gt;</code>  清空原内容，写入新内容<br><code>&gt;&gt;</code> 保留原内容，追加新内容</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/24/linux-link.html" itemprop="url">
-                  linux 下的链接
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-24T16:03:59+08:00" content="2016-07-24">
-              2016-07-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/24/linux-link.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/linux-link.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>为 <code>public</code> 创建一个 <code>blog</code> 链接</p>
-<p><code>ln -s public blog</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1630,7 +1692,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">188</span>
+              <span class="site-state-item-count">192</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1647,7 +1709,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">274</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
