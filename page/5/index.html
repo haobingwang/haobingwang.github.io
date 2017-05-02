@@ -258,6 +258,727 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/01/server-setup.html" itemprop="url">
+                  Linux服务器的初步配置流程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-01T17:53:43+08:00" content="2017-03-01">
+              2017-03-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/01/server-setup.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/01/server-setup.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>开发网站的时候，常常需要自己配置Linux服务器。<br>本文记录配置Linux服务器的初步流程，也就是系统安装完成后，下一步要做的事情。这主要是我自己的总结和备忘，如果有遗漏，欢迎大家补充。<br>下面的操作针对Debian/Ubuntu系统，其他Linux系统也类似，就是部分命令稍有不同。</p>
+<h2 id="第一步：root用户登录"><a href="#第一步：root用户登录" class="headerlink" title="第一步：root用户登录"></a>第一步：root用户登录</h2><p>首先，使用root用户登录远程主机（假定IP地址是128.199.209.242）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -p 22 root@128.199.209.242 # 显示指定端口为 22</div></pre></td></tr></table></figure>
+<p>这时，命令行会出现警告，表示这是一个新的地址，存在安全风险。键入yes，表示接受。然后，就应该可以顺利登入远程主机。</p>
+<p>接着，修改root用户的密码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">passwd</div></pre></td></tr></table></figure>
+<h2 id="第二步：新建用户"><a href="#第二步：新建用户" class="headerlink" title="第二步：新建用户"></a>第二步：新建用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adduser bill</div></pre></td></tr></table></figure>
+<p>将新用户加入到 sudo 用户组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gpasswd -a bill sudo</div></pre></td></tr></table></figure>
+<p>然后，先退出root用户的登录，再用新用户的身份登录，检查到这一步为止，是否一切正常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">exit</div><div class="line">ssh -p 22 bill@128.199.209.242</div></pre></td></tr></table></figure>
+<h2 id="第三步：SSH设置"><a href="#第三步：SSH设置" class="headerlink" title="第三步：SSH设置"></a>第三步：SSH设置</h2><p>在本机上另开一个shell窗口，将本机的公钥拷贝到服务器的authorized_keys文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cat ~/.ssh/id_rsa.pub | ssh bill@128.199.209.242 &apos;mkdir -p .ssh &amp;&amp; cat - &gt;&gt; ~/.ssh/authorized_keys&apos;</div><div class="line"></div><div class="line"># 或者在服务器端，运行下面命令</div><div class="line"></div><div class="line">echo &quot;ssh-rsa [your public key]&quot; &gt; ~/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>然后，进入服务器，编辑SSH配置文件/etc/ssh/sshd_config。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo cp /etc/ssh/sshd_config ~ # 备份到自己目录下</div><div class="line">sudo vi /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>在配置文件中，将SSH的默认端口22改掉，可以改成从1025到65536之间的任意一个整数（这里假定为25000）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Port 25000</div></pre></td></tr></table></figure>
+<p>然后，检查几个设置是否设成下面这样，确保去除前面的#号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Protocol 2</div><div class="line"></div><div class="line">PermitRootLogin no</div><div class="line">PermitEmptyPasswords no</div><div class="line">PasswordAuthentication no</div><div class="line"></div><div class="line">RSAAuthentication yes</div><div class="line">PubkeyAuthentication yes</div><div class="line">AuthorizedKeysFile .ssh/authorized_keys</div><div class="line"></div><div class="line">UseDNS no</div></pre></td></tr></table></figure>
+<p>上面主要是禁止root用户登录，以及禁止用密码方式登录。</p>
+<p>接着，在配置文件的末尾，指定允许登陆的用户。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AllowUsers bill</div></pre></td></tr></table></figure>
+<p>保存后，退出文件编辑。</p>
+<p>接着，改变authorized_keys文件的权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod 600 ~/.ssh/authorized_keys &amp;&amp; chmod 700 ~/.ssh/</div></pre></td></tr></table></figure>
+<p>然后，重启SSHD。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo service ssh restart</div><div class="line"></div><div class="line"># 或者</div><div class="line"></div><div class="line">sudo /etc/init.d/ssh restart</div></pre></td></tr></table></figure>
+<p>下面的一步是可选的。在本机~/.ssh文件夹下创建config文件，内容如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Host s1</div><div class="line">HostName 128.199.209.242</div><div class="line">User bill</div><div class="line">Port 25000</div></pre></td></tr></table></figure>
+<p>最后，在本机另开一个shell窗口，测试SSH能否顺利登录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh s1</div></pre></td></tr></table></figure>
+<h2 id="第四步：运行环境配置"><a href="#第四步：运行环境配置" class="headerlink" title="第四步：运行环境配置"></a>第四步：运行环境配置</h2><p>首先，检查服务器的区域设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locale</div></pre></td></tr></table></figure>
+<p>如果结果不是en_US.UTF-8，建议都设成它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo locale-gen en_US en_US.UTF-8 en_CA.UTF-8</div><div class="line">sudo dpkg-reconfigure locales</div></pre></td></tr></table></figure>
+<p>然后，更新软件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+<p>最后，再根据需要，做一些安全设置，比如搭建防火墙，关闭HTTP、HTTPs、SSH以外的端口。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/01/网络爬虫.html" itemprop="url">
+                  网络爬虫
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-01T11:06:31+08:00" content="2017-03-01">
+              2017-03-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/01/网络爬虫.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/01/网络爬虫.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="网络爬虫"><a href="#网络爬虫" class="headerlink" title="网络爬虫"></a>网络爬虫</h1><h2 id="技术储备"><a href="#技术储备" class="headerlink" title="技术储备"></a>技术储备</h2><ul>
+<li>xpath</li>
+<li>Regular expression</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/13/sudo.html" itemprop="url">
+                  sudo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-13T12:49:51+08:00" content="2017-02-13">
+              2017-02-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/13/sudo.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/13/sudo.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Ubuntu下输入sudo时如何不用输入密码？"><a href="#Ubuntu下输入sudo时如何不用输入密码？" class="headerlink" title="Ubuntu下输入sudo时如何不用输入密码？"></a>Ubuntu下输入sudo时如何不用输入密码？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 切换到 root</div><div class="line">sudo su</div><div class="line">vim /etc/sudoers</div><div class="line"></div><div class="line"># G：跳转到最后一行</div><div class="line"># 用户名 admin ，追加内容：</div><div class="line">admin  ALL=(ALL:ALL) NOPASSWD: ALL</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/11/shadowsocks.html" itemprop="url">
+                  shadowsocks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-11T11:04:47+08:00" content="2017-02-11">
+              2017-02-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/11/shadowsocks.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/11/shadowsocks.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>Debian / Ubuntu:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Installing sslocal script to /usr/local/bin<br>Installing ssserver script to /usr/local/bin</p>
+</blockquote>
+<p><strong>sslocal</strong> is the client software and <strong>ssserver</strong> is the server software.</p>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -p 443 -k password -m aes-256-cfb</div></pre></td></tr></table></figure>
+<p>To run in the background:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start</div></pre></td></tr></table></figure>
+<p>To stop:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ssserver -d stop</div></pre></td></tr></table></figure>
+<p>To check the log:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo less /var/log/shadowsocks.log</div></pre></td></tr></table></figure>
+<p>Check all the options via -h. You can also use a [Configuration] file instead.</p>
+<h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"server"</span>:<span class="string">"server-ip"</span>,</div><div class="line">  <span class="attr">"server_port"</span>:<span class="number">8000</span>,</div><div class="line">  <span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">  <span class="attr">"password"</span>:<span class="string">"your-password"</span>,</div><div class="line">  <span class="attr">"timeout"</span>:<span class="number">600</span>,</div><div class="line">  <span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sslocal -c /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<h3 id="To-run-in-the-background"><a href="#To-run-in-the-background" class="headerlink" title="To run in the background"></a>To run in the background</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sslocal -c /etc/shadowsocks.json -d start</div></pre></td></tr></table></figure>
+<h3 id="Auto-Start-the-Client-on-System-Boot"><a href="#Auto-Start-the-Client-on-System-Boot" class="headerlink" title="Auto Start the Client on System Boot"></a>Auto Start the Client on System Boot</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/rc.local</div></pre></td></tr></table></figure>
+<p>Put the following line above the <strong>exit 0</strong> line:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sslocal -c /etc/shadowsocks.json -d start</div></pre></td></tr></table></figure>
+<p>Save and close the file. Next time you start your computer, shadowsocks client will automatically start and connect to your shadowsocks server.</p>
+<h4 id="启用命令行代理"><a href="#启用命令行代理" class="headerlink" title="启用命令行代理"></a>启用命令行代理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install proxychains</div><div class="line">vi ~/.proxychains/proxychains.conf</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">strict_chain</div><div class="line">proxy_dns</div><div class="line">remote_dns_subnet 224</div><div class="line">tcp_read_time_out 15000</div><div class="line">tcp_connect_time_out 8000</div><div class="line">localnet 127.0.0.0/255.0.0.0</div><div class="line">quiet_mode</div><div class="line"></div><div class="line">[ProxyList]</div><div class="line">socks5  127.0.0.1 1080</div></pre></td></tr></table></figure>
+<p>Then run command with proxychains. Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">proxychains curl https://www.twitter.com/</div><div class="line">proxychains git push origin master</div></pre></td></tr></table></figure>
+<p>Or just proxify bash:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">proxychains bash</div><div class="line">curl https://www.twitter.com/</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl ip.cn</div><div class="line">proxychains curl ip.cn</div></pre></td></tr></table></figure>
+<h2 id="用户规则"><a href="#用户规则" class="headerlink" title="用户规则"></a>用户规则</h2><p>Windows 下需要右键纸飞机图标，选择“PAC” - “编辑 GFWList 的用户规则”，会自动打开文件 <code>user-rule.txt</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">! Put user rules line by line in this file.</div><div class="line">! See https://adblockplus.org/en/filter-cheatsheet</div><div class="line">||amazonaws.com</div></pre></td></tr></table></figure>
+<p>每次编辑完 user-rule.txt 后，需要右键纸飞机图标，选择“PAC” - “从 GFWList 更新本地 PAC” 后才能立即生效</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/10/server.html" itemprop="url">
+                  server
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-10T17:01:48+08:00" content="2017-02-10">
+              2017-02-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/10/server.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/10/server.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p><a href="https://haobing.wang/2016/06/10/ssh.html">更多内容</a></p>
+<h3 id="python-配置源"><a href="#python-配置源" class="headerlink" title="python 配置源"></a>python 配置源</h3><p><a href="https://haobing.wang/2016/10/31/python.html">更多内容</a></p>
+<h3 id="shadowsocks"><a href="#shadowsocks" class="headerlink" title="shadowsocks"></a>shadowsocks</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-pip</div><div class="line">sudo pip install shadowsocks</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Installing sslocal script to /usr/local/bin<br>Installing ssserver script to /usr/local/bin</p>
+</blockquote>
+<p><strong>sslocal</strong> is the client software and <strong>ssserver</strong> is the server software.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"server"</span>:<span class="string">"server-ip"</span>,</div><div class="line">  <span class="attr">"server_port"</span>:<span class="number">8000</span>,</div><div class="line">  <span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">  <span class="attr">"password"</span>:<span class="string">"your-password"</span>,</div><div class="line">  <span class="attr">"timeout"</span>:<span class="number">600</span>,</div><div class="line">  <span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sslocal -c /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<h4 id="To-run-in-the-background"><a href="#To-run-in-the-background" class="headerlink" title="To run in the background"></a>To run in the background</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sslocal -c /etc/shadowsocks.json -d start</div></pre></td></tr></table></figure>
+<h4 id="Auto-Start-the-Client-on-System-Boot"><a href="#Auto-Start-the-Client-on-System-Boot" class="headerlink" title="Auto Start the Client on System Boot"></a>Auto Start the Client on System Boot</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/rc.local</div></pre></td></tr></table></figure>
+<p>Put the following line above the <strong>exit 0</strong> line:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sslocal -c /etc/shadowsocks.json -d start</div></pre></td></tr></table></figure>
+<p>Save and close the file. Next time you start your computer, shadowsocks client will automatically start and connect to your shadowsocks server.</p>
+<h4 id="启用命令行代理"><a href="#启用命令行代理" class="headerlink" title="启用命令行代理"></a>启用命令行代理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install proxychains</div><div class="line">vi ~/.proxychains/proxychains.conf</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">strict_chain</div><div class="line">proxy_dns</div><div class="line">remote_dns_subnet 224</div><div class="line">tcp_read_time_out 15000</div><div class="line">tcp_connect_time_out 8000</div><div class="line">localnet 127.0.0.0/255.0.0.0</div><div class="line">quiet_mode</div><div class="line"></div><div class="line">[ProxyList]</div><div class="line">socks5  127.0.0.1 1080</div></pre></td></tr></table></figure>
+<p>Then run command with proxychains. Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">proxychains curl https://www.twitter.com/</div><div class="line">proxychains git push origin master</div></pre></td></tr></table></figure>
+<p>Or just proxify bash:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">proxychains bash</div><div class="line">curl https://www.twitter.com/</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl ip.cn</div><div class="line">proxychains curl ip.cn</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="external">更多内容</a></p>
+<ul>
+<li><a href="https://github.com/shadowsocks/shadowsocks/wiki/Using-Shadowsocks-with-Command-Line-Tools" target="_blank" rel="external">Using Shadowsocks with Command Line Tools</a></li>
+</ul>
+<p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Convert-Shadowsocks-into-an-HTTP-proxy" target="_blank" rel="external">Convert Shadowsocks into an HTTP proxy</a></p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure>
+<p><a href="https://haobing.wang/2016/07/20/git.html">更多内容</a></p>
+<h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><p>安装 Node.js，(NVM)[<a href="https://github.com/creationix/nvm" target="_blank" rel="external">https://github.com/creationix/nvm</a>]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">proxychains bash</div><div class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash</div></pre></td></tr></table></figure>
+<p>nvm 安装完成后，配置 nvm 下载源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi ~/.bashrc</div></pre></td></tr></table></figure>
+<p>输入 <code>G</code> 跳转到文件尾部，追加 <code>export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</code></p>
+<p>然后更新环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.profile</div></pre></td></tr></table></figure>
+<p>查看 Node.js 可用版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nvm ls-remote</div><div class="line">nvm install v6.9.5</div></pre></td></tr></table></figure>
+<p>Node.js 已安装完毕，接下来配置 npm 下载源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g nrm --registry=https://registry.npm.taobao.org</div><div class="line">nrm ls</div><div class="line">nrm use taobao</div></pre></td></tr></table></figure>
+<p>至此，ubuntu 上配置 Node.js 环境完毕。</p>
+<h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># ubuntu 14.04</div><div class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10</div><div class="line">echo &quot;deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install -y mongodb-org</div></pre></td></tr></table></figure>
+<h2 id="日常维护"><a href="#日常维护" class="headerlink" title="日常维护"></a>日常维护</h2><h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/21/小句子.html" itemprop="url">
+                  小句子
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-21T17:11:02+08:00" content="2016-12-21">
+              2016-12-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/21/小句子.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/小句子.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>愚民的生活，有肥皂剧就够了。</p>
+<p>我歌，月徘徊。我舞，影零乱。</p>
+<p>在大公司学做人，在小公司学做事。</p>
+<p>愚蠢的人总是试图管理时间，明白的人会试图约束自己。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/20/es6.html" itemprop="url">
                   es6
                 </a>
@@ -874,726 +1595,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/05/id.html" itemprop="url">
-                  从身份证号码提取数据
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-05T18:11:55+08:00" content="2016-12-05">
-              2016-12-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/05/id.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/05/id.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/haobingwang/id-resolver" target="_blank" rel="external">身份证解析器</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -S id-resolver</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> idResolver = <span class="built_in">require</span>(<span class="string">'id-resolver'</span>);</div><div class="line"></div><div class="line"><span class="comment">//只处理 18位字符串</span></div><div class="line"><span class="built_in">console</span>.log(idResolver.get(<span class="string">'430421197710177894'</span>));</div><div class="line"><span class="comment">// &#123; locale: '湖南省 衡阳市 衡阳县', birthday: '19771017', sex: '男' &#125;</span></div><div class="line"><span class="built_in">console</span>.log(idResolver.get(<span class="string">'45222319950814004X'</span>));</div><div class="line"><span class="comment">// &#123; locale: '无对应数据', birthday: '19950814', sex: '女' &#125;</span></div></pre></td></tr></table></figure>
-<p>从身份证号码提取</p>
-<ul>
-<li>户籍地</li>
-<li>出生年月，进一步提取年龄（使用 moment.js 做进一步处理）</li>
-<li>性别</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/login.html" itemprop="url">
-                  登录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-03T12:38:42+08:00" content="2016-12-03">
-              2016-12-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/03/login.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/03/login.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="普通登录"><a href="#普通登录" class="headerlink" title="普通登录"></a>普通登录</h2><p>这个是极其普通的登录需求，要的就是一个登录页面，输入账号密码，提交Form表单，后端查询数据库对应用户名的密码，匹配正确则把用户记录到Session，不正确则返回错误。<br>这种登录，在上学的时候，也许敬爱的老师就已经教过你了。<br>但可能他没有教你的是，密码需要hash加密，session为什么可以记录登录用户的原理。</p>
-<h3 id="密码Hash"><a href="#密码Hash" class="headerlink" title="密码Hash"></a>密码Hash</h3><p>密码hash，就是存进数据库的密码是一串密文，密文是明文密码通过不可逆算法得出的。在 Node.js 中，你可以使用 bcryptjs，它提供了 hash 以及对应的 compare 方法，非常适合用于密码的加密和对比。</p>
-<h3 id="Session原理"><a href="#Session原理" class="headerlink" title="Session原理"></a>Session原理</h3><p>Session 的原理其实还是依赖了 Cookie，所以 Cookie 才是记录用户凭证的真理。它的原理大概是酱紫的：服务器端维护一个 session 的表，这个表的每一条记录存的就是与某一个客户端的会话，会话会有过期时间，过期的会话会被清理。然后这个会话，会有一个对应的id，一般是一串长长的看不懂的字符串，然后这个字符串会被存储在客户端的 cookie 中，每一次请求服务器端都会带上这个 cookie，服务器端就知道访问的就是哪个客户端了。</p>
-<h2 id="使用独立登录系统"><a href="#使用独立登录系统" class="headerlink" title="使用独立登录系统"></a>使用独立登录系统</h2><p>应项目需要，登录逻辑需要独立出来做成一个系统，就是另外一个项目，与原来的主站不是在同一个项目中了。一个域名是 www.site.com，一个则是 passport.site.com 了。要在不同的域名下进行登录，一般的方法是 www.site.com/login 跳转到 passport.site.com/login，passport 这边是一个登录页面，用户输入账号密码登录成功之后，passport 会通过带着一个可逆加密的包含用户信息的 token，重定向到 www.site.com 提供的回调处理地址，然后进行解密，匹配正确，则登录用户。</p>
-<p>要注意的是，这里的加密的信息需要包含一个时间戳，接收方需要认证这个时间戳，过期登录失败。避免 token 被窃取，被无限登录 site 系统。</p>
-<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>单点登录需要实现的需求，说白了就是在站点 A 的登录了，那么用户就自动在站点 B、站点 C、站点 E、F、G 登录。</p>
-<p>这又分两种情况，A站点和B站点是否在同一个二级域名下：</p>
-<ul>
-<li>假如是在同一个域名下，例如 siteA.site.com 与 siteB.site.com，因为 cookie 允许设置到二级域名下 .site.com，所以 siteA 和 siteB 是可以共享 cookie 的，用户的信息可以通过可逆加密放在二级域名下的 cookie，并且设置 http only，就可以一站登录，站站登录。</li>
-<li>而如果 A 站点和 B 站点不在同一二级域名下，例如 www.siteA.com 与 www.siteB.com，他们就无法通过共享 cookie 的方式共享用户信息，所以需要用到 jsonp 的方式，用户在 siteA 登录之后，提供一个 jsonp 接口获取加密的用户信息，siteB 访问这个 jsonp 获取加密信息。达到共享用户状态的效果。</li>
-</ul>
-<h2 id="OAuth2-0登录"><a href="#OAuth2-0登录" class="headerlink" title="OAuth2.0登录"></a>OAuth2.0登录</h2><p>这就比较普遍了，现在随随便便做个网站，都接入「微信登录」、「微博登录」、「豆瓣登录」、「QQ登录」、「Github登录」。。。这些统一叫做：「第三方登录」。</p>
-<p>第三方登录都是实现了OAuth2.0协议的，流程大概是酱紫的：</p>
-<p>第三方提供一个登录入口，也就是第三方域名下的登录页面。主站需要登录的时候，引导用户重定向到第三方的登录页面，用户输入账号密码之后，登录第三方系统，第三方系统匹配帐号成功之后，带上一个 code 到主站的回调地址，主站接收到 code，短时间内拿着 code 请求第三方提供获取长期凭证的接口(因为 code 有一个比较短的过期时间)，这个长期凭证叫 access_token，获取之后就把这个 access_token 存到数据库中，请求一些第三方提供的 API，需要用到这个 access_token，因为这个token就是记录用户在第三方系统的一个身份凭证。<br>一些系统，在获取 access_token 的时候，还会返回一个副参数 refresh_token，因为 access_token 是有过期时间的，一旦过期了，主站可以使用 refresh_token 请求第三方提供的接口获取新的 access_token 以及新的 refresh_token。</p>
-<p>在 Node.js 中，你可以使用 passport 来给第三方登录提供一个统一解决方案，而如果你是开发「微信公众号」授权，除了 passport，也可以使用 wechat-oauth</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实登录问题，理解了 Session 原理是很重要的，这个也不难理解。然后站点之间的用户信息交流，就是通过各种跨域限制，各种加密解密而已。在做这个的时候，需要充分考虑到加密的 token 是否会被窃取的可能性，还要考虑让这个 token 加上时间的验证，在一些可能会被窃取，安全需求比较高的情况，就需要把 token 的时间设置的更短。还有就是加密的方式需要依照需求不同而选择可逆或者不可逆，hash sha1还是JWT(Json Web Token)。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/auth.html" itemprop="url">
-                  auth
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-03T11:47:23+08:00" content="2016-12-03">
-              2016-12-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/03/auth.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/03/auth.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>设置以下 cookie 选项来增强安全性：</p>
-<ul>
-<li>secure - 确保浏览器只通过 HTTPS 发送 cookie。</li>
-<li>httpOnly - 确保 cookie 只通过 HTTP(S)（而不是客户机 JavaScript）发送，这有助于防御跨站点脚本编制攻击。</li>
-<li>domain - 表示 cookie 的域；用于和请求 URL 的服务器的域进行比较。如果匹配，那么接下来检查路径属性。</li>
-<li>path - 表示 cookie 的路径；用于和请求路径进行比较。如果路径和域都匹配，那么在请求中发送 cookie。</li>
-<li>expires - 用于为持久性 cookie 设置到期日期。</li>
-</ul>
-<h2 id="jjj"><a href="#jjj" class="headerlink" title="jjj"></a>jjj</h2><p>在传统的web应用中，服务端成功的返回一个响应（response）依赖于两件事。一是，他通过一种存储机制保存了会话信息（Session）。每一个会话都有它独特的信息（id），常常是一个长的，随机化的字符串，它被用来让未来的请求（Request）检索信息。其次，包含在响应头（Header）里面的信息使客户端保存了一个Cookie。服务器自动的在每个子请求里面加上了会话ID，这使得服务器可以通过检索Session中的信息来辨别用户。这就是传统的web应用逃避HTTP面向无连接的方法（This is how traditional web applications get around the fact that HTTP is stateless）。</p>
-<p>API应该被设计成无状态的（Stateless）。这意味着没有登陆，注销的方法，也没有 sessions，API的设计者同样也不能依赖 Cookie，因为不能保证这些 request 是由浏览器所发出的。自然，我们需要一个新的机制。这篇文章关注于 JSON Web Tokens ，简写为 JWTs，一个可能的解决这个问题的机制。这篇文章利用Node的Express框架作为后端，以及Backbone作为前端。</p>
-<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
-<li>第一个是使用在HTTP规范中所制定的Basic Auth， 它需要在在响应中设定一个验证身份的Header。客户端必须在每个子响应是附加它们的凭证（credenbtial），包括它的密码。如果这些凭证通过了，那么用户的信息就会被传递到服务端应用。</li>
-<li>第二个方面有点类似，但是使用应用自己的验证机制。通常包括将发送的凭证与存储的凭证进行检查。和Basic Auth相比，这种需要在每次请求（call）中发送凭证。</li>
-<li>第三种是OAuth（或者OAuth2）。为第三方的认证所设计，但是更难配置。至少在服务器端更难。</li>
-</ul>
-<p>在使用中，并不会每次都让用户提交用户名和密码，通常的情况是客户端通过一些可靠信息和服务器交换取 token，这个 token 作为客服端再次请求的权限钥匙。Token 通常比密码更加长而且复杂。比如说，JWTs 通常会长达150个字符。一旦获得了 token，在每次调用 API 的时候都要附加上它。然后，这仍然比直接发送账户和密码更加安全，哪怕是HTTPS。</p>
-<p>把 token 想象成一个安全的护照。你在一个安全的前台验证你的身份（通过你的用户名和密码），如果你成功验证了自己，你就可以取得这个。当你走进大楼的时候（试图从调用 API 获取资源），你会被要求验证你的护照，而不是在前台重新验证。</p>
-<h2 id="JWTs"><a href="#JWTs" class="headerlink" title="JWTs"></a>JWTs</h2><p>JWT的第一部分是对一个简单js对象的编码后的字符串，这个js对象是用来描述这个token类型以及使用的hash算法。下面的例子展示的是一个使用了HMAC SHA-256算法的JWT token。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"typ"</span> : <span class="string">"JWT"</span>,</div><div class="line">  <span class="attr">"alg"</span> : <span class="string">"HS256"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在加密之后，这个对象变成了一个字符串：<code>eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9</code></p>
-<p>JWT的第二部分是token的核心，这部分同样是对一个js对象的编码，包含了一些摘要信息。有一些是必须的，有一些是选择性的。实例如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"iss"</span>: <span class="string">"joe"</span>,</div><div class="line">  <span class="attr">"exp"</span>: <span class="number">1300819380</span>,</div><div class="line">  <span class="attr">"http://example.com/is_root"</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个结构被称为JWT Claims Set。这个iss是issuer的简写，表明请求的实体，可以是发出请求的用户的信息。exp是expires的简写，是用来指定token的生命周期。（相关参数参看：the document）加密编码之后如下：<code>eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ</code></p>
-<p>JWT的第三个部分，是JWT根据第一部分和第二部分的签名（Signature）。像这个样子：<code>dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk</code></p>
-<p>最后将上面的合并起来，JWT token如下：</p>
-<p><code>eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkz</code></p>
-<h2 id="获取-token"><a href="#获取-token" class="headerlink" title="获取 token"></a>获取 token</h2><p>我们需要做的第一件事就是让客户端通过他们的账号密码交换token。这里有2种可能的方法在RESTful API里面。第一种是使用POST请求来通过验证，使服务端发送带有token的响应。除此之外，你可以使用GET请求，这需要他们使用参数提供凭证（指URL），或者更好的使用请求头。<br>这篇文章的目的是为了解释token验证的方法而不是基本的用户名/密码验证机制。所以我们假设我们已经通过请求得到了用户名和密码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">User.findOne(&#123; <span class="attr">username</span>: username &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="comment">// user not found</span></div><div class="line">    <span class="keyword">return</span> res.send(<span class="number">401</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (!user) &#123;</div><div class="line">    <span class="comment">// incorrect username</span></div><div class="line">    <span class="keyword">return</span> res.send(<span class="number">401</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (!user.validPassword(password)) &#123;</div><div class="line">    <span class="comment">// incorrect password</span></div><div class="line">    <span class="keyword">return</span> res.send(<span class="number">401</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// User has authenticated OK</span></div><div class="line">  res.send(<span class="number">200</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>如果用户成功验证账号和密码，然后我们生成一个token，返回给用户。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> expires = moment().add(<span class="string">'days'</span>, <span class="number">7</span>).valueOf();</div><div class="line"><span class="keyword">var</span> token = jwt.encode(&#123;</div><div class="line">  <span class="attr">iss</span>: user.id,</div><div class="line">  <span class="attr">exp</span>: expires</div><div class="line">&#125;, app.get(<span class="string">'jwtTokenSecret'</span>));</div><div class="line"></div><div class="line">res.json(&#123;</div><div class="line">  <span class="attr">token</span> : token,</div><div class="line">  <span class="attr">expires</span>: expires,</div><div class="line">  <span class="attr">user</span>: user.toJSON()</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>注意到jwt.encode()函数有2个参数。第一个就是一个需要加密的对象，第二个是一个加密的密钥。这个token是由我们之前提到的iss和exp组成的。注意到Moment.js被用来设置token将在7天之后失效。而res.json()方法用来传递这个JSON对象给客户端。</p>
-<h2 id="Where-to-Store-Your-JWTs"><a href="#Where-to-Store-Your-JWTs" class="headerlink" title="Where to Store Your JWTs"></a>Where to Store Your JWTs</h2><p>So now that you have a good understanding of what a JWT is, the next step is to figure out how to store these tokens. If you are building a web application, you have a couple of options:</p>
-<ul>
-<li>HTML5 Web Storage (localStorage or sessionStorage)</li>
-<li>Cookies</li>
-</ul>
-<h2 id="验证Token"><a href="#验证Token" class="headerlink" title="验证Token"></a>验证Token</h2><p>检索token：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> token = (req.body &amp;&amp; req.body.access_token) || (req.query &amp;&amp; req.query.access_token) || req.headers[<span class="string">'x-access-token'</span>];</div></pre></td></tr></table></figure>
-<h2 id="cookie-保存在客户端"><a href="#cookie-保存在客户端" class="headerlink" title="cookie 保存在客户端"></a>cookie 保存在客户端</h2><p>cookie是保存在本地终端的数据。cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie是存在客户端上的，所以浏览器加入了一些限制确保cookie不会被恶意使用，同时不会占据太多磁盘空间，所以每个域的cookie数量是有限的。</p>
-<p>cookie的组成有：名称(key)、值(value)、有效域(domain)、路径(域的路径，一般设置为全局:”\”)、失效时间、安全标志(指定后，cookie只有在使用SSL连接时才发送到服务器(https))。下面是一个简单的js使用cookie的例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用户登录时产生cookie:</span></div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"id="</span>+result.data[<span class="string">'id'</span>]+<span class="string">"; path=/"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"name="</span>+result.data[<span class="string">'name'</span>]+<span class="string">"; path=/"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"avatar="</span>+result.data[<span class="string">'avatar'</span>]+<span class="string">"; path=/"</span>;</div><div class="line"></div><div class="line"><span class="comment">// 使用到cookie时做如下解析：</span></div><div class="line"><span class="keyword">var</span> cookie = <span class="built_in">document</span>.cookie;</div><div class="line"><span class="keyword">var</span> cookieArr = cookie.split(<span class="string">";"</span>);</div><div class="line"><span class="keyword">var</span> user_info = &#123;&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cookieArr.length; i++) &#123;</div><div class="line">    user_info[cookieArr[i].split(<span class="string">"="</span>)[<span class="number">0</span>]] = cookieArr[i].split(<span class="string">"="</span>)[<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line">$(<span class="string">'#user_name'</span>).text(user_info[<span class="string">' name'</span>]);</div><div class="line">$(<span class="string">'#user_avatar'</span>).attr(<span class="string">"src"</span>, user_info[<span class="string">' avatar'</span>]);</div><div class="line">$(<span class="string">'#user_id'</span>).val(user_info[<span class="string">' id'</span>]);</div></pre></td></tr></table></figure>
-<p>无论使用何种服务端技术，只要发送回的HTTP响应中包含如下形式的头，则视为服务器要求设置一个cookie：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Set-cookie:name=name;expires=date;path=path;domain=domain</div></pre></td></tr></table></figure>
-<p>支持cookie的浏览器都会对此作出反应，即创建cookie文件并保存（也可能是内存cookie），用户以后在每次发出请求时，浏览器都要判断当前所有的cookie中有没有没失效（根据expires属性判断）并且匹配了path属性的cookie信息，如果有的话，会以下面的形式加入到请求头中发回服务端：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cookie: name=&quot;zj&quot;; Path=&quot;/linkage&quot;</div></pre></td></tr></table></figure>
-<p>需要注意的是，出于安全性的考虑，cookie可以被浏览器禁用。</p>
-<h2 id="session-保存在服务端"><a href="#session-保存在服务端" class="headerlink" title="session 保存在服务端"></a>session 保存在服务端</h2><p>它的基本原理是服务端为每一个session维护一份会话信息数据，而客户端和服务端依靠一个全局唯一的标识来访问会话信息数据。用户访问web应用时，服务端程序决定何时创建session，创建session可以概括为三个步骤：</p>
-<ol>
-<li>生成全局唯一标识符（sessionid）；</li>
-<li>开辟数据存储空间。一般会在内存中创建相应的数据结构，但这种情况下，系统一旦掉电，所有的会话数据就会丢失，如果是电子商务网站，这种事故会造成严重的后果。不过也可以写到文件里甚至存储在数据库中，这样虽然会增加I/O开销，但session可以实现某种程度的持久化，而且更有利于session的共享；</li>
-<li>将session的全局唯一标示符发送给客户端。问题的关键就在服务端如何发送这个session的唯一标识上。联系到HTTP协议，数据无非可以放到请求行、头域或Body里，基于此，一般来说会有两种常用的方式：cookie 和 URL 重写。</li>
-</ol>
-<ul>
-<li>cookie，服务端只要设置<code>Set-cookie</code>头就可以将 session 的标识符传送到客户端，而客户端此后的每一次请求都会带上这个标识符，由于 cookie 可以设置失效时间，所以一般包含 session 信息的 cookie 会设置失效时间为 0 ，即浏览器进程有效时间。至于浏览器怎么处理这个0，每个浏览器都有自己的方案，但差别都不会太大（一般体现在新建浏览器窗口的时候）；<img src="/images/session-cookie1.png" alt=""> <img src="/images/session-cookie2.png" alt=""></li>
-<li>URL 重写，试想，在返回用户请求的页面之前，将页面内所有的URL后面全部以get参数的方式加上session标识符（或者加在path info部分等等），这样用户在收到响应之后，无论点击哪个链接或提交表单，都会在再带上session的标识符，从而就实现了会话的保持。读者可能会觉得这种做法比较麻烦，确实是这样，但是，如果客户端禁用了cookie的话，URL重写将会是首选。</li>
-</ul>
-<p>session的中文翻译是“会话”，当用户打开某个web应用时，便与web服务器产生一次session。服务器使用session把用户的信息临时保存在了服务器上，用户离开网站后session会被销毁。这种用户信息存储方式相对cookie来说更安全，可是session有一个缺陷：如果web服务器做了负载均衡，那么下一个操作请求到了另一台服务器的时候session会丢失。</p>
-<p>下面是php(phalcon框架)的例子</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;session-&gt;set(<span class="string">'userInfo'</span>, <span class="keyword">array</span>(</div><div class="line">    <span class="string">'id'</span>     =&gt; $admin-&gt;id,</div><div class="line">    <span class="string">'name'</span>   =&gt; $admin-&gt;name,</div><div class="line">    <span class="string">'avatar'</span> =&gt; $admin-&gt;avatar</div><div class="line">));</div><div class="line"></div><div class="line"><span class="comment">// session是全局的，在一个地方保存了，其他地方就可以用</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;session-&gt;has(<span class="string">"userInfo"</span>)) &#123;</div><div class="line">    $userInfo = <span class="keyword">$this</span>-&gt;session-&gt;get(<span class="string">'userInfo'</span>);</div><div class="line">    <span class="keyword">return</span> $userInfo;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><p>Token解码后就包含所有登陆信息</p>
-<p>token的意思是“令牌”，是用户身份的验证方式，最简单的token组成:uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign(签名，由token的前几位+盐以哈希算法压缩成一定长的十六进制字符串，可以防止恶意第三方拼接token请求服务器)。还可以把不变的参数也放进token，避免多次查库</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>简单来说，如果你的用户数据可能需要和第三方共享，或者允许第三方调用 API 接口，用 token 。</p>
-<p>如果永远只是自己的网站，自己的 App ，用什么就无所谓了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/01/api-server.html" itemprop="url">
-                  api-server
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-01T16:58:37+08:00" content="2016-12-01">
-              2016-12-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/01/api-server.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/api-server.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>用 Node.js 写个 api server，需求</p>
-<ul>
-<li>使用 ES2015 and beyond, babel-preset-latest</li>
-<li>使用展开运算符 …, babel-plugin-transform-object-rest-spread</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir apiServer &amp;&amp; cd apiServer</div><div class="line">npm init -y</div></pre></td></tr></table></figure>
-<p>Install the CLI ,this preset and plugin:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-cli babel-preset-latest babel-plugin-transform-object-rest-spread</div></pre></td></tr></table></figure>
-<p>Make a .babelrc config file with the preset and plugin</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &apos;&#123; &quot;presets&quot;: [&quot;latest&quot;],&quot;plugins&quot;: [&quot;transform-object-rest-spread&quot;] &#125;&apos; &gt; .babelrc</div></pre></td></tr></table></figure>
-<p>Install nodemon</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev nodemon</div></pre></td></tr></table></figure>
-<p> 向 package.json 添加 npm script</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"> "script": &#123;</div><div class="line">    "dev": "nodemon --exec babel-node src/index.js",</div><div class="line">    "prestart": "babel src --out-dir dist",</div><div class="line">    "start": "node dist/index.js"</div><div class="line">  &#125;</div><div class="line">...</div></pre></td></tr></table></figure>
-<p> 项目目录结构如下</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-- apiServer</div><div class="line"> |-build</div><div class="line"> |-src</div><div class="line"> |-.babelrc</div><div class="line"> |-package.json</div></pre></td></tr></table></figure>
-<p> 其他需要的包</p>
-<ul>
-<li>express</li>
-<li>body-parser</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/30/qs.html" itemprop="url">
-                  qs
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-30T15:48:52+08:00" content="2016-11-30">
-              2016-11-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/30/qs.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/30/qs.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> qs = <span class="built_in">require</span>(<span class="string">'qs'</span>);</div><div class="line"></div><div class="line"><span class="comment">// client</span></div><div class="line"><span class="keyword">const</span> params = &#123; <span class="attr">page</span>: <span class="number">1</span>, <span class="attr">field</span>: <span class="string">''</span>, <span class="attr">keyword</span>: <span class="string">''</span>, ...payload &#125;</div><div class="line"><span class="keyword">return</span> request(<span class="string">`/api/users?<span class="subst">$&#123;qs.stringify(params)&#125;</span>`</span>);</div><div class="line"></div><div class="line"><span class="comment">// server</span></div><div class="line"><span class="keyword">const</span> page = qs.parse(req.query);</div><div class="line"><span class="keyword">const</span> pageSize = page.pageSize || <span class="number">10</span>;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> qs = <span class="built_in">require</span>(<span class="string">'qs'</span>);</div><div class="line"><span class="comment">// client</span></div><div class="line"><span class="keyword">const</span> params = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">''</span>,</div><div class="line">  <span class="attr">birthday</span>: <span class="string">'2000-10-01'</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line">request(<span class="string">'/api/users'</span>, &#123;</div><div class="line">  <span class="attr">method</span>: <span class="string">'post'</span>,</div><div class="line">  <span class="attr">body</span>: qs.stringify(params),</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// server</span></div><div class="line"><span class="keyword">const</span> newData = qs.parse(req.body);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/30/moment.html" itemprop="url">
-                  moment.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-30T10:28:13+08:00" content="2016-11-30">
-              2016-11-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/30/moment.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/30/moment.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="全局设置"><a href="#全局设置" class="headerlink" title="全局设置"></a>全局设置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moment=<span class="built_in">require</span>(<span class="string">'moment'</span>);</div><div class="line">moment.locale(<span class="string">'zh-cn'</span>);</div></pre></td></tr></table></figure>
-<h2 id="时间格式化"><a href="#时间格式化" class="headerlink" title="时间格式化"></a>时间格式化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">moment().format(<span class="string">'MMMM Do YYYY, h:mm:ss a'</span>); <span class="comment">// 十一月 30日 2016, 10:30:45 上午</span></div><div class="line">moment().format(<span class="string">'dddd'</span>);                    <span class="comment">// 星期三</span></div><div class="line">moment().format(<span class="string">"MMM Do YY"</span>);               <span class="comment">// 11月 30日 16</span></div><div class="line">moment().format(<span class="string">'YYYY [escaped] YYYY'</span>);     <span class="comment">// 2016 escaped 2016</span></div><div class="line">moment().format();                          <span class="comment">// 2016-11-30T10:30:45+08:00</span></div></pre></td></tr></table></figure>
-<h2 id="时间加减"><a href="#时间加减" class="headerlink" title="时间加减"></a>时间加减</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">moment().add(<span class="number">7</span>,<span class="string">'years'</span>); <span class="comment">// 加7年</span></div><div class="line">moment().add(<span class="number">7</span>,<span class="string">'month'</span>);<span class="comment">// 加7个月</span></div><div class="line">moment().add(<span class="number">7</span>,<span class="string">'days'</span>); <span class="comment">// 加7天</span></div><div class="line">moment().add(<span class="number">7</span>,<span class="string">'hours'</span>); <span class="comment">// 加7小时</span></div><div class="line">moment().add(<span class="number">7</span>,<span class="string">'minutes'</span>);<span class="comment">// 加7分钟</span></div><div class="line">moment().add(<span class="number">7</span>,<span class="string">'seconds'</span>);<span class="comment">// 加7秒钟</span></div><div class="line"></div><div class="line">moment().subtract(<span class="number">7</span>,<span class="string">'years'</span>); <span class="comment">// 减7年</span></div><div class="line">moment().subtract(<span class="number">7</span>,<span class="string">'month'</span>);<span class="comment">// 减7个月</span></div><div class="line">moment().subtract(<span class="number">7</span>,<span class="string">'days'</span>); <span class="comment">// 减7天</span></div><div class="line">moment().subtract(<span class="number">7</span>,<span class="string">'hours'</span>); <span class="comment">// 减7小时</span></div><div class="line">moment().subtract(<span class="number">7</span>,<span class="string">'minutes'</span>);<span class="comment">// 减7分钟</span></div><div class="line">moment().subtract(<span class="number">7</span>,<span class="string">'seconds'</span>);<span class="comment">// 减7秒钟</span></div></pre></td></tr></table></figure>
-<h2 id="相对时间"><a href="#相对时间" class="headerlink" title="相对时间"></a>相对时间</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">moment(<span class="string">"20111031"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); <span class="comment">// 5 年前</span></div><div class="line">moment(<span class="string">"20120620"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); <span class="comment">// 4 年前</span></div><div class="line">moment().startOf(<span class="string">'day'</span>).fromNow();        <span class="comment">// 11 小时前</span></div><div class="line">moment().endOf(<span class="string">'day'</span>).fromNow();          <span class="comment">// 13 小时内</span></div><div class="line">moment().startOf(<span class="string">'hour'</span>).fromNow();       <span class="comment">// 36 分钟前</span></div></pre></td></tr></table></figure>
-<h2 id="多样化的本地时间"><a href="#多样化的本地时间" class="headerlink" title="多样化的本地时间"></a>多样化的本地时间</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">moment.locale();         <span class="comment">// zh-cn</span></div><div class="line">moment().format(<span class="string">'LT'</span>);   <span class="comment">// 上午10点35分</span></div><div class="line">moment().format(<span class="string">'LTS'</span>);  <span class="comment">// 上午10点35分7秒</span></div><div class="line">moment().format(<span class="string">'L'</span>);    <span class="comment">// 2016-11-30</span></div><div class="line">moment().format(<span class="string">'l'</span>);    <span class="comment">// 2016-11-30</span></div><div class="line">moment().format(<span class="string">'LL'</span>);   <span class="comment">// 2016年11月30日</span></div><div class="line">moment().format(<span class="string">'ll'</span>);   <span class="comment">// 2016年11月30日</span></div><div class="line">moment().format(<span class="string">'LLL'</span>);  <span class="comment">// 2016年11月30日上午10点35分</span></div><div class="line">moment().format(<span class="string">'lll'</span>);  <span class="comment">// 2016年11月30日上午10点35分</span></div><div class="line">moment().format(<span class="string">'LLLL'</span>); <span class="comment">// 2016年11月30日星期三上午10点35分</span></div><div class="line">moment().format(<span class="string">'llll'</span>); <span class="comment">// 2016年11月30日星期三上午10点35分</span></div></pre></td></tr></table></figure>
-<h2 id="存储与显示"><a href="#存储与显示" class="headerlink" title="存储与显示"></a>存储与显示</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> periodBegin = moment(date).format();<span class="comment">//"2016-11-30T11:08:07+08:00"</span></div><div class="line"><span class="comment">// 存储到数据库</span></div><div class="line"></div><div class="line"><span class="comment">// 显示</span></div><div class="line">moment(periodBegin).format(<span class="string">'YYYY-MM-DD'</span>);</div></pre></td></tr></table></figure>
-<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> now = moment();</div><div class="line"><span class="built_in">console</span>.log(now.add(<span class="number">3</span>,<span class="string">'months'</span>).format(<span class="string">'LL'</span>),now.format(<span class="string">'LL'</span>));</div><div class="line"><span class="comment">// 2017年2月28日 2017年2月28日</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> now2 = moment();</div><div class="line"><span class="keyword">const</span> anotherNow2 = moment(now2);</div><div class="line"><span class="built_in">console</span>.log(anotherNow2.add(<span class="number">3</span>,<span class="string">'months'</span>).format(<span class="string">'LL'</span>),now2.format(<span class="string">'LL'</span>));</div><div class="line"><span class="comment">// 2017年2月28日 2016年11月30日</span></div></pre></td></tr></table></figure>
-<p>因为异步，所以需要克隆。因为 react 中多个事件中的 setState 会合并，另一个方法无法通过 state 获取数据，只能传入数据到方法中。</p>
-<h2 id="计算年龄"><a href="#计算年龄" class="headerlink" title="计算年龄"></a>计算年龄</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moment = <span class="built_in">require</span>(<span class="string">'moment'</span>);</div><div class="line">moment.locale(<span class="string">'zh-cn'</span>,&#123;</div><div class="line">    <span class="attr">relativeTime</span> : &#123;</div><div class="line">        <span class="attr">yy</span>: <span class="string">"%d 岁"</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// var text = '1991-11-26T02:17:23.000Z'</span></div><div class="line">moment(text).fromNow(<span class="literal">true</span>)</div><div class="line"><span class="comment">// 25岁</span></div></pre></td></tr></table></figure>
-<h2 id="是今天么？"><a href="#是今天么？" class="headerlink" title="是今天么？"></a>是今天么？</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(moment(<span class="string">"2017-03-15 12:00:00"</span>).isSame(moment(), <span class="string">'day'</span>))&#123;</div><div class="line">    <span class="comment">// 是今天</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1639,7 +1640,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">192</span>
+              <span class="site-state-item-count">198</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1656,7 +1657,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-count">282</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -258,6 +258,983 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/12/monitor.html" itemprop="url">
+                  monitor
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-12T09:30:43+08:00" content="2016-08-12">
+              2016-08-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/12/monitor.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/monitor.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="系统监测"><a href="#系统监测" class="headerlink" title="系统监测"></a>系统监测</h2><p>实际使用中，树莓派的 load average 大于 1，是什么鬼？</p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">top</div></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">top - 17:25:11 up 4 days,  6:27,  1 user,  load average: 0.00, 0.01, 0.05</div><div class="line">                                           系统平均负载: 1分钟, 5分钟, 15分钟</div><div class="line">Tasks: 108 total,   2 running, 106 sleeping,   0 stopped,   0 zombie</div><div class="line">Tasks: 总进程数量,                                            卡死的进程</div><div class="line">%Cpu(s):  0.3 us,  0.3 sy,  0.0 ni, 99.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st</div><div class="line">                                    空闲百分比(理想值100)</div><div class="line">KiB Mem:   1016272 total,   893136 used,   123136 free,    69836 buffers</div><div class="line">内存                                          空闲内存       缓冲，加速数据写入</div><div class="line">KiB Swap:        0 total,        0 used,        0 free.   168176 cached Mem</div><div class="line">交换分区                                        空闲交换分区  缓存，加速数据读取</div></pre></td></tr></table></figure>
+<p>通常来说，load average 的极限值应该是 CPU 数。即 1 核 CPU 的极限负载是 1。</p>
+<h3 id="内存使用情况"><a href="#内存使用情况" class="headerlink" title="内存使用情况"></a>内存使用情况</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">free -m</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">➜  ~ free -mclecl</div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:           992        913         79          0         38         81</div><div class="line">-/+ buffers/cache:        793        199</div><div class="line">Swap:            0          0          0</div></pre></td></tr></table></figure>
+<p>每隔 10 秒更新一次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">freee -m <span class="_">-s</span> 10</div></pre></td></tr></table></figure>
+<h2 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uptime</div><div class="line">15:31:44 up 2 days, 47 min,  2 users,  load average: 0.00, 0.01, 0.05</div></pre></td></tr></table></figure>
+<p>load average 显示的是最近1分钟、5分钟、15分钟的系统负载。</p>
+<h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux</div></pre></td></tr></table></figure>
+<p>output</p>
+<p>&gt;<br>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND<br>root         1  0.0  0.1  33456  1848 ?        Ss   Aug20   0:03 /sbin/init<br>root         2  0.0  0.0      0     0 ?        S    Aug20   0:00 [kthreadd]<br>root         3  0.0  0.0      0     0 ?        S    Aug20   0:00 [ksoftirqd/0]<br>root         5  0.0  0.0      0     0 ?        S&lt;   Aug20   0:00 [kworker/0:0H]<br>root         6  0.0  0.0      0     0 ?        S    Aug20   0:03 [kworker/u30:0]<br>root         7  0.0  0.0      0     0 ?        S    Aug20   0:25 [rcu_sched]</p>
+<ul>
+<li>USER  :</li>
+<li>PID   : 进程 ID</li>
+<li>%CPU  : 占用百分比</li>
+<li>%MEM  : 占用百分比</li>
+<li>VSZ   : 占用虚拟内存大小，KB</li>
+<li>RSS   : 占用物理内存大小，KB</li>
+<li>TTY   : 1-6 本地字符终端，7 图形终端，pts/0-255 代表虚拟终端。</li>
+<li>STAT  : 进程状体<ul>
+<li>R 运行</li>
+<li>S 睡眠</li>
+<li>T 停止</li>
+<li>s 包含子进程</li>
+<li><ul>
+<li>位于后台</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>START : 启动时间</li>
+<li>TIME  : 耗费 CPU 运算时间</li>
+<li>COMMAND: 进程名</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | grep php-fpm</div></pre></td></tr></table></figure>
+<h2 id="查看特定端口PID"><a href="#查看特定端口PID" class="headerlink" title="查看特定端口PID"></a>查看特定端口PID</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -anp|grep 4000</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/09/mac.html" itemprop="url">
+                  mac
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-09T11:24:08+08:00" content="2016-08-09">
+              2016-08-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/09/mac.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/mac.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装必要开发环境"><a href="#安装必要开发环境" class="headerlink" title="安装必要开发环境"></a>安装必要开发环境</h2><h3 id="XCode-Command-Line-Tool"><a href="#XCode-Command-Line-Tool" class="headerlink" title="XCode Command Line Tool"></a>XCode Command Line Tool</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div></pre></td></tr></table></figure>
+<h3 id="安装-Homebrew"><a href="#安装-Homebrew" class="headerlink" title="安装 Homebrew"></a>安装 <a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a></h3><p>Homebrew 安装命令行程序，类似于apt-get或者yum。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Get Homebrew</div><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div><div class="line"></div><div class="line">brew help</div><div class="line">brew install git nvm zsh wget ssh-copy-id</div><div class="line">brew list</div><div class="line">ls /usr/local/Cellar</div></pre></td></tr></table></figure>
+<p>安装目录 <code>/usr/local/Cellar</code></p>
+<h2 id="安装-Homebrew-Cask"><a href="#安装-Homebrew-Cask" class="headerlink" title="安装 Homebrew Cask"></a>安装 <a href="https://caskroom.github.io/" target="_blank" rel="external">Homebrew Cask</a></h2><p>Homebrew Cask 是 Homebrew 的扩展，用来安装图形界面程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># get Homebrew Cask</div><div class="line">brew tap caskroom/cask</div><div class="line">brew cask help</div><div class="line">brew cask install iterm2 atom cheatsheet alfred dash google-chrome sourcetree brew cask install mou lantern sublime-text</div><div class="line">brew cask list</div><div class="line">ls /usr/local/Caskroom</div></pre></td></tr></table></figure>
+<p>安装目录 <code>/usr/local/Caskroom</code></p>
+<h2 id="brew-和-brew-cask-区别"><a href="#brew-和-brew-cask-区别" class="headerlink" title="brew 和 brew cask 区别"></a>brew 和 brew cask 区别</h2><ul>
+<li><code>brew</code> 用来安装命令行工具。</li>
+<li><code>brew cask</code> 用来安装有 GUI 的软件。</li>
+</ul>
+<p>brew 是从下载源码解压然后 ./configure &amp;&amp; make install ，同时会包含相关依存库。并自动配置好各种环境变量，而且易于卸载。这个对程序员来说简直是福音，简单的指令，就能快速安装和升级本地的各种开发环境。</p>
+<p>而 brew cask 是已经编译好了的应用包 （.dmg/.pkg），仅仅是下载解压，放在统一的目录中（/opt/homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装）等蛋疼步骤，同样，卸载相当容易与干净。这个对一般用户来说会比较方便，包含很多在 AppStore 里没有的常用软件。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/08/regexp.html" itemprop="url">
+                  【第一季】RegExp 正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-08T10:57:30+08:00" content="2016-08-08">
+              2016-08-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/08/regexp.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/08/regexp.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="正则表达式的三个概念"><a href="#正则表达式的三个概念" class="headerlink" title="正则表达式的三个概念"></a>正则表达式的三个概念</h2><p>正则表达式是用来 <em>匹配</em> 、<em>捕获</em> 特定字符串的工具；之后，我们还可以对 <em>匹配捕获</em> 到的字符串进行处理，比如 <em>替换</em>。</p>
+<ul>
+<li>匹配（Match）</li>
+<li>捕获（Capture）</li>
+<li>替换（Replace）</li>
+</ul>
+<h2 id="使用场景：批量转换电话号码格式。"><a href="#使用场景：批量转换电话号码格式。" class="headerlink" title="使用场景：批量转换电话号码格式。"></a>使用场景：批量转换电话号码格式。</h2><p>将：</p>
+<blockquote>
+<p>07700 900166<br>07700 900202<br>07700 900911<br>07700 900284<br>07700 900847<br>07700 900009</p>
+</blockquote>
+<p>转换为：</p>
+<blockquote>
+<p>(077)0090-0166<br>(077)0090-0202<br>(077)0090-0911<br>(077)0090-0284<br>(077)0090-0847<br>(077)0090-0009</p>
+</blockquote>
+<p>我们需要做的是</p>
+<ul>
+<li><code>捕获</code>前3位，然后在其前后加上括号；</li>
+<li><code>捕获</code>接下来的2位，以及空格之后的两位数字，并拼接起来</li>
+<li><code>捕获</code>最后4位，在其前面添加<code>-</code></li>
+</ul>
+<p>我们使用可以搜索 <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>，替换为 <code>($1)$2$3-$4</code></p>
+<ul>
+<li>用<code>\d\d\d\d\d \d\d\d\d\d\d</code> <em>匹配</em> 这些电话号码，以便我们能在文档中搜索到所有能够匹配这个正则表达式的字符串；</li>
+<li>为了后面能够处理（即，替换），需要在搜索的时候加上<code>()</code>来 <em>捕获</em>,我们分别 <em>捕获</em> 了四段字符串： <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>；</li>
+<li>然后，我们用 $1 … $4 来表示我们 <em>捕获到</em> 的字符串，然后用我们想要的拼接方式去替换匹配到的字符串：<code>($1)$2$3-$4</code>……</li>
+</ul>
+<p>使用工具：Mac - Sublime - <code>option+command+F</code> - <code>option+command+R</code></p>
+<p><code>Find What</code>: <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code><br><code>Replace With</code>: <code>($1)$2$3-$4</code></p>
+<p>正则表达式</p>
+<p><code>/</code> 需要添加转义为 <code>\/</code><br><code>.</code> 匹配单个字符，需要转义 <code>\.</code></p>
+<p>参考链接</p>
+<blockquote>
+<ol>
+<li><a href="http://xiaolai.li/2016/07/19/makecs-regular-expression/" target="_blank" rel="external">正则表达式极简“入门”</a></li>
+</ol>
+</blockquote>
+<h2 id="创建一个正则表达式"><a href="#创建一个正则表达式" class="headerlink" title="创建一个正则表达式"></a>创建一个正则表达式</h2><p><strong>方法一：</strong> 使用一个正则表达式字面量，表达式被<code>/</code>包含之中。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regex = <span class="regexp">/ab+c/</span>;</div><div class="line">regex.test(<span class="string">'ab+c'</span>);</div><div class="line">&lt;false</div><div class="line">regex.test('abc');</div><div class="line">&lt;true</div></pre></td></tr></table></figure>
+<p>这种正则表达式字面量在脚本加载后编译。如果你的正则表达式是常量，使用这种方式可以获得更好的性能。</p>
+<p><strong>方法二：</strong> 调用 RegExp 对象的构造函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"ab+c"</span>);</div></pre></td></tr></table></figure>
+<h2 id="编写一个正则表达式的模式"><a href="#编写一个正则表达式的模式" class="headerlink" title="编写一个正则表达式的模式"></a>编写一个正则表达式的模式</h2><h3 id="使用简单的模式"><a href="#使用简单的模式" class="headerlink" title="使用简单的模式"></a>使用简单的模式</h3><h3 id="使用特殊字符"><a href="#使用特殊字符" class="headerlink" title="使用特殊字符"></a>使用特殊字符</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>转义表格中的字符，也包括 / 自身，即 / 要写为 //</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配输入的开始。/^A/ 并不会匹配 “an A” 中的 ‘A’，但是会匹配 “An E” 中的 ‘A’。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配输入的结束。/t$/ 并不会匹配 “eater” 中的 ‘t’，但是会匹配 “eat” 中的 ‘t’。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前一个表达式0次或多次。等价于 {0,}。/bo*/会匹配 “A ghost boooooed” 中的 ‘boooo’ 和 “A bird warbled” 中的 ‘b’</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前面一个表达式1次或者多次。等价于 {1,}。/a+/匹配了在 “candy” 中的 ‘a’，和在 “caaaaaaandy” 中所有的 ‘a’</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前面一个字符0次或者1次。等价于 {0,1}。 例如，/e?le?/ 匹配 “angel” 中的 ‘el’，和 “angle” 中的 ‘le’ 以及”oslo’ 中的’l’。如果紧跟在任何量词 *、 +、? 或 {} 的后面，将会使量词变为非贪婪的（匹配尽量少的字符），和缺省使用的贪婪模式（匹配尽可能多的字符）正好相反。例如，对 “123abc” 应用 /\d+/ 将会返回 “123”，如果使用 /\d+?/,那么就只会匹配到 “1”。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配换行符(\n)外的任何单个字符</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/08/regex.html" itemprop="url">
+                  regex 正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-08T10:57:30+08:00" content="2016-08-08">
+              2016-08-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/08/regex.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/08/regex.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>s<br>正则表达式是用来 <em>匹配</em> 、<em>捕获</em> 特定字符串的工具；之后，我们还可以对匹配捕获到的对象进行处理，比如 <em>替换</em>。</p>
+<ul>
+<li>匹配（Match）</li>
+<li>捕获（Capture）</li>
+<li>替换（Replace）</li>
+</ul>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>使用场景：批量转换电话号码格式。将：</p>
+<blockquote>
+<p>07700 900166<br>07700 900202<br>07700 900911<br>07700 900284<br>07700 900847<br>07700 900009<br>07700 900754<br>07700 900396<br>07700 900248<br>07700 900408<br>07700 900724<br>07700 900773</p>
+</blockquote>
+<p>转换为：</p>
+<blockquote>
+<p>(077)0090-0166<br>(077)0090-0202<br>(077)0090-0911<br>(077)0090-0284<br>(077)0090-0847<br>(077)0090-0009<br>(077)0090-0754<br>(077)0090-0396<br>(077)0090-0248<br>(077)0090-0408<br>(077)0090-0724<br>(077)0090-0773</p>
+</blockquote>
+<p>我们需要做的是</p>
+<ul>
+<li><code>捕获</code>前3位，然后在其前后加上括号；</li>
+<li><code>捕获</code>接下来的2位，以及空格之后的两位数字，并拼接起来</li>
+<li><code>捕获</code>最后4位，在其前面添加<code>-</code></li>
+</ul>
+<p>我们使用可以搜索 <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>，替换为 <code>($1)$2$3-$4</code></p>
+<ul>
+<li>用<code>\d\d\d\d\d \d\d\d\d\d\d</code> <em>匹配</em> 这些电话号码，以便我们能在文档中搜索到所有能够匹配这个正则表达式的字符串；</li>
+<li>为了后面能够处理（即，替换），需要在搜索的时候加上<code>()</code>来 <em>捕获</em>,我们分别 <em>捕获</em> 了四段字符串： <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>；</li>
+<li>然后，我们用 $1 … $4 来表示我们 <em>捕获到</em> 的字符串，然后用我们想要的拼接方式去替换匹配到的字符串：<code>($1)$2$3-$4</code>……</li>
+</ul>
+<p>使用工具：Mac - Sublime - <code>option+command+F</code> - <code>option+command+R</code></p>
+<p><img src="/images/sublime-regex.png" alt=""></p>
+<p><code>Find What</code>: <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code><br><code>Replace With</code>: <code>($1)$2$3-$4</code></p>
+<p>正则表达式</p>
+<p><code>/</code> 需要添加转义为 <code>\/</code><br><code>.</code> 匹配单个字符，需要转义 <code>\.</code></p>
+<h2 id="nginx-应用"><a href="#nginx-应用" class="headerlink" title="nginx 应用"></a>nginx 应用</h2><p>server_name ~^ www.example.com$;<br>server_name ~^ www(\d+).example.com$;</p>
+<p>参考链接</p>
+<blockquote>
+<ol>
+<li><a href="http://xiaolai.li/2016/07/19/makecs-regular-expression/" target="_blank" rel="external">正则表达式极简“入门”</a></li>
+</ol>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/06/apt-get.html" itemprop="url">
+                  apt-get
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T10:36:14+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/06/apt-get.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/apt-get.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Find"><a href="#Find" class="headerlink" title="Find"></a>Find</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-cache search nmap</div></pre></td></tr></table></figure>
+<h2 id="Install-a-Package"><a href="#Install-a-Package" class="headerlink" title="Install a Package"></a>Install a Package</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nmap</div></pre></td></tr></table></figure>
+<h2 id="Remove-a-Package"><a href="#Remove-a-Package" class="headerlink" title="Remove a Package"></a>Remove a Package</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get remove nmap</div></pre></td></tr></table></figure>
+<p>Multiple Packages: You may specify multiple packages to be installed or removed, separated by spaces.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get purge nmap</div></pre></td></tr></table></figure>
+<p><code>apt-get purge</code> will remove the package configuration files as well. This may or may not be the desired effect, so use with caution.</p>
+<h2 id="Update-the-Package-Index"><a href="#Update-the-Package-Index" class="headerlink" title="Update the Package Index"></a>Update the Package Index</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<h2 id="Upgrade-Packages"><a href="#Upgrade-Packages" class="headerlink" title="Upgrade Packages"></a>Upgrade Packages</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+<h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>Actions of the apt-get command, such as installation and removal of packages, are logged in the <code>/var/log/dpkg.log</code> log file.</p>
+<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><p>For further information about the use of APT, read the comprehensive Debian APT User Manual or type:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get help</div></pre></td></tr></table></figure>
+<h2 id="已安装软件列表"><a href="#已安装软件列表" class="headerlink" title="已安装软件列表"></a>已安装软件列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dpkg -l | grep nmap</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/05/proxy.html" itemprop="url">
+                  proxy
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-05T13:56:44+08:00" content="2016-08-05">
+              2016-08-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/05/proxy.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/05/proxy.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="MacOS-终端代理"><a href="#MacOS-终端代理" class="headerlink" title="MacOS 终端代理"></a>MacOS 终端代理</h2><p>这里默认已经启用了shadowsocks且本地代理为socks5://127.0.0.1:1080</p>
+<h3 id="动态配置终端代理"><a href="#动态配置终端代理" class="headerlink" title="动态配置终端代理"></a>动态配置终端代理</h3><p>在终端下使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 设置代理</div><div class="line">export  ALL_PROXY=socks5://127.0.0.1:1080</div><div class="line"></div><div class="line">// 清除代理</div><div class="line">unset ALL_PROXY</div><div class="line"></div><div class="line">// 查看ip测试是否生效</div><div class="line">curl -i http://ip.cn</div></pre></td></tr></table></figure>
+<p>为了方便使用，可以为上述长命名设置alias.</p>
+<ul>
+<li>如果是默认的 bash，则写入 ~/.bash_profile</li>
+<li>如果是 zsh，则写在 ~/.zshrc</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias setproxy=&quot;export ALL_PROXY=socks5://127.0.0.1:1080&quot;</div><div class="line">alias unsetproxy=&quot;unset ALL_PROXY&quot;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>PS:新的macOS可以使用“command+shift+. ”快捷键快速切换是否显示隐藏文件</p>
+</blockquote>
+<p>可以直接把上述代码拷贝到上述对应文件的末尾，修改完成之后执行如下命令使修改生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.zshrc  //刚刚修改的文件名</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 启用代理</div><div class="line">setproxy</div><div class="line"></div><div class="line"># 关闭代理</div><div class="line">unsetproxy</div></pre></td></tr></table></figure>
+<h2 id="Convert-Shadowsocks-into-an-HTTP-proxy"><a href="#Convert-Shadowsocks-into-an-HTTP-proxy" class="headerlink" title="Convert Shadowsocks into an HTTP proxy"></a>Convert Shadowsocks into an HTTP proxy</h2><p>First run polipo with parent proxy set to Shadowsocks:</p>
+<ul>
+<li>Ubuntu</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install polipo</div><div class="line">service polipo stop</div></pre></td></tr></table></figure>
+<ul>
+<li>MacOS</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install polipo</div></pre></td></tr></table></figure>
+<p>启动 polipo：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">polipo socksParentProxy=localhost:1080</div></pre></td></tr></table></figure>
+<p>Then you can play with the HTTP proxy:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">http_proxy=http://localhost:8123 apt-get update</div><div class="line"></div><div class="line">http_proxy=http://localhost:8123 curl www.google.com</div><div class="line"></div><div class="line">http_proxy=http://localhost:8123 wget www.google.com</div><div class="line"></div><div class="line">git config --global http.proxy 127.0.0.1:8123</div><div class="line">git clone https://github.com/xxx/xxx.git</div><div class="line">git xxx</div><div class="line">git xxx</div><div class="line">git config --global --unset-all http.proxy</div></pre></td></tr></table></figure>
+<h3 id="Privoxy-把-SOCSK5-转换成-HTTP-代理"><a href="#Privoxy-把-SOCSK5-转换成-HTTP-代理" class="headerlink" title="Privoxy 把 SOCSK5 转换成 HTTP 代理"></a>Privoxy 把 SOCSK5 转换成 HTTP 代理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">brew install privoxy</div><div class="line">whereis privoxy</div><div class="line">cd /usr/local/etc/privoxy/</div><div class="line">echo &apos;listen-address 0.0.0.0:8118&apos; &gt;&gt; config</div><div class="line">echo &apos;forward-socks5 / 127.0.0.1:1080 .&apos; &gt;&gt; config</div><div class="line">/usr/local/sbin/privoxy /usr/local/etc/privoxy/config</div></pre></td></tr></table></figure>
+<p>没看到任何信息就代表成功了。</p>
+<ul>
+<li><code>0.0.0.0</code> 可以让别的设备用(例如手机)，如果不需要，可以用 <code>127.0.0.1</code>；</li>
+<li><code>8118</code> 是默认端口；</li>
+<li><code>localhost:1080 .</code> 1080 是 shadowsocks 监听端口，注意后面的 <code>.</code> 符号不能删掉</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl ip.cn</div><div class="line">export http_proxy=http://127.0.0.1:8118</div><div class="line">export https_proxy=http://127.0.0.1:8118</div><div class="line">curl ip.cn</div></pre></td></tr></table></figure>
+<p>===局域网手机共享代理===<br>如果局域网 ip 为 <code>192.168.1.123</code>，则可以让 <code>iPhone</code>-&gt;<code>无线局域网</code>-&gt;<code>!</code>-&gt;<code>HTTP代理</code>-&gt;<code>手动</code> 输入</p>
+<ul>
+<li><code>192.168.1.123</code></li>
+<li><code>8118</code></li>
+</ul>
+<h2 id="Using-Shadowsocks-with-Command-Line-Tools"><a href="#Using-Shadowsocks-with-Command-Line-Tools" class="headerlink" title="Using Shadowsocks with Command Line Tools"></a>Using Shadowsocks with Command Line Tools</h2><p>First, set up shadowsocks as usual. Suppose your local is running on 127.0.0.1:1080.</p>
+<p>Install proxychains.</p>
+<p>On Debian/Ubuntu:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install proxychains #  使用 proxychains</div></pre></td></tr></table></figure>
+<p>On Mac OS X:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install proxychains-ng #  使用 proxychains4</div></pre></td></tr></table></figure>
+<p>Make a config file at <code>~/.proxychains/proxychains.conf</code> with content:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">strict_chain</div><div class="line">proxy_dns</div><div class="line">remote_dns_subnet 224</div><div class="line">tcp_read_time_out 15000</div><div class="line">tcp_connect_time_out 8000</div><div class="line">localnet 127.0.0.0/255.0.0.0</div><div class="line">quiet_mode</div><div class="line"></div><div class="line">[ProxyList]</div><div class="line">socks5  127.0.0.1 1080</div></pre></td></tr></table></figure>
+<p>Then run command with proxychains. Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># macos</div><div class="line">proxychains4 curl ip.cn</div><div class="line">proxychains4 meteor update</div><div class="line">proxychains4 curl https://www.twitter.com/</div><div class="line">proxychains4 git push origin master</div></pre></td></tr></table></figure>
+<p>Or just proxify bash:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># macos</div><div class="line">proxychains4 bash</div><div class="line">curl https://www.twitter.com/</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p>在 <code>OSX 10.11</code> 上，<code>proxychains4 curl</code> 会忽略 <code>proxychains4</code>，because of SIP, you can’t use proxychains-ng to proxy a execute which is in system dir like /usr/bin. But /usr/local/bin can works. Something like youtube-dl with call python which is in /usr/bin, install a Homebrew python or others can solve it.</p>
+<ul>
+<li>方案一：禁用 SIP：<code>Command+R</code>，执行 <code>csrutil disable</code> 重启后，<code>csrutil status</code></li>
+<li>方案二：另外安装一份 <code>curl</code>：<code>brew install curl</code>,<code>brew link --force curl</code></li>
+</ul>
+<h2 id="Startup"><a href="#Startup" class="headerlink" title="Startup"></a>Startup</h2><h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -p 443 -k password -m aes-256-cfb</div></pre></td></tr></table></figure>
+<p>To run in the background:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start</div></pre></td></tr></table></figure>
+<p>To Stop:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -d stop</div></pre></td></tr></table></figure>
+<p>To check the log:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">less /var/log/shadowsocks.log</div></pre></td></tr></table></figure>
+<h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>下载客户端</p>
+<h2 id="Socks-5-in-Terminal"><a href="#Socks-5-in-Terminal" class="headerlink" title="Socks 5 in Terminal"></a>Socks 5 in Terminal</h2><h3 id="Using-Unix-Proxy-Environment-Variable"><a href="#Using-Unix-Proxy-Environment-Variable" class="headerlink" title="Using Unix Proxy Environment Variable"></a>Using Unix Proxy Environment Variable</h3><p>Add this script to <code>~/.bash_profile</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export http_proxy=http://127.0.0.1:1080</div><div class="line">export https_proxy=http://127.0.0.1:1080</div></pre></td></tr></table></figure>
+<p><strong>注意</strong> <code>MacOS</code> 中大写  <code>HTTP_PROXY</code> 不生效！</p>
+<h3 id="Config-curl-to-use-SOCKS5-Also-works-for-homebrew"><a href="#Config-curl-to-use-SOCKS5-Also-works-for-homebrew" class="headerlink" title="Config curl to use SOCKS5(Also works for homebrew)"></a>Config <code>curl</code> to use <code>SOCKS5</code>(Also works for homebrew)</h3><p>Add the following line to <code>~/.curlrc</code>. Since <code>homebrew</code> use <code>curl</code> to download the package, this will also enable homebrew to use SOCKS5.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socks5 = &quot;socks5://127.0.0.1:1080&quot;</div></pre></td></tr></table></figure>
+<h3 id="Config-git-to-use-SOCKS5"><a href="#Config-git-to-use-SOCKS5" class="headerlink" title="Config git to use SOCKS5"></a>Config git to use SOCKS5</h3><ul>
+<li>For <code>https://</code> and <code>http://</code>(e.g. <code>http://github.com</code>, <code>https://github.com</code>), run the following script.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;socks5://127.0.0.1:1080&apos;</div><div class="line">git config --global https.proxy &apos;socks5://127.0.0.1:1080&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li>For <code>git://</code>(e.g. <code>git://github.com</code>), run <code>git config --global core.gitproxy &#39;socks5://127.0.0.1:1080&#39;</code></li>
+<li>For <code>ssh</code>(e.g. <code>git@github.com,ssh://git@github.com</code>), add <code>ProxyCommand nc -x localhost:1080 %h %p</code> to ~/.ssh/config file.</li>
+</ul>
+<p><code>git config --global</code> is stored in <code>~/.gitconfig</code> while local config settings is in <code>./.git/config</code>. To remove a configuration, e.g. run <code>git config --global --unset core.gitproxy</code>.</p>
+<h2 id="验证代理是否成功"><a href="#验证代理是否成功" class="headerlink" title="验证代理是否成功"></a>验证代理是否成功</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">curl ip.cn</div><div class="line">curl ifconfig.me</div><div class="line">curl ifconfig.co</div><div class="line">curl ipinfo.io</div><div class="line">curl http://ipecho.net/plain</div></pre></td></tr></table></figure>
+<h2 id="Ubuntu-下-privoxy"><a href="#Ubuntu-下-privoxy" class="headerlink" title="Ubuntu 下 privoxy"></a>Ubuntu 下 privoxy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install privoxy</div><div class="line">service privoxy status</div><div class="line">service privoxy start</div><div class="line">service privoxy stop</div><div class="line">service privoxy restart</div></pre></td></tr></table></figure>
+<h2 id="代理开关"><a href="#代理开关" class="headerlink" title="代理开关"></a>代理开关</h2><ol>
+<li>在 <code>.bashrc</code> 中添加</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alias proxy=&apos;proxychains4&apos;</div><div class="line">alias proxyon=&quot;export http_proxy=&apos;http://127.0.0.1:8118&apos;;export https_proxy=&apos;http://127.0.0.1:8118&apos;&quot;</div><div class="line">alias proxyoff=&quot;export http_proxy=&apos;&apos;;export https_proxy=&apos;&apos;&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>proxychains4, 使用 proxy 替代</li>
+<li>privoxy, 使用 <code>proxyon</code> 和 <code>proxyoff</code> 开启和关闭</li>
+</ul>
+<ol>
+<li>开启代理</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxyon</div></pre></td></tr></table></figure>
+<ol>
+<li>关闭代理</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxyoff</div></pre></td></tr></table></figure>
+<h2 id="如何为-git-设置代理"><a href="#如何为-git-设置代理" class="headerlink" title="如何为 git 设置代理"></a>如何为 git 设置代理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxychains4 git submodule add git@gitlab.com:username/sample.git</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/04/seo.html" itemprop="url">
                   seo
                 </a>
@@ -793,860 +1770,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/01/chart-js.html" itemprop="url">
-                  chart.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-01T18:28:19+08:00" content="2016-08-01">
-              2016-08-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/01/chart-js.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/chart-js.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>版本 v2.1.6</p>
-<ul>
-<li>DOM节点 <code>ctx</code></li>
-<li>图标类型 <code>type</code></li>
-<li>数据结构(Data Structure) <code>data</code></li>
-<li>图表参数(Chart Options) <code>options</code></li>
-</ul>
-<p>html：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>js：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import Chart from 'src/chart.js';</div><div class="line">var ctx = document.getElementById("myChart");</div><div class="line"></div><div class="line"># 曲线图（Line chart）</div><div class="line">var myLineChart = new Chart(ctx, &#123;</div><div class="line">    type: 'line',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 柱状图（Bar chart）</div><div class="line">var myBarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'bar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 雷达图或蛛网图（Radar chart）</div><div class="line">var myRadarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'radar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 极地区域图（Polar area chart）</div><div class="line">new Chart(ctx, &#123;</div><div class="line">    data: data,</div><div class="line">    type: 'polarArea',</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 饼图（Pie chart）</div><div class="line">var myPieChart = new Chart(ctx,&#123;</div><div class="line">    type: 'pie',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 环形图（Doughnut chart）</div><div class="line">var myDoughnutChart = new Chart(ctx, &#123;</div><div class="line">    type: 'doughnut',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/31/git-flow.html" itemprop="url">
-                  git-flow
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-31T13:58:55+08:00" content="2016-07-31">
-              2016-07-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/31/git-flow.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/git-flow.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="功能驱动式开发"><a href="#功能驱动式开发" class="headerlink" title="功能驱动式开发"></a>功能驱动式开发</h2><p>Feature-driven development，简称 FDD。</p>
-<p>需求是开发的起点，先有需求再有功能分支(feature branch)或者补丁分支（hotfix branch）。完成<br>开发后，该分支就合并的主分支并删除。</p>
-<h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><ul>
-<li>git flow<ul>
-<li>长期分支<ul>
-<li>主分支 master</li>
-<li>开发分支 develop</li>
-</ul>
-</li>
-<li>短期分支（一旦完成后就会被合并进 develop 或 master，然后被删除）<ul>
-<li>功能分支 feature branch</li>
-<li>补丁分支 hostfix branch</li>
-<li>预发分支 release branch</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>github flow<ul>
-<li>只有一个长期分支 master</li>
-<li>第一步：根据需求，从 master 拉出新分支，不区分功能分支或补丁分支</li>
-<li>第二步：新分支开发完成后，或者需要讨论的时候，向 master 发起 <code>pull request</code></li>
-<li>第三步：评审和讨论代码，不断修改并提交完善后的代码。</li>
-<li>第四步：<code>pull request</code> 被接受，合并进 <code>master</code>，分支被删除</li>
-</ul>
-</li>
-<li>gitlab flow<ul>
-<li>使用 <code>Merge Request</code> 合并分支</li>
-</ul>
-</li>
-</ul>
-<p>其中 git flow 是通过命令行来合并分支。</p>
-<p>github 和 gitlab 是通过发起请求，在 web 端进行合并操作。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/30/react-qq-login.html" itemprop="url">
-                  react-qq-login
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-30T16:03:40+08:00" content="2016-07-30">
-              2016-07-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/30/react-qq-login.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/react-qq-login.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://stackoverflow.com/questions/34424845/adding-script-tag-to-react-jsx" target="_blank" rel="external">链接</a></p>
-<p>QQ登录报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Failed to execute &apos;write&apos; on &apos;Document&apos;:  It isn&apos;t possible to write into a</div><div class="line">document from an asynchronously-loaded external script unless it is explicitly opened.</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">componentWillMount() &#123;</div><div class="line">  const script = document.createElement(&quot;script&quot;);</div><div class="line"></div><div class="line">  script.src = &apos;http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js&apos;;</div><div class="line">  script.async = true;</div><div class="line"></div><div class="line">  document.body.appendChild(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>改为在 <code>componentDidMount</code> 中挂载</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/30/automation.html" itemprop="url">
-                  自动化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-30T11:38:13+08:00" content="2016-07-30">
-              2016-07-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/30/automation.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/automation.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用 <code>cron</code> 或者 <code>systemd</code> 自动化运行任务。</p>
-<h2 id="cron"><a href="#cron" class="headerlink" title="cron"></a>cron</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 启动Cron服务</div><div class="line">root@ubuntu-14:~# apt-get install cron</div><div class="line">root@ubuntu-14:~# service cron start</div><div class="line">root@ubuntu-14:~# service cron status</div><div class="line"># 使用Cron帮助</div><div class="line">root@ubuntu-14:~# man crontab</div><div class="line">root@ubuntu-14:~# man 5 crontab</div><div class="line"># 列出当前用户计划的cron作业</div><div class="line">root@ubuntu-14:~# crontab –l</div><div class="line"># 列出指定用户计划的cron作业</div><div class="line">root@ubuntu-14:~# crontab –l –u `username`</div><div class="line"># 添加/编辑Cron作业</div><div class="line">root@ubuntu-14:~# crontab -e</div><div class="line"># 移除Cron作业</div><div class="line">root@ubuntu-14:~# crontab –r</div><div class="line"># 移除所有已计划的cron作业</div><div class="line">root@ubuntu-14:~# crontab –ir</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">* * * * * command to be executed</div><div class="line">- - - - -</div><div class="line">| | | | |</div><div class="line">| | | | ----- Day of week (0 - 7) (Sunday=0 or 7)</div><div class="line">| | | ------- Month (1 - 12)</div><div class="line">| | --------- Day of month (1 - 31)</div><div class="line">| ----------- Hour (0 - 23)</div><div class="line">------------- Minute (0 - 59)</div></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root@ubuntu-14:~# crontab -e</div></pre></td></tr></table></figure>
-<p>添加如下内容后并保存：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">SHELL=/bin/bash</div><div class="line">HOME=/</div><div class="line">MAILTO=”user@vexxhost.com”</div><div class="line"># 每分钟打印一句话，并发送一封邮件到 `user@vexxhost.com`</div><div class="line">* * * * * echo &apos;test cron job to execute every minute&apos;</div><div class="line"></div><div class="line"># 每天执行两次（11点，16点执行）</div><div class="line">00 11,16 * * * /home/ramesh/bin/incremental-backup</div><div class="line"></div><div class="line"># 每10分钟执行一次</div><div class="line">*/10 * * * * /home/ramesh/check-disk-space</div><div class="line"></div><div class="line"># 每天执行定时任务（@daily）</div><div class="line">@daily /home/ramesh/arch-linux/bin/cleanup-logs &quot;day started&quot;</div><div class="line"></div><div class="line"># 每天 6 点重启 ss 服务</div><div class="line"># 创建restart-ss.sh文件</div><div class="line"># 赋予执行权限：chmod +x restart-ss.sh</div><div class="line"># 文件内容为：/usr/local/bin/ssserver -c /etc/shadowsocks.json -d restart</div><div class="line">0 6 * * * /root/restart-ss.sh &gt;&gt; /root/cron.log</div><div class="line"></div><div class="line"># 每月执行定时任务（@mothly）</div><div class="line">@monthly /home/ramesh/suse/bin/tape-backup</div><div class="line"></div><div class="line"># 每一年的第一分钟执行定时任务（@yearly）</div><div class="line">@yearly /home/ramesh/red-hat/bin/annual-maintenance</div><div class="line"></div><div class="line"># 每次重启时执行定时任务（@reboot）</div><div class="line">@reboot CMD</div></pre></td></tr></table></figure>
-<p>保存后输出如下内容表明任务添加成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab: installing new crontab</div></pre></td></tr></table></figure>
-<p><strong>需要注意的是，crontab 中执行的脚步中，程序的路径需要写绝对路径！</strong>。例如 <code>tcpdump</code> 需要写成 <code>/usr/bin/tcpdump</code></p>
-<p>默认情况下，crontab 将向布置定时任务的管理员发送邮件，如果想重定向此用户，添加并更新 MAIL。如果不想任何人接收，则直接将 MAIL 置空</p>
-<p>/etc/cron.day<br>/etc/cron.month</p>
-<h2 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/systemd/system/letsencrypt.service</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=Let&apos;s Encrypt renewal</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=oneshot  </div><div class="line">ExecStart=/usr/bin/letsencrypt renew  </div><div class="line">ExecStartPost=/bin/systemctl reload nginx.service</div></pre></td></tr></table></figure>
-<p>然后增加一个 systemd timer 来触发这个服务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo vim /etc/systemd/system/letsencrypt.timer</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=Monthly renewal of Let&apos;s Encrypt&apos;s certificates</div><div class="line"></div><div class="line">[Timer]</div><div class="line">OnCalendar=daily  </div><div class="line">Persistent=true</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=timers.target</div></pre></td></tr></table></figure>
-<p>启用服务，开启 timer：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable letsencrypt.service</div><div class="line">sudo systemctl start letsencrypt.timer</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/29/daemon.html" itemprop="url">
-                  daemon
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-29T16:06:32+08:00" content="2016-07-29">
-              2016-07-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/29/daemon.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/29/daemon.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="启动前台任务"><a href="#启动前台任务" class="headerlink" title="启动前台任务"></a>启动前台任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node server.js</div></pre></td></tr></table></figure>
-<p>敲完回车后，我们就不能输入其他命令了，只能等待这个命令运行完了或者手动终止，才能执行其他命令。并且当我们关闭命令行终端后，这个进程就一起退出了。这种任务叫做“前台任务”。</p>
-<h2 id="amp-启动后台任务"><a href="#amp-启动后台任务" class="headerlink" title="&amp; 启动后台任务"></a>&amp; 启动后台任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node server.js &amp;</div></pre></td></tr></table></figure>
-<p>后台任务与前台任务的本质区别：是否继承 stdin。所以，执行后台任务后，我们依然可以接着输入其他命令。</p>
-<h2 id="SIGHUP-信号"><a href="#SIGHUP-信号" class="headerlink" title="SIGHUP 信号"></a>SIGHUP 信号</h2><ol>
-<li>用户准备退出 session</li>
-<li>系统向该 session 发出 SIGNUP 信号</li>
-<li>session 将 SIGNUP 信号发给所有子进程</li>
-<li>子进程收到 SIGNUP 信号后，自动退出</li>
-</ol>
-<p>前台任务会退出就是因为：收到了 SIGHUP 信号。<br>后台任务是否会退出则由 shell 的参数 <code>huponexit</code>（ hup on exit）决定：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi ~ $ shopt | grep huponexit</div></pre></td></tr></table></figure>
-<p>output:</p>
-<blockquote>
-<p>huponexit          off</p>
-</blockquote>
-<p>所以说，“后台任务”不会随着 session 一起退出。</p>
-<h2 id="disown"><a href="#disown" class="headerlink" title="disown"></a>disown</h2><p>如何确保“后台任务”不会因为 <code>huponexit</code> 为 <code>on</code> 而退出呢？</p>
-<p>答案是使用<code>disown</code>将特定的“后台任务”从“后台任务”列表（<code>jobs</code>命令的返回结果）中移除。原因是 session 会向“后台”列表发送 <code>SIGHUP</code>信号。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node server.js &amp;</div><div class="line"><span class="built_in">disown</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 移出最近一个正在执行的后台任务</span></div><div class="line">$ <span class="built_in">disown</span></div><div class="line"></div><div class="line"><span class="comment"># 移出所有正在执行的后台任务</span></div><div class="line">$ <span class="built_in">disown</span> -r</div><div class="line"></div><div class="line"><span class="comment"># 移出所有后台任务</span></div><div class="line">$ <span class="built_in">disown</span> <span class="_">-a</span></div><div class="line"></div><div class="line"><span class="comment"># 不移出后台任务，但是让它们不会收到SIGHUP信号</span></div><div class="line">$ <span class="built_in">disown</span> -h</div><div class="line"></div><div class="line"><span class="comment"># 根据jobId，移出指定的后台任务</span></div><div class="line">$ <span class="built_in">disown</span> %2</div><div class="line">$ <span class="built_in">disown</span> -h %2</div></pre></td></tr></table></figure>
-<h2 id="标准-I-O"><a href="#标准-I-O" class="headerlink" title="标准 I/O"></a>标准 I/O</h2><ul>
-<li>0 输入（标准输入）</li>
-<li>1 输出（标准输出）</li>
-<li>2 错误（标准错误信息输出）</li>
-</ul>
-<p>使用 <code>disown</code> 命令之后，还有一个问题。那就是，退出 session 后，如果后台进程与 标准I/O 有交互，它还是会挂掉。这是因为”后台任务”的标准 I/O 继承自当前 session，disown命令并没有改变这一点。一旦”后台任务”读写标准 I/O，就会发现它已经不存在了，所以就报错终止执行。为了解决这个问题，需要对”后台任务”的标准 I/O 进行重定向。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node server.js &gt; stdout.txt 2&gt; stderr.txt &lt; /dev/null &amp;</div><div class="line"><span class="built_in">disown</span></div></pre></td></tr></table></figure>
-<h2 id="nohup-忽略所有挂断（SIGHUP）信号"><a href="#nohup-忽略所有挂断（SIGHUP）信号" class="headerlink" title="nohup 忽略所有挂断（SIGHUP）信号"></a>nohup 忽略所有挂断（SIGHUP）信号</h2><p>nohup 比 disown 更方便。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup node server.js &amp;</div></pre></td></tr></table></figure>
-<p>nohup 命令对 server.js 进程做了三件事：</p>
-<ul>
-<li>阻止 SIGHUP 信号发送到这个进程。</li>
-<li>关闭标准输入。该进程不再接受任何输入，即使运行在前台。</li>
-<li>重定向 标准输入 和 标准错误 到文件 nohup.out</li>
-</ul>
-<p>也就是说，nohup 命令将子进程与它所在的 session 分离了。</p>
-<p>注意： nohup 命令不会自动把进程变为“后台任务”，所以必须加上 &amp; 符号。</p>
-<blockquote>
-<p>nohup command &gt; log.file 2&gt;&amp;1 &amp;</p>
-</blockquote>
-<ul>
-<li><code>&gt; /dev/null</code> means: stdout goes to /dev/null</li>
-<li><code>2&gt;&amp;1</code> means: stderr also goes to the stdout</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 1. 先编辑一支会『睡著 500 秒』的程序：</div><div class="line">[root@www ~]# vim sleep500.sh</div><div class="line">#!/bin/bash</div><div class="line">/bin/sleep 500s</div><div class="line">/bin/echo &quot;I have slept 500 seconds.&quot;</div><div class="line"></div><div class="line"># 2. 丢到后台中去运行，并且立刻注销系统：</div><div class="line">[root@www ~]# chmod a+x sleep500.sh</div><div class="line">[root@www ~]# nohup ./sleep500.sh &amp;</div><div class="line">[1] 5074</div><div class="line">[root@www ~]# nohup: appending output to ‘nohup.out’ &lt;==会告知这个信息！</div><div class="line">[root@www ~]# exit</div></pre></td></tr></table></figure>
-<p>如果你再次登陆的话，再使用 pstree 去查阅你的程序，会发现 sleep500.sh 还在运行中喔！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pstree</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">pstree</div><div class="line">ps -ef | grep sleep500</div><div class="line"># pid 为 14807</div><div class="line"># 15 正常终止</div><div class="line">sudo kill -15 14807</div><div class="line"># 9 强制终止</div><div class="line">sudo kill -9 14807</div></pre></td></tr></table></figure>
-<h2 id="Screen-命令与-Tmux-命令"><a href="#Screen-命令与-Tmux-命令" class="headerlink" title="Screen 命令与 Tmux 命令"></a>Screen 命令与 Tmux 命令</h2><p>另一种思路是：在当前 session 里面，新建另一个 session。这样的话，当前 session 一旦结束，不影响其他 session。而且，以后重新登录，还可以再连上早先新建的 session。</p>
-<h3 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h3><p>Screen 的用法如下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 新建一个 session</span></div><div class="line">$ screen</div><div class="line">$ node server.js</div></pre></td></tr></table></figure>
-<p>然后，按下ctrl + A和ctrl + D，回到原来的 session，从那里退出登录。下次登录时，再切回去。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ screen -r</div></pre></td></tr></table></figure>
-<p>如果新建多个后台 session，就需要为它们指定名字。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ screen -S name</div><div class="line"></div><div class="line"><span class="comment"># 切回指定 session</span></div><div class="line">$ screen -r name</div><div class="line">$ screen -r pid_number</div><div class="line"></div><div class="line"><span class="comment"># 列出所有 session</span></div><div class="line">$ screen -ls</div></pre></td></tr></table></figure>
-<p>如果要停掉某个 session，可以先切回它，然后按下<code>ctrl + c</code>和<code>ctrl + d</code>。</p>
-<h3 id="Tmux"><a href="#Tmux" class="headerlink" title="Tmux"></a>Tmux</h3><p>Tmux 比 Screen 功能更多、更强大，它的基本用法如下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ tmux</div><div class="line">$ node server.js</div><div class="line"></div><div class="line"><span class="comment"># 返回原来的session</span></div><div class="line">$ tmux detach</div></pre></td></tr></table></figure>
-<p>除了tmux detach，另一种方法是按下<code>Ctrl + B</code>和<code>d</code> ，也可以回到原来的 session。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 下次登录时，返回后台正在运行服务session</span></div><div class="line">$ tmux attach</div></pre></td></tr></table></figure>
-<p>如果新建多个 session，就需要为每个 session 指定名字。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 新建 session</span></div><div class="line">$ tmux new <span class="_">-s</span> session_name</div><div class="line"></div><div class="line"><span class="comment"># 切换到指定 session</span></div><div class="line">$ tmux attach -t session_name</div><div class="line"></div><div class="line"><span class="comment"># 列出所有 session</span></div><div class="line">$ tmux list-sessions</div><div class="line"></div><div class="line"><span class="comment"># 退出当前 session，返回前一个 session</span></div><div class="line">$ tmux detach</div><div class="line"></div><div class="line"><span class="comment"># 杀死指定 session</span></div><div class="line">$ tmux <span class="built_in">kill</span>-session -t session-name</div></pre></td></tr></table></figure>
-<h2 id="Node-工具"><a href="#Node-工具" class="headerlink" title="Node 工具"></a>Node 工具</h2><ul>
-<li>forever，功能很简单，就是保证进程退出时，应用会自动重启。</li>
-<li>nodemon，一般只在开发时使用，它最大的长处在于 watch 功能，一旦文件发生变化，就自动重启进程</li>
-<li>pm2，功能最强大，除了重启进程以外，还能实时收集日志和监控。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">npm install -g forever</div><div class="line"></div><div class="line"><span class="comment"># 作为前台任务启动</span></div><div class="line">$ forever server.js</div><div class="line"></div><div class="line"><span class="comment"># 作为服务进程启动</span></div><div class="line">$ forever start app.js</div><div class="line"></div><div class="line"><span class="comment"># 停止服务进程</span></div><div class="line">$ forever stop Id</div><div class="line"></div><div class="line"><span class="comment"># 重启服务进程</span></div><div class="line">$ forever restart Id</div><div class="line"></div><div class="line"><span class="comment"># 监视当前目录的文件变动，一有变动就重启</span></div><div class="line">$ forever -w server.js</div><div class="line"></div><div class="line"><span class="comment"># -m 参数指定最多重启次数</span></div><div class="line">$ forever -m 5 server.js</div><div class="line"></div><div class="line"><span class="comment"># 列出所有进程</span></div><div class="line">$ forever list</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 默认监视当前目录的文件变化</span></div><div class="line">$ nodemon server.js</div><div class="line"></div><div class="line">＃ 监视指定文件的变化   </div><div class="line">$ nodemon --watch app --watch libs server.js</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">npm install -g pm2</div><div class="line"></div><div class="line"><span class="comment"># 启动应用</span></div><div class="line">$ pm2 start app.js</div><div class="line"></div><div class="line"><span class="comment"># 指定同时起多少个进程（由CPU核心数决定），组成一个集群</span></div><div class="line">$ pm2 start app.js -i max</div><div class="line"></div><div class="line"><span class="comment"># 列出所有任务</span></div><div class="line">$ pm2 list</div><div class="line"></div><div class="line"><span class="comment"># 停止指定任务</span></div><div class="line">$ pm2 stop 0</div><div class="line"></div><div class="line">＃ 重启指定任务</div><div class="line">$ pm2 restart 0</div><div class="line"></div><div class="line"><span class="comment"># 删除指定任务</span></div><div class="line">$ pm2 delete 0</div><div class="line"></div><div class="line"><span class="comment"># 保存当前的所有任务，以后可以恢复</span></div><div class="line">$ pm2 save</div><div class="line"></div><div class="line"><span class="comment"># 列出每个进程的统计数据</span></div><div class="line">$ pm2 monit</div><div class="line"></div><div class="line"><span class="comment"># 查看所有日志</span></div><div class="line">$ pm2 logs</div><div class="line"></div><div class="line"><span class="comment"># 导出数据</span></div><div class="line">$ pm2 dump</div><div class="line"></div><div class="line"><span class="comment"># 重启所有进程</span></div><div class="line">$ pm2 <span class="built_in">kill</span></div><div class="line">$ pm2 resurect</div><div class="line"></div><div class="line"><span class="comment"># 启动web界面 http://localhost:9615</span></div><div class="line">$ pm2 web</div></pre></td></tr></table></figure>
-<h2 id="Systemd"><a href="#Systemd" class="headerlink" title="Systemd"></a>Systemd</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/28/git-ignore.html" itemprop="url">
-                  git-ignore
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-28T11:07:36+08:00" content="2016-07-28">
-              2016-07-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/28/git-ignore.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/git-ignore.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>创建一个新文件 <code>~/.gitignore</code> (或者 <code>.gitignore_global</code>)，并将以下内容添加进去，这样全部<br> git 仓库将会忽略以下内容所提及的文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># Folder view configuration files</div><div class="line">.DS_Store</div><div class="line">Desktop.ini</div><div class="line"></div><div class="line"># Thumbnail cache files</div><div class="line">._*</div><div class="line">Thumbs.db</div><div class="line"></div><div class="line"># Files that might appear on external disks</div><div class="line">.Spotlight-V100</div><div class="line">.Trashes</div><div class="line"></div><div class="line"># Compiled Python files</div><div class="line">*.pyc</div><div class="line"></div><div class="line"># Compiled C++ files</div><div class="line">*.out</div><div class="line"></div><div class="line"># Application specific files</div><div class="line">venv</div><div class="line">node_modules</div><div class="line">.sass-cache</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1692,7 +1815,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">192</span>
+              <span class="site-state-item-count">198</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1709,7 +1832,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-count">282</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

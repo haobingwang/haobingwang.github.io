@@ -93,7 +93,10 @@ string 双引号字符
 int 整数
 double 浮点数
 
-c# 中没有 Boolean">
+类型转换如果两个类型的变量兼容, 比如 int 与 double ,可以使用 自动类型转换 或者 强制类型转换:
+
+自动类型转换, int 转 double, 小的转成大的
+显示类型转换, double 转 int, 大">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c#">
 <meta property="og:url" content="http://haobing.wang/2016/11/03/csharp.html">
@@ -108,8 +111,11 @@ string 双引号字符
 int 整数
 double 浮点数
 
-c# 中没有 Boolean">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.612Z">
+类型转换如果两个类型的变量兼容, 比如 int 与 double ,可以使用 自动类型转换 或者 强制类型转换:
+
+自动类型转换, int 转 double, 小的转成大的
+显示类型转换, double 转 int, 大">
+<meta property="og:updated_time" content="2017-04-27T10:10:34.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c#">
 <meta name="twitter:description" content="Visual Studio 基本操作
@@ -122,7 +128,10 @@ string 双引号字符
 int 整数
 double 浮点数
 
-c# 中没有 Boolean">
+类型转换如果两个类型的变量兼容, 比如 int 与 double ,可以使用 自动类型转换 或者 强制类型转换:
+
+自动类型转换, int 转 double, 小的转成大的
+显示类型转换, double 转 int, 大">
 
 
 
@@ -348,7 +357,27 @@ c# 中没有 Boolean">
 <li>int 整数</li>
 <li>double 浮点数</li>
 </ul>
-<p>c# 中没有 Boolean</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>如果两个类型的变量兼容, 比如 int 与 double ,可以使用 <strong>自动类型转换</strong> 或者 <strong>强制类型转换</strong>:</p>
+<ul>
+<li>自动类型转换, int 转 double, 小的转成大的</li>
+<li>显示类型转换, double 转 int, 大的转成小的</li>
+</ul>
+<p>如果两个类型的变量不兼容,比如 string 与 int 或者 string 与 double, 可以使用 Convert.To**() 转换:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s = &quot;123&quot;;</div><div class="line">double d = Convert.ToDouble(s);</div><div class="line">Console.WriteLine(d);</div><div class="line"></div><div class="line">int n = Convert.ToInt32(s);</div><div class="line">Console.WriteLine(n);</div></pre></td></tr></table></figure>
+<h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><p>不同于使用 + 拼接字符串.</p>
+<p>使用方法: 先挖矿,再填坑.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Console.WriteLine(&quot;我的名字是&#123;0&#125;,今年&#123;1&#125;岁了&quot;, &quot;罗兰&quot;, 16);</div><div class="line">Console.ReadKey();</div></pre></td></tr></table></figure>
+<p>输出:</p>
+<blockquote>
+<p>我的名字是罗兰,今年16岁了</p>
+</blockquote>
+<p>输出时按照挖坑顺序输出.</p>
+<h2 id="关闭主窗体"><a href="#关闭主窗体" class="headerlink" title="关闭主窗体"></a>关闭主窗体</h2><p>需要关闭所有窗体,只需要关闭主窗体.</p>
+<p>静态类资源共享.通常用来存一些共享的数据在里面.</p>
+<p>建议一个 static class</p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>如果线程执行的方法需要参数,那么要求这个参数必须是 object 类型.</p>
+<h2 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h2><p>Q:为什么要使用委托?<br>A: 将方法作为参数,传给一个方法</p>
+<p>方法声明时,如果参数是一个函数,则,将类型设置为一个委托类型</p>
 
       
     </div>
@@ -463,7 +492,7 @@ c# 中没有 Boolean">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">192</span>
+              <span class="site-state-item-count">198</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -480,7 +509,7 @@ c# 中没有 Boolean">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-count">282</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -509,7 +538,7 @@ c# 中没有 Boolean">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-Studio-基本操作"><span class="nav-number">1.</span> <span class="nav-text">Visual Studio 基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本类型"><span class="nav-number">2.</span> <span class="nav-text">基本类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-Studio-基本操作"><span class="nav-number">1.</span> <span class="nav-text">Visual Studio 基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本类型"><span class="nav-number">2.</span> <span class="nav-text">基本类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#占位符"><span class="nav-number">4.</span> <span class="nav-text">占位符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭主窗体"><span class="nav-number">5.</span> <span class="nav-text">关闭主窗体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程"><span class="nav-number">6.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#委托"><span class="nav-number">7.</span> <span class="nav-text">委托</span></a></li></ol></div>
             
           </div>
         </section>

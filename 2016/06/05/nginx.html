@@ -84,18 +84,24 @@
 
 
 <meta name="description" content="Step 1: Install Nginx12sudo apt-get updatesudo apt-get install nginx
-Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our firewall software to allow access to the service. N">
+设置 web 目录
+12sudo mkdir /var/wwwchown www-data:www-data /var/www # nginx安装会自动建立用户www-data并且默认用这个用户操作
+Step 2: Adjust the FirewallBefo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx">
 <meta property="og:url" content="http://haobing.wang/2016/06/05/nginx.html">
 <meta property="og:site_name" content="王浩冰">
 <meta property="og:description" content="Step 1: Install Nginx12sudo apt-get updatesudo apt-get install nginx
-Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our firewall software to allow access to the service. N">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.629Z">
+设置 web 目录
+12sudo mkdir /var/wwwchown www-data:www-data /var/www # nginx安装会自动建立用户www-data并且默认用这个用户操作
+Step 2: Adjust the FirewallBefo">
+<meta property="og:updated_time" content="2017-04-28T07:42:46.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx">
 <meta name="twitter:description" content="Step 1: Install Nginx12sudo apt-get updatesudo apt-get install nginx
-Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our firewall software to allow access to the service. N">
+设置 web 目录
+12sudo mkdir /var/wwwchown www-data:www-data /var/www # nginx安装会自动建立用户www-data并且默认用这个用户操作
+Step 2: Adjust the FirewallBefo">
 
 
 
@@ -331,6 +337,8 @@ Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our 
 
       
         <h2 id="Step-1-Install-Nginx"><a href="#Step-1-Install-Nginx" class="headerlink" title="Step 1: Install Nginx"></a>Step 1: Install Nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install nginx</div></pre></td></tr></table></figure>
+<p>设置 web 目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/www</div><div class="line">chown www-data:www-data /var/www # nginx安装会自动建立用户www-data并且默认用这个用户操作</div></pre></td></tr></table></figure>
 <h2 id="Step-2-Adjust-the-Firewall"><a href="#Step-2-Adjust-the-Firewall" class="headerlink" title="Step 2: Adjust the Firewall"></a>Step 2: Adjust the Firewall</h2><p>Before we can test Nginx, we need to reconfigure our firewall software to allow access to the service. Nginx registers itself as a service with ufw, our firewall, upon installation. This makes it rather easy to allow Nginx access.</p>
 <p>We can list the applications configurations that ufw knows how to work with by typing:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ufw app list</div></pre></td></tr></table></figure>
@@ -497,7 +505,7 @@ Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">192</span>
+              <span class="site-state-item-count">198</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -514,7 +522,7 @@ Step 2: Adjust the FirewallBefore we can test Nginx, we need to reconfigure our 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-count">282</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
