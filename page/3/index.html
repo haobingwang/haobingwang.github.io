@@ -258,114 +258,6 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/01/js-math.html" itemprop="url">
-                  js-math
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-01T17:28:00+08:00" content="2017-04-01">
-              2017-04-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/01/js-math.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/01/js-math.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="金融计算"><a href="#金融计算" class="headerlink" title="金融计算"></a>金融计算</h2><ul>
-<li>Math.round(x) 返回四舍五入后的整数</li>
-<li>Math.floor(x) 返回小于x的最大整数</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 保留 n 位小数，并四舍五入 roundDecimal(5.150000001,1) 返回 5.2</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">roundDecimal</span>(<span class="params">x,n</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> f = <span class="built_in">parseFloat</span>(x);</div><div class="line">    <span class="keyword">var</span> d = <span class="built_in">parseInt</span>(n);</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(f) || <span class="built_in">isNaN</span>(d)) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> bit = <span class="built_in">Math</span>.pow(<span class="number">10</span>,d);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.round(x * bit) / bit;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 保留 n 位小数，并抹掉尾数  floorDecimal(5.190000001,1) 返回 5.1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">floorDecimal</span>(<span class="params">x,n</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> f = <span class="built_in">parseFloat</span>(x);</div><div class="line">    <span class="keyword">var</span> d = <span class="built_in">parseInt</span>(n);</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(f) || <span class="built_in">isNaN</span>(d)) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> bit = <span class="built_in">Math</span>.pow(<span class="number">10</span>,d);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(x * bit) / bit;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Math.ceil(x)  返回x向上取整后的值</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/04/01/js-array.html" itemprop="url">
                   js 数组
                 </a>
@@ -1278,6 +1170,117 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/17/中国民主党派.html" itemprop="url">
+                  中国民主党派
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-17T20:54:24+08:00" content="2017-03-17">
+              2017-03-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/17/中国民主党派.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/中国民主党派.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>八个拍手党名单：</p>
+<ul>
+<li>中国国民党革命委员会，由原中国国民党民主派和其他爱国民主人士所创建。</li>
+<li>中国民主同盟，主要由从事文化教育以及科学技术工作的高、中级知识分子组成的。</li>
+<li>中国民主建国会，主要是由经济界人士组成的。</li>
+<li>中国民主促进会，以从事教育文化出版工作的高中级知识分子为主。</li>
+<li>中国农工民主党，以医药卫生界高中级知识分子为主。</li>
+<li>中国致公党，以归侨、侨眷的中上层人士为主。</li>
+<li>九三学社，以科学技术界高、中级知识分子为主。</li>
+<li>台湾民主自治同盟，由台湾省人士组成的。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1323,7 +1326,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">197</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -258,128 +258,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/31/meteor-seo.html" itemprop="url">
-                  meteor-seo
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T11:33:13+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/meteor-seo.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/31/meteor-seo.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>meteor 的 seo 处理。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/meteor-seo.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/30/curl.html" itemprop="url">
                   curl
                 </a>
@@ -1112,7 +990,6 @@
 <h1 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h1><p>Let’s Encrypt 的 certificates（有效期90天），配合 certbot 自动续期。</p>
 <h2 id="下载安装-certbot"><a href="#下载安装-certbot" class="headerlink" title="下载安装 certbot"></a>下载安装 certbot</h2><p>20170412 最新文档的安装方式已经变更为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#$ sudo apt-get install software-properties-common python-software-properties</div><div class="line">$ sudo add-apt-repository ppa:certbot/certbot</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install certbot</div></pre></td></tr></table></figure>
-<p>同时 <code>/opt/certbot-auto</code> 需更改为 <code>/usr/bin/certbot</code></p>
 <h2 id="命令行模式生成证书"><a href="#命令行模式生成证书" class="headerlink" title="命令行模式生成证书"></a>命令行模式生成证书</h2><h3 id="webroot"><a href="#webroot" class="headerlink" title="webroot"></a>webroot</h3><p>由于网站正在运行，并且不能够关闭服务来获取和安装证书，使用 webroot 模式来获取证书，使用命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo certbot certonly --webroot -w 网站根目录 -d 网站域名</div><div class="line">sudo certbot certonly --webroot -w /var/www/example -d example.com -d www.example.com</div></pre></td></tr></table></figure>
 <blockquote>
@@ -1158,7 +1035,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service nginx reload</div></pre></td></tr></table></figure>
 <h2 id="测试-SSL-安全性"><a href="#测试-SSL-安全性" class="headerlink" title="测试 SSL 安全性"></a>测试 SSL 安全性</h2><p><a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="external">立即前往测试</a>，输入域名，查看评测报告，应该有 <code>A+</code></p>
 <h2 id="自动续期-cron"><a href="#自动续期-cron" class="headerlink" title="自动续期 cron"></a>自动续期 cron</h2><p>You can test automatic renewal for your certificates by running this command:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/certbot-auto renew --dry-run</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo certbot renew --dry-run</div></pre></td></tr></table></figure>
 <p>If that appears to be working correctly, you can arrange for automatic renewal by adding a cron (or systemd) job which runs the following:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure>
 <p>Add the following lines:</p>
@@ -1170,6 +1047,9 @@
 <li>确保网站的每个元素（包括插件、JS、CSS文件、图片、内容分发网站等）都采用HTTPS协议；</li>
 <li>使用301重定向将HTTP URL指向HTTPS版地址</li>
 </ol>
+<h2 id="404-on-well-known-acme-challenge"><a href="#404-on-well-known-acme-challenge" class="headerlink" title="404 on .well-known/acme-challenge/"></a>404 on .well-known/acme-challenge/</h2><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li>删除证书: sudo certbot delete</li>
+</ul>
 <blockquote>
 <p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="external">Nginx 配置生成器 - Mozilla SSL Configuration Generator</a></p>
 </blockquote>
@@ -1511,6 +1391,165 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/12/monitor.html" itemprop="url">
+                  monitor
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-12T09:30:43+08:00" content="2016-08-12">
+              2016-08-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/12/monitor.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/monitor.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="系统监测"><a href="#系统监测" class="headerlink" title="系统监测"></a>系统监测</h2><p>实际使用中，树莓派的 load average 大于 1，是什么鬼？</p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">top</div></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">top - 17:25:11 up 4 days,  6:27,  1 user,  load average: 0.00, 0.01, 0.05</div><div class="line">                                           系统平均负载: 1分钟, 5分钟, 15分钟</div><div class="line">Tasks: 108 total,   2 running, 106 sleeping,   0 stopped,   0 zombie</div><div class="line">Tasks: 总进程数量,                                            卡死的进程</div><div class="line">%Cpu(s):  0.3 us,  0.3 sy,  0.0 ni, 99.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st</div><div class="line">                                    空闲百分比(理想值100)</div><div class="line">KiB Mem:   1016272 total,   893136 used,   123136 free,    69836 buffers</div><div class="line">内存                                          空闲内存       缓冲，加速数据写入</div><div class="line">KiB Swap:        0 total,        0 used,        0 free.   168176 cached Mem</div><div class="line">交换分区                                        空闲交换分区  缓存，加速数据读取</div></pre></td></tr></table></figure>
+<p>通常来说，load average 的极限值应该是 CPU 数。即 1 核 CPU 的极限负载是 1。</p>
+<h3 id="内存使用情况"><a href="#内存使用情况" class="headerlink" title="内存使用情况"></a>内存使用情况</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">free -m</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">➜  ~ free -mclecl</div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:           992        913         79          0         38         81</div><div class="line">-/+ buffers/cache:        793        199</div><div class="line">Swap:            0          0          0</div></pre></td></tr></table></figure>
+<p>每隔 10 秒更新一次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">freee -m <span class="_">-s</span> 10</div></pre></td></tr></table></figure>
+<h2 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uptime</div><div class="line">15:31:44 up 2 days, 47 min,  2 users,  load average: 0.00, 0.01, 0.05</div></pre></td></tr></table></figure>
+<p>load average 显示的是最近1分钟、5分钟、15分钟的系统负载。</p>
+<h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux</div></pre></td></tr></table></figure>
+<p>output</p>
+<p>&gt;<br>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND<br>root         1  0.0  0.1  33456  1848 ?        Ss   Aug20   0:03 /sbin/init<br>root         2  0.0  0.0      0     0 ?        S    Aug20   0:00 [kthreadd]<br>root         3  0.0  0.0      0     0 ?        S    Aug20   0:00 [ksoftirqd/0]<br>root         5  0.0  0.0      0     0 ?        S&lt;   Aug20   0:00 [kworker/0:0H]<br>root         6  0.0  0.0      0     0 ?        S    Aug20   0:03 [kworker/u30:0]<br>root         7  0.0  0.0      0     0 ?        S    Aug20   0:25 [rcu_sched]</p>
+<ul>
+<li>USER  :</li>
+<li>PID   : 进程 ID</li>
+<li>%CPU  : 占用百分比</li>
+<li>%MEM  : 占用百分比</li>
+<li>VSZ   : 占用虚拟内存大小，KB</li>
+<li>RSS   : 占用物理内存大小，KB</li>
+<li>TTY   : 1-6 本地字符终端，7 图形终端，pts/0-255 代表虚拟终端。</li>
+<li>STAT  : 进程状体<ul>
+<li>R 运行</li>
+<li>S 睡眠</li>
+<li>T 停止</li>
+<li>s 包含子进程</li>
+<li><ul>
+<li>位于后台</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>START : 启动时间</li>
+<li>TIME  : 耗费 CPU 运算时间</li>
+<li>COMMAND: 进程名</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | grep php-fpm</div></pre></td></tr></table></figure>
+<h2 id="查看特定端口PID"><a href="#查看特定端口PID" class="headerlink" title="查看特定端口PID"></a>查看特定端口PID</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -anp|grep 4000</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1556,7 +1595,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">197</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

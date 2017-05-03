@@ -258,136 +258,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/01/chart-js.html" itemprop="url">
-                  chart.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-01T18:28:19+08:00" content="2016-08-01">
-              2016-08-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/01/chart-js.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/chart-js.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>版本 v2.1.6</p>
-<ul>
-<li>DOM节点 <code>ctx</code></li>
-<li>图标类型 <code>type</code></li>
-<li>数据结构(Data Structure) <code>data</code></li>
-<li>图表参数(Chart Options) <code>options</code></li>
-</ul>
-<p>html：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>js：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import Chart from 'src/chart.js';</div><div class="line">var ctx = document.getElementById("myChart");</div><div class="line"></div><div class="line"># 曲线图（Line chart）</div><div class="line">var myLineChart = new Chart(ctx, &#123;</div><div class="line">    type: 'line',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 柱状图（Bar chart）</div><div class="line">var myBarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'bar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 雷达图或蛛网图（Radar chart）</div><div class="line">var myRadarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'radar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 极地区域图（Polar area chart）</div><div class="line">new Chart(ctx, &#123;</div><div class="line">    data: data,</div><div class="line">    type: 'polarArea',</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 饼图（Pie chart）</div><div class="line">var myPieChart = new Chart(ctx,&#123;</div><div class="line">    type: 'pie',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 环形图（Doughnut chart）</div><div class="line">var myDoughnutChart = new Chart(ctx, &#123;</div><div class="line">    type: 'doughnut',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/07/31/git-flow.html" itemprop="url">
                   git-flow
                 </a>
@@ -1585,6 +1455,147 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/22/incron.html" itemprop="url">
+                  incron
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T16:01:04+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/22/incron.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/22/incron.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install incron vim</div></pre></td></tr></table></figure>
+<p>查看命令文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man 5 incrontab</div></pre></td></tr></table></figure>
+<p>加入用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo echo &apos;pi&apos; &gt; /etc/incron.allow</div></pre></td></tr></table></figure>
+<p>添加任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div></pre></td></tr></table></figure>
+<p>格式：<code>path&gt; &lt;mask&gt; &lt;command&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/pi/blog/source/_posts/ IN_MODIFY,IN_DELETE /home/pi/auto.sh</div></pre></td></tr></table></figure>
+<p><strong>注意</strong>：只能有一个空格，否则会报错：</p>
+<blockquote>
+<p>incrond[12119]: cannot exec process: No such file or directory</p>
+</blockquote>
+<p>查看任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -l</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi auto.sh</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line">export PATH=/home/pi/.nvm/versions/node/v4.4.7/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games</div><div class="line"></div><div class="line">cd /home/pi/blog</div><div class="line">hexo g &gt;/home/pi/incron.log</div><div class="line">hexo d &gt;&gt;/home/pi/incron.log</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x auto.sh</div></pre></td></tr></table></figure>
+<h2 id="查看系统日志"><a href="#查看系统日志" class="headerlink" title="查看系统日志"></a>查看系统日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail /var/log/syslog</div></pre></td></tr></table></figure>
+<h2 id="移除任务"><a href="#移除任务" class="headerlink" title="移除任务"></a>移除任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -r</div></pre></td></tr></table></figure>
+<h2 id="常用任务"><a href="#常用任务" class="headerlink" title="常用任务"></a>常用任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/apache2/apache2.conf IN_MODIFY /usr/sbin/service apache2 restart</div><div class="line">/etc/apache2/vhosts/ IN_MODIFY /usr/sbin/service apache2 restart</div></pre></td></tr></table></figure>
+<h2 id="问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？"><a href="#问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？" class="headerlink" title="问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？"></a>问题：当文件修改频繁，脚本也会频繁执行，如何规避并发？</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1630,7 +1641,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">197</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

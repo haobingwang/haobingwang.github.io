@@ -83,16 +83,19 @@
 
 
 
-<meta name="description" content="课程第一课其他123456789&amp;lt;Router&amp;gt;    &amp;lt;Route path=&quot;/&quot; component=&amp;#123;App&amp;#125;&amp;gt;      &amp;lt;IndexRoute component=&amp;#123;Home&amp;#125; /&amp;gt;      &amp;lt;Route path=&quot;about&quot; component=&amp;#123;About&amp;#125; /&amp;gt;">
+<meta name="description" content="解决 browserHistory 刷新 404nginx 改造
+123456server &amp;#123;  ...  location / &amp;#123;    try_files $uri /index.html;  &amp;#125;&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-router">
 <meta property="og:url" content="http://haobing.wang/2016/05/27/react-router.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="课程第一课其他123456789&amp;lt;Router&amp;gt;    &amp;lt;Route path=&quot;/&quot; component=&amp;#123;App&amp;#125;&amp;gt;      &amp;lt;IndexRoute component=&amp;#123;Home&amp;#125; /&amp;gt;      &amp;lt;Route path=&quot;about&quot; component=&amp;#123;About&amp;#125; /&amp;gt;">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.633Z">
+<meta property="og:description" content="解决 browserHistory 刷新 404nginx 改造
+123456server &amp;#123;  ...  location / &amp;#123;    try_files $uri /index.html;  &amp;#125;&amp;#125;">
+<meta property="og:updated_time" content="2017-05-03T09:17:58.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-router">
-<meta name="twitter:description" content="课程第一课其他123456789&amp;lt;Router&amp;gt;    &amp;lt;Route path=&quot;/&quot; component=&amp;#123;App&amp;#125;&amp;gt;      &amp;lt;IndexRoute component=&amp;#123;Home&amp;#125; /&amp;gt;      &amp;lt;Route path=&quot;about&quot; component=&amp;#123;About&amp;#125; /&amp;gt;">
+<meta name="twitter:description" content="解决 browserHistory 刷新 404nginx 改造
+123456server &amp;#123;  ...  location / &amp;#123;    try_files $uri /index.html;  &amp;#125;&amp;#125;">
 
 
 
@@ -327,17 +330,8 @@
       
 
       
-        <h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><h3 id="第一课"><a href="#第一课" class="headerlink" title="第一课"></a>第一课</h3><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Router</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">&#123;App&#125;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">IndexRoute</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"about"</span> <span class="attr">component</span>=<span class="string">&#123;About&#125;</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"inbox"</span> <span class="attr">component</span>=<span class="string">&#123;Inbox&#125;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"messages/:id"</span> <span class="attr">component</span>=<span class="string">&#123;Message&#125;</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">Route</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Route</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Router</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>用户访问 <code>/about</code> 时，会先加载 <code>App</code> 组件，然后在它的内部再加载 <code>About</code> 组件。<code>App</code> 组件要写成如下的样子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.createClass(&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">      &#123;this.props.children&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p><code>this.props.children</code> 代表子组件 <code>Home</code>、<code>About</code>、<code>Inbox</code>。</p>
-<p><code>Message</code> 组件内部获取参数 id：<code>this.props.params.id</code></p>
-<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/"</span> <span class="attr">onlyActiveOnIndex</span>=<span class="string">&#123;true&#125;</span> <span class="attr">activeStyle</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">yellow800</span> &#125;&#125;&gt;</span>Home<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/about"</span> <span class="attr">activeStyle</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">yellow800</span> &#125;&#125;&gt;</span>About<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/inbox"</span> <span class="attr">activeStyle</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">yellow800</span> &#125;&#125;&gt;</span>Message<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="Router-Hook"><a href="#Router-Hook" class="headerlink" title="Router Hook"></a>Router Hook</h2><p>当用户离开 <code>/about</code> 进入 <code>/inbox</code> 会依次触发一下钩子：</p>
-<ul>
-<li>/about 的 onLeave</li>
-<li>/inbox 的 onEnter</li>
-</ul>
+        <h2 id="解决-browserHistory-刷新-404"><a href="#解决-browserHistory-刷新-404" class="headerlink" title="解决 browserHistory 刷新 404"></a>解决 browserHistory 刷新 404</h2><p>nginx 改造</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  ...</div><div class="line">  location / &#123;</div><div class="line">    try_files $uri /index.html;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -452,7 +446,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">197</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -498,7 +492,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程"><span class="nav-number">1.</span> <span class="nav-text">课程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一课"><span class="nav-number">1.1.</span> <span class="nav-text">第一课</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">2.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Link"><span class="nav-number">3.</span> <span class="nav-text">Link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Router-Hook"><span class="nav-number">4.</span> <span class="nav-text">Router Hook</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决-browserHistory-刷新-404"><span class="nav-number">1.</span> <span class="nav-text">解决 browserHistory 刷新 404</span></a></li></ol></div>
             
           </div>
         </section>

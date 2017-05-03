@@ -95,7 +95,7 @@
 不使用 HTTPS 存在的风险
 
 窃听风险（eavesdropping）：第三方可以">
-<meta property="og:updated_time" content="2017-05-02T10:50:49.516Z">
+<meta property="og:updated_time" content="2017-05-03T09:10:24.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https">
 <meta name="twitter:description" content="HTTP:Your connection is not private.Attackers might be trying to steal your information from example.com (for example, passwords, messages, or credit cards).
@@ -348,7 +348,6 @@
 <h1 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h1><p>Let’s Encrypt 的 certificates（有效期90天），配合 certbot 自动续期。</p>
 <h2 id="下载安装-certbot"><a href="#下载安装-certbot" class="headerlink" title="下载安装 certbot"></a>下载安装 certbot</h2><p>20170412 最新文档的安装方式已经变更为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#$ sudo apt-get install software-properties-common python-software-properties</div><div class="line">$ sudo add-apt-repository ppa:certbot/certbot</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install certbot</div></pre></td></tr></table></figure>
-<p>同时 <code>/opt/certbot-auto</code> 需更改为 <code>/usr/bin/certbot</code></p>
 <h2 id="命令行模式生成证书"><a href="#命令行模式生成证书" class="headerlink" title="命令行模式生成证书"></a>命令行模式生成证书</h2><h3 id="webroot"><a href="#webroot" class="headerlink" title="webroot"></a>webroot</h3><p>由于网站正在运行，并且不能够关闭服务来获取和安装证书，使用 webroot 模式来获取证书，使用命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo certbot certonly --webroot -w 网站根目录 -d 网站域名</div><div class="line">sudo certbot certonly --webroot -w /var/www/example -d example.com -d www.example.com</div></pre></td></tr></table></figure>
 <blockquote>
@@ -394,7 +393,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service nginx reload</div></pre></td></tr></table></figure>
 <h2 id="测试-SSL-安全性"><a href="#测试-SSL-安全性" class="headerlink" title="测试 SSL 安全性"></a>测试 SSL 安全性</h2><p><a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="external">立即前往测试</a>，输入域名，查看评测报告，应该有 <code>A+</code></p>
 <h2 id="自动续期-cron"><a href="#自动续期-cron" class="headerlink" title="自动续期 cron"></a>自动续期 cron</h2><p>You can test automatic renewal for your certificates by running this command:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/certbot-auto renew --dry-run</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo certbot renew --dry-run</div></pre></td></tr></table></figure>
 <p>If that appears to be working correctly, you can arrange for automatic renewal by adding a cron (or systemd) job which runs the following:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure>
 <p>Add the following lines:</p>
@@ -406,6 +405,9 @@
 <li>确保网站的每个元素（包括插件、JS、CSS文件、图片、内容分发网站等）都采用HTTPS协议；</li>
 <li>使用301重定向将HTTP URL指向HTTPS版地址</li>
 </ol>
+<h2 id="404-on-well-known-acme-challenge"><a href="#404-on-well-known-acme-challenge" class="headerlink" title="404 on .well-known/acme-challenge/"></a>404 on .well-known/acme-challenge/</h2><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li>删除证书: sudo certbot delete</li>
+</ul>
 <blockquote>
 <p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="external">Nginx 配置生成器 - Mozilla SSL Configuration Generator</a></p>
 </blockquote>
@@ -521,7 +523,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">197</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -567,7 +569,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Let’s-Encrypt"><span class="nav-number">1.</span> <span class="nav-text">Let’s Encrypt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载安装-certbot"><span class="nav-number">1.1.</span> <span class="nav-text">下载安装 certbot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行模式生成证书"><span class="nav-number">1.2.</span> <span class="nav-text">命令行模式生成证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webroot"><span class="nav-number">1.2.1.</span> <span class="nav-text">webroot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#standalone（仅作了解）"><span class="nav-number">1.2.2.</span> <span class="nav-text">standalone（仅作了解）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#认证过程"><span class="nav-number">1.3.</span> <span class="nav-text">认证过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成证书成功"><span class="nav-number">1.4.</span> <span class="nav-text">生成证书成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增强安全"><span class="nav-number">1.5.</span> <span class="nav-text">增强安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-重新加载配置"><span class="nav-number">1.6.</span> <span class="nav-text">nginx 重新加载配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试-SSL-安全性"><span class="nav-number">1.7.</span> <span class="nav-text">测试 SSL 安全性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动续期-cron"><span class="nav-number">1.8.</span> <span class="nav-text">自动续期 cron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS站点的SEO自检清单"><span class="nav-number">1.9.</span> <span class="nav-text">HTTPS站点的SEO自检清单</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Let’s-Encrypt"><span class="nav-number">1.</span> <span class="nav-text">Let’s Encrypt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载安装-certbot"><span class="nav-number">1.1.</span> <span class="nav-text">下载安装 certbot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行模式生成证书"><span class="nav-number">1.2.</span> <span class="nav-text">命令行模式生成证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webroot"><span class="nav-number">1.2.1.</span> <span class="nav-text">webroot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#standalone（仅作了解）"><span class="nav-number">1.2.2.</span> <span class="nav-text">standalone（仅作了解）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#认证过程"><span class="nav-number">1.3.</span> <span class="nav-text">认证过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成证书成功"><span class="nav-number">1.4.</span> <span class="nav-text">生成证书成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增强安全"><span class="nav-number">1.5.</span> <span class="nav-text">增强安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-重新加载配置"><span class="nav-number">1.6.</span> <span class="nav-text">nginx 重新加载配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试-SSL-安全性"><span class="nav-number">1.7.</span> <span class="nav-text">测试 SSL 安全性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动续期-cron"><span class="nav-number">1.8.</span> <span class="nav-text">自动续期 cron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS站点的SEO自检清单"><span class="nav-number">1.9.</span> <span class="nav-text">HTTPS站点的SEO自检清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#404-on-well-known-acme-challenge"><span class="nav-number">1.10.</span> <span class="nav-text">404 on .well-known/acme-challenge/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">1.11.</span> <span class="nav-text">补充</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
