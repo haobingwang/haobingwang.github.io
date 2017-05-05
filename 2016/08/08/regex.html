@@ -106,7 +106,7 @@
 
 07700 90016607700 90020207700 90091107700 90028407700 90084707700 90000907700 9007540">
 <meta property="og:image" content="http://haobing.wang/images/sublime-regex.png">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.635Z">
+<meta property="og:updated_time" content="2017-05-04T08:27:56.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="regex 正则表达式">
 <meta name="twitter:description" content="定义s正则表达式是用来 匹配 、捕获 特定字符串的工具；之后，我们还可以对匹配捕获到的对象进行处理，比如 替换。
@@ -385,6 +385,9 @@
 <p>正则表达式</p>
 <p><code>/</code> 需要添加转义为 <code>\/</code><br><code>.</code> 匹配单个字符，需要转义 <code>\.</code></p>
 <h2 id="nginx-应用"><a href="#nginx-应用" class="headerlink" title="nginx 应用"></a>nginx 应用</h2><p>server_name ~^ www.example.com$;<br>server_name ~^ www(\d+).example.com$;</p>
+<h2 id="校验-uuid"><a href="#校验-uuid" class="headerlink" title="校验 uuid"></a>校验 uuid</h2><p>^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 严格校验 ^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$</div><div class="line">if (!Regex.IsMatch(uuid, @&quot;^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$&quot;)) </div><div class="line">&#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 严格校验: ^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$</span></div><div class="line"><span class="keyword">if</span>(!<span class="regexp">/^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$/</span>.test(uuid))&#123;</div><div class="line">	<span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>参考链接</p>
 <blockquote>
 <ol>
@@ -551,7 +554,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验"><span class="nav-number">2.</span> <span class="nav-text">实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-应用"><span class="nav-number">3.</span> <span class="nav-text">nginx 应用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验"><span class="nav-number">2.</span> <span class="nav-text">实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-应用"><span class="nav-number">3.</span> <span class="nav-text">nginx 应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#校验-uuid"><span class="nav-number">4.</span> <span class="nav-text">校验 uuid</span></a></li></ol></div>
             
           </div>
         </section>
