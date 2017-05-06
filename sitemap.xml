@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://haobing.wang/2016/08/18/https.html</loc>
+    
+    <lastmod>2017-05-06T07:22:17.921Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haobing.wang/2016/10/13/css.html</loc>
     
-    <lastmod>2017-05-05T07:10:25.571Z</lastmod>
+    <lastmod>2017-05-05T07:12:46.729Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://haobing.wang/2016/05/27/react-router.html</loc>
     
     <lastmod>2017-05-03T09:17:58.815Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/08/18/https.html</loc>
-    
-    <lastmod>2017-05-03T09:10:24.248Z</lastmod>
     
   </url>
   
