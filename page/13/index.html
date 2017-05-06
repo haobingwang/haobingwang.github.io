@@ -258,6 +258,165 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/12/monitor.html" itemprop="url">
+                  monitor
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-12T09:30:43+08:00" content="2016-08-12">
+              2016-08-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/12/monitor.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/monitor.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="系统监测"><a href="#系统监测" class="headerlink" title="系统监测"></a>系统监测</h2><p>实际使用中，树莓派的 load average 大于 1，是什么鬼？</p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">top</div></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">top - 17:25:11 up 4 days,  6:27,  1 user,  load average: 0.00, 0.01, 0.05</div><div class="line">                                           系统平均负载: 1分钟, 5分钟, 15分钟</div><div class="line">Tasks: 108 total,   2 running, 106 sleeping,   0 stopped,   0 zombie</div><div class="line">Tasks: 总进程数量,                                            卡死的进程</div><div class="line">%Cpu(s):  0.3 us,  0.3 sy,  0.0 ni, 99.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st</div><div class="line">                                    空闲百分比(理想值100)</div><div class="line">KiB Mem:   1016272 total,   893136 used,   123136 free,    69836 buffers</div><div class="line">内存                                          空闲内存       缓冲，加速数据写入</div><div class="line">KiB Swap:        0 total,        0 used,        0 free.   168176 cached Mem</div><div class="line">交换分区                                        空闲交换分区  缓存，加速数据读取</div></pre></td></tr></table></figure>
+<p>通常来说，load average 的极限值应该是 CPU 数。即 1 核 CPU 的极限负载是 1。</p>
+<h3 id="内存使用情况"><a href="#内存使用情况" class="headerlink" title="内存使用情况"></a>内存使用情况</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">free -m</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">➜  ~ free -mclecl</div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:           992        913         79          0         38         81</div><div class="line">-/+ buffers/cache:        793        199</div><div class="line">Swap:            0          0          0</div></pre></td></tr></table></figure>
+<p>每隔 10 秒更新一次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">freee -m <span class="_">-s</span> 10</div></pre></td></tr></table></figure>
+<h2 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uptime</div><div class="line">15:31:44 up 2 days, 47 min,  2 users,  load average: 0.00, 0.01, 0.05</div></pre></td></tr></table></figure>
+<p>load average 显示的是最近1分钟、5分钟、15分钟的系统负载。</p>
+<h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux</div></pre></td></tr></table></figure>
+<p>output</p>
+<p>&gt;<br>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND<br>root         1  0.0  0.1  33456  1848 ?        Ss   Aug20   0:03 /sbin/init<br>root         2  0.0  0.0      0     0 ?        S    Aug20   0:00 [kthreadd]<br>root         3  0.0  0.0      0     0 ?        S    Aug20   0:00 [ksoftirqd/0]<br>root         5  0.0  0.0      0     0 ?        S&lt;   Aug20   0:00 [kworker/0:0H]<br>root         6  0.0  0.0      0     0 ?        S    Aug20   0:03 [kworker/u30:0]<br>root         7  0.0  0.0      0     0 ?        S    Aug20   0:25 [rcu_sched]</p>
+<ul>
+<li>USER  :</li>
+<li>PID   : 进程 ID</li>
+<li>%CPU  : 占用百分比</li>
+<li>%MEM  : 占用百分比</li>
+<li>VSZ   : 占用虚拟内存大小，KB</li>
+<li>RSS   : 占用物理内存大小，KB</li>
+<li>TTY   : 1-6 本地字符终端，7 图形终端，pts/0-255 代表虚拟终端。</li>
+<li>STAT  : 进程状体<ul>
+<li>R 运行</li>
+<li>S 睡眠</li>
+<li>T 停止</li>
+<li>s 包含子进程</li>
+<li><ul>
+<li>位于后台</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>START : 启动时间</li>
+<li>TIME  : 耗费 CPU 运算时间</li>
+<li>COMMAND: 进程名</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | grep php-fpm</div></pre></td></tr></table></figure>
+<h2 id="查看特定端口PID"><a href="#查看特定端口PID" class="headerlink" title="查看特定端口PID"></a>查看特定端口PID</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -anp|grep 4000</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/09/mac.html" itemprop="url">
                   mac
                 </a>
@@ -322,6 +481,166 @@
 </ul>
 <p>brew 是从下载源码解压然后 ./configure &amp;&amp; make install ，同时会包含相关依存库。并自动配置好各种环境变量，而且易于卸载。这个对程序员来说简直是福音，简单的指令，就能快速安装和升级本地的各种开发环境。</p>
 <p>而 brew cask 是已经编译好了的应用包 （.dmg/.pkg），仅仅是下载解压，放在统一的目录中（/opt/homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装）等蛋疼步骤，同样，卸载相当容易与干净。这个对一般用户来说会比较方便，包含很多在 AppStore 里没有的常用软件。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/08/regex.html" itemprop="url">
+                  regex 正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-08T10:57:30+08:00" content="2016-08-08">
+              2016-08-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/08/regex.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/08/regex.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>s<br>正则表达式是用来 <em>匹配</em> 、<em>捕获</em> 特定字符串的工具；之后，我们还可以对匹配捕获到的对象进行处理，比如 <em>替换</em>。</p>
+<ul>
+<li>匹配（Match）</li>
+<li>捕获（Capture）</li>
+<li>替换（Replace）</li>
+</ul>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>使用场景：批量转换电话号码格式。将：</p>
+<blockquote>
+<p>07700 900166<br>07700 900202<br>07700 900911<br>07700 900284<br>07700 900847<br>07700 900009<br>07700 900754<br>07700 900396<br>07700 900248<br>07700 900408<br>07700 900724<br>07700 900773</p>
+</blockquote>
+<p>转换为：</p>
+<blockquote>
+<p>(077)0090-0166<br>(077)0090-0202<br>(077)0090-0911<br>(077)0090-0284<br>(077)0090-0847<br>(077)0090-0009<br>(077)0090-0754<br>(077)0090-0396<br>(077)0090-0248<br>(077)0090-0408<br>(077)0090-0724<br>(077)0090-0773</p>
+</blockquote>
+<p>我们需要做的是</p>
+<ul>
+<li><code>捕获</code>前3位，然后在其前后加上括号；</li>
+<li><code>捕获</code>接下来的2位，以及空格之后的两位数字，并拼接起来</li>
+<li><code>捕获</code>最后4位，在其前面添加<code>-</code></li>
+</ul>
+<p>我们使用可以搜索 <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>，替换为 <code>($1)$2$3-$4</code></p>
+<ul>
+<li>用<code>\d\d\d\d\d \d\d\d\d\d\d</code> <em>匹配</em> 这些电话号码，以便我们能在文档中搜索到所有能够匹配这个正则表达式的字符串；</li>
+<li>为了后面能够处理（即，替换），需要在搜索的时候加上<code>()</code>来 <em>捕获</em>,我们分别 <em>捕获</em> 了四段字符串： <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>；</li>
+<li>然后，我们用 $1 … $4 来表示我们 <em>捕获到</em> 的字符串，然后用我们想要的拼接方式去替换匹配到的字符串：<code>($1)$2$3-$4</code>……</li>
+</ul>
+<p>使用工具：Mac - Sublime - <code>option+command+F</code> - <code>option+command+R</code></p>
+<p><img src="/images/sublime-regex.png" alt=""></p>
+<p><code>Find What</code>: <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code><br><code>Replace With</code>: <code>($1)$2$3-$4</code></p>
+<p>正则表达式</p>
+<p><code>/</code> 需要添加转义为 <code>\/</code><br><code>.</code> 匹配单个字符，需要转义 <code>\.</code></p>
+<h2 id="nginx-应用"><a href="#nginx-应用" class="headerlink" title="nginx 应用"></a>nginx 应用</h2><p>server_name ~^ www.example.com$;<br>server_name ~^ www(\d+).example.com$;</p>
+<h2 id="校验-uuid"><a href="#校验-uuid" class="headerlink" title="校验 uuid"></a>校验 uuid</h2><p>^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 严格校验 ^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$</div><div class="line">if (!Regex.IsMatch(uuid, @&quot;^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$&quot;)) </div><div class="line">&#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 严格校验: ^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$</span></div><div class="line"><span class="keyword">if</span>(!<span class="regexp">/^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$/</span>.test(uuid))&#123;</div><div class="line">	<span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考链接</p>
+<blockquote>
+<ol>
+<li><a href="http://xiaolai.li/2016/07/19/makecs-regular-expression/" target="_blank" rel="external">正则表达式极简“入门”</a></li>
+</ol>
+</blockquote>
 
           
         
@@ -520,166 +839,6 @@
 </tr>
 </tbody>
 </table>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/08/regex.html" itemprop="url">
-                  regex 正则表达式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T10:57:30+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/develop/" itemprop="url" rel="index">
-                    <span itemprop="name">develop</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/08/regex.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/08/regex.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>s<br>正则表达式是用来 <em>匹配</em> 、<em>捕获</em> 特定字符串的工具；之后，我们还可以对匹配捕获到的对象进行处理，比如 <em>替换</em>。</p>
-<ul>
-<li>匹配（Match）</li>
-<li>捕获（Capture）</li>
-<li>替换（Replace）</li>
-</ul>
-<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>使用场景：批量转换电话号码格式。将：</p>
-<blockquote>
-<p>07700 900166<br>07700 900202<br>07700 900911<br>07700 900284<br>07700 900847<br>07700 900009<br>07700 900754<br>07700 900396<br>07700 900248<br>07700 900408<br>07700 900724<br>07700 900773</p>
-</blockquote>
-<p>转换为：</p>
-<blockquote>
-<p>(077)0090-0166<br>(077)0090-0202<br>(077)0090-0911<br>(077)0090-0284<br>(077)0090-0847<br>(077)0090-0009<br>(077)0090-0754<br>(077)0090-0396<br>(077)0090-0248<br>(077)0090-0408<br>(077)0090-0724<br>(077)0090-0773</p>
-</blockquote>
-<p>我们需要做的是</p>
-<ul>
-<li><code>捕获</code>前3位，然后在其前后加上括号；</li>
-<li><code>捕获</code>接下来的2位，以及空格之后的两位数字，并拼接起来</li>
-<li><code>捕获</code>最后4位，在其前面添加<code>-</code></li>
-</ul>
-<p>我们使用可以搜索 <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>，替换为 <code>($1)$2$3-$4</code></p>
-<ul>
-<li>用<code>\d\d\d\d\d \d\d\d\d\d\d</code> <em>匹配</em> 这些电话号码，以便我们能在文档中搜索到所有能够匹配这个正则表达式的字符串；</li>
-<li>为了后面能够处理（即，替换），需要在搜索的时候加上<code>()</code>来 <em>捕获</em>,我们分别 <em>捕获</em> 了四段字符串： <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code>；</li>
-<li>然后，我们用 $1 … $4 来表示我们 <em>捕获到</em> 的字符串，然后用我们想要的拼接方式去替换匹配到的字符串：<code>($1)$2$3-$4</code>……</li>
-</ul>
-<p>使用工具：Mac - Sublime - <code>option+command+F</code> - <code>option+command+R</code></p>
-<p><img src="/images/sublime-regex.png" alt=""></p>
-<p><code>Find What</code>: <code>(\d\d\d)(\d\d) (\d\d)(\d\d\d\d)</code><br><code>Replace With</code>: <code>($1)$2$3-$4</code></p>
-<p>正则表达式</p>
-<p><code>/</code> 需要添加转义为 <code>\/</code><br><code>.</code> 匹配单个字符，需要转义 <code>\.</code></p>
-<h2 id="nginx-应用"><a href="#nginx-应用" class="headerlink" title="nginx 应用"></a>nginx 应用</h2><p>server_name ~^ www.example.com$;<br>server_name ~^ www(\d+).example.com$;</p>
-<h2 id="校验-uuid"><a href="#校验-uuid" class="headerlink" title="校验 uuid"></a>校验 uuid</h2><p>^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 严格校验 ^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$</div><div class="line">if (!Regex.IsMatch(uuid, @&quot;^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$&quot;)) </div><div class="line">&#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 严格校验: ^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$</span></div><div class="line"><span class="keyword">if</span>(!<span class="regexp">/^\w&#123;8&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;4&#125;-\w&#123;12&#125;$/</span>.test(uuid))&#123;</div><div class="line">	<span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>参考链接</p>
-<blockquote>
-<ol>
-<li><a href="http://xiaolai.li/2016/07/19/makecs-regular-expression/" target="_blank" rel="external">正则表达式极简“入门”</a></li>
-</ol>
-</blockquote>
 
           
         
@@ -1614,136 +1773,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/01/chart-js.html" itemprop="url">
-                  chart.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-01T18:28:19+08:00" content="2016-08-01">
-              2016-08-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/01/chart-js.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/chart-js.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>版本 v2.1.6</p>
-<ul>
-<li>DOM节点 <code>ctx</code></li>
-<li>图标类型 <code>type</code></li>
-<li>数据结构(Data Structure) <code>data</code></li>
-<li>图表参数(Chart Options) <code>options</code></li>
-</ul>
-<p>html：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>js：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import Chart from 'src/chart.js';</div><div class="line">var ctx = document.getElementById("myChart");</div><div class="line"></div><div class="line"># 曲线图（Line chart）</div><div class="line">var myLineChart = new Chart(ctx, &#123;</div><div class="line">    type: 'line',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 柱状图（Bar chart）</div><div class="line">var myBarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'bar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 雷达图或蛛网图（Radar chart）</div><div class="line">var myRadarChart = new Chart(ctx, &#123;</div><div class="line">    type: 'radar',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 极地区域图（Polar area chart）</div><div class="line">new Chart(ctx, &#123;</div><div class="line">    data: data,</div><div class="line">    type: 'polarArea',</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 饼图（Pie chart）</div><div class="line">var myPieChart = new Chart(ctx,&#123;</div><div class="line">    type: 'pie',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div><div class="line"></div><div class="line"># 环形图（Doughnut chart）</div><div class="line">var myDoughnutChart = new Chart(ctx, &#123;</div><div class="line">    type: 'doughnut',</div><div class="line">    data: data,</div><div class="line">    options: options</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1789,7 +1818,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">197</span>
+              <span class="site-state-item-count">198</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1806,7 +1835,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">282</span>
+                <span class="site-state-item-count">283</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

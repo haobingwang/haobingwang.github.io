@@ -67,7 +67,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="responsive," />
+  <meta name="keywords" content="css,media query,html,responsive," />
 
 
 
@@ -83,40 +83,22 @@
 
 
 
-<meta name="description" content="字体大小浏览器的默认字体大小是 16 像素。
-通常，我们这样定义字体
-123body &amp;#123;  font: normal 100% Helvetica, Arial, sans-serif;&amp;#125;
-
-0.875em 就是 14像素 （14/16=0.875）
-1.5em 就是 24像素 （24/16=1.5）
-
-viewport 设置是每个响应式页面必须的问题是什么？
-浏览器默认按照">
+<meta name="description" content="三步实现响应式meta 标签使用视图标签告诉浏览器,使用设备的宽度作为视图宽度并禁止初始的缩放,在 head 中添加:
+1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&amp;gt;
+IE8 或更早的浏览器并不支持 Media Query. 我们可以使用 media-queries.js 或者 respond.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="响应式">
 <meta property="og:url" content="http://haobing.wang/2016/07/11/responsive.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="字体大小浏览器的默认字体大小是 16 像素。
-通常，我们这样定义字体
-123body &amp;#123;  font: normal 100% Helvetica, Arial, sans-serif;&amp;#125;
-
-0.875em 就是 14像素 （14/16=0.875）
-1.5em 就是 24像素 （24/16=1.5）
-
-viewport 设置是每个响应式页面必须的问题是什么？
-浏览器默认按照">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.636Z">
+<meta property="og:description" content="三步实现响应式meta 标签使用视图标签告诉浏览器,使用设备的宽度作为视图宽度并禁止初始的缩放,在 head 中添加:
+1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&amp;gt;
+IE8 或更早的浏览器并不支持 Media Query. 我们可以使用 media-queries.js 或者 respond.">
+<meta property="og:updated_time" content="2017-05-06T09:24:34.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式">
-<meta name="twitter:description" content="字体大小浏览器的默认字体大小是 16 像素。
-通常，我们这样定义字体
-123body &amp;#123;  font: normal 100% Helvetica, Arial, sans-serif;&amp;#125;
-
-0.875em 就是 14像素 （14/16=0.875）
-1.5em 就是 24像素 （24/16=1.5）
-
-viewport 设置是每个响应式页面必须的问题是什么？
-浏览器默认按照">
+<meta name="twitter:description" content="三步实现响应式meta 标签使用视图标签告诉浏览器,使用设备的宽度作为视图宽度并禁止初始的缩放,在 head 中添加:
+1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&amp;gt;
+IE8 或更早的浏览器并不支持 Media Query. 我们可以使用 media-queries.js 或者 respond.">
 
 
 
@@ -351,7 +333,13 @@ viewport 设置是每个响应式页面必须的问题是什么？
       
 
       
-        <h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>浏览器的默认字体大小是 16 像素。</p>
+        <h2 id="三步实现响应式"><a href="#三步实现响应式" class="headerlink" title="三步实现响应式"></a>三步实现响应式</h2><h3 id="meta-标签"><a href="#meta-标签" class="headerlink" title="meta 标签"></a>meta 标签</h3><p>使用视图标签告诉浏览器,使用设备的宽度作为视图宽度并禁止初始的缩放,在 head 中添加:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>IE8 或更早的浏览器并不支持 Media Query. 我们可以使用 media-queries.js 或者 respond.js 来为 IE 添加 Media Query 支持:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line">  &lt;script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;</div><div class="line">  &lt;script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
+<h2 id="HTML-结构"><a href="#HTML-结构" class="headerlink" title="HTML 结构"></a>HTML 结构</h2><h2 id="媒介查询-Media-Queries"><a href="#媒介查询-Media-Queries" class="headerlink" title="媒介查询 Media Queries"></a>媒介查询 Media Queries</h2><h3 id="移动优先"><a href="#移动优先" class="headerlink" title="移动优先"></a>移动优先</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 超小屏幕（手机，小于 768px） */</span></div><div class="line"><span class="comment">/* 没有任何媒体查询相关的代码，因为移动设备优先 */</span></div><div class="line"><span class="comment">/* 小屏幕（平板，大于等于 768px） */</span></div><div class="line"><span class="comment">/* @media (min-width: @screen-sm-min) &#123; ... &#125; */</span></div><div class="line"><span class="comment">/* 中等屏幕（桌面显示器，大于等于 992px） */</span></div><div class="line"><span class="comment">/* @media (min-width: @screen-md-min) &#123; ... &#125; */</span></div><div class="line"><span class="comment">/* 大屏幕（大桌面显示器，大于等于 1200px） */</span></div><div class="line"><span class="comment">/* @media (min-width: @screen-lg-min) &#123; ... &#125; */</span></div><div class="line"><span class="comment">/* 我们偶尔也会在媒体查询代码中包含 max-width 从而将 CSS 的影响限制在更小的屏幕之内。 */</span></div><div class="line"><span class="comment">/* @media (max-width: @screen-xs-max) &#123; ... &#125; */</span></div><div class="line"><span class="comment">/* @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) &#123; ... &#125; */</span></div><div class="line"><span class="comment">/* @media (min-width: @screen-md-min) and (max-width: @screen-md-max) &#123; ... &#125; */</span></div><div class="line"><span class="comment">/* @media (min-width: @screen-lg-min) &#123; ... &#125; */</span></div></pre></td></tr></table></figure>
+<h3 id="由大到小"><a href="#由大到小" class="headerlink" title="由大到小"></a>由大到小</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* samller than 980 */</span></div><div class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">980px</span>) &#123;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* samller than 650 */</span></div><div class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">650px</span>) &#123;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* samller than 480 */</span></div><div class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">480px</span>) &#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>浏览器的默认字体大小是 16 像素。</p>
 <p>通常，我们这样定义字体</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font</span>: normal <span class="number">100%</span> Helvetica, Arial, sans-serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -401,6 +389,12 @@ viewport 设置是每个响应式页面必须的问题是什么？
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+            <a href="/tags/media-query/" rel="tag">#media query</a>
+          
+            <a href="/tags/html/" rel="tag">#html</a>
           
             <a href="/tags/responsive/" rel="tag">#responsive</a>
           
@@ -493,7 +487,7 @@ viewport 设置是每个响应式页面必须的问题是什么？
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">197</span>
+              <span class="site-state-item-count">198</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -510,7 +504,7 @@ viewport 设置是每个响应式页面必须的问题是什么？
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">282</span>
+                <span class="site-state-item-count">283</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -539,7 +533,7 @@ viewport 设置是每个响应式页面必须的问题是什么？
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字体大小"><span class="nav-number">1.</span> <span class="nav-text">字体大小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#viewport-设置是每个响应式页面必须的"><span class="nav-number">1.1.</span> <span class="nav-text">viewport 设置是每个响应式页面必须的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片大小"><span class="nav-number">2.</span> <span class="nav-text">图片大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询-min-width"><span class="nav-number">3.</span> <span class="nav-text">媒体查询 min-width</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流动布局"><span class="nav-number">4.</span> <span class="nav-text">流动布局</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#三步实现响应式"><span class="nav-number">1.</span> <span class="nav-text">三步实现响应式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#meta-标签"><span class="nav-number">1.1.</span> <span class="nav-text">meta 标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-结构"><span class="nav-number">2.</span> <span class="nav-text">HTML 结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒介查询-Media-Queries"><span class="nav-number">3.</span> <span class="nav-text">媒介查询 Media Queries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#移动优先"><span class="nav-number">3.1.</span> <span class="nav-text">移动优先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#由大到小"><span class="nav-number">3.2.</span> <span class="nav-text">由大到小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体大小"><span class="nav-number">4.</span> <span class="nav-text">字体大小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#viewport-设置是每个响应式页面必须的"><span class="nav-number">4.1.</span> <span class="nav-text">viewport 设置是每个响应式页面必须的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片大小"><span class="nav-number">5.</span> <span class="nav-text">图片大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询-min-width"><span class="nav-number">6.</span> <span class="nav-text">媒体查询 min-width</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流动布局"><span class="nav-number">7.</span> <span class="nav-text">流动布局</span></a></li></ol></div>
             
           </div>
         </section>
