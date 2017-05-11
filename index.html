@@ -258,6 +258,443 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/09/wordpress.html" itemprop="url">
+                  wordpress
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-09T12:01:58+08:00" content="2017-05-09">
+              2017-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/09/wordpress.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/wordpress.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第一步-为-wordpress-创建数据库和用户"><a href="#第一步-为-wordpress-创建数据库和用户" class="headerlink" title="第一步: 为 wordpress 创建数据库和用户"></a>第一步: 为 wordpress 创建数据库和用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
+<p>数据库名称为: wordpress</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE wordpress;</div></pre></td></tr></table></figure>
+<p>为数据库创建用户和密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE USER wordpressuser@localhost IDENTIFIED BY &apos;A7h288^$Z^m6620y&apos;;</div></pre></td></tr></table></figure>
+<p>将数据库 wordpress 和 用户 wordpressuser 关联起来:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON wordpress.* TO wordpressuser@localhost;</div></pre></td></tr></table></figure>
+<p>更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FLUSH PRIVILEGES;</div></pre></td></tr></table></figure>
+<p>退出 msyql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exit</div></pre></td></tr></table></figure>
+<h2 id="第二步-下载-wordpress-压缩包到服务器"><a href="#第二步-下载-wordpress-压缩包到服务器" class="headerlink" title="第二步: 下载 wordpress 压缩包到服务器"></a>第二步: 下载 wordpress 压缩包到服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">wget http://wordpress.org/latest.tar.gz</div><div class="line">tar xzvf latest.tar.gz</div></pre></td></tr></table></figure>
+<p>解压出文件夹 wordpress</p>
+<p>接下来需要安装 wordpress 需要的组件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install php5-gd libssh2-php</div></pre></td></tr></table></figure>
+<p>These two packages allow you to work with images and install/update plugins and components using SSH respectively.</p>
+<h2 id="主题文件"><a href="#主题文件" class="headerlink" title="主题文件"></a>主题文件</h2><p>一个完整的WP主题通常包含以下模板文件：</p>
+<ul>
+<li>404错误页 = 404.php</li>
+<li>存档页 = archive.php</li>
+<li>存档索引页 = archives.php</li>
+<li>评论页 = comments.php</li>
+<li>底部 = footer.php</li>
+<li>头部 = header.php</li>
+<li>链接 = links.php</li>
+<li>首页 = index.php</li>
+<li>静态页 = page.php</li>
+<li>弹出式评论页 = comments-popup.php</li>
+<li>单篇博文页 = single.php</li>
+<li>搜索表单 = searchform.php</li>
+<li>搜索 = search.php</li>
+<li>侧栏 = sidebar.php</li>
+<li>样式表 = style.css</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/09/lemp.html" itemprop="url">
+                  lemp
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-09T11:34:34+08:00" content="2017-05-09">
+              2017-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/09/lemp.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/lemp.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04" target="_blank" rel="external">How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/09/数据库设计.html" itemprop="url">
+                  数据库设计
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-09T11:25:40+08:00" content="2017-05-09">
+              2017-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/09/数据库设计.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/数据库设计.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>数据库设计是一个应用的基础, 也是应用开发的第一步.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/08/jQuery.html" itemprop="url">
+                  jQuery
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-08T12:00:05+08:00" content="2017-05-08">
+              2017-05-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/08/jQuery.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/08/jQuery.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="How-dectec-jQuery-version"><a href="#How-dectec-jQuery-version" class="headerlink" title="How dectec jQuery version"></a>How dectec jQuery version</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> jQuery != <span class="string">'undefined'</span>) &#123;  </div><div class="line">    <span class="comment">// jQuery is loaded =&gt; print the version</span></div><div class="line">    alert(jQuery.fn.jquery);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="function-是-document-ready-function-的简写"><a href="#function-是-document-ready-function-的简写" class="headerlink" title="$(function() {}); 是 $(document).ready(function(){ }) 的简写"></a><code>$(function() {});</code> 是 <code>$(document).ready(function(){ })</code> 的简写</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/06/polyfill和shim.html" itemprop="url">
                   polyfill 和 shim
                 </a>
@@ -865,459 +1302,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/21/visual-studio.html" itemprop="url">
-                  visual-studio
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-21T16:19:22+08:00" content="2017-04-21">
-              2017-04-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/21/visual-studio.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/21/visual-studio.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Nuget"><a href="#Nuget" class="headerlink" title="Nuget"></a><a href="http://www.nuget.org/" target="_blank" rel="external">Nuget</a></h2><p><a href="https://dist.nuget.org/index.html" target="_blank" rel="external">下载安装</a></p>
-<p>从VS2010的主菜单-&gt;工具-&gt;扩展管理器，打开如下界面，点击左侧的“联机库”-&gt;右上角搜索框输入 NuGet-&gt; 往下拉，选中 NuGet Package Manager</p>
-<p>安装完后 NuGet 暂时不能用，需要重新启动下VS才行</p>
-<p><img src="http://omhwo9lj5.bkt.clouddn.com/image/Nuget%E8%AE%BE%E7%BD%AE%E6%BA%90.png" alt=""></p>
-<p>通过 NuGet 安装的包,都会保存到项目的 packages 下:</p>
-<p>packages\Newtonsoft.Json.9.0.1\lib 下有多个 .NET 版本的 dll</p>
-<ul>
-<li>net20</li>
-<li>net35</li>
-<li>net40</li>
-<li>net45</li>
-</ul>
-<p>如果需要,可以手动更改</p>
-<h2 id="Vs2013以管理员身份运行"><a href="#Vs2013以管理员身份运行" class="headerlink" title="Vs2013以管理员身份运行"></a>Vs2013以管理员身份运行</h2><p>VS快捷方式目录下的devenv.exe 右键-&gt;兼容性疑难解答-&gt;疑难解答程序-&gt;勾选该程序需要附加权限即可</p>
-<p>以后每次打开VS时都会以管理员身份运行了！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/20/net-core.html" itemprop="url">
-                  net-core
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-20T12:14:27+08:00" content="2017-04-20">
-              2017-04-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/20/net-core.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/net-core.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><a href="https://github.com/dotnet/core" target="_blank" rel="external">https://github.com/dotnet/core</a> 进入 dotnet/cli  下载安装包并安装</li>
-<li><a href="https://code.visualstudio.com/" target="_blank" rel="external">https://code.visualstudio.com/</a> 下载安装，安装时，勾选全部选项。打开，安装 C# 扩展</li>
-</ul>
-<p>vs code 的 C# 扩展是连接 dot core 和 vs code 的纽带</p>
-<p>在 cmd 执行 dotnet –version</p>
-<ol>
-<li>创建一个 console 应用：dotnet new console</li>
-<li>安装相应的包：dotnet restore</li>
-<li>编译项目：dotnet build</li>
-<li>运行项目：dotnet run</li>
-<li>用 vs code 打开项目：code .</li>
-</ol>
-<p>之后 vs code 会安装相应的 C# 依赖：</p>
-<p>Updating C# dependencies…<br>Platform: win32, x86_64 (win7-x64)</p>
-<p>Downloading package ‘OmniSharp (.NET 4.6 / x64)’ (19343 KB) ……………….. Done!<br>Downloading package ‘.NET Core Debugger (Windows / x64)’ (39827 KB) ……………….. Done!</p>
-<p>Installing package ‘OmniSharp (.NET 4.6 / x64)’<br>Installing package ‘.NET Core Debugger (Windows / x64)’</p>
-<p>Finished</p>
-<p>安装完成后，注意 vs code 会提示需要加载最新配置片段，点同意，然后进入 debug ，点击 运行。<br>然后程序就会运行，输出 Hello，world</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/18/webhooks.html" itemprop="url">
-                  webhooks
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-18T12:04:36+08:00" content="2017-04-18">
-              2017-04-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/18/webhooks.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/18/webhooks.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Webhooks 的作用就是在特定的事件执行的时候触发自定义的动作。</p>
-<h2 id="自动部署脚本"><a href="#自动部署脚本" class="headerlink" title="自动部署脚本"></a>自动部署脚本</h2><p>本质上，Github的Webhooks触发后，会给相应的URL(自行设置，后面会讲解)发送POST请求，请求头中含有event等相应的信息。</p>
-<p>而正确响应后的事件，比如push完之后，触发自动部署脚本，现在我们来写一个简单的脚本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">PROJECT_DIR = &apos;path-to-your-project&apos;</div><div class="line"></div><div class="line">echo &apos;start&apos;</div><div class="line">cd $PROJECT_DIR</div><div class="line"></div><div class="line">echo &apos;pull code&apos;</div><div class="line">git reset --hard origin/master &amp;&amp; git clean -f</div><div class="line">git pull &amp;&amp; git checkout master</div><div class="line"></div><div class="line">echo &apos;run npm script&apos;</div><div class="line">npm run build</div><div class="line"></div><div class="line">echo &apos;finished&apos;</div></pre></td></tr></table></figure>
-<p>脚本大概的作用就是cd到项目目录，拉取最新的代码，build代码(该步骤不一定需要，如果你的代码直接可以上测试/生产环境)。你必须保证，脚本中涉及的环境变量是可用的，比如git，npm等等。</p>
-<p>我们把这个脚本命名为deploy.sh，暂时放在一边，等需要的时候再用。</p>
-<h2 id="设置Webhooks"><a href="#设置Webhooks" class="headerlink" title="设置Webhooks"></a>设置Webhooks</h2><p>Github或者Gitlab,在你的项目中，通过 Settings -&gt; Webhooks -&gt; Add webhook 进入 webhook 设置页面。我们以下都以 push 事件为例。</p>
-<p><img src="https://static.excaliburhan.com/blog/20170122/Yqhvg8aNP-edKP-2WLADJWRz.jpeg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/18/qiniu.html" itemprop="url">
-                  qiniu
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-18T11:12:58+08:00" content="2017-04-18">
-              2017-04-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/18/qiniu.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/18/qiniu.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="七牛-https-域名"><a href="#七牛-https-域名" class="headerlink" title="七牛 https 域名"></a>七牛 https 域名</h2><ul>
-<li>qbox.me 的域名已经下线了，不支持申请qbox域名了</li>
-<li>qnssl.com  的域名已经下线了，不支持申请qnssl域名了</li>
-</ul>
-<p>建议您申请自定义域名部署https</p>
-<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>不支持重命名</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1358,7 +1347,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">202</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1375,7 +1364,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">283</span>
+                <span class="site-state-item-count">286</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

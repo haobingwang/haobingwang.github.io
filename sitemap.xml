@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://haobing.wang/2017/05/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1.html</loc>
+    
+    <lastmod>2017-05-11T06:36:48.778Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/08/23/ghost-blog.html</loc>
+    
+    <lastmod>2017-05-10T10:42:32.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2017/03/09/vagrant.html</loc>
+    
+    <lastmod>2017-05-09T06:54:29.888Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/06/08/ubuntu.html</loc>
+    
+    <lastmod>2017-05-09T06:32:25.057Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2017/05/09/wordpress.html</loc>
+    
+    <lastmod>2017-05-09T04:37:59.127Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2017/05/09/lemp.html</loc>
+    
+    <lastmod>2017-05-09T03:35:30.109Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2017/05/08/jQuery.html</loc>
+    
+    <lastmod>2017-05-08T05:44:08.436Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haobing.wang/2017/05/06/polyfill%E5%92%8Cshim.html</loc>
     
     <lastmod>2017-05-06T09:33:18.915Z</lastmod>
@@ -142,13 +191,6 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/08/23/ghost.html</loc>
-    
-    <lastmod>2017-04-14T10:26:40.789Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2017/04/13/%E4%BC%81%E4%B8%9A%E7%B3%BB%E7%BB%9F.html</loc>
     
     <lastmod>2017-04-13T08:38:57.584Z</lastmod>
@@ -180,13 +222,6 @@
     <loc>http://haobing.wang/2017/03/15/yii2.html</loc>
     
     <lastmod>2017-04-11T02:32:31.608Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2017/03/09/vagrant.html</loc>
-    
-    <lastmod>2017-04-11T02:29:13.000Z</lastmod>
     
   </url>
   
@@ -240,14 +275,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2017/04/03/mariadb.html</loc>
+    <loc>http://haobing.wang/2016/11/29/javascript.html</loc>
     
     <lastmod>2017-04-08T02:53:19.400Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/29/javascript.html</loc>
+    <loc>http://haobing.wang/2017/04/03/mariadb.html</loc>
     
     <lastmod>2017-04-08T02:53:19.400Z</lastmod>
     
@@ -457,6 +492,13 @@
   </url>
   
   <url>
+    <loc>http://haobing.wang/baidu_verify_be1wabQoBV.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.644Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haobing.wang/2016/10/18/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9.html</loc>
     
     <lastmod>2017-03-08T04:29:08.644Z</lastmod>
@@ -471,20 +513,6 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/baidu_verify_be1wabQoBV.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.644Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/10/17/%E6%89%BE%E5%88%B0%E4%BA%8B%E4%BB%B6.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.643Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/09/24/%E6%88%BF%E8%B4%B7.html</loc>
     
     <lastmod>2017-03-08T04:29:08.643Z</lastmod>
@@ -493,6 +521,13 @@
   
   <url>
     <loc>http://haobing.wang/2016/12/21/%E5%B0%8F%E5%8F%A5%E5%AD%90.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.643Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/10/17/%E6%89%BE%E5%88%B0%E4%BA%8B%E4%BB%B6.html</loc>
     
     <lastmod>2017-03-08T04:29:08.643Z</lastmod>
     
@@ -520,14 +555,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/05/26/yoeman.html</loc>
+    <loc>http://haobing.wang/2016/10/07/writing-npm-packages.html</loc>
     
     <lastmod>2017-03-08T04:29:08.642Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/10/07/writing-npm-packages.html</loc>
+    <loc>http://haobing.wang/2016/05/26/yoeman.html</loc>
     
     <lastmod>2017-03-08T04:29:08.642Z</lastmod>
     
@@ -537,6 +572,13 @@
     <loc>http://haobing.wang/2016/07/05/zsh.html</loc>
     
     <lastmod>2017-03-08T04:29:08.642Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/05/24/webpack-react.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.641Z</lastmod>
     
   </url>
   
@@ -562,13 +604,6 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/05/24/webpack-react.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.641Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/06/14/vs-code.html</loc>
     
     <lastmod>2017-03-08T04:29:08.640Z</lastmod>
@@ -583,21 +618,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/06/08/ubuntu.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.640Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/07/12/tradition-layout.html</loc>
+    <loc>http://haobing.wang/2016/11/22/token.html</loc>
     
     <lastmod>2017-03-08T04:29:08.639Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/22/token.html</loc>
+    <loc>http://haobing.wang/2016/11/14/transition.html</loc>
     
     <lastmod>2017-03-08T04:29:08.639Z</lastmod>
     
@@ -611,9 +639,16 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/14/transition.html</loc>
+    <loc>http://haobing.wang/2016/07/12/tradition-layout.html</loc>
     
     <lastmod>2017-03-08T04:29:08.639Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/08/20/tar.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.638Z</lastmod>
     
   </url>
   
@@ -632,13 +667,6 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/08/20/tar.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.638Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/08/25/swap.html</loc>
     
     <lastmod>2017-03-08T04:29:08.638Z</lastmod>
@@ -646,14 +674,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2017/02/10/server.html</loc>
+    <loc>http://haobing.wang/2016/08/04/seo.html</loc>
     
     <lastmod>2017-03-08T04:29:08.637Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/08/04/seo.html</loc>
+    <loc>http://haobing.wang/2017/02/10/server.html</loc>
     
     <lastmod>2017-03-08T04:29:08.637Z</lastmod>
     
@@ -667,14 +695,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/10/17/scrolltop.html</loc>
+    <loc>http://haobing.wang/2016/08/17/restful.html</loc>
     
     <lastmod>2017-03-08T04:29:08.636Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/08/17/restful.html</loc>
+    <loc>http://haobing.wang/2016/10/17/scrolltop.html</loc>
     
     <lastmod>2017-03-08T04:29:08.636Z</lastmod>
     
@@ -695,6 +723,13 @@
   </url>
   
   <url>
+    <loc>http://haobing.wang/2016/11/07/reactvsvue.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.634Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haobing.wang/2016/05/29/read-source-code.html</loc>
     
     <lastmod>2017-03-08T04:29:08.634Z</lastmod>
@@ -709,9 +744,16 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/07/reactvsvue.html</loc>
+    <loc>http://haobing.wang/2016/06/01/react-media-query.html</loc>
     
-    <lastmod>2017-03-08T04:29:08.634Z</lastmod>
+    <lastmod>2017-03-08T04:29:08.633Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/07/30/react-qq-login.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.633Z</lastmod>
     
   </url>
   
@@ -730,35 +772,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/30/react-qq-login.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.633Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/06/01/react-media-query.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.633Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/11/20/propTypes.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.632Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/11/26/promise.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.632Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/08/05/proxy.html</loc>
     
     <lastmod>2017-03-08T04:29:08.632Z</lastmod>
     
@@ -772,7 +786,21 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/09/14/pm2.html</loc>
+    <loc>http://haobing.wang/2016/08/05/proxy.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.632Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/11/26/promise.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.632Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/05/28/preface.html</loc>
     
     <lastmod>2017-03-08T04:29:08.631Z</lastmod>
     
@@ -786,7 +814,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/05/28/preface.html</loc>
+    <loc>http://haobing.wang/2016/09/14/pm2.html</loc>
     
     <lastmod>2017-03-08T04:29:08.631Z</lastmod>
     
@@ -821,13 +849,6 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/06/mongodb.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.629Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/08/12/monitor.html</loc>
     
     <lastmod>2017-03-08T04:29:08.629Z</lastmod>
@@ -849,7 +870,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/24/mock.html</loc>
+    <loc>http://haobing.wang/2016/07/06/mongodb.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.629Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/11/24/model.html</loc>
     
     <lastmod>2017-03-08T04:29:08.628Z</lastmod>
     
@@ -863,14 +891,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/24/model.html</loc>
+    <loc>http://haobing.wang/2016/06/19/mocha.html</loc>
     
     <lastmod>2017-03-08T04:29:08.628Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/06/19/mocha.html</loc>
+    <loc>http://haobing.wang/2016/11/24/mock.html</loc>
     
     <lastmod>2017-03-08T04:29:08.628Z</lastmod>
     
@@ -898,28 +926,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/27/meteor-bootstrap.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.626Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/06/27/menubar.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.626Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/07/26/meteor-accounts.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.626Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/12/03/login.html</loc>
     
     <lastmod>2017-03-08T04:29:08.626Z</lastmod>
     
@@ -933,16 +940,23 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/12/10/javascript-note.html</loc>
+    <loc>http://haobing.wang/2016/12/03/login.html</loc>
     
-    <lastmod>2017-03-08T04:29:08.625Z</lastmod>
+    <lastmod>2017-03-08T04:29:08.626Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/24/linux-link.html</loc>
+    <loc>http://haobing.wang/2016/06/27/menubar.html</loc>
     
-    <lastmod>2017-03-08T04:29:08.625Z</lastmod>
+    <lastmod>2017-03-08T04:29:08.626Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/07/27/meteor-bootstrap.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.626Z</lastmod>
     
   </url>
   
@@ -961,6 +975,20 @@
   </url>
   
   <url>
+    <loc>http://haobing.wang/2016/12/10/javascript-note.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.625Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/07/24/linux-link.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.625Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haobing.wang/2016/07/22/incron.html</loc>
     
     <lastmod>2017-03-08T04:29:08.624Z</lastmod>
@@ -968,7 +996,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/10/17/initial-server-setup-with-ubuntu-16-04.html</loc>
+    <loc>http://haobing.wang/2016/12/05/id.html</loc>
     
     <lastmod>2017-03-08T04:29:08.624Z</lastmod>
     
@@ -982,7 +1010,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/12/05/id.html</loc>
+    <loc>http://haobing.wang/2016/10/17/initial-server-setup-with-ubuntu-16-04.html</loc>
     
     <lastmod>2017-03-08T04:29:08.624Z</lastmod>
     
@@ -1017,14 +1045,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/06/04/hexo-hey.html</loc>
+    <loc>http://haobing.wang/2016/09/09/hexo-deployer-rsync.html</loc>
     
     <lastmod>2017-03-08T04:29:08.621Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/09/09/hexo-deployer-rsync.html</loc>
+    <loc>http://haobing.wang/2016/06/04/hexo-hey.html</loc>
     
     <lastmod>2017-03-08T04:29:08.621Z</lastmod>
     
@@ -1045,13 +1073,6 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/17/github.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.620Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/11/07/git-submodule.html</loc>
     
     <lastmod>2017-03-08T04:29:08.620Z</lastmod>
@@ -1059,7 +1080,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/06/13/go-ahead.html</loc>
+    <loc>http://haobing.wang/2016/07/17/github.html</loc>
     
     <lastmod>2017-03-08T04:29:08.620Z</lastmod>
     
@@ -1073,28 +1094,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/13/git-history.html</loc>
+    <loc>http://haobing.wang/2016/06/13/go-ahead.html</loc>
     
-    <lastmod>2017-03-08T04:29:08.619Z</lastmod>
+    <lastmod>2017-03-08T04:29:08.620Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://haobing.wang/2016/07/31/git-flow.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.619Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/07/14/git-hooks.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.619Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/08/02/git-rebase.html</loc>
     
     <lastmod>2017-03-08T04:29:08.619Z</lastmod>
     
@@ -1109,6 +1116,27 @@
   
   <url>
     <loc>http://haobing.wang/2016/07/16/git-empty-folder.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/08/02/git-rebase.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/07/13/git-history.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/07/14/git-hooks.html</loc>
     
     <lastmod>2017-03-08T04:29:08.619Z</lastmod>
     
@@ -1136,14 +1164,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/06/21/font-style-bug.html</loc>
+    <loc>http://haobing.wang/2016/07/10/font-awesome.html</loc>
     
     <lastmod>2017-03-08T04:29:08.617Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/10/font-awesome.html</loc>
+    <loc>http://haobing.wang/2016/06/21/font-style-bug.html</loc>
     
     <lastmod>2017-03-08T04:29:08.617Z</lastmod>
     
@@ -1153,6 +1181,13 @@
     <loc>http://haobing.wang/2016/06/07/getstart.html</loc>
     
     <lastmod>2017-03-08T04:29:08.617Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/06/11/flex-grid.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.616Z</lastmod>
     
   </url>
   
@@ -1171,14 +1206,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/06/11/flex-grid.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.616Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/11/24/dva.html</loc>
+    <loc>http://haobing.wang/2016/12/20/es6.html</loc>
     
     <lastmod>2017-03-08T04:29:08.615Z</lastmod>
     
@@ -1192,7 +1220,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/12/20/es6.html</loc>
+    <loc>http://haobing.wang/2016/11/24/dva.html</loc>
     
     <lastmod>2017-03-08T04:29:08.615Z</lastmod>
     
@@ -1220,7 +1248,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/10/05/dash.html</loc>
+    <loc>http://haobing.wang/2016/05/19/deploy-meteor-app.html</loc>
     
     <lastmod>2017-03-08T04:29:08.614Z</lastmod>
     
@@ -1234,21 +1262,21 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/05/19/deploy-meteor-app.html</loc>
+    <loc>http://haobing.wang/2016/10/05/dash.html</loc>
     
     <lastmod>2017-03-08T04:29:08.614Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/09/08/cygwin.html</loc>
+    <loc>http://haobing.wang/2016/08/29/d3js.html</loc>
     
     <lastmod>2017-03-08T04:29:08.613Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/08/29/d3js.html</loc>
+    <loc>http://haobing.wang/2016/09/08/cygwin.html</loc>
     
     <lastmod>2017-03-08T04:29:08.613Z</lastmod>
     
@@ -1276,7 +1304,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/19/collapse.html</loc>
+    <loc>http://haobing.wang/2016/11/21/components.html</loc>
     
     <lastmod>2017-03-08T04:29:08.611Z</lastmod>
     
@@ -1290,7 +1318,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/11/21/components.html</loc>
+    <loc>http://haobing.wang/2016/11/19/collapse.html</loc>
     
     <lastmod>2017-03-08T04:29:08.611Z</lastmod>
     
@@ -1298,6 +1326,13 @@
   
   <url>
     <loc>http://haobing.wang/2016/08/01/chart-js.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.610Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/12/12/chatapp.html</loc>
     
     <lastmod>2017-03-08T04:29:08.610Z</lastmod>
     
@@ -1318,28 +1353,7 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/12/12/chatapp.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.610Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://haobing.wang/2016/06/03/boilerplate.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.609Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/06/17/babel.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.609Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/08/21/bash.html</loc>
     
     <lastmod>2017-03-08T04:29:08.609Z</lastmod>
     
@@ -1353,7 +1367,21 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/07/30/automation.html</loc>
+    <loc>http://haobing.wang/2016/08/21/bash.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.609Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/06/17/babel.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.609Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/12/03/auth.html</loc>
     
     <lastmod>2017-03-08T04:29:08.608Z</lastmod>
     
@@ -1367,21 +1395,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/12/03/auth.html</loc>
+    <loc>http://haobing.wang/2016/07/30/automation.html</loc>
     
     <lastmod>2017-03-08T04:29:08.608Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/12/01/api-server.html</loc>
-    
-    <lastmod>2017-03-08T04:29:08.607Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haobing.wang/2016/11/17/animation.html</loc>
+    <loc>http://haobing.wang/2016/06/26/alias.html</loc>
     
     <lastmod>2017-03-08T04:29:08.607Z</lastmod>
     
@@ -1395,7 +1416,14 @@
   </url>
   
   <url>
-    <loc>http://haobing.wang/2016/06/26/alias.html</loc>
+    <loc>http://haobing.wang/2016/12/01/api-server.html</loc>
+    
+    <lastmod>2017-03-08T04:29:08.607Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haobing.wang/2016/11/17/animation.html</loc>
     
     <lastmod>2017-03-08T04:29:08.607Z</lastmod>
     

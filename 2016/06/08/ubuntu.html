@@ -83,19 +83,16 @@
 
 
 
-<meta name="description" content="[Official Ubuntu Documentation]（https://help.ubuntu.com/）Initial Server Setup with Ubuntu 16.04添加用户12adduser sammyusermod -aG sudo sammy
-初次登陆（client语系为zh_CN，server端需要初始化）123sudo apt-get install langua">
+<meta name="description" content="设置软件镜像源12345678cd /etc/apt/sudo mv sources.list sources.list.baksudo wget http://mirrors.163.com/.help/sources.list.trustysudo mv sources.list.trusty sources.listsudo apt-get updatesudo apt-get instal">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu">
 <meta property="og:url" content="http://haobing.wang/2016/06/08/ubuntu.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="[Official Ubuntu Documentation]（https://help.ubuntu.com/）Initial Server Setup with Ubuntu 16.04添加用户12adduser sammyusermod -aG sudo sammy
-初次登陆（client语系为zh_CN，server端需要初始化）123sudo apt-get install langua">
-<meta property="og:updated_time" content="2017-03-08T04:29:08.640Z">
+<meta property="og:description" content="设置软件镜像源12345678cd /etc/apt/sudo mv sources.list sources.list.baksudo wget http://mirrors.163.com/.help/sources.list.trustysudo mv sources.list.trusty sources.listsudo apt-get updatesudo apt-get instal">
+<meta property="og:updated_time" content="2017-05-09T06:32:25.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu">
-<meta name="twitter:description" content="[Official Ubuntu Documentation]（https://help.ubuntu.com/）Initial Server Setup with Ubuntu 16.04添加用户12adduser sammyusermod -aG sudo sammy
-初次登陆（client语系为zh_CN，server端需要初始化）123sudo apt-get install langua">
+<meta name="twitter:description" content="设置软件镜像源12345678cd /etc/apt/sudo mv sources.list sources.list.baksudo wget http://mirrors.163.com/.help/sources.list.trustysudo mv sources.list.trusty sources.listsudo apt-get updatesudo apt-get instal">
 
 
 
@@ -330,14 +327,15 @@
       
 
       
-        <h2 id="Official-Ubuntu-Documentation-（https-help-ubuntu-com-）"><a href="#Official-Ubuntu-Documentation-（https-help-ubuntu-com-）" class="headerlink" title="[Official Ubuntu Documentation]（https://help.ubuntu.com/）"></a>[Official Ubuntu Documentation]（<a href="https://help.ubuntu.com/）" target="_blank" rel="external">https://help.ubuntu.com/）</a></h2><h2 id="Initial-Server-Setup-with-Ubuntu-16-04"><a href="#Initial-Server-Setup-with-Ubuntu-16-04" class="headerlink" title="Initial Server Setup with Ubuntu 16.04"></a>Initial Server Setup with Ubuntu 16.04</h2><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser sammy</div><div class="line">usermod -aG sudo sammy</div></pre></td></tr></table></figure>
+        <h2 id="设置软件镜像源"><a href="#设置软件镜像源" class="headerlink" title="设置软件镜像源"></a>设置软件镜像源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">cd /etc/apt/</div><div class="line">sudo mv sources.list sources.list.bak</div><div class="line"></div><div class="line">sudo wget http://mirrors.163.com/.help/sources.list.trusty</div><div class="line">sudo mv sources.list.trusty sources.list</div><div class="line"></div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install nginx</div></pre></td></tr></table></figure>
+<h2 id="Official-Ubuntu-Documentation-（https-help-ubuntu-com-）"><a href="#Official-Ubuntu-Documentation-（https-help-ubuntu-com-）" class="headerlink" title="[Official Ubuntu Documentation]（https://help.ubuntu.com/）"></a>[Official Ubuntu Documentation]（<a href="https://help.ubuntu.com/）" target="_blank" rel="external">https://help.ubuntu.com/）</a></h2><h2 id="Initial-Server-Setup-with-Ubuntu-16-04"><a href="#Initial-Server-Setup-with-Ubuntu-16-04" class="headerlink" title="Initial Server Setup with Ubuntu 16.04"></a>Initial Server Setup with Ubuntu 16.04</h2><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser sammy</div><div class="line">usermod -aG sudo sammy</div></pre></td></tr></table></figure>
 <h2 id="初次登陆（client语系为zh-CN，server端需要初始化）"><a href="#初次登陆（client语系为zh-CN，server端需要初始化）" class="headerlink" title="初次登陆（client语系为zh_CN，server端需要初始化）"></a>初次登陆（client语系为zh_CN，server端需要初始化）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install language-pack-zh</div><div class="line"># or</div><div class="line">sudo locale-gen zh_CN.UTF-8</div></pre></td></tr></table></figure>
 <h2 id="创建普通用户"><a href="#创建普通用户" class="headerlink" title="创建普通用户"></a>创建普通用户</h2><p>首先在服务器上创建一个和自己开发机上一样的同名用户，比如在开发机上 whoami 的输出是 peter ，<br>那就到服务器上也创建一个同名的用户。具体创建方法是</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adduser peter --ingroup sudo</div></pre></td></tr></table></figure>
 <p><code>--ingroup sudo</code> 的意思是，新用户 <code>peter</code> 属于一个名为 <code>sudo</code> 的组，这样可以保证<code>peter</code>这个用户可以拥有超级用户权限。</p>
 <h2 id="更新环境变量"><a href="#更新环境变量" class="headerlink" title="更新环境变量"></a>更新环境变量</h2><p>安装 nvm 之后，需要更新环境变量后即可使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.profile</div></pre></td></tr></table></figure>
-<h2 id="修改-DNS"><a href="#修改-DNS" class="headerlink" title="修改 DNS"></a>修改 DNS</h2><p>ubuntu系统修改DNS方法</p>
+<h2 id="修改-DNS"><a href="#修改-DNS" class="headerlink" title="修改 DNS"></a>修改 DNS</h2><p>Could not resolve ‘mirrors.163.com’ 就需要修改 DNS 方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi  /etc/resolvconf/resolv.conf.d/tail</div></pre></td></tr></table></figure>
 <p>添加</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nameserver 223.5.5.5</div><div class="line">nameserver 8.8.8.8</div></pre></td></tr></table></figure>
@@ -458,7 +456,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">202</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -475,7 +473,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">283</span>
+                <span class="site-state-item-count">286</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -504,7 +502,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Official-Ubuntu-Documentation-（https-help-ubuntu-com-）"><span class="nav-number">1.</span> <span class="nav-text">[Official Ubuntu Documentation]（https://help.ubuntu.com/）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initial-Server-Setup-with-Ubuntu-16-04"><span class="nav-number">2.</span> <span class="nav-text">Initial Server Setup with Ubuntu 16.04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加用户"><span class="nav-number">3.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初次登陆（client语系为zh-CN，server端需要初始化）"><span class="nav-number">4.</span> <span class="nav-text">初次登陆（client语系为zh_CN，server端需要初始化）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建普通用户"><span class="nav-number">5.</span> <span class="nav-text">创建普通用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新环境变量"><span class="nav-number">6.</span> <span class="nav-text">更新环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-DNS"><span class="nav-number">7.</span> <span class="nav-text">修改 DNS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置软件镜像源"><span class="nav-number">1.</span> <span class="nav-text">设置软件镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Official-Ubuntu-Documentation-（https-help-ubuntu-com-）"><span class="nav-number">2.</span> <span class="nav-text">[Official Ubuntu Documentation]（https://help.ubuntu.com/）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initial-Server-Setup-with-Ubuntu-16-04"><span class="nav-number">3.</span> <span class="nav-text">Initial Server Setup with Ubuntu 16.04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加用户"><span class="nav-number">4.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初次登陆（client语系为zh-CN，server端需要初始化）"><span class="nav-number">5.</span> <span class="nav-text">初次登陆（client语系为zh_CN，server端需要初始化）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建普通用户"><span class="nav-number">6.</span> <span class="nav-text">创建普通用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新环境变量"><span class="nav-number">7.</span> <span class="nav-text">更新环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-DNS"><span class="nav-number">8.</span> <span class="nav-text">修改 DNS</span></a></li></ol></div>
             
           </div>
         </section>

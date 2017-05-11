@@ -258,6 +258,413 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/21/paginate.html" itemprop="url">
+                  paginate
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T09:57:01+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/21/paginate.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/paginate.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一般做法"><a href="#一般做法" class="headerlink" title="一般做法"></a><a href="http://stackoverflow.com/questions/5539955/how-to-paginate-with-mongoose-in-node-js" target="_blank" rel="external">一般做法</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// With a JSON doc</div><div class="line">Person.</div><div class="line">  find(&#123;</div><div class="line">    occupation: /host/,</div><div class="line">    &apos;name.last&apos;: &apos;Ghost&apos;,</div><div class="line">    age: &#123; $gt: 17, $lt: 66 &#125;,</div><div class="line">    likes: &#123; $in: [&apos;vaporizing&apos;, &apos;talking&apos;] &#125;</div><div class="line">  &#125;).</div><div class="line">  limit(10).</div><div class="line">  sort(&#123; occupation: -1 &#125;).</div><div class="line">  select(&#123; name: 1, occupation: 1 &#125;).</div><div class="line">  exec(callback);</div></pre></td></tr></table></figure>
+<h2 id="使用第三方包-mongoose-paginate"><a href="#使用第三方包-mongoose-paginate" class="headerlink" title="使用第三方包 mongoose-paginate"></a>使用第三方包 mongoose-paginate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mongoose-paginate</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"><span class="keyword">var</span> mongoosePaginate = <span class="built_in">require</span>(<span class="string">'mongoose-paginate'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> mongoose.Schema(&#123; <span class="comment">/* schema definition */</span> &#125;);</div><div class="line">schema.plugin(mongoosePaginate);</div><div class="line"></div><div class="line"><span class="keyword">var</span> Model = mongoose.model(<span class="string">'Model'</span>,  schema); <span class="comment">// Model.paginate()</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/20/propTypes.html" itemprop="url">
+                  propTypes
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-20T15:13:49+08:00" content="2016-11-20">
+              2016-11-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/20/propTypes.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/20/propTypes.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> propTypes = &#123;</div><div class="line">  <span class="comment">// You can declare that a prop is a specific JS primitive. By default, these</span></div><div class="line">  <span class="comment">// are all optional.</span></div><div class="line">  optionalArray: React.PropTypes.array,</div><div class="line">  <span class="attr">optionalBool</span>: React.PropTypes.bool,</div><div class="line">  <span class="attr">optionalFunc</span>: React.PropTypes.func,</div><div class="line">  <span class="attr">optionalNumber</span>: React.PropTypes.number,</div><div class="line">  <span class="attr">optionalObject</span>: React.PropTypes.object,</div><div class="line">  <span class="attr">optionalString</span>: React.PropTypes.string,</div><div class="line">  <span class="attr">optionalSymbol</span>: React.PropTypes.symbol,</div><div class="line"></div><div class="line">  <span class="comment">// Anything that can be rendered: numbers, strings, elements or an array</span></div><div class="line">  <span class="comment">// (or fragment) containing these types.</span></div><div class="line">  optionalNode: React.PropTypes.node,</div><div class="line"></div><div class="line">  <span class="comment">// A React element.</span></div><div class="line">  optionalElement: React.PropTypes.element,</div><div class="line"></div><div class="line">  <span class="comment">// You can also declare that a prop is an instance of a class. This uses</span></div><div class="line">  <span class="comment">// JS's instanceof operator.</span></div><div class="line">  optionalMessage: React.PropTypes.instanceOf(Message),</div><div class="line"></div><div class="line">  <span class="comment">// You can ensure that your prop is limited to specific values by treating</span></div><div class="line">  <span class="comment">// it as an enum.</span></div><div class="line">  optionalEnum: React.PropTypes.oneOf([<span class="string">'News'</span>, <span class="string">'Photos'</span>]),</div><div class="line"></div><div class="line">  <span class="comment">// An object that could be one of many types</span></div><div class="line">  optionalUnion: React.PropTypes.oneOfType([</div><div class="line">    React.PropTypes.string,</div><div class="line">    React.PropTypes.number,</div><div class="line">    React.PropTypes.instanceOf(Message)</div><div class="line">  ]),</div><div class="line"></div><div class="line">  <span class="comment">// An array of a certain type</span></div><div class="line">  optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),</div><div class="line"></div><div class="line">  <span class="comment">// An object with property values of a certain type</span></div><div class="line">  optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),</div><div class="line"></div><div class="line">  <span class="comment">// An object taking on a particular shape</span></div><div class="line">  optionalObjectWithShape: React.PropTypes.shape(&#123;</div><div class="line">    <span class="attr">color</span>: React.PropTypes.string,</div><div class="line">    <span class="attr">fontSize</span>: React.PropTypes.number</div><div class="line">  &#125;),</div><div class="line"></div><div class="line">  <span class="comment">// You can chain any of the above with `isRequired` to make sure a warning</span></div><div class="line">  <span class="comment">// is shown if the prop isn't provided.</span></div><div class="line">  requiredFunc: React.PropTypes.func.isRequired,</div><div class="line"></div><div class="line">  <span class="comment">// A value of any data type</span></div><div class="line">  requiredAny: React.PropTypes.any.isRequired,</div><div class="line"></div><div class="line">  <span class="comment">// You can also specify a custom validator. It should return an Error</span></div><div class="line">  <span class="comment">// object if the validation fails. Don't `console.warn` or throw, as this</span></div><div class="line">  <span class="comment">// won't work inside `oneOfType`.</span></div><div class="line">  customProp: <span class="function"><span class="keyword">function</span>(<span class="params">props, propName, componentName</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/matchme/</span>.test(props[propName])) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</div><div class="line">        <span class="string">'Invalid prop `'</span> + propName + <span class="string">'` supplied to'</span> +</div><div class="line">        <span class="string">' `'</span> + componentName + <span class="string">'`. Validation failed.'</span></div><div class="line">      );</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">// You can also supply a custom validator to `arrayOf` and `objectOf`.</span></div><div class="line">  <span class="comment">// It should return an Error object if the validation fails. The validator</span></div><div class="line">  <span class="comment">// will be called for each key in the array or object. The first two</span></div><div class="line">  <span class="comment">// arguments of the validator are the array or object itself, and the</span></div><div class="line">  <span class="comment">// current item's key.</span></div><div class="line">  customArrayProp: React.PropTypes.arrayOf(<span class="function"><span class="keyword">function</span>(<span class="params">propValue, key, componentName, location, propFullName</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/matchme/</span>.test(propValue[key])) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</div><div class="line">        <span class="string">'Invalid prop `'</span> + propFullName + <span class="string">'` supplied to'</span> +</div><div class="line">        <span class="string">' `'</span> + componentName + <span class="string">'`. Validation failed.'</span></div><div class="line">      );</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/19/collapse.html" itemprop="url">
+                  collapse
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-19T13:13:33+08:00" content="2016-11-19">
+              2016-11-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/19/collapse.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/19/collapse.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -save react-motion react-height react-collapse</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/18/classnames.html" itemprop="url">
+                  classnames
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-18T12:40:45+08:00" content="2016-11-18">
+              2016-11-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/18/classnames.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/18/classnames.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install classnames --save</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">'classnames'</span>;</div><div class="line"></div><div class="line"><span class="comment">// ...</span></div><div class="line">render () &#123;</div><div class="line">  <span class="keyword">var</span> btnClass = classnames(&#123;</div><div class="line">    <span class="keyword">this</span>.props.className,</div><div class="line">    <span class="string">'btn'</span>: <span class="literal">true</span>,</div><div class="line">    <span class="string">'btn-pressed'</span>: <span class="keyword">this</span>.state.isPressed,</div><div class="line">    <span class="string">'btn-over'</span>: !<span class="keyword">this</span>.state.isPressed &amp;&amp; <span class="keyword">this</span>.state.isHovered</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&#123;btnClass&#125;</span>&gt;</span>&#123;this.props.label&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/17/animation.html" itemprop="url">
                   animation
                 </a>
@@ -870,499 +1277,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/11/fetch.html" itemprop="url">
-                  fetch
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T11:06:46+08:00" content="2016-11-11">
-              2016-11-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/11/fetch.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/fetch.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn add whatwg-fetch</div></pre></td></tr></table></figure>
-<h2 id="React-应用-fetch"><a href="#React-应用-fetch" class="headerlink" title="React 应用 fetch"></a>React 应用 fetch</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'whatwg-fetch'</span>;</div><div class="line"></div><div class="line">componentDidMount() &#123;</div><div class="line">  fetch(<span class="string">'/recent.json'</span>)</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> response.json();</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">json</span> =&gt;</span> &#123; <span class="comment">//使用箭头函数，自动绑定 this，确保 this.setState 可用</span></div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">        <span class="attr">posts</span>: json,</div><div class="line">      &#125;);</div><div class="line">    &#125;)</div><div class="line">    .catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(error);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/10/base64.html" itemprop="url">
-                  base64
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-10T11:27:56+08:00" content="2016-11-10">
-              2016-11-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/10/base64.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/base64.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>小图采用base64加载</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/08/html.html" itemprop="url">
-                  html
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-08T14:52:18+08:00" content="2016-11-08">
-              2016-11-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/08/html.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/html.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="块级元素-amp-amp-行内元素"><a href="#块级元素-amp-amp-行内元素" class="headerlink" title="块级元素 &amp;&amp; 行内元素"></a>块级元素 &amp;&amp; 行内元素</h2><p>块级元素占据其父元素（容器）的整个空间。<br>行内元素只占据它对应标签的边框所包含的空间。</p>
-<h2 id="汉字占位符问题"><a href="#汉字占位符问题" class="headerlink" title="汉字占位符问题"></a>汉字占位符问题</h2><p>一个汉字使用一个<code>全角</code>汉字空格。搜狗输入法的默认是<code>半角</code>，所以需要手动更改下设置再输入空格即可。使用空白字符会被 htmlmin 等工具剔除掉。推荐使用汉字占位符 <code>&amp;#12288;</code></p>
-<h2 id="如何在一个-html-页面中嵌入-另一个-html-页面？"><a href="#如何在一个-html-页面中嵌入-另一个-html-页面？" class="headerlink" title="如何在一个 html 页面中嵌入 另一个 html 页面？"></a>如何在一个 html 页面中嵌入 另一个 html 页面？</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"http://localhost:4000/archives/"</span></span></div><div class="line">  <span class="attr">width</span>=<span class="string">"400"</span></div><div class="line">  <span class="attr">height</span>=<span class="string">"300"</span></div><div class="line">  <span class="attr">frameborder</span>=<span class="string">"0"</span></div><div class="line">  <span class="attr">scrolling</span>=<span class="string">"no"</span></div><div class="line">  <span class="attr">marginheight</span>=<span class="string">"0"</span></div><div class="line">  <span class="attr">marginwidth</span>=<span class="string">"0"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Your browser does not support iframes.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="客户端存储"><a href="#客户端存储" class="headerlink" title="客户端存储"></a>客户端存储</h2><h3 id="远古时期"><a href="#远古时期" class="headerlink" title="远古时期"></a>远古时期</h3><ul>
-<li>cookies 的用法和缺陷</li>
-<li>userdata</li>
-</ul>
-<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p><img src="/images/cookies.png" alt=""></p>
-<ul>
-<li>每次 http 请求都会带上 cookie 跟服务器要东西（不安全、请求臃肿）</li>
-<li>最大存储 4K</li>
-<li>主域名污染，子域名会受主域名影响</li>
-</ul>
-<h4 id="userdata"><a href="#userdata" class="headerlink" title="userdata"></a>userdata</h4><ul>
-<li>只有 IE 支持</li>
-<li>XML 文件</li>
-</ul>
-<h3 id="HTML5-时代"><a href="#HTML5-时代" class="headerlink" title="HTML5 时代:"></a>HTML5 时代:</h3><p>H5 存储的主要目标是：</p>
-<ul>
-<li>解决 4K 限制问题</li>
-<li>解决请求头常带存储信息问题</li>
-<li>解决关系型存储的问题</li>
-<li>解决跨浏览器的问题</li>
-</ul>
-<ul>
-<li>LocalStorage<ul>
-<li>存储形式：键值对</li>
-<li>存储容量：每个域名 5M</li>
-<li>过期：永不过期，手动删除</li>
-</ul>
-</li>
-<li>SessionStorage<ul>
-<li>过期：关闭页面，或重新打开浏览器，或者重新打开新Tab，刷新不会过期</li>
-</ul>
-</li>
-<li>IndexedDB</li>
-<li>Web SQL（已不再维护）</li>
-<li>application cache</li>
-</ul>
-<h4 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">localStorage.setItem(<span class="string">'hello'</span>,<span class="string">'world'</span>)</div><div class="line">localStorage.getItem(<span class="string">'hello'</span>)</div><div class="line">localStorage.key(<span class="number">0</span>)</div><div class="line">localStorage.clear()</div></pre></td></tr></table></figure>
-<h4 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sessionStorage.setItem(<span class="string">'hello'</span>,<span class="string">'world'</span>)</div><div class="line">sessionStorage.getItem(<span class="string">'hello'</span>)</div><div class="line">sessionStorage.key(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<h4 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h4><p>一种能在浏览器中持久地存储结构化数据的数据库，并且为 Web 应用提供了丰富的查询能力。</p>
-<p>每个域名都可以创建多个 db，每个 db 可以创建多个表</p>
-<ul>
-<li>增删改</li>
-<li>事务</li>
-<li>游标</li>
-<li>索引</li>
-</ul>
-<p>HTML5 存储</p>
-<p>如何实现把图片存储在客户端？<br>如何实现跨域共享客户端缓存？<br>如何做到真正的离线访问web应用？<br>如何实现一个客户端数据库？</p>
-<h3 id="关于存储"><a href="#关于存储" class="headerlink" title="关于存储"></a>关于存储</h3><ul>
-<li>内存存储 cache</li>
-<li>磁盘存储 文件</li>
-<li>磁盘存储 数据库</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/07/reactvsvue.html" itemprop="url">
-                  React vs Vue
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-07T12:06:17+08:00" content="2016-11-07">
-              2016-11-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/07/reactvsvue.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/reactvsvue.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><ul>
-<li>使用 Virtual DOM</li>
-<li>提供了响应式（Reactive）和组件化（Composable）的视图组件。</li>
-<li>将注意力集中保持在核心库，伴随于此，有配套的路由和负责处理全局状态管理的库。</li>
-</ul>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p>Vue 的中文文档完爆 React 的文档。</p>
-<h2 id="开发风格的偏好"><a href="#开发风格的偏好" class="headerlink" title="开发风格的偏好"></a>开发风格的偏好</h2><p>React 推荐的做法是 JSX + inline style，也就是把 HTML 和 CSS 全都整进 JavaScript 了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> divStyle = &#123;</div><div class="line">  <span class="attr">color</span>: <span class="string">'white'</span>,</div><div class="line">  <span class="attr">backgroundImage</span>: <span class="string">'url('</span> + imgUrl + <span class="string">')'</span>,</div><div class="line">  <span class="attr">WebkitTransition</span>: <span class="string">'all'</span>, <span class="comment">// note the capital 'W' here</span></div><div class="line">  msTransition: <span class="string">'all'</span> <span class="comment">// 'ms' is the only lowercase vendor prefix</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;divStyle&#125;</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>, mountNode);</div></pre></td></tr></table></figure>
-<p>Vue 的默认 API 是以简单易上手为目标，但是进阶之后推荐的是使用 webpack + vue-loader 的单文件组件格式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;list-container&quot;&gt;</div><div class="line">    &lt;ul v-if=&quot;items.length&quot;&gt;</div><div class="line">        &lt;li v-for=&quot;item in items&quot;&gt;</div><div class="line">            &#123;&#123; item.name &#125;&#125;</div><div class="line">        &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &lt;p v-else&gt;No items found.&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">...</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;style lang=&quot;sass&quot; scoped&gt;</div><div class="line">...</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1403,7 +1322,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">202</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1420,7 +1339,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">283</span>
+                <span class="site-state-item-count">286</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -67,7 +67,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blog,ghost," />
+  <meta name="keywords" content="lemp,nginx,mysql,php," />
 
 
 
@@ -83,19 +83,16 @@
 
 
 
-<meta name="description" content="在线使用 HEXO 写文章实在不方便，各种坑。
-Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
+<meta name="description" content="How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ghost">
-<meta property="og:url" content="http://haobing.wang/2016/08/23/ghost.html">
+<meta property="og:title" content="lemp">
+<meta property="og:url" content="http://haobing.wang/2017/05/09/lemp.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="在线使用 HEXO 写文章实在不方便，各种坑。
-Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
-<meta property="og:updated_time" content="2017-04-14T10:26:40.789Z">
+<meta property="og:description" content="How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04">
+<meta property="og:updated_time" content="2017-05-09T03:35:30.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ghost">
-<meta name="twitter:description" content="在线使用 HEXO 写文章实在不方便，各种坑。
-Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
+<meta name="twitter:title" content="lemp">
+<meta name="twitter:description" content="How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04">
 
 
 
@@ -116,10 +113,10 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
 
 
 
-  <link rel="canonical" href="http://haobing.wang/2016/08/23/ghost.html"/>
+  <link rel="canonical" href="http://haobing.wang/2017/05/09/lemp.html"/>
 
 
-  <title> ghost | 王浩冰 </title>
+  <title> lemp | 王浩冰 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +261,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
             
             
               
-                ghost
+                lemp
               
             
           </h1>
@@ -276,8 +273,8 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T11:00:46+08:00" content="2016-08-23">
-              2016-08-23
+            <time itemprop="dateCreated" datetime="2017-05-09T11:34:34+08:00" content="2017-05-09">
+              2017-05-09
             </time>
           </span>
 
@@ -287,8 +284,8 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/23/ghost.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/23/ghost.html" itemprop="commentsCount"></span>
+                <a href="/2017/05/09/lemp.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/lemp.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -311,32 +308,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
       
 
       
-        <p>在线使用 HEXO 写文章实在不方便，各种坑。</p>
-<p>Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。</p>
-<a id="more"></a>
-<h2 id="Windows-配置-Ghost"><a href="#Windows-配置-Ghost" class="headerlink" title="Windows 配置 Ghost"></a>Windows 配置 Ghost</h2><p>预制条件：</p>
-<ul>
-<li>python 2.7</li>
-<li>node.js 4.5</li>
-<li>git</li>
-</ul>
-<p>下载 ghost</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 下载工具随意</div><div class="line">wget https://ghost.org/zip/ghost-latest.zip</div></pre></td></tr></table></figure>
-<p>解压，并安装Ghost的生产模块：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ghost</div><div class="line">npm install --production</div></pre></td></tr></table></figure>
-<p>Ghost设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp config.example.js config.js</div></pre></td></tr></table></figure>
-<p>运行 Ghost：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 启动 development</div><div class="line">npm start</div><div class="line"></div><div class="line"># 启动 production</div><div class="line">npm start --production</div></pre></td></tr></table></figure>
-<p>登录后台：访问 <code>/ghost/signup/</code> 设置管理员用户</p>
-<h2 id="添加-robots-txt"><a href="#添加-robots-txt" class="headerlink" title="添加 robots.txt"></a>添加 robots.txt</h2><p>禁止爬虫抓取：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">User-agent: *</div><div class="line">Disallow: /</div></pre></td></tr></table></figure>
-<p>生产 robots.txt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">User-agent: *</div><div class="line">Sitemap: /sitemap.xml</div><div class="line">Disallow: /ghost/</div></pre></td></tr></table></figure>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>Ghost is built on top of a RESTful JSON API. This API is used for all data access inside of the Ghost software itself, meaning the API is the heart of the software, not an afterthought or additional layer.</p>
-<h2 id="Public-API"><a href="#Public-API" class="headerlink" title="Public API"></a>Public API</h2><h2 id="Private-API"><a href="#Private-API" class="headerlink" title="Private API"></a>Private API</h2><h2 id="ghost-0-7-4"><a href="#ghost-0-7-4" class="headerlink" title="ghost-0.7.4"></a>ghost-0.7.4</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nvm install 4.2</div><div class="line">nvm use 4.2</div><div class="line">node index.js</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 创建Ghost数据库</div><div class="line">$ create database mousycoder # 这里把mousycoder换成你想换成的数据库名，建议和域名保持一致，方便以后维护。</div><div class="line">$ create database mousycoderDev # 这个是Ghost启动有2种模式 一种开发模式 一种生产模式 这个是开发模式的数据库，如果不想那么麻烦，只用建立一个数据库即可。</div><div class="line">$ create user &apos;mousycoder&apos;@&apos;localhost&apos; identified by &apos;123456&apos; # 这里新建一个用户mousycoder密码为123456,当然我的密码肯定不是123456咯，换成你自己的啦 = =，同样也建议用户名，数据库名，服务名，组名，都和域名保持一致,这里是建立一个只有本地操作的用户，远程无法操作，安全策略。</div><div class="line">$ grant all privileges on mousycoder.* to &apos;mousycoder&apos;@&apos;localhost&apos;</div><div class="line">$ grant all privileges on mousycoderDev.* to &apos;mousycoder&apos;@&apos;localhost&apos; # 这里是赋予mousycoder这个本地用户所有对数据库mousycoder以及mousycoderDev的权限，当然这里你可以根据实际需要赋予权限。</div><div class="line">$ FLUSH PRIVILEGES # 重新读取权限表中的数据到内存，不用重启mysql就可以让权限生效，好处可以防止修改错误后，没有余地再去反悔。</div></pre></td></tr></table></figure>
-<p>/core/shared/robots.txt</p>
+        <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04" target="_blank" rel="external">How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04</a></p>
 
       
     </div>
@@ -358,9 +330,13 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/tags/lemp/" rel="tag">#lemp</a>
           
-            <a href="/tags/ghost/" rel="tag">#ghost</a>
+            <a href="/tags/nginx/" rel="tag">#nginx</a>
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+            <a href="/tags/php/" rel="tag">#php</a>
           
         </div>
       
@@ -369,16 +345,16 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/21/bash.html" rel="next" title="bash">
-                <i class="fa fa-chevron-left"></i> bash
+              <a href="/2017/05/09/数据库设计.html" rel="next" title="数据库设计">
+                <i class="fa fa-chevron-left"></i> 数据库设计
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/25/swap.html" rel="prev" title="阿里云ecs添加 swap">
-                阿里云ecs添加 swap <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/09/wordpress.html" rel="prev" title="wordpress">
+                wordpress <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -405,8 +381,8 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/23/ghost.html"
-           data-title="ghost" data-url="http://haobing.wang/2016/08/23/ghost.html">
+      <div class="ds-thread" data-thread-key="2017/05/09/lemp.html"
+           data-title="lemp" data-url="http://haobing.wang/2017/05/09/lemp.html">
       </div>
     
   </div>
@@ -451,7 +427,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">202</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -468,7 +444,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">283</span>
+                <span class="site-state-item-count">286</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -497,7 +473,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-配置-Ghost"><span class="nav-number">1.</span> <span class="nav-text">Windows 配置 Ghost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加-robots-txt"><span class="nav-number">2.</span> <span class="nav-text">添加 robots.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">3.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-API"><span class="nav-number">4.</span> <span class="nav-text">Public API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-API"><span class="nav-number">5.</span> <span class="nav-text">Private API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ghost-0-7-4"><span class="nav-number">6.</span> <span class="nav-text">ghost-0.7.4</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

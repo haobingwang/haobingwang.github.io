@@ -258,6 +258,621 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/20/tar.html" itemprop="url">
+                  tar
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-20T12:50:17+08:00" content="2016-08-20">
+              2016-08-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/20/tar.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/20/tar.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>将 todos 目录打包成 todos.tar</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar cf todos.tar todos</div></pre></td></tr></table></figure>
+<h2 id="打包并压缩"><a href="#打包并压缩" class="headerlink" title="打包并压缩"></a>打包并压缩</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zcf todos.tar.gz todos</div></pre></td></tr></table></figure>
+<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar zxf todos.tar.gz</div><div class="line">tar zxf todos.tar.gz -C /tmp</div></pre></td></tr></table></figure>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><ul>
+<li>c –create</li>
+<li>x –extract</li>
+<li>z gzip</li>
+<li>f 这个应该作为最后一个选项</li>
+</ul>
+<p>如果要使用 bzip2 则将 z 替换为 j</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/18/https.html" itemprop="url">
+                  https
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T16:09:46+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/https.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/18/https.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTTP:Your connection is not private.Attackers might be trying to steal your information from example.com (for example, passwords, messages, or credit cards).</p>
+<p>不使用 HTTPS 存在的风险</p>
+<ul>
+<li>窃听风险（eavesdropping）：第三方可以获知通信内容。</li>
+<li>篡改风险（tampering）：第三方可以修改通信内容。</li>
+<li>冒充风险（pretending）：第三方可以冒充他人身份参与通信。</li>
+</ul>
+<p>To enable HTTPS on your website, you need to get a certificate (a type of file) from a Certificate Authority (CA). Let’s Encrypt is a CA.</p>
+<p><strong>注意</strong> 网站一旦启用 https，则附加的 css、js、image 都要是 https 的。<strong>如果</strong> 网站使用第三方 CDN 则会产生额外的费用。</p>
+<h1 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h1><p>Let’s Encrypt 的 certificates（有效期90天），配合 certbot 自动续期。</p>
+<h2 id="下载安装-certbot"><a href="#下载安装-certbot" class="headerlink" title="下载安装 certbot"></a>下载安装 certbot</h2><p>20170412 最新文档的安装方式已经变更为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#$ sudo apt-get install software-properties-common python-software-properties</div><div class="line">$ sudo add-apt-repository ppa:certbot/certbot</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install certbot</div></pre></td></tr></table></figure>
+<h2 id="命令行模式生成证书"><a href="#命令行模式生成证书" class="headerlink" title="命令行模式生成证书"></a>命令行模式生成证书</h2><h3 id="webroot"><a href="#webroot" class="headerlink" title="webroot"></a>webroot</h3><p>由于网站正在运行，并且不能够关闭服务来获取和安装证书，使用 webroot 模式来获取证书，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo certbot certonly --webroot -w 网站根目录 -d 网站域名</div><div class="line">sudo certbot certonly --webroot -w /var/www/example -d example.com -d www.example.com</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个命令会为 <a href="http://example.com" target="_blank" rel="external">http://example.com</a> 和 <a href="http://www.example.com" target="_blank" rel="external">http://www.example.com</a> 这两个域名生成一个证书，使用 –webroot 模式会在 /var/www/example 中创建 .well-known 文件夹，这个文件夹里面包含了一些验证文件，certbot 会通过访问 <a href="http://example.com/.well-known/acme-challenge" target="_blank" rel="external">http://example.com/.well-known/acme-challenge</a> 来验证你的域名是否绑定的这个服务器。这个命令在大多数情况下都可以满足需求。</p>
+</blockquote>
+<p>注意：如果获取证书过程中提示无法访问 <code>/.well-known</code>，需要修改 nginx 的配置，在 server 块里添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location ~ /.well-known &#123;</div><div class="line">  allow all;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>全部内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen  80;</div><div class="line">  server_name example.com www.example.com;</div><div class="line"></div><div class="line">  root /var/www/example; # 对应上面命令中的 “-w /var/www/example”</div><div class="line">  index index.html index.htm;</div><div class="line"></div><div class="line">  location ~ /.well-known &#123;</div><div class="line">    allow all;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="standalone（仅作了解）"><a href="#standalone（仅作了解）" class="headerlink" title="standalone（仅作了解）"></a>standalone（仅作了解）</h3><p>但是有些时候我们的一些服务并没有根目录，例如一些微服务，这时候使用 –webroot 就走不通了。certbot 还有另外一种模式 –standalone ， 这种模式不需要指定网站根目录，他会自动启用服务器的443端口，来验证域名的归属。我们有其他服务（例如nginx）占用了443端口，就必须先停止这些服务，在证书生成完毕后，再启用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo service nginx stop</div><div class="line">sudo certbot certonly --standalone -d example.com -d www.example.com</div><div class="line">sudo service nginx start</div></pre></td></tr></table></figure>
+<p>而且以后更新的命令中也要使用特殊参数，启用和关闭 nginx。</p>
+<h2 id="认证过程"><a href="#认证过程" class="headerlink" title="认证过程"></a>认证过程</h2><ol>
+<li>邮箱使用国内邮箱（不建议使用 gmail），在证书快过期时,会发送通知邮件</li>
+<li>如果遇到 “installing Python packages” 停住不动时，请使用阿里云的pip 镜像。</li>
+</ol>
+<h2 id="生成证书成功"><a href="#生成证书成功" class="headerlink" title="生成证书成功"></a>生成证书成功</h2><blockquote>
+<ul>
+<li>Congratulations! Your certificate and chain have been saved at<br>/etc/letsencrypt/live/example.com/fullchain.pem<br>…</li>
+</ul>
+</blockquote>
+<p>注意这里，默认会自动生成 <code>/var/www/example/.well-known/acme-challenge</code>，然后 shell 脚本会对应的访问该文件，如果返回正常就确认了你对这个网站的所有权，就能顺利生成证书。</p>
+<p>查看生成的证书</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ls -l /etc/letsencrypt/live/example.com</div></pre></td></tr></table></figure>
+<p>生成的证书会存储在 <code>/etc/letsencrypt/live/example.com/</code> 对应的目录下。</p>
+<ul>
+<li>cert.pem   - Your domain’s certificate</li>
+<li>chain.pem  - The Let’s Encrypt chain certificate</li>
+<li>fullchain.pem  - <code>cert.pem</code> and <code>chain.pem</code> combined</li>
+<li>privkey.pem    - Your certificate’s private key</li>
+</ul>
+<p>我们使用的 Nginx 环境，需要用到 fullchain.pem 和 privkey.pem 两个证书文件</p>
+<p>ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;<br>ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</p>
+<h2 id="增强安全"><a href="#增强安全" class="headerlink" title="增强安全"></a>增强安全</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048</div></pre></td></tr></table></figure>
+<p>This may take a few minutes but when it’s done you will have a strong DH group.</p>
+<p>在 ssl server block 中添加：</p>
+<blockquote>
+<p>ssl_dhparam /etc/ssl/certs/dhparam.pem;</p>
+</blockquote>
+<p>完成配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">  listen  80;</div><div class="line">  server_name example.com www.example.com;</div><div class="line"></div><div class="line">  root /var/www/example;</div><div class="line">  index index.html index.htm;</div><div class="line"></div><div class="line">  location ~ /.well-known &#123;</div><div class="line">    allow all;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  # 将http的请求转发为https</div><div class="line">  location / &#123;</div><div class="line">    return 301 https://$server_name$request_uri;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 443;</div><div class="line">    server_name example.com, www.example.com;</div><div class="line"></div><div class="line">    ssl on;</div><div class="line">    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;</div><div class="line">    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</div><div class="line"></div><div class="line">    ssl_dhparam /path/to/server.dhparam;# 新加此行</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://127.0.0.1:3999;</div><div class="line">      proxy_http_version 1.1;</div><div class="line">      proxy_set_header X_FORWARDED_PROTO https;</div><div class="line">      proxy_set_header X-Real-IP $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">      proxy_set_header Host $host;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="nginx-重新加载配置"><a href="#nginx-重新加载配置" class="headerlink" title="nginx 重新加载配置"></a>nginx 重新加载配置</h2><p>要让修改后的配置生效，不需要 <code>restart</code> ，只需要 <code>reload</code> 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service nginx reload</div></pre></td></tr></table></figure>
+<h2 id="测试-SSL-安全性"><a href="#测试-SSL-安全性" class="headerlink" title="测试 SSL 安全性"></a>测试 SSL 安全性</h2><p><a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="external">立即前往测试</a>，输入域名，查看评测报告，应该有 <code>A+</code></p>
+<h2 id="自动续期-cron"><a href="#自动续期-cron" class="headerlink" title="自动续期 cron"></a>自动续期 cron</h2><p>You can test automatic renewal for your certificates by running this command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo certbot renew --dry-run</div></pre></td></tr></table></figure>
+<p>If that appears to be working correctly, you can arrange for automatic renewal by adding a cron (or systemd) job which runs the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo crontab -e</div></pre></td></tr></table></figure>
+<p>Add the following lines:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">30 2 * * 1 /usr/bin/certbot renew &gt;&gt; /var/log/le-renew.log</div><div class="line">35 2 * * 1 /etc/init.d/nginx reload</div></pre></td></tr></table></figure>
+<p>确认下任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo crontab -l</div></pre></td></tr></table></figure>
+<p>即每周一的 02:30 更新证书，02:35 重启 nginx (so the renewed certificate will be used)。<br>更新证书的日志会放在 /var/log/le-renewal.log<br>如果到期没有更新证书，CA会向申请证书时提交的邮件地址发送提醒email。</p>
+<h2 id="HTTPS站点的SEO自检清单"><a href="#HTTPS站点的SEO自检清单" class="headerlink" title="HTTPS站点的SEO自检清单"></a>HTTPS站点的SEO自检清单</h2><ol>
+<li>确保网站的每个元素（包括插件、JS、CSS文件、图片、内容分发网站等）都采用HTTPS协议；</li>
+<li>使用301重定向将HTTP URL指向HTTPS版地址</li>
+</ol>
+<h2 id="404-on-well-known-acme-challenge"><a href="#404-on-well-known-acme-challenge" class="headerlink" title="404 on .well-known/acme-challenge/"></a>404 on .well-known/acme-challenge/</h2><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li>删除证书: sudo certbot delete</li>
+</ul>
+<blockquote>
+<p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="external">Nginx 配置生成器 - Mozilla SSL Configuration Generator</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/restful.html" itemprop="url">
+                  restful
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T15:49:27+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/17/restful.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/17/restful.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="REST"><a href="#REST" class="headerlink" title="REST"></a>REST</h1><ul>
+<li>每一个 URI 代表一种资源</li>
+<li>客户端和服务端，传递这种资源的某种表现形式。</li>
+<li>客户端通过4个HTTP动词，对服务器资源进行操作，实现“表现层状态转化”。</li>
+</ul>
+<h2 id="HTTP-动词"><a href="#HTTP-动词" class="headerlink" title="HTTP 动词"></a>HTTP 动词</h2><ul>
+<li>GET    获取资源</li>
+<li>POST   新增资源</li>
+<li>PUT    更新资源</li>
+<li>DELETE 删除资源</li>
+</ul>
+<h2 id="创建-RESTful-API"><a href="#创建-RESTful-API" class="headerlink" title="创建 RESTful API"></a>创建 RESTful API</h2><h3 id="node"><a href="#node" class="headerlink" title="node"></a>node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install express</div></pre></td></tr></table></figure>
+<h3 id="meteor"><a href="#meteor" class="headerlink" title="meteor"></a>meteor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor add cfs:http-methods</div></pre></td></tr></table></figure>
+<h2 id="调用-RESTful-API"><a href="#调用-RESTful-API" class="headerlink" title="调用 RESTful API"></a>调用 RESTful API</h2><h3 id="node-1"><a href="#node-1" class="headerlink" title="node"></a>node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install axios</div></pre></td></tr></table></figure>
+<h3 id="meteor-1"><a href="#meteor-1" class="headerlink" title="meteor"></a>meteor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor add http</div></pre></td></tr></table></figure>
+<p>同时支持 HTTP 和 HTTPS 协议。</p>
+<ul>
+<li>在服务端，HTTP 函数既可以同步调用，也可以异步调用。</li>
+<li>在客户端，HTTP 函数只能异步调用，并传递一个回调函数。（即必须有回调函数）</li>
+</ul>
+<h4 id="服务端使用示例"><a href="#服务端使用示例" class="headerlink" title="服务端使用示例"></a>服务端使用示例</h4><p>先开一个终端，启动 meteor 应用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor</div></pre></td></tr></table></figure>
+<p>再开一个终端，启动 meteor shell：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meteor shell</div><div class="line">HTTP.get(&quot;https://www.v2ex.com/api/topics/latest.json&quot;)</div></pre></td></tr></table></figure>
+<h4 id="客户端使用示例"><a href="#客户端使用示例" class="headerlink" title="客户端使用示例"></a>客户端使用示例</h4><p>打开 Chrome 开发者工具，console</p>
+<p>同步调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HTTP.get(&quot;http://localhost:3000&quot;);</div></pre></td></tr></table></figure></p>
+<p>output:</p>
+<blockquote>
+<p>Uncaught Error: Can’t make a blocking HTTP call from the client; callback required.(…)</p>
+</blockquote>
+<p>异步调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">HTTP.get(&quot;http://localhost:3000&quot;, function(error,result)&#123;</div><div class="line">  if (!error)&#123;</div><div class="line">    console.log(&quot;success&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>output:</p>
+<blockquote>
+<p>success</p>
+</blockquote>
+<h2 id="curl-来测试"><a href="#curl-来测试" class="headerlink" title="curl 来测试"></a>curl 来测试</h2><p>对于 get，可以用浏览器直接访问返回 json 的 api。但是对于 post、put、delete 就需要借助 curl 来处理了。</p>
+<p>curl 可以用来模拟请求，详情可以查看帮助文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man curl</div></pre></td></tr></table></figure>
+<h2 id="构建-REST-API"><a href="#构建-REST-API" class="headerlink" title="构建 REST API"></a>构建 REST API</h2><ul>
+<li>GET /posts</li>
+<li>POST /posts</li>
+<li>PUT /posts/:post_id</li>
+<li>GET /posts/:post_id</li>
+<li>DELETE /posts/:post_id</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/15/locale.html" itemprop="url">
+                  区域设置 locale
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-15T09:28:12+08:00" content="2016-08-15">
+              2016-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/15/locale.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/15/locale.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>国际化 (internationalization，即缩写为 i18n，单词的头尾之间包含了 18 个字母 )</li>
+<li>本地化 (localization，缩写为 l10n)</li>
+</ul>
+<h2 id="常用值"><a href="#常用值" class="headerlink" title="常用值"></a>常用值</h2><ul>
+<li>en_US.UTF-8</li>
+<li>zh_CN.UTF-8</li>
+</ul>
+<h2 id="locale-相关变量优先级"><a href="#locale-相关变量优先级" class="headerlink" title="locale 相关变量优先级"></a>locale 相关变量优先级</h2><p>1.LANGUAGE  Most programs use this for the language of its interface<br>2.LC_ALL    默认为空。可覆盖所有其他的 locale 设定<br>3.LC_xxx    可设定 locale 各方面的值，可以覆盖 LANG 值。<br>4.LANG      Specifies the default locale for all unset locale variables</p>
+<p>可以把上述环境变量写在 <code>/etc/profile</code> 或 <code>/etc/environment</code> 等系统初始文件中。值得注意的是，若 <code>LANG</code> 或 <code>LC_ALL</code> 被设定为 <code>C</code>，那么 <code>LANGUAGE</code> 的值将被忽略。</p>
+<h2 id="查看当前系统语言环境"><a href="#查看当前系统语言环境" class="headerlink" title="查看当前系统语言环境"></a>查看当前系统语言环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locale</div></pre></td></tr></table></figure>
+<h2 id="将系统改为英文系统"><a href="#将系统改为英文系统" class="headerlink" title="将系统改为英文系统"></a>将系统改为英文系统</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/default/locale</div></pre></td></tr></table></figure>
+<blockquote>
+<p>LANG=”en_US.UTF-8”<br>LANGUAGE=”en_US:en”</p>
+</blockquote>
+<h2 id="查看系统内安装的locale"><a href="#查看系统内安装的locale" class="headerlink" title="查看系统内安装的locale"></a>查看系统内安装的locale</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locale -a</div></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>locale: Cannot set LC_CTYPE to default locale: No such file or directory<br>locale: Cannot set LC_MESSAGES to default locale: No such file or directory<br>locale: Cannot set LC_COLLATE to default locale: No such file or directory<br>C<br>POSIX<br>zh_CN.utf8<br>zh_SG.utf8</p>
+</blockquote>
+<p>看吧，没装en_US.UTF-8，需要安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo locale-gen en_US.UTF-8</div></pre></td></tr></table></figure>
+<p>再次查看，应该一切正常了。</p>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg-reconfigure locales</div></pre></td></tr></table></figure>
+<h2 id="修复-LC-CTYPE-UTF-8"><a href="#修复-LC-CTYPE-UTF-8" class="headerlink" title="修复 LC_CTYPE=UTF-8"></a>修复 LC_CTYPE=UTF-8</h2><p><code>LC_CTYPE=UTF-8</code></p>
+<p>OSX iTerm 中将 <code>Profiles</code>-&gt;<code>Terminal</code>-&gt;<code>Environment</code>-&gt;<code>Set locale variables automatically</code> 取消勾选状态，关闭 shell 后，重新登录即可。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>1.<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-linuxglb/" target="_blank" rel="external">浅析 Linux 的国际化与本地化机制</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/12/monitor.html" itemprop="url">
                   monitor
                 </a>
@@ -1217,567 +1832,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/04/seo.html" itemprop="url">
-                  seo
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-04T10:26:19+08:00" content="2016-08-04">
-              2016-08-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/04/seo.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/04/seo.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="确认网站是否被收录"><a href="#确认网站是否被收录" class="headerlink" title="确认网站是否被收录"></a>确认网站是否被收录</h2><p><code>site:example.com</code></p>
-<h2 id="链接提交"><a href="#链接提交" class="headerlink" title="链接提交"></a>链接提交</h2><p><code>主动推送（实时）</code> &gt; <code>自动推送</code> &gt; <code>sitemap</code></p>
-<ul>
-<li>主动推送，最为快速的提交方式，推荐您将站点当天新产出链接立即通过此方式推送给百度，以保证新链接可以及时被百度收录。</li>
-<li>自动推送，最为便捷的提交方式，请将自动推送的JS代码部署在站点的每一个页面源代码中，部署代码的页面在每次被浏览时，链接会被自动推送给百度。可以与主动推送配合使用。</li>
-<li>sitemap，您可以定期将网站链接放到sitemap中，然后将sitemap提交给百度。百度会周期性的抓取检查您提交的sitemap，对其中的链接进行处理，但收录速度慢于主动推送。</li>
-</ul>
-<p>主动推送和自动推送代码配合使用，二者互不影响。强烈建议并让三者协同工作，将抓取和收录价值最大化。</p>
-<h3 id="主动推送（实时）"><a href="#主动推送（实时）" class="headerlink" title="主动推送（实时）"></a>主动推送（实时）</h3><p>主动推送有数量限制，建议只推送新 url，已提交过的 url 不要推送。</p>
-<p>Q：在什么时机使用主动推送提交功能效果最明显？<br>A：页面链接产生或发布时立即提交，这样效果是最好的</p>
-<p>Q：重复提交已经发布的链接会有什么问题？<br>A：如果您经常重复提交旧链接，我们会下调您的配额，您可能会失去主动推送功能的权限。主动推送配额 <code>{&quot;remain&quot;:1,&quot;success&quot;:1}</code> ，百度不再限制主动推送 url 的数量，<code>remain</code> 字段保留，并且总是返回1。需要注意的是，不能因为百度不限制主动推送 url 的数据就随意推送。新版主动推送功能会对站长提交的内容进行识别，恶意提交垃圾页面或者重复页面的站点将会被惩罚限制提交，直至关闭提交权限。</p>
-<p>Q：主动推送可以推多少条链接？<br>A：主动推送可提交的链接数量上限是根据您提交的新产生有价值链接数量而决定的，百度会根据您提交数量的情况不定期对上限额进行调整，提交的新产生有价值链接数量越多，可提交链接的上限越高。</p>
-<h3 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h3><p>安装 js 脚本即可，用户访问页面时就会自动推送到百度了。</p>
-<p>实际使用中有遇到过 <code>net::ERR_BLOCKED_BY_CLIENT</code>，原因是 AdBlock 阻止了js脚本，将域名加入入 AdBlock 的白名单即可。</p>
-<h2 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h2><p>Q：Sitemap提交后，多久能被百度处理？<br>A：Sitemap数据提交后，一般在1小时内百度会开始处理。在以后的调度抓取中，如果您的sitemap支持etag，我们会更频繁抓取sitemap文件，从而及时发现内容更新；否则抓取的周期会比较长。</p>
-<p>Q：提交的Sitemap都会被百度抓取并收录吗？<br>A：百度对已提交的数据，不保证一定会抓取及收录所有网址。是否收录与页面质量相关。</p>
-<p>Q：Sitemap中提交的url能否包含中文？<br>A：因为转码问题建议最好不要包含中文。</p>
-<h2 id="删除死链"><a href="#删除死链" class="headerlink" title="删除死链"></a>删除死链</h2><ol>
-<li>在网站根目录中添加 <code>silian.txt</code> ，然后到 “死链提交” 提交 <code>http://example.com/silian.txt</code></li>
-<li>调整 <code>nginx</code> 配置，确保死链状态为 404</li>
-<li>在百度投诉平台提交快照删除</li>
-</ol>
-<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><ul>
-<li>a, <a rel="nofollow" href="#">其他网站</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/03/env.html" itemprop="url">
-                  环境变量
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-03T10:59:40+08:00" content="2016-08-03">
-              2016-08-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/03/env.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/env.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="新增、修改环境变量"><a href="#新增、修改环境变量" class="headerlink" title="新增、修改环境变量"></a>新增、修改环境变量</h2><p>如果是新增环境变量、修改环境变量或删除环境变量的值，都需要 <code>source</code> 一下才能立即生效。</p>
-<p><code>.</code> 同 <code>source</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">. ~/.zshrc</div><div class="line"># 或者</div><div class="line">source ~/.zshrc</div></pre></td></tr></table></figure>
-<h2 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 查看所有环境变量</div><div class="line">env</div><div class="line"># 查看某个环境变量</div><div class="line">echo $NVM_NODEJS_ORG_MIRROR</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/03/iTerm2.html" itemprop="url">
-                  iTerm2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-03T09:59:41+08:00" content="2016-08-03">
-              2016-08-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/03/iTerm2.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/iTerm2.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="manpath-can’t-set-the-locale-make-sure-LC-and-LANG-are-correct"><a href="#manpath-can’t-set-the-locale-make-sure-LC-and-LANG-are-correct" class="headerlink" title="manpath: can’t set the locale; make sure $LC_* and $LANG are correct"></a>manpath: can’t set the locale; make sure $LC_* and $LANG are correct</h2><p>Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-32-generic x86_64)</p>
-<ul>
-<li>Documentation:  <a href="https://help.ubuntu.com/" target="_blank" rel="external">https://help.ubuntu.com/</a></li>
-</ul>
-<p>Welcome to aliyun Elastic Compute Service!</p>
-<p>Last login: Tue Jul  5 09:47:04 2016 from 101.81.225.194<br>manpath: can’t set the locale; make sure $LC_* and $LANG are correct</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">➜  ~ locale</div><div class="line">locale: Cannot set LC_CTYPE to default locale: No such file or directory</div><div class="line">locale: Cannot set LC_ALL to default locale: No such file or directory</div><div class="line">LANG=en_US.UTF-8</div><div class="line">LANGUAGE=en_US:en</div><div class="line">LC_CTYPE=UTF-8</div><div class="line">LC_NUMERIC=&quot;en_US.UTF-8&quot;</div><div class="line">LC_TIME=&quot;en_US.UTF-8&quot;</div><div class="line">LC_COLLATE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MONETARY=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MESSAGES=&quot;en_US.UTF-8&quot;</div><div class="line">LC_PAPER=&quot;en_US.UTF-8&quot;</div><div class="line">LC_NAME=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ADDRESS=&quot;en_US.UTF-8&quot;</div><div class="line">LC_TELEPHONE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_MEASUREMENT=&quot;en_US.UTF-8&quot;</div><div class="line">LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ALL=</div></pre></td></tr></table></figure>
-<ul>
-<li>错误在于 <code>LC_CTYPE=UTF-8</code>，正确的应该是 <code>LC_CTYPE=en_US.UTF-8</code></li>
-<li><code>LC_ALL=</code> 是躺枪的</li>
-</ul>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Your local ssh client is sending your LC<em>* environment variables to remote sshd server. In other words, SSH will try to set every LC</em>* variable you have set on your local OSX system on the remove server too.</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="方法一：Preventing-OpenSSH-Client-from-sending-the-LC-variables-on-OS-X-Linux-Unix-desktop（推荐）"><a href="#方法一：Preventing-OpenSSH-Client-from-sending-the-LC-variables-on-OS-X-Linux-Unix-desktop（推荐）" class="headerlink" title="方法一：Preventing OpenSSH Client from sending the LC_* variables on OS X / Linux / Unix desktop（推荐）"></a>方法一：Preventing OpenSSH Client from sending the LC_* variables on OS X / Linux / Unix desktop（推荐）</h3><p>Edit <code>/etc/ssh/ssh_config</code> or <code>/etc/ssh_config</code> file, enter:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/ssh/ssh_config</div></pre></td></tr></table></figure>
-<p>将 <code>SendEnv LANG LC_*</code> 注释掉保存后，重新登录服务器就不会报错了。</p>
-<h2 id="方法二：If-you-are-using-the-Terminal-app-on-OS-X"><a href="#方法二：If-you-are-using-the-Terminal-app-on-OS-X" class="headerlink" title="方法二：If you are using the Terminal app on OS X"></a>方法二：If you are using the Terminal app on OS X</h2><p>iTerm2 默认启用了“Set locale environment variables on startup”<br>取消勾选可以解决服务器上的问题，但是本地就会有中文显示的问题。可以每次手动修改 iTerm2 的配置。</p>
-<h2 id="方法三：-Install-required-locale-on-the-remote-server"><a href="#方法三：-Install-required-locale-on-the-remote-server" class="headerlink" title="方法三： Install required locale on the remote server"></a>方法三： Install required locale on the remote server</h2><p>Finally, you can fix this problem either installing the desired locale using the localedef command, or consider choosing a different locale in locale/remote system:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localedef -i en_US -f UTF-8 en_US.UTF-8</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/02/git-rebase.html" itemprop="url">
-                  git-rebase
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-02T12:11:22+08:00" content="2016-08-02">
-              2016-08-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/02/git-rebase.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/02/git-rebase.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。"><a href="#注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。" class="headerlink" title="注意：一旦分支的快照发布到origin，就千万不要对该分支进行rebase操作。"></a><em>注意</em>：一旦分支的快照发布到origin，就千万不要对该分支进行<code>rebase</code>操作。</h3><p>开发完成后，会有一堆 <code>commit</code>，我们希望合并到主干的时候，只显示一个（或最多两三个）<code>commit</code>，这样不仅清晰，也容易管理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase [主分支] [特性分支]</div></pre></td></tr></table></figure>
-<ol>
-<li>首先用git fetch返回服务器上的代码</li>
-<li>首先用git rebase origin/master 合并</li>
-<li>如果发生冲突了会提示，然后可以使用git diff查看冲突，在手工改掉冲突，在用 git add 添加修改后文件，最后用 git rebase –continue 继续没完成的合并</li>
-<li>最后就可以用git push 更新到服务器上去</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git fetch origin</div><div class="line">git rebase -i origin/master</div></pre></td></tr></table></figure>
-<p>跳入互动界面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">pick ddf212f 添加 git-branch</div><div class="line">pick eb9fcaf 添加内容</div><div class="line">pick 08f56ff 追加内容</div><div class="line">pick 6c5c859 第三次追加内容</div><div class="line"></div><div class="line"># Rebase 5ac13f3..08f56ff onto 5ac13f3 (3 command(s))</div><div class="line">#</div><div class="line"># Commands:</div><div class="line"># p, pick = use commit</div><div class="line"># r, reword = use commit, but edit the commit message</div><div class="line"># e, edit = use commit, but stop for amending</div><div class="line"># s, squash = use commit, but meld into previous commit</div><div class="line"># f, fixup = like &quot;squash&quot;, but discard this commit&apos;s log message</div><div class="line"># x, exec = run command (the rest of the line) using shell</div><div class="line"># d, drop = remove commit</div><div class="line">#</div><div class="line"># These lines can be re-ordered; they are executed from top to bottom.</div><div class="line">#</div><div class="line"># If you remove a line here THAT COMMIT WILL BE LOST.</div><div class="line">#</div><div class="line"># However, if you remove everything, the rebase will be aborted.</div><div class="line">#</div><div class="line"># Note that empty commits are commented out</div><div class="line">~</div></pre></td></tr></table></figure>
-<p>显示的是 <em>尚未提交</em> 到<code>远程主干分支</code>的本地 <code>commit</code>，顺序排列出本地提交记录。</p>
-<p>每个 <code>commit</code> 前面都有一个 <code>操作命令</code>，默认是 <code>pick</code>，表示该 <code>commit</code> 被选中，要进行 <code>rebase</code> 操作。</p>
-<p>如果要撤销<code>rebase</code>，只需要：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase --abort</div></pre></td></tr></table></figure>
-<p>完成后推送到远端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure>
-<h2 id="git-rebase-和-git-merge-的区别"><a href="#git-rebase-和-git-merge-的区别" class="headerlink" title="git rebase 和 git merge 的区别"></a>git rebase 和 git merge 的区别</h2><p><img src="/images/rebase-merge.png" alt=""></p>
-<p>假设:</p>
-<ul>
-<li>C3提交于9:00AM;</li>
-<li>C5提交于10:00AM;</li>
-<li>C4提交于11:00AM;</li>
-<li>C6提交于12:00AM;</li>
-</ul>
-<p>无论是 rebase 还是 merge 后的commit 都按 <em>时间排序</em>。</p>
-<p>对于使用 git rebase 来合并所看到的commit的顺序是：C7 ,C6‘,C5’,C4,C3,C2,C1，因为C6’提交只是C6提交的克隆，C5’提交只是C5提交的克隆，所以 C5’ 生成时间在 C6 之后，C6’ 也在 C5’ 之后。</p>
-<p>对于使用 git merge 来合并所看到的commit的顺序是：C7 ,C6,C4,C5,C3,C2,C1。</p>
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><ul>
-<li>直进式合并（fast forward），不会生成单独的合并节点 <code>git merge hotfix-0.1.1</code></li>
-<li>非直进式合并（none fast-forword），会生成单独节点 <code>git merge --no-ff hotfix-0.1.1</code></li>
-</ul>
-<p>前者不利于保持commit信息的清晰，也不利于以后的回滚，建议总是采用后者（即使用–no-ff参数）。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1818,7 +1877,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">198</span>
+              <span class="site-state-item-count">202</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1835,7 +1894,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">283</span>
+                <span class="site-state-item-count">286</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

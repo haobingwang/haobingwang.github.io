@@ -67,7 +67,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="db,数据库," />
 
 
 
@@ -83,28 +83,16 @@
 
 
 
-<meta name="description" content="这里使用的是 git 协议，需要配置 ssh key。
-下次更新，将转到 https 上去
-server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 设置服务器端更新钩子vim hooks/post-receive
-将如下内容复制到文件中
-123#!/bin/shGIT_WORK_TREE=/home/u">
+<meta name="description" content="数据库设计是一个应用的基础, 也是应用开发的第一步.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git-server">
-<meta property="og:url" content="http://haobing.wang/2017/03/14/git-server.html">
+<meta property="og:title" content="数据库设计">
+<meta property="og:url" content="http://haobing.wang/2017/05/09/数据库设计.html">
 <meta property="og:site_name" content="王浩冰">
-<meta property="og:description" content="这里使用的是 git 协议，需要配置 ssh key。
-下次更新，将转到 https 上去
-server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 设置服务器端更新钩子vim hooks/post-receive
-将如下内容复制到文件中
-123#!/bin/shGIT_WORK_TREE=/home/u">
-<meta property="og:updated_time" content="2017-03-13T07:24:49.000Z">
+<meta property="og:description" content="数据库设计是一个应用的基础, 也是应用开发的第一步.">
+<meta property="og:updated_time" content="2017-05-11T06:36:48.778Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git-server">
-<meta name="twitter:description" content="这里使用的是 git 协议，需要配置 ssh key。
-下次更新，将转到 https 上去
-server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.gitgit init --bare# 设置服务器端更新钩子vim hooks/post-receive
-将如下内容复制到文件中
-123#!/bin/shGIT_WORK_TREE=/home/u">
+<meta name="twitter:title" content="数据库设计">
+<meta name="twitter:description" content="数据库设计是一个应用的基础, 也是应用开发的第一步.">
 
 
 
@@ -125,10 +113,10 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
 
 
 
-  <link rel="canonical" href="http://haobing.wang/2017/03/14/git-server.html"/>
+  <link rel="canonical" href="http://haobing.wang/2017/05/09/数据库设计.html"/>
 
 
-  <title> git-server | 王浩冰 </title>
+  <title> 数据库设计 | 王浩冰 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +261,7 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
             
             
               
-                git-server
+                数据库设计
               
             
           </h1>
@@ -285,8 +273,8 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-14T14:44:41+08:00" content="2017-03-14">
-              2017-03-14
+            <time itemprop="dateCreated" datetime="2017-05-09T11:25:40+08:00" content="2017-05-09">
+              2017-05-09
             </time>
           </span>
 
@@ -296,8 +284,8 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/14/git-server.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/14/git-server.html" itemprop="commentsCount"></span>
+                <a href="/2017/05/09/数据库设计.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/数据库设计.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -320,15 +308,7 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
       
 
       
-        <p>这里使用的是 git 协议，需要配置 ssh key。</p>
-<p>下次更新，将转到 https 上去</p>
-<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 新建代码接受仓库</div><div class="line">mkdir test.git &amp;&amp; cd test.git</div><div class="line">git init --bare</div><div class="line"></div><div class="line"># 设置服务器端更新钩子</div><div class="line">vim hooks/post-receive</div></pre></td></tr></table></figure>
-<p>将如下内容复制到文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">GIT_WORK_TREE=/home/ubuntu/test git checkout -f</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x hooks/post-receive</div></pre></td></tr></table></figure>
-<p>这样，每次从客户端 push 代码到服务器，都会在 /home/ubuntu/test 下生成最先的代码</p>
-<h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote add server git@192.168.1.110:repos/test.git</div><div class="line">git push server</div></pre></td></tr></table></figure>
-<p>其中，server 是自定的主机名，git是上文提到的专门用于提交代码的服务器用户，192.168.1.110是服务器IP，repos/test.git 就是服务器仓库目录。</p>
+        <p>数据库设计是一个应用的基础, 也是应用开发的第一步.</p>
 
       
     </div>
@@ -350,7 +330,9 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/db/" rel="tag">#db</a>
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
           
         </div>
       
@@ -359,16 +341,16 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/13/关于响应式.html" rel="next" title="关于响应式">
-                <i class="fa fa-chevron-left"></i> 关于响应式
+              <a href="/2017/05/08/jQuery.html" rel="next" title="jQuery">
+                <i class="fa fa-chevron-left"></i> jQuery
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/15/mysql.html" rel="prev" title="mysql">
-                mysql <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/09/lemp.html" rel="prev" title="lemp">
+                lemp <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -395,8 +377,8 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/14/git-server.html"
-           data-title="git-server" data-url="http://haobing.wang/2017/03/14/git-server.html">
+      <div class="ds-thread" data-thread-key="2017/05/09/数据库设计.html"
+           data-title="数据库设计" data-url="http://haobing.wang/2017/05/09/数据库设计.html">
       </div>
     
   </div>
@@ -441,7 +423,7 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">169</span>
+              <span class="site-state-item-count">202</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -458,7 +440,7 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">238</span>
+                <span class="site-state-item-count">286</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -487,7 +469,7 @@ server123456# 新建代码接受仓库mkdir test.git &amp;amp;&amp;amp; cd test.
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#server"><span class="nav-number">1.</span> <span class="nav-text">server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#client"><span class="nav-number">1.1.</span> <span class="nav-text">client</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
