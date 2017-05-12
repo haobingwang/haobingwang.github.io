@@ -258,6 +258,225 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/05/proxy.html" itemprop="url">
+                  proxy
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-05T13:56:44+08:00" content="2016-08-05">
+              2016-08-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/05/proxy.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/05/proxy.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="MacOS-终端代理"><a href="#MacOS-终端代理" class="headerlink" title="MacOS 终端代理"></a>MacOS 终端代理</h2><p>这里默认已经启用了shadowsocks且本地代理为socks5://127.0.0.1:1080</p>
+<h3 id="动态配置终端代理"><a href="#动态配置终端代理" class="headerlink" title="动态配置终端代理"></a>动态配置终端代理</h3><p>在终端下使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 设置代理</div><div class="line">export  ALL_PROXY=socks5://127.0.0.1:1080</div><div class="line"></div><div class="line">// 清除代理</div><div class="line">unset ALL_PROXY</div><div class="line"></div><div class="line">// 查看ip测试是否生效</div><div class="line">curl -i http://ip.cn</div></pre></td></tr></table></figure>
+<p>为了方便使用，可以为上述长命名设置alias.</p>
+<ul>
+<li>如果是默认的 bash，则写入 ~/.bash_profile</li>
+<li>如果是 zsh，则写在 ~/.zshrc</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias setproxy=&quot;export ALL_PROXY=socks5://127.0.0.1:1080&quot;</div><div class="line">alias unsetproxy=&quot;unset ALL_PROXY&quot;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>PS:新的macOS可以使用“command+shift+. ”快捷键快速切换是否显示隐藏文件</p>
+</blockquote>
+<p>可以直接把上述代码拷贝到上述对应文件的末尾，修改完成之后执行如下命令使修改生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.zshrc  //刚刚修改的文件名</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 启用代理</div><div class="line">setproxy</div><div class="line"></div><div class="line"># 关闭代理</div><div class="line">unsetproxy</div></pre></td></tr></table></figure>
+<h2 id="Convert-Shadowsocks-into-an-HTTP-proxy"><a href="#Convert-Shadowsocks-into-an-HTTP-proxy" class="headerlink" title="Convert Shadowsocks into an HTTP proxy"></a>Convert Shadowsocks into an HTTP proxy</h2><p>First run polipo with parent proxy set to Shadowsocks:</p>
+<ul>
+<li>Ubuntu</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install polipo</div><div class="line">service polipo stop</div></pre></td></tr></table></figure>
+<ul>
+<li>MacOS</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install polipo</div></pre></td></tr></table></figure>
+<p>启动 polipo：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">polipo socksParentProxy=localhost:1080</div></pre></td></tr></table></figure>
+<p>Then you can play with the HTTP proxy:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">http_proxy=http://localhost:8123 apt-get update</div><div class="line"></div><div class="line">http_proxy=http://localhost:8123 curl www.google.com</div><div class="line"></div><div class="line">http_proxy=http://localhost:8123 wget www.google.com</div><div class="line"></div><div class="line">git config --global http.proxy 127.0.0.1:8123</div><div class="line">git clone https://github.com/xxx/xxx.git</div><div class="line">git xxx</div><div class="line">git xxx</div><div class="line">git config --global --unset-all http.proxy</div></pre></td></tr></table></figure>
+<h3 id="Privoxy-把-SOCSK5-转换成-HTTP-代理"><a href="#Privoxy-把-SOCSK5-转换成-HTTP-代理" class="headerlink" title="Privoxy 把 SOCSK5 转换成 HTTP 代理"></a>Privoxy 把 SOCSK5 转换成 HTTP 代理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">brew install privoxy</div><div class="line">whereis privoxy</div><div class="line">cd /usr/local/etc/privoxy/</div><div class="line">echo &apos;listen-address 0.0.0.0:8118&apos; &gt;&gt; config</div><div class="line">echo &apos;forward-socks5 / 127.0.0.1:1080 .&apos; &gt;&gt; config</div><div class="line">/usr/local/sbin/privoxy /usr/local/etc/privoxy/config</div></pre></td></tr></table></figure>
+<p>没看到任何信息就代表成功了。</p>
+<ul>
+<li><code>0.0.0.0</code> 可以让别的设备用(例如手机)，如果不需要，可以用 <code>127.0.0.1</code>；</li>
+<li><code>8118</code> 是默认端口；</li>
+<li><code>localhost:1080 .</code> 1080 是 shadowsocks 监听端口，注意后面的 <code>.</code> 符号不能删掉</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl ip.cn</div><div class="line">export http_proxy=http://127.0.0.1:8118</div><div class="line">export https_proxy=http://127.0.0.1:8118</div><div class="line">curl ip.cn</div></pre></td></tr></table></figure>
+<p>===局域网手机共享代理===<br>如果局域网 ip 为 <code>192.168.1.123</code>，则可以让 <code>iPhone</code>-&gt;<code>无线局域网</code>-&gt;<code>!</code>-&gt;<code>HTTP代理</code>-&gt;<code>手动</code> 输入</p>
+<ul>
+<li><code>192.168.1.123</code></li>
+<li><code>8118</code></li>
+</ul>
+<h2 id="Using-Shadowsocks-with-Command-Line-Tools"><a href="#Using-Shadowsocks-with-Command-Line-Tools" class="headerlink" title="Using Shadowsocks with Command Line Tools"></a>Using Shadowsocks with Command Line Tools</h2><p>First, set up shadowsocks as usual. Suppose your local is running on 127.0.0.1:1080.</p>
+<p>Install proxychains.</p>
+<p>On Debian/Ubuntu:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install proxychains #  使用 proxychains</div></pre></td></tr></table></figure>
+<p>On Mac OS X:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install proxychains-ng #  使用 proxychains4</div></pre></td></tr></table></figure>
+<p>Make a config file at <code>~/.proxychains/proxychains.conf</code> with content:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">strict_chain</div><div class="line">proxy_dns</div><div class="line">remote_dns_subnet 224</div><div class="line">tcp_read_time_out 15000</div><div class="line">tcp_connect_time_out 8000</div><div class="line">localnet 127.0.0.0/255.0.0.0</div><div class="line">quiet_mode</div><div class="line"></div><div class="line">[ProxyList]</div><div class="line">socks5  127.0.0.1 1080</div></pre></td></tr></table></figure>
+<p>Then run command with proxychains. Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># macos</div><div class="line">proxychains4 curl ip.cn</div><div class="line">proxychains4 meteor update</div><div class="line">proxychains4 curl https://www.twitter.com/</div><div class="line">proxychains4 git push origin master</div></pre></td></tr></table></figure>
+<p>Or just proxify bash:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># macos</div><div class="line">proxychains4 bash</div><div class="line">curl https://www.twitter.com/</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p>在 <code>OSX 10.11</code> 上，<code>proxychains4 curl</code> 会忽略 <code>proxychains4</code>，because of SIP, you can’t use proxychains-ng to proxy a execute which is in system dir like /usr/bin. But /usr/local/bin can works. Something like youtube-dl with call python which is in /usr/bin, install a Homebrew python or others can solve it.</p>
+<ul>
+<li>方案一：禁用 SIP：<code>Command+R</code>，执行 <code>csrutil disable</code> 重启后，<code>csrutil status</code></li>
+<li>方案二：另外安装一份 <code>curl</code>：<code>brew install curl</code>,<code>brew link --force curl</code></li>
+</ul>
+<h2 id="Startup"><a href="#Startup" class="headerlink" title="Startup"></a>Startup</h2><h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -p 443 -k password -m aes-256-cfb</div></pre></td></tr></table></figure>
+<p>To run in the background:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start</div></pre></td></tr></table></figure>
+<p>To Stop:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -d stop</div></pre></td></tr></table></figure>
+<p>To check the log:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">less /var/log/shadowsocks.log</div></pre></td></tr></table></figure>
+<h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>下载客户端</p>
+<h2 id="Socks-5-in-Terminal"><a href="#Socks-5-in-Terminal" class="headerlink" title="Socks 5 in Terminal"></a>Socks 5 in Terminal</h2><h3 id="Using-Unix-Proxy-Environment-Variable"><a href="#Using-Unix-Proxy-Environment-Variable" class="headerlink" title="Using Unix Proxy Environment Variable"></a>Using Unix Proxy Environment Variable</h3><p>Add this script to <code>~/.bash_profile</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export http_proxy=http://127.0.0.1:1080</div><div class="line">export https_proxy=http://127.0.0.1:1080</div></pre></td></tr></table></figure>
+<p><strong>注意</strong> <code>MacOS</code> 中大写  <code>HTTP_PROXY</code> 不生效！</p>
+<h3 id="Config-curl-to-use-SOCKS5-Also-works-for-homebrew"><a href="#Config-curl-to-use-SOCKS5-Also-works-for-homebrew" class="headerlink" title="Config curl to use SOCKS5(Also works for homebrew)"></a>Config <code>curl</code> to use <code>SOCKS5</code>(Also works for homebrew)</h3><p>Add the following line to <code>~/.curlrc</code>. Since <code>homebrew</code> use <code>curl</code> to download the package, this will also enable homebrew to use SOCKS5.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socks5 = &quot;socks5://127.0.0.1:1080&quot;</div></pre></td></tr></table></figure>
+<h3 id="Config-git-to-use-SOCKS5"><a href="#Config-git-to-use-SOCKS5" class="headerlink" title="Config git to use SOCKS5"></a>Config git to use SOCKS5</h3><ul>
+<li>For <code>https://</code> and <code>http://</code>(e.g. <code>http://github.com</code>, <code>https://github.com</code>), run the following script.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;socks5://127.0.0.1:1080&apos;</div><div class="line">git config --global https.proxy &apos;socks5://127.0.0.1:1080&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li>For <code>git://</code>(e.g. <code>git://github.com</code>), run <code>git config --global core.gitproxy &#39;socks5://127.0.0.1:1080&#39;</code></li>
+<li>For <code>ssh</code>(e.g. <code>git@github.com,ssh://git@github.com</code>), add <code>ProxyCommand nc -x localhost:1080 %h %p</code> to ~/.ssh/config file.</li>
+</ul>
+<p><code>git config --global</code> is stored in <code>~/.gitconfig</code> while local config settings is in <code>./.git/config</code>. To remove a configuration, e.g. run <code>git config --global --unset core.gitproxy</code>.</p>
+<h2 id="验证代理是否成功"><a href="#验证代理是否成功" class="headerlink" title="验证代理是否成功"></a>验证代理是否成功</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">curl ip.cn</div><div class="line">curl ifconfig.me</div><div class="line">curl ifconfig.co</div><div class="line">curl ipinfo.io</div><div class="line">curl http://ipecho.net/plain</div></pre></td></tr></table></figure>
+<h2 id="Ubuntu-下-privoxy"><a href="#Ubuntu-下-privoxy" class="headerlink" title="Ubuntu 下 privoxy"></a>Ubuntu 下 privoxy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install privoxy</div><div class="line">service privoxy status</div><div class="line">service privoxy start</div><div class="line">service privoxy stop</div><div class="line">service privoxy restart</div></pre></td></tr></table></figure>
+<h2 id="代理开关"><a href="#代理开关" class="headerlink" title="代理开关"></a>代理开关</h2><ol>
+<li>在 <code>.bashrc</code> 中添加</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alias proxy=&apos;proxychains4&apos;</div><div class="line">alias proxyon=&quot;export http_proxy=&apos;http://127.0.0.1:8118&apos;;export https_proxy=&apos;http://127.0.0.1:8118&apos;&quot;</div><div class="line">alias proxyoff=&quot;export http_proxy=&apos;&apos;;export https_proxy=&apos;&apos;&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>proxychains4, 使用 proxy 替代</li>
+<li>privoxy, 使用 <code>proxyon</code> 和 <code>proxyoff</code> 开启和关闭</li>
+</ul>
+<ol>
+<li>开启代理</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxyon</div></pre></td></tr></table></figure>
+<ol>
+<li>关闭代理</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxyoff</div></pre></td></tr></table></figure>
+<h2 id="如何为-git-设置代理"><a href="#如何为-git-设置代理" class="headerlink" title="如何为 git 设置代理"></a>如何为 git 设置代理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxychains4 git submodule add git@gitlab.com:username/sample.git</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/04/seo.html" itemprop="url">
                   seo
                 </a>
@@ -1526,127 +1745,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/28/git-ignore.html" itemprop="url">
-                  git-ignore
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-28T11:07:36+08:00" content="2016-07-28">
-              2016-07-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/28/git-ignore.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/git-ignore.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>创建一个新文件 <code>~/.gitignore</code> (或者 <code>.gitignore_global</code>)，并将以下内容添加进去，这样全部<br> git 仓库将会忽略以下内容所提及的文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># Folder view configuration files</div><div class="line">.DS_Store</div><div class="line">Desktop.ini</div><div class="line"></div><div class="line"># Thumbnail cache files</div><div class="line">._*</div><div class="line">Thumbs.db</div><div class="line"></div><div class="line"># Files that might appear on external disks</div><div class="line">.Spotlight-V100</div><div class="line">.Trashes</div><div class="line"></div><div class="line"># Compiled Python files</div><div class="line">*.pyc</div><div class="line"></div><div class="line"># Compiled C++ files</div><div class="line">*.out</div><div class="line"></div><div class="line"># Application specific files</div><div class="line">venv</div><div class="line">node_modules</div><div class="line">.sass-cache</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1692,7 +1790,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">202</span>
+              <span class="site-state-item-count">203</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1709,7 +1807,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">286</span>
+                <span class="site-state-item-count">289</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

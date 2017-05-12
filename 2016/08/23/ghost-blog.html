@@ -91,7 +91,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
 <meta property="og:site_name" content="王浩冰">
 <meta property="og:description" content="在线使用 HEXO 写文章实在不方便，各种坑。
 Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入门文档，整理下，找个时间把文章迁移到自己的服务器上。">
-<meta property="og:updated_time" content="2017-05-10T10:42:32.628Z">
+<meta property="og:updated_time" content="2017-05-11T07:20:28.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ghost-blog">
 <meta name="twitter:description" content="在线使用 HEXO 写文章实在不方便，各种坑。
@@ -321,7 +321,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
 <li>git</li>
 </ul>
 <p>下载 ghost</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 下载工具随意</div><div class="line">wget https://ghost.org/zip/ghost-latest.zip</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 下载工具随意</div><div class="line">wget https://ghost.org/zip/ghost-latest.zip</div><div class="line"></div><div class="line">unzip ghost-latest.zip -d ghost</div></pre></td></tr></table></figure>
 <p>解压，并安装Ghost的生产模块：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ghost</div><div class="line">npm install --production</div></pre></td></tr></table></figure>
 <p>Ghost设置：</p>
@@ -337,7 +337,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
 <h2 id="Public-API"><a href="#Public-API" class="headerlink" title="Public API"></a>Public API</h2><h2 id="Private-API"><a href="#Private-API" class="headerlink" title="Private API"></a>Private API</h2><h2 id="ghost-0-7-4"><a href="#ghost-0-7-4" class="headerlink" title="ghost-0.7.4"></a>ghost-0.7.4</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nvm install 4.2</div><div class="line">nvm use 4.2</div><div class="line">node index.js</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 创建Ghost数据库</div><div class="line">$ create database mousycoder # 这里把mousycoder换成你想换成的数据库名，建议和域名保持一致，方便以后维护。</div><div class="line">$ create database mousycoderDev # 这个是Ghost启动有2种模式 一种开发模式 一种生产模式 这个是开发模式的数据库，如果不想那么麻烦，只用建立一个数据库即可。</div><div class="line">$ create user &apos;mousycoder&apos;@&apos;localhost&apos; identified by &apos;123456&apos; # 这里新建一个用户mousycoder密码为123456,当然我的密码肯定不是123456咯，换成你自己的啦 = =，同样也建议用户名，数据库名，服务名，组名，都和域名保持一致,这里是建立一个只有本地操作的用户，远程无法操作，安全策略。</div><div class="line">$ grant all privileges on mousycoder.* to &apos;mousycoder&apos;@&apos;localhost&apos;</div><div class="line">$ grant all privileges on mousycoderDev.* to &apos;mousycoder&apos;@&apos;localhost&apos; # 这里是赋予mousycoder这个本地用户所有对数据库mousycoder以及mousycoderDev的权限，当然这里你可以根据实际需要赋予权限。</div><div class="line">$ FLUSH PRIVILEGES # 重新读取权限表中的数据到内存，不用重启mysql就可以让权限生效，好处可以防止修改错误后，没有余地再去反悔。</div></pre></td></tr></table></figure>
 <p>/core/shared/robots.txt</p>
-
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NODE_ENV=production node index.js</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -451,7 +451,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">202</span>
+              <span class="site-state-item-count">203</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -468,7 +468,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">286</span>
+                <span class="site-state-item-count">289</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -497,7 +497,7 @@ Ghost 是 Wordpress 成员利用 Node.js 搞出来的博客系统。扒了篇入
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-配置-Ghost"><span class="nav-number">1.</span> <span class="nav-text">Windows 配置 Ghost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加-robots-txt"><span class="nav-number">2.</span> <span class="nav-text">添加 robots.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">3.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-API"><span class="nav-number">4.</span> <span class="nav-text">Public API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-API"><span class="nav-number">5.</span> <span class="nav-text">Private API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ghost-0-7-4"><span class="nav-number">6.</span> <span class="nav-text">ghost-0.7.4</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-配置-Ghost"><span class="nav-number">1.</span> <span class="nav-text">Windows 配置 Ghost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加-robots-txt"><span class="nav-number">2.</span> <span class="nav-text">添加 robots.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">3.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-API"><span class="nav-number">4.</span> <span class="nav-text">Public API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-API"><span class="nav-number">5.</span> <span class="nav-text">Private API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ghost-0-7-4"><span class="nav-number">6.</span> <span class="nav-text">ghost-0.7.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">7.</span> <span class="nav-text">命令</span></a></li></ol></div>
             
           </div>
         </section>

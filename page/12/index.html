@@ -258,6 +258,109 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/09/hexo-deployer-rsync.html" itemprop="url">
+                  hexo-deployer-rsync
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T14:03:55+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/09/hexo-deployer-rsync.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/09/hexo-deployer-rsync.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>hexo-deployer-rsync 0.1.2 在 Windows 下有 Bug，需要手动修复下</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/09/hexo-deployer-rsync.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/08/cygwin.html" itemprop="url">
                   cygwin
                 </a>
@@ -1243,112 +1346,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/bash.html" itemprop="url">
-                  bash
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T16:48:45+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/21/bash.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/bash.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="影响-bash-环境操作的变量"><a href="#影响-bash-环境操作的变量" class="headerlink" title="影响 bash 环境操作的变量"></a>影响 bash 环境操作的变量</h2><p>某些特定变量会影响到 bash 的环境喔！举例来说，我们前面已经提到过很多次的那个 PATH 变量！ 你能不能在任何目录下运行某个命令，与 PATH 这个变量有很大的关系。例如你下达 ls 这个命令时，系统就是透过 PATH 这个变量里面的内容所记录的路径顺序来搜寻命令的呢！如果在搜寻完 PATH 变量内的路径还找不到 ls 这个命令时， 就会在屏幕上显示『 command not found 』的错误信息了。</p>
-<p>如果说的学理一点，那么由于在 Linux System 下面，所有的线程都是需要一个运行码， 而就如同上面提到的，你『真正以 shell 来跟 Linux 沟通，是在正确的登陆 Linux 之后！』这个时候你就有一个 bash 的运行程序，也才可以真正的经由 bash 来跟系统沟通啰！而在进入 shell 之前，也正如同上面提到的，由于系统需要一些变量来提供他数据的存取 (或者是一些环境的配置参数值， 例如是否要显示彩色等等的) ，所以就有一些所谓的『环境变量』 需要来读入系统中了！这些环境变量例如 PATH、HOME、MAIL、SHELL 等等，都是很重要的， 为了区别与自定义变量的不同，环境变量通常以大写字符来表示呢！</p>
-<h2 id="查看变量"><a href="#查看变量" class="headerlink" title="查看变量"></a>查看变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">echo $PATH</div><div class="line">echo $HOME</div><div class="line">echo $MAIL</div><div class="line">echo $SHELL</div></pre></td></tr></table></figure>
-<h2 id="配置变量"><a href="#配置变量" class="headerlink" title="配置变量"></a>配置变量</h2><h3 id="新增变量"><a href="#新增变量" class="headerlink" title="新增变量"></a>新增变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">myname=bing</div><div class="line">echo $myname</div></pre></td></tr></table></figure>
-<h3 id="扩增变量"><a href="#扩增变量" class="headerlink" title="扩增变量"></a>扩增变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PATH=&quot;$PATH&quot;:/home/pi/bin</div></pre></td></tr></table></figure>
-<h3 id="export：-自定义变量转成环境变量"><a href="#export：-自定义变量转成环境变量" class="headerlink" title="export： 自定义变量转成环境变量"></a>export： 自定义变量转成环境变量</h3><h2 id="撤销变量"><a href="#撤销变量" class="headerlink" title="撤销变量"></a>撤销变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unset myname</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1394,7 +1391,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">202</span>
+              <span class="site-state-item-count">203</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1411,7 +1408,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">286</span>
+                <span class="site-state-item-count">289</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -258,6 +258,113 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/26/exception.html" itemprop="url">
+                  exception
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-26T14:32:31+08:00" content="2017-04-26">
+              2017-04-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/26/exception.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/26/exception.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>什么是异常?</p>
+<p>语法上没有错误,在程序运行的过程中,由于某些原因程序出现了错误,不能正常运行.</p>
+<p>为了使程序更加健壮,需要把可能出现异常的代码,放到 try-catch 中.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	// 可以会出现异常的代码</div><div class="line">&#125;</div><div class="line">catch &#123;</div><div class="line">	// 出现异常后要执行的代码</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="php-中的异常"><a href="#php-中的异常" class="headerlink" title="php 中的异常"></a>php 中的异常</h2><h2 id="c-中的异常"><a href="#c-中的异常" class="headerlink" title="c# 中的异常"></a>c# 中的异常</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Console.WriteLine(&quot;请输入一个数字&quot;);</div><div class="line">int number = Convert.ToInt32(Console.ReadLine());</div><div class="line"></div><div class="line">Console.WriteLine(number * 2);</div><div class="line">Console.ReadLine();</div></pre></td></tr></table></figure>
+<p>如果用户输入的不是数字,那么就会抛异常.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Console.WriteLine(&quot;请输入一个数字&quot;);</div><div class="line"></div><div class="line">try </div><div class="line">&#123;</div><div class="line">	int number = Convert.ToInt32(Console.ReadLine());</div><div class="line">	Console.WriteLine(number * 2);</div><div class="line">&#125;</div><div class="line">catch </div><div class="line">&#123;</div><div class="line">	Console.WriteLine(&quot;输入的内容不能够转换成数字&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Console.ReadLine();</div></pre></td></tr></table></figure>
+<h2 id="js-中的异常"><a href="#js-中的异常" class="headerlink" title="js 中的异常"></a>js 中的异常</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/21/visual-studio.html" itemprop="url">
                   visual-studio
                 </a>
@@ -1213,106 +1320,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/10/markdown2db.html" itemprop="url">
-                  markdown 文件存储到数据库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-10T10:27:37+08:00" content="2017-04-10">
-              2017-04-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/10/markdown2db.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/markdown2db.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="csv-文转为多个-markdown"><a href="#csv-文转为多个-markdown" class="headerlink" title="csv 文转为多个 markdown"></a>csv 文转为多个 markdown</h2><h2 id="多个-markdown-转换为-json-文件"><a href="#多个-markdown-转换为-json-文件" class="headerlink" title="多个 markdown 转换为 json 文件"></a>多个 markdown 转换为 json 文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i markdown-to-json</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1358,7 +1365,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">202</span>
+              <span class="site-state-item-count">203</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1375,7 +1382,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">286</span>
+                <span class="site-state-item-count">289</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
